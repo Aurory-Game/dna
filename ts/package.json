@@ -1,7 +1,6 @@
 {
   "name": "@aurory/dnajs",
-  "version": "0.0.2",
-  "main": "src/index.js",
+  "version": "0.0.4",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Aurory-Game/dna.git"
@@ -19,7 +18,9 @@
   },
   "author": "Aurory",
   "license": "MIT",
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "devDependencies": {
     "@types/expect": "^24.3.0",
     "@types/mocha": "^9.1.1",
@@ -30,5 +31,8 @@
   "dependencies": {
     "@types/randombytes": "^2.0.0",
     "randombytes": "^2.1.0"
-  }
+  },
+  "type": "commonjs",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts"
 }
