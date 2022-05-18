@@ -2,6 +2,13 @@
   "name": "@aurory/dnajs",
   "version": "0.0.1",
   "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aurory-Game/dna.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Aurory-Game/dna/issues"
+  },
   "scripts": {
     "start": "ts-node -r tsconfig-paths/register ./src/index.ts",
     "sp": "ts-node -r tsconfig-paths/register $1",
