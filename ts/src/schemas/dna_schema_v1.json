@@ -1,0 +1,53 @@
+{
+  "version": "1",
+  "version_date": "23/05/2022",
+  "global_genes_header": [
+    { "name": "version", "base": 2 },
+    { "name": "category", "base": 1 }
+  ],
+  "categories": {
+    "0": {
+      "name": "nefties",
+      "category_genes_header": [
+        { "name": "archetype", "base": 1 }
+      ],
+      "genes": [
+        { "name": "hp", "base": 1, "type": "range_completeness" },
+        { "name": "initiative", "base": 1, "type": "range_completeness" },
+        { "name": "atk", "base": 1, "type": "range_completeness" },
+        { "name": "def", "base": 1, "type": "range_completeness" },
+        { "name": "eatk", "base": 1, "type": "range_completeness" },
+        { "name": "edef", "base": 1, "type": "range_completeness" },
+        { "name": "skill_a", "base": 1, "type": "index" },
+        { "name": "skill_b", "base": 1, "type": "index" },
+        { "name": "skill_c", "base": 1, "type": "index" }
+      ],
+      "archetypes": {
+        "0": {
+          "fixed_attributes": {
+            "name": "Bitebit",
+            "family": "Bitebit",
+            "mp": 3
+          },
+          "encoded_attributes": {
+            "hp": [40, 50],
+            "initiative": [1100, 1200],
+            "atk": [220, 230],
+            "def": [90, 100],
+            "eatk": [30, 40],
+            "edef": [90, 100],
+            "skill_a": [
+              "Rancune"
+            ],
+            "skill_b": [
+              "Pull"
+            ],
+            "skill_c": [
+              "Stomp"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
