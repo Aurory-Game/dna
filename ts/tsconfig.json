@@ -23,6 +23,6 @@
     "strictNullChecks": false,
     "skipLibCheck": true
   },
-  "include": ["src/**/*", "src/**/*.json", "src/**/*.txt"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }

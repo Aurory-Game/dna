@@ -1,6 +1,6 @@
 {
   "name": "@aurory/dnajs",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Aurory-Game/dna.git"
@@ -12,16 +12,14 @@
     "start": "ts-node -r tsconfig-paths/register ./src/index.ts",
     "sp": "ts-node -r tsconfig-paths/register $1",
     "test": "ts-mocha --paths -p ./tsconfig.json -t 1000000 tests/**/*.spec.ts",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json && cp -r src/schemas lib/",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test"
   },
   "author": "Aurory",
   "license": "MIT",
   "files": [
-    "lib/**/*",
-    "src/schemas/*.txt",
-    "src/schemas/*.json"
+    "lib/**/*"
   ],
   "devDependencies": {
     "@types/expect": "^24.3.0",
