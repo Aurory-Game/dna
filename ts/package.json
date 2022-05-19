@@ -1,6 +1,6 @@
 {
   "name": "@aurory/dnajs",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Aurory-Game/dna.git"
@@ -20,7 +20,8 @@
   "license": "MIT",
   "files": [
     "lib/**/*",
-    "src/schemas/*"
+    "src/schemas/*.txt",
+    "src/schemas/*.json"
   ],
   "devDependencies": {
     "@types/expect": "^24.3.0",
