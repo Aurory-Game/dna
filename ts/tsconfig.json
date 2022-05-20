@@ -11,7 +11,7 @@
       "@schemas/*": ["schemas/*"]
     },
     "typeRoots": [
-      "types", "node_modules/@types"
+      "node_modules/@types"
     ],
     "types": ["node", "mocha"],
     "resolveJsonModule": true,

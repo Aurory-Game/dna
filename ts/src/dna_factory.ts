@@ -187,6 +187,7 @@ export class DNAFactory {
     }
     return {
       data,
+      fixed_attributes: archetype.fixed_attributes,
       raw,
       metadata: { version: this._unpad(version) },
     };
