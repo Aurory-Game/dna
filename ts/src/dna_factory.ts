@@ -1,7 +1,9 @@
 import randomBytes from "randombytes";
-import fs from "fs";
-import path from "path";
 import { DNASchema, Category } from "@interfaces/types";
+import { isNode } from "@utils/plateform";
+
+const fs = isNode ? require("fs") : require("browserify-fs");
+const path = isNode ? require("path") : require("path-browserify");
 
 type version = string | number;
 
