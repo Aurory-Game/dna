@@ -1,8 +1,7 @@
 import randomBytes from "randombytes";
-import fs from "fs";
-import path from "path";
 import { DNASchema, Category } from "@interfaces/types";
 import dnaSchemaV1 from './schemas/dna_schema_v1.json';
+import { LATEST_VERSION } from './schemas/latest';
 
 type version = string | number;
 
@@ -42,9 +41,7 @@ export class DNAFactory {
     this.dnaBytes = dnaBytes ?? 64;
     this.encodingBase = encodingBase ?? 16;
     this.baseSize = this.encodingBase / 8;
-    this.latestVersion = fs
-      .readFileSync(path.resolve(__dirname, "schemas/latest.txt"))
-      .toString();
+    this.latestVersion = LATEST_VERSION;
     this.dnaSchemas = {
       [this.latestVersion]: this.loadDNASchema(this.latestVersion),
     };
