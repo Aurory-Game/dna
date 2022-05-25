@@ -2,9 +2,13 @@ import randomBytes from "randombytes";
 import fs from "fs";
 import path from "path";
 import { DNASchema, Category } from "@interfaces/types";
-import dnaSchema from './schemas/dna_schema_v1.json';
+import dnaSchemaV1 from './schemas/dna_schema_v1.json';
 
 type version = string | number;
+
+const dnaSchemas: Record<version, DNASchema> = {
+  1: dnaSchemaV1 as DNASchema
+}
 
 export class DNA {
   cursor: number;
@@ -60,6 +64,7 @@ export class DNAFactory {
   }
 
   loadDNASchema(version: string): DNASchema {
+    const dnaSchema = dnaSchemas[version];
     if (version !== dnaSchema.version)
       throw new Error(
         `Versions missmatch: ${version} (filename) vs ${dnaSchema.version} (schema)`
