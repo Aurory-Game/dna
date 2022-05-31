@@ -1,6 +1,6 @@
 import randomBytes from "randombytes";
-import { DNASchema, Category } from "@interfaces/types";
-import { isNode } from "@utils/plateform";
+import { DNASchema, Category, Parse } from "./interfaces/types";
+import { isNode } from "./utils/plateform";
 
 const fs = isNode ? require("fs") : require("browserify-fs");
 const path = isNode ? require("path") : require("path-browserify");
@@ -151,7 +151,7 @@ export class DNAFactory {
     return parseInt(v, this.encodingBase).toString();
   }
 
-  parse(dnaString: string) {
+  parse(dnaString: string): Parse {
     const dna = new DNA(dnaString, this.encodingBase);
     const version = dna.read(2);
     const dnaSchema = this.getDNASchema(this._unpad(version));
@@ -178,9 +178,9 @@ export class DNAFactory {
         const completeness = value / (Math.pow(2, gene.base * 8) - 1);
         data[gene.name] = Math.round(
           completeness *
-            ((encoded_attribute[1] as number) -
-              (encoded_attribute[0] as number)) +
-            (encoded_attribute[0] as number)
+          ((encoded_attribute[1] as number) -
+            (encoded_attribute[0] as number)) +
+          (encoded_attribute[0] as number)
         );
       } else if (gene.type === "index") {
         const rangedValue = value % encoded_attribute.length;
@@ -189,9 +189,9 @@ export class DNAFactory {
     }
     return {
       data,
-      fixed_attributes: archetype.fixed_attributes,
       raw,
       metadata: { version: this._unpad(version) },
+      archetype
     };
   }
 }
