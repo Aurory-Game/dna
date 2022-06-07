@@ -191,7 +191,24 @@ export class DNAFactory {
       data,
       raw,
       metadata: { version: this._unpad(version) },
-      archetype
+      archetype,
+      genes: category.genes
     };
+  }
+
+  getDnaVersion(dnaString: string): string {
+    const dna = new DNA(dnaString, this.encodingBase);
+    const version = dna.read(2);
+    return version
+  }
+
+  getCategory(categoryName: string, dnaVersion: string): Category {
+    const dnaSchema = this.getDNASchema(this._unpad(dnaVersion));
+    const categoryIndex = this._getCategoryKeyFromName(
+      categoryName,
+      dnaSchema.categories
+    );
+    const category = dnaSchema.categories[this._unpad(categoryIndex)];
+    return category
   }
 }

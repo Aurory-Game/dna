@@ -46,5 +46,6 @@ export interface Parse {
   data: Record<string, string | number>;
   raw: Record<string, number>;
   archetype: Archetype;
-  metadata: { version: string }
+  metadata: { version: string },
+  genes: Gene[]
 }
