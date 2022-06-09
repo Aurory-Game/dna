@@ -1,9 +1,6 @@
 import { DNAFactory, EggsFactory } from "../src";
-import fs from "fs";
-import path from "path";
 
 describe("Basic", () => {
-  const version = path.join;
   const df = new DNAFactory();
   const ef = new EggsFactory();
   const neftyIndex = ef.hatch(0, 5);
@@ -13,7 +10,6 @@ describe("Basic", () => {
 });
 
 describe("Compute possible names, families and abilities", () => {
-  const version = path.join;
   const df = new DNAFactory();
   const ef = new EggsFactory();
   const neftyIndex = ef.hatch(0, 5);
