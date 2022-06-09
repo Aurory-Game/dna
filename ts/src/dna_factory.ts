@@ -127,7 +127,6 @@ export class DNAFactory {
     else if (this.latestSubversions[version]) return this.dnaSchemas[this.latestSubversions[version]]
 
     const completeVersion = version.includes('.') ? version : this.getLatestSubversion(version);
-    console.log(completeVersion)
     this.dnaSchemas[completeVersion] = this.loadDNASchema(completeVersion);
 
     return this.dnaSchemas[completeVersion];
