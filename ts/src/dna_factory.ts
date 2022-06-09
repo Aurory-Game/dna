@@ -1,6 +1,6 @@
 import randomBytes from "randombytes";
 import { DNASchema, Category, Parse } from "./interfaces/types";
-import { isNode } from "./utils/plateform";
+import { isNode } from "./utils/platform";
 
 const fs = isNode ? require("fs") : require("browserify-fs");
 const path = isNode ? require("path") : require("path-browserify");
@@ -35,15 +35,16 @@ export class DNAFactory {
   encodingBase: number;
   baseSize: number;
 
-  constructor(dnaBytes?: number, encodingBase?: number) {
+  constructor(dnaBytes?: number, encodingBase?: number, schemaVersion?: string) {
     this.dnaBytes = dnaBytes ?? 64;
     this.encodingBase = encodingBase ?? 16;
     this.baseSize = this.encodingBase / 8;
     this.latestVersion = fs
       .readFileSync(path.resolve(__dirname, "schemas/latest.txt"))
       .toString();
+    const version = schemaVersion ? schemaVersion : this.latestVersion;
     this.dnaSchemas = {
-      [this.latestVersion]: this.loadDNASchema(this.latestVersion),
+      [this.latestVersion]: this.loadDNASchema(version),
     };
   }
 
@@ -63,12 +64,12 @@ export class DNAFactory {
   loadDNASchema(version: string) {
     const schemaPath = path.resolve(
       __dirname,
-      `schemas/dna_schema_v${version}.json`
+      `schemas/aurory_dna_v${version}.json`
     );
     const dnaSchema = JSON.parse(fs.readFileSync(schemaPath).toString());
     if (version !== dnaSchema.version)
       throw new Error(
-        `Versions missmatch: ${version} (filename) vs ${dnaSchema.version} (schema)`
+        `Versions mismatch: ${version} (filename) vs ${dnaSchema.version} (schema)`
       );
     return dnaSchema;
   }
