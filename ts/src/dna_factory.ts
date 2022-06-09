@@ -116,6 +116,8 @@ export class DNAFactory {
 
     if (!completeVersion) throw new Error(`No complete version found for ${schemaVersion}`)
 
+    this.latestSubversions[schemaVersion] = completeVersion
+
     return completeVersion
   }
 
