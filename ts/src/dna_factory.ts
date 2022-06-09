@@ -1,6 +1,6 @@
 import randomBytes from "randombytes";
 import { DNASchema, Category, Parse } from "./interfaces/types";
-import { isNode } from "./utils/plateform";
+import { isNode } from "./utils/platform";
 
 const fs = isNode ? require("fs") : require("browserify-fs");
 const path = isNode ? require("path") : require("path-browserify");
@@ -34,17 +34,27 @@ export class DNAFactory {
   dnaBytes: number;
   encodingBase: number;
   baseSize: number;
+  latestSubversions: Record<version, version>
 
-  constructor(dnaBytes?: number, encodingBase?: number) {
+  constructor(dnaBytes?: number, encodingBase?: number, schemaVersion?: string) {
     this.dnaBytes = dnaBytes ?? 64;
     this.encodingBase = encodingBase ?? 16;
     this.baseSize = this.encodingBase / 8;
-    this.latestVersion = fs
-      .readFileSync(path.resolve(__dirname, "schemas/latest.txt"))
-      .toString();
+    this.latestVersion = this.getLatestVersion();
+    const version = schemaVersion ? schemaVersion : this.latestVersion;
     this.dnaSchemas = {
-      [this.latestVersion]: this.loadDNASchema(this.latestVersion),
+      [this.latestVersion]: this.loadDNASchema(version),
     };
+    this.latestSubversions = {
+      [parseInt(this.latestVersion).toString()]: this.latestVersion
+    };
+  }
+
+  getLatestVersion() {
+    return fs
+      .readFileSync(path.resolve(__dirname, "schemas/latest.txt"))
+      .toString()
+      .trim();
   }
 
   generateDNA(storageSize: number, encodingBase?: number): string | Buffer {
@@ -63,23 +73,63 @@ export class DNAFactory {
   loadDNASchema(version: string) {
     const schemaPath = path.resolve(
       __dirname,
-      `schemas/dna_schema_v${version}.json`
+      `schemas/aurory_dna_v${version}.json`
     );
     const dnaSchema = JSON.parse(fs.readFileSync(schemaPath).toString());
     if (version !== dnaSchema.version)
       throw new Error(
-        `Versions missmatch: ${version} (filename) vs ${dnaSchema.version} (schema)`
+        `Versions mismatch: ${version} (filename) vs ${dnaSchema.version} (schema)`
       );
     return dnaSchema;
+  }
+
+  getLatestSubversion(schemaVersion?: string): string {
+    if (schemaVersion.includes('.')) return schemaVersion
+
+    const schemasDir = path.resolve(
+      __dirname,
+      `schemas/`
+    );
+    let completeVersion = undefined
+    let completeVersionSplit = undefined
+    const reg = /.+v(.+)\.(text|json)/
+    fs.readdirSync(schemasDir).forEach(v => {
+      const regResult = reg.exec(v)
+      if (!regResult || regResult.length < 2) return
+
+      const localCompleteVersion = regResult[1]
+
+      if (!completeVersion) {
+        completeVersion = localCompleteVersion
+        completeVersionSplit = localCompleteVersion.split('.')
+        return
+      }
+
+      const localCompleteVersionSplit = localCompleteVersion.split('.')
+      for (let index = 0; index < 3; index++) {
+        if (completeVersionSplit[index] === localCompleteVersionSplit[index]) continue
+        else if (completeVersionSplit[index] > localCompleteVersionSplit[index]) break
+        completeVersion = localCompleteVersion
+        completeVersionSplit = localCompleteVersionSplit
+      }
+    })
+
+    if (!completeVersion) throw new Error(`No complete version found for ${schemaVersion}`)
+
+    this.latestSubversions[schemaVersion] = completeVersion
+
+    return completeVersion
   }
 
   getDNASchema(version?: string): DNASchema {
     if (!version) return this.dnaSchemas[this.latestVersion];
     else if (this.dnaSchemas[version]) return this.dnaSchemas[version];
+    else if (this.latestSubversions[version]) return this.dnaSchemas[this.latestSubversions[version]]
 
-    this.dnaSchemas[version] = this.loadDNASchema(version);
+    const completeVersion = version.includes('.') ? version : this.getLatestSubversion(version);
+    this.dnaSchemas[completeVersion] = this.loadDNASchema(completeVersion);
 
-    return this.dnaSchemas[version];
+    return this.dnaSchemas[completeVersion];
   }
 
   private _getCategoryKeyFromName(
@@ -100,7 +150,8 @@ export class DNAFactory {
 
   generateNeftyDNA(archetypeIndex: string, version?: string) {
     if (!archetypeIndex) throw new Error("Missing archetypeIndex");
-    const dnaSchema = this.getDNASchema(version);
+
+    const dnaSchema = this.getDNASchema(version ?? this.latestVersion);
     const schemaVersion = dnaSchema.version;
 
     const categoryKey = this._getCategoryKeyFromName(

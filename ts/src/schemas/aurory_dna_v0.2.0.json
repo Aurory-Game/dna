@@ -1,5 +1,5 @@
 {
-  "version":"1",
+  "version":"0.2.0",
   "version_date":"09/06/2022",
   "global_genes_header":[
     {
@@ -114,6 +114,50 @@
         },
         "1":{
           "fixed_attributes":{
+            "name":"Nefty_Dipking",
+            "family":"Dipking",
+            "mp":2,
+            "passiveSkill":"SlipperySkin",
+            "ultimateSkill":"ComboBreaker"
+          },
+          "encoded_attributes":{
+            "hp":[
+              280,
+              420
+            ],
+            "initiative":[
+              85,
+              115
+            ],
+            "atk":[
+              24,
+              36
+            ],
+            "def":[
+              16,
+              24
+            ],
+            "eatk":[
+              56,
+              84
+            ],
+            "edef":[
+              32,
+              48
+            ],
+            "skill_a":[
+              "EtherBlast"
+            ],
+            "skill_b":[
+              "TankBuster"
+            ],
+            "skill_c":[
+              "Dodge"
+            ]
+          }
+        },
+        "2":{
+          "fixed_attributes":{
             "name":"Nefty_Dinobit",
             "family":"Dinobit",
             "mp":2,
@@ -156,9 +200,9 @@
             ]
           }
         },
-        "2":{
+        "3":{
           "fixed_attributes":{
-            "name":"Nefty_Shiba",
+            "name":"Nefty_ShibaIgnite",
             "family":"Shiba",
             "mp":2,
             "passiveSkill":"shibaPassive",
@@ -200,7 +244,7 @@
             ]
           }
         },
-        "3":{
+        "4":{
           "fixed_attributes":{
             "name":"Nefty_Zzoo",
             "family":"Zzoo",
@@ -244,7 +288,7 @@
             ]
           }
         },
-        "4":{
+        "5":{
           "fixed_attributes":{
             "name":"Nefty_Blockchoy",
             "family":"BlockChoy",
@@ -285,50 +329,6 @@
             ],
             "skill_c":[
               "AppeaseFeelings"
-            ]
-          }
-        },
-        "5":{
-          "fixed_attributes":{
-            "name":"Nefty_Dipking",
-            "family":"Dipking",
-            "mp":2,
-            "passiveSkill":"SlipperySkin",
-            "ultimateSkill":"ComboBreaker"
-          },
-          "encoded_attributes":{
-            "hp":[
-              280,
-              420
-            ],
-            "initiative":[
-              85,
-              115
-            ],
-            "atk":[
-              24,
-              36
-            ],
-            "def":[
-              16,
-              24
-            ],
-            "eatk":[
-              56,
-              84
-            ],
-            "edef":[
-              32,
-              48
-            ],
-            "skill_a":[
-              "EtherBlast"
-            ],
-            "skill_b":[
-              "TankBuster"
-            ],
-            "skill_c":[
-              "Dodge"
             ]
           }
         },
