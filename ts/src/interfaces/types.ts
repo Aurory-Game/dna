@@ -41,3 +41,11 @@ export interface DNASchema {
   global_genes_header: Gene[];
   categories: Record<string, Category>;
 }
+
+export interface Parse {
+  data: Record<string, string | number>;
+  raw: Record<string, number>;
+  archetype: Archetype;
+  metadata: { version: string },
+  genes: Gene[]
+}

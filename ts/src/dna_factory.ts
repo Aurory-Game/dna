@@ -1,14 +1,17 @@
-import randomBytes from "randombytes";
-import { DNASchema, Category } from "@interfaces/types";
-import dnaSchemaV1 from './schemas/dna_schema_v1.json';
+import randomBytes from 'randombytes';
+import { DNASchema, Category, Parse } from '@interfaces/types';
+import dnaSchemaV1 from './schemas/aurory_dna_v0.1.0.json';
+import dnaSchemaV2 from './schemas/aurory_dna_v0.2.0.json';
 import { LATEST_VERSION } from './schemas/latest';
 
 type version = string | number;
 
 const dnaSchemas: Record<version, DNASchema> = {
-  1: dnaSchemaV1 as DNASchema
-}
+  '0.1.0': dnaSchemaV1 as DNASchema,
+  '0.2.0': dnaSchemaV2 as DNASchema,
+};
 
+const versions = Object.keys(dnaSchemas);
 export class DNA {
   cursor: number;
   dna: string;
@@ -36,14 +39,23 @@ export class DNAFactory {
   dnaBytes: number;
   encodingBase: number;
   baseSize: number;
+  latestSubversions: Record<version, version>;
 
-  constructor(dnaBytes?: number, encodingBase?: number) {
+  constructor(
+    dnaBytes?: number,
+    encodingBase?: number,
+    schemaVersion?: string
+  ) {
     this.dnaBytes = dnaBytes ?? 64;
     this.encodingBase = encodingBase ?? 16;
     this.baseSize = this.encodingBase / 8;
     this.latestVersion = LATEST_VERSION;
+    const version = schemaVersion ? schemaVersion : this.latestVersion;
     this.dnaSchemas = {
-      [this.latestVersion]: this.loadDNASchema(this.latestVersion),
+      [this.latestVersion]: this.loadDNASchema(version),
+    };
+    this.latestSubversions = {
+      [parseInt(this.latestVersion).toString()]: this.latestVersion,
     };
   }
 
@@ -52,9 +64,9 @@ export class DNAFactory {
     if (!encodingBase) return data;
     switch (encodingBase) {
       case 64:
-        return data.toString("base64");
+        return data.toString('base64');
       case 16:
-        return data.toString("hex");
+        return data.toString('hex');
       default:
         throw new Error(`Encoding ${encodingBase} not supported. Try 16 or 64`);
     }
@@ -64,18 +76,61 @@ export class DNAFactory {
     const dnaSchema = dnaSchemas[version];
     if (version !== dnaSchema.version)
       throw new Error(
-        `Versions missmatch: ${version} (filename) vs ${dnaSchema.version} (schema)`
+        `Versions mismatch: ${version} (filename) vs ${dnaSchema.version} (schema)`
       );
     return dnaSchema as DNASchema;
+  }
+
+  getLatestSubversion(schemaVersion?: string): string {
+    if (schemaVersion.includes('.')) return schemaVersion;
+
+    let completeVersion = undefined;
+    let completeVersionSplit = undefined;
+    const reg = /.+v(.+)\.(text|json)/;
+
+    for (const v of versions) {
+      const regResult = reg.exec(v);
+      if (!regResult || regResult.length < 2) return;
+
+      const localCompleteVersion = regResult[1];
+
+      if (!completeVersion) {
+        completeVersion = localCompleteVersion;
+        completeVersionSplit = localCompleteVersion.split('.');
+        return;
+      }
+
+      const localCompleteVersionSplit = localCompleteVersion.split('.');
+      for (let index = 0; index < 3; index++) {
+        if (completeVersionSplit[index] === localCompleteVersionSplit[index])
+          continue;
+        else if (completeVersionSplit[index] > localCompleteVersionSplit[index])
+          break;
+        completeVersion = localCompleteVersion;
+        completeVersionSplit = localCompleteVersionSplit;
+      }
+    }
+
+    if (!completeVersion)
+      throw new Error(`No complete version found for ${schemaVersion}`);
+
+    this.latestSubversions[schemaVersion] = completeVersion;
+
+    return completeVersion;
   }
 
   getDNASchema(version?: string): DNASchema {
     if (!version) return this.dnaSchemas[this.latestVersion];
     else if (this.dnaSchemas[version]) return this.dnaSchemas[version];
+    else if (this.latestSubversions[version])
+      return this.dnaSchemas[this.latestSubversions[version]];
 
-    this.dnaSchemas[version] = this.loadDNASchema(version);
+    const completeVersion = version.includes('.')
+      ? version
+      : this.getLatestSubversion(version);
+    this.dnaSchemas[completeVersion] = this.loadDNASchema(completeVersion);
 
-    return this.dnaSchemas[version];
+    return this.dnaSchemas[completeVersion];
   }
 
   private _getCategoryKeyFromName(
@@ -91,29 +146,30 @@ export class DNAFactory {
   private _toPaddedBase(n: string, base: number): string {
     return parseInt(n)
       .toString(this.encodingBase)
-      .padStart(base * this.baseSize, "0");
+      .padStart(base * this.baseSize, '0');
   }
 
   generateNeftyDNA(archetypeIndex: string, version?: string) {
-    if (!archetypeIndex) throw new Error("Missing archetypeIndex");
-    const dnaSchema = this.getDNASchema(version);
+    if (!archetypeIndex) throw new Error('Missing archetypeIndex');
+
+    const dnaSchema = this.getDNASchema(version ?? this.latestVersion);
     const schemaVersion = dnaSchema.version;
 
     const categoryKey = this._getCategoryKeyFromName(
-      "nefties",
+      'nefties',
       dnaSchema.categories
     );
 
     const versionGeneInfo = dnaSchema.global_genes_header.find(
-      (gene_header) => gene_header.name === "version"
+      (gene_header) => gene_header.name === 'version'
     );
     const categoryGeneInfo = dnaSchema.global_genes_header.find(
-      (gene_header) => gene_header.name === "category"
+      (gene_header) => gene_header.name === 'category'
     );
     const archetypeGeneInfo = dnaSchema.categories[
       categoryKey
     ].category_genes_header.find(
-      (gene_header) => gene_header.name === "archetype"
+      (gene_header) => gene_header.name === 'archetype'
     );
 
     const versionDNAFormat = this._toPaddedBase(
@@ -147,17 +203,17 @@ export class DNAFactory {
     return parseInt(v, this.encodingBase).toString();
   }
 
-  parse(dnaString: string) {
+  parse(dnaString: string): Parse {
     const dna = new DNA(dnaString, this.encodingBase);
     const version = dna.read(2);
     const dnaSchema = this.getDNASchema(this._unpad(version));
     const categoryGeneInfo = dnaSchema.global_genes_header.find(
-      (gene_header) => gene_header.name === "category"
+      (gene_header) => gene_header.name === 'category'
     );
     const categoryIndex = dna.read(categoryGeneInfo.base);
     const category = dnaSchema.categories[this._unpad(categoryIndex)];
     const archetypeGeneInfo = category.category_genes_header.find(
-      (gene_header) => gene_header.name === "archetype"
+      (gene_header) => gene_header.name === 'archetype'
     );
     const archetypeIndex = dna.read(archetypeGeneInfo.base);
     const archetype = category.archetypes[this._unpad(archetypeIndex)];
@@ -170,7 +226,7 @@ export class DNAFactory {
         throw new Error(`Gene ${gene.name} not found in archetype`);
       const value = parseInt(dna.read(gene.base), this.encodingBase);
       raw[gene.name] = value;
-      if (gene.type === "range_completeness") {
+      if (gene.type === 'range_completeness') {
         const completeness = value / (Math.pow(2, gene.base * 8) - 1);
         data[gene.name] = Math.round(
           completeness *
@@ -178,16 +234,33 @@ export class DNAFactory {
               (encoded_attribute[0] as number)) +
             (encoded_attribute[0] as number)
         );
-      } else if (gene.type === "index") {
+      } else if (gene.type === 'index') {
         const rangedValue = value % encoded_attribute.length;
         data[gene.name] = encoded_attribute[rangedValue];
       } else throw new Error(`Gene type ${gene.type} not supported.`);
     }
     return {
       data,
-      fixed_attributes: archetype.fixed_attributes,
       raw,
       metadata: { version: this._unpad(version) },
+      archetype,
+      genes: category.genes,
     };
+  }
+
+  getDnaVersion(dnaString: string): string {
+    const dna = new DNA(dnaString, this.encodingBase);
+    const version = dna.read(2);
+    return version;
+  }
+
+  getCategory(categoryName: string, dnaVersion: string): Category {
+    const dnaSchema = this.getDNASchema(this._unpad(dnaVersion));
+    const categoryIndex = this._getCategoryKeyFromName(
+      categoryName,
+      dnaSchema.categories
+    );
+    const category = dnaSchema.categories[this._unpad(categoryIndex)];
+    return category;
   }
 }
