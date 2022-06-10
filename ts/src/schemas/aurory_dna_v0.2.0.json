@@ -291,7 +291,7 @@
         "5":{
           "fixed_attributes":{
             "name":"Nefty_Blockchoy",
-            "family":"BlockChoy",
+            "family":"Blockchoy",
             "mp":3,
             "passiveSkill":"FreshGreens",
             "ultimateSkill":"Vitamins"
