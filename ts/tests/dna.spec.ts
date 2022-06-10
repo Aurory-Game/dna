@@ -29,7 +29,7 @@ describe("Compute possible names, families and abilities", () => {
       neftyNames.add(fixed_attributes.name)
       neftyFamilies.add(fixed_attributes.family)
       passives.add(fixed_attributes.passiveSkill)
-      ultimates.add(fixed_attributes.passiveSkill)
+      ultimates.add(fixed_attributes.ultimateSkill)
       encoded_attributes.skill_a.forEach(v => abilities.add(v))
       encoded_attributes.skill_b.forEach(v => abilities.add(v))
       encoded_attributes.skill_c.forEach(v => abilities.add(v))
@@ -62,13 +62,13 @@ describe("Compute possible names, families and abilities", () => {
       'number9Passive'
     ]));
     assert.deepEqual(ultimates, new Set([
-      'FreshGreens',
-      'SlipperySkin',
-      'bitebitPassive',
-      'dinobitPassive',
-      'number9Passive',
-      'shibaPassive',
-      'zzooPassive'
+      'bouncingClaws',
+      'ComboBreaker',
+      'dinobit_bulldozer',
+      'bigBark',
+      'FlyingDrop',
+      'Vitamins',
+      'JumpScare'
     ]));
     assert.deepEqual(abilities, new Set([
       'AppeaseFeelings',
