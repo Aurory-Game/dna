@@ -12,6 +12,7 @@ const dnaSchemas: Record<version, DNASchema> = {
 };
 
 const versions = Object.keys(dnaSchemas);
+
 export class DNA {
   cursor: number;
   dna: string;

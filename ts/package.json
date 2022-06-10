@@ -14,7 +14,8 @@
     "test": "ts-mocha --paths -p ./tsconfig.json -t 1000000 tests/**/*.spec.ts",
     "build": "tsc -p tsconfig.build.json && cp -r src/schemas lib/",
     "prepare": "yarn build",
-    "prepublishOnly": "yarn test"
+    "prepublishOnly": "yarn test",
+    "lint": "tsc --pretty"
   },
   "author": "Aurory",
   "license": "MIT",
