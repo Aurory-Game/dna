@@ -1,4 +1,5 @@
 import { DNAFactory, EggsFactory } from "../src";
+import assert from 'assert';
 
 describe("Basic", () => {
   const df = new DNAFactory();
@@ -29,9 +30,79 @@ describe("Compute possible names, families and abilities", () => {
     encoded_attributes.skill_b.forEach(v => abilities.add(v))
     encoded_attributes.skill_c.forEach(v => abilities.add(v))
   })
-  console.log('Names: ', neftyNames)
-  console.log('Families: ', neftyFamilies)
-  console.log('Passives: ', passives)
-  console.log('Ultimates: ', passives)
-  console.log('Abilities: ', passives)
+  assert.deepEqual(neftyNames, new Set([
+    'Nefty_Bitebit',
+    'Nefty_Dipking',
+    'Nefty_Dinobit',
+    'Nefty_ShibaIgnite',
+    'Nefty_Zzoo',
+    'Nefty_Blockchoy',
+    'Nefty_Number9'
+  ]))
+  assert.deepEqual(neftyFamilies, new Set([
+    'Bitebit',
+    'Dipking',
+    'Dinobit',
+    'Shiba',
+    'Zzoo',
+    'BlockChoy',
+    'Number9'
+  ]))
+  assert.deepEqual(passives, new Set([
+    'bitebitPassive',
+    'SlipperySkin',
+    'dinobitPassive',
+    'shibaPassive',
+    'zzooPassive',
+    'FreshGreens',
+    'number9Passive'
+  ]))
+  assert.deepEqual(ultimates, new Set([
+    'FreshGreens',
+    'SlipperySkin',
+    'bitebitPassive',
+    'dinobitPassive',
+    'number9Passive',
+    'shibaPassive',
+    'zzooPassive'
+  ]))
+  assert.deepEqual(abilities, new Set([
+    'AppeaseFeelings',
+    'AttackAndBack',
+    'BodyGuard',
+    'Dodge',
+    'EtherBlast',
+    'FlyingEvade',
+    'GroundControl',
+    'LifeCycle',
+    'LifeforceSink',
+    'RootsEmbrace',
+    'ScarringAttack',
+    'SharpGust',
+    'ShoutBorn',
+    'SoulConduit',
+    'TankBuster',
+    'Throwback',
+    'backlineDrop',
+    'clashStance',
+    'defensiveDome',
+    'stompAttack'
+  ]))
+});
+
+describe("Using previous schema 0.1.0", () => {
+  const df = new DNAFactory(null, null, "0.1.0");
+  const ef = new EggsFactory();
+  assert.throws(() => {
+    // 6 does not exist on schema 0.1.0
+    const neftyIndex = ef.hatch(6, 6);
+    const dna = df.generateNeftyDNA(neftyIndex);
+    df.parse(dna)
+  });
+  const neftyIndex = ef.hatch(2, 2);
+  const dna = df.generateNeftyDNA(neftyIndex);
+  const parsed = df.parse(dna);
+  assert.equal(parsed.data.name, 'Nefty_Dinobit');
+  assert.equal(parsed.data.hp >= 90, true)
+  assert.equal(parsed.data.hp <= 180, true)
 });
