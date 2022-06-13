@@ -11,17 +11,14 @@
       "@utils/*": ["utils/*"],
       "@schemas/*": ["schemas/*"]
     },
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "typeRoots": ["node_modules/@types"],
     "types": ["node", "mocha"],
     "resolveJsonModule": true,
     "outDir": "./lib",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "noImplicitAny": false,
-    "strictNullChecks": false,
+    "noImplicitAny": true,
     "skipLibCheck": true
   },
   "include": ["src/**/*"],

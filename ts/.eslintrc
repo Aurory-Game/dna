@@ -1,0 +1,26 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "node": true,
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "mocha": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "prettier",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
+  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 12
+  },
+  "rules": {
+    "no-debugger": 0,
+    "no-console": 0
+  }
+}

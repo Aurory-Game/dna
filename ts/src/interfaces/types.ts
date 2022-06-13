@@ -1,4 +1,4 @@
-export type GeneType = "index" | "range_completeness";
+export type GeneType = 'index' | 'range_completeness';
 
 export interface Gene {
   name: string;
@@ -12,13 +12,13 @@ export interface Archetype {
 }
 
 export type Mime =
-  | "application/octet-stream"
-  | "application/json"
-  | "image/png"
-  | "image/gif"
-  | "image/jpeg"
-  | "video/mp4"
-  | "text/plain";
+  | 'application/octet-stream'
+  | 'application/json'
+  | 'image/png'
+  | 'image/gif'
+  | 'image/jpeg'
+  | 'video/mp4'
+  | 'text/plain';
 
 export interface Media {
   full_type: Mime;
@@ -46,6 +46,6 @@ export interface Parse {
   data: Record<string, string | number>;
   raw: Record<string, number>;
   archetype: Archetype;
-  metadata: { version: string },
-  genes: Gene[]
+  metadata: { version: string };
+  genes: Gene[];
 }
