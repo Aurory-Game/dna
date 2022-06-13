@@ -4,14 +4,12 @@ import dnaSchemaV1 from './schemas/aurory_dna_v0.1.0.json';
 import dnaSchemaV2 from './schemas/aurory_dna_v0.2.0.json';
 import { LATEST_VERSION } from './schemas/latest';
 
-type version = string | number;
+type version = string;
 
 const dnaSchemas: Record<version, DNASchema> = {
   '0.1.0': dnaSchemaV1 as DNASchema,
   '0.2.0': dnaSchemaV2 as DNASchema,
 };
-
-const versions = Object.keys(dnaSchemas);
 
 export class DNA {
   cursor: number;
@@ -41,18 +39,13 @@ export class DNAFactory {
   baseSize: number;
   latestSubversions: Record<version, version>;
 
-  constructor(dnaBytes?: number, encodingBase?: number, schemaVersion?: string) {
+  constructor(dnaBytes?: number, encodingBase?: number) {
     this.dnaBytes = dnaBytes ?? 64;
     this.encodingBase = encodingBase ?? 16;
     this.baseSize = this.encodingBase / 8;
     this.latestVersion = LATEST_VERSION;
-    const version = schemaVersion ? schemaVersion : this.latestVersion;
-    this.dnaSchemas = {
-      [this.latestVersion]: this.loadDNASchema(version),
-    };
-    this.latestSubversions = {
-      [parseInt(this.latestVersion).toString()]: this.latestVersion,
-    };
+    this.dnaSchemas = dnaSchemas;
+    this.latestSubversions = {};
   }
 
   generateDNA(storageSize: number, encodingBase?: number): string | Buffer {
@@ -77,21 +70,14 @@ export class DNAFactory {
 
   getLatestSubversion(schemaVersion?: string): string | null {
     if (schemaVersion?.includes('.')) return schemaVersion;
-
     let completeVersion = undefined;
     let completeVersionSplit: string[] = [];
-    const reg = /.+v(.+)\.(text|json)/;
 
-    for (const v of versions) {
-      const regResult = reg.exec(v);
-      if (!regResult || regResult.length < 2) return null;
-
-      const localCompleteVersion = regResult[1];
-
+    for (const localCompleteVersion of Object.keys(dnaSchemas)) {
       if (!completeVersion) {
         completeVersion = localCompleteVersion;
         completeVersionSplit = localCompleteVersion.split('.');
-        return null;
+        continue;
       }
 
       const localCompleteVersionSplit = localCompleteVersion.split('.');
@@ -173,10 +159,11 @@ export class DNAFactory {
     return parseInt(v, this.encodingBase).toString();
   }
 
-  parse(dnaString: string): Parse {
+  parse(dnaString: string, forcedVersion?: version): Parse {
     const dna = new DNA(dnaString, this.encodingBase);
-    const version = dna.read(2);
-    const dnaSchema = this.getDNASchema(this._unpad(version));
+    const dnaMajorVersion = dna.read(2);
+    const dnaSchema = this.getDNASchema(forcedVersion ?? dnaMajorVersion);
+
     const categoryGeneInfo = dnaSchema.global_genes_header.find((gene_header) => gene_header.name === 'category');
     if (!categoryGeneInfo) throw new Error('Missing category gene');
     const categoryIndex = dna.read(categoryGeneInfo.base);
@@ -185,6 +172,7 @@ export class DNAFactory {
     if (!archetypeGeneInfo) throw new Error('Missing archetype gene');
     const archetypeIndex = dna.read(archetypeGeneInfo.base);
     const archetype = category.archetypes[this._unpad(archetypeIndex)];
+
     const data = Object.assign({}, archetype.fixed_attributes);
     const raw: Record<string, number> = {};
     const encoded_attributes = archetype.encoded_attributes;
@@ -197,17 +185,18 @@ export class DNAFactory {
         const completeness = value / (Math.pow(2, gene.base * 8) - 1);
         data[gene.name] = Math.round(
           completeness * ((encoded_attribute[1] as number) - (encoded_attribute[0] as number)) +
-            (encoded_attribute[0] as number)
+          (encoded_attribute[0] as number)
         );
       } else if (gene.type === 'index') {
         const rangedValue = value % encoded_attribute.length;
         data[gene.name] = encoded_attribute[rangedValue];
       } else throw new Error(`Gene type ${gene.type} not supported.`);
     }
+
     return {
       data,
       raw,
-      metadata: { version: this._unpad(version) },
+      metadata: { version: this._unpad(dnaSchema.version) },
       archetype,
       genes: category.genes,
     };
