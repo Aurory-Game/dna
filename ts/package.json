@@ -13,7 +13,7 @@
     "sp": "ts-node -r tsconfig-paths/register $1",
     "test": "ts-mocha --paths -p ./tsconfig.json -t 1000000 tests/**/*.spec.ts",
     "build": "tsc -p tsconfig.build.json && cp -r src/schemas lib/",
-    "prepare": "yarn build",
+    "prepare": "cd .. && husky install && cd ts && yarn build",
     "prepublishOnly": "yarn test",
     "lint": "eslint . --ext ts,.tsx && tsc --pretty"
   },
@@ -47,5 +47,8 @@
   "sideEffects": false,
   "type": "commonjs",
   "main": "lib/index.js",
-  "types": "lib/index.d.ts"
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "husky": "^8.0.1"
+  }
 }
