@@ -95,17 +95,18 @@ describe('Compute possible names, families and abilities', () => {
 
 describe('Using previous schema 0.1.0', () => {
   it('Parsed stats should reflect the schema parameter as an input', () => {
-    const df = new DNAFactory(null, null, '0.1.0');
+    const forceVersion = '0.1.0'
+    const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory();
     assert.throws(() => {
       // 6 does not exist on schema 0.1.0
       const neftyIndex = ef.hatch(6, 6);
       const dna = df.generateNeftyDNA(neftyIndex);
-      df.parse(dna);
+      const p = df.parse(dna, forceVersion);
     });
     const neftyIndex = ef.hatch(2, 2);
     const dna = df.generateNeftyDNA(neftyIndex);
-    const parsed = df.parse(dna);
+    const parsed = df.parse(dna, forceVersion);
     assert.equal(parsed.data.name, 'Nefty_Dinobit');
     assert.equal(parsed.data.hp >= 90, true);
     assert.equal(parsed.data.hp <= 180, true);
