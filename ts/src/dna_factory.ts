@@ -196,7 +196,7 @@ export class DNAFactory {
     return {
       data,
       raw,
-      metadata: { version: this._unpad(dnaSchema.version) },
+      metadata: { version: dnaSchema.version },
       archetype,
       genes: category.genes,
     };
