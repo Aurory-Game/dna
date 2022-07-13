@@ -202,7 +202,7 @@
                 },
                 "3": {
                     "fixed_attributes": {
-                        "name": "Nefty_Shiba",
+                        "name": "Nefty_ShibaIgnite",
                         "family": "Shiba",
                         "mp": 2,
                         "passiveSkill": "shibaPassive",
@@ -291,7 +291,7 @@
                 "5": {
                     "fixed_attributes": {
                         "name": "Nefty_Blockchoy",
-                        "family": "BlockChoy",
+                        "family": "Blockchoy",
                         "mp": 3,
                         "passiveSkill": "FreshGreens",
                         "ultimateSkill": "Vitamins"
