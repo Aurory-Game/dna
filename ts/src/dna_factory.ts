@@ -2,6 +2,7 @@ import randomBytes from 'randombytes';
 import { DNASchema, Category, Parse } from './interfaces/types';
 import dnaSchemaV1 from './schemas/aurory_dna_v0.1.0.json';
 import dnaSchemaV2 from './schemas/aurory_dna_v0.2.0.json';
+import dnaSchemaV3 from './schemas/aurory_dna_v0.3.0.json';
 import { LATEST_VERSION } from './schemas/latest';
 
 type version = string;
@@ -9,6 +10,7 @@ type version = string;
 const dnaSchemas: Record<version, DNASchema> = {
   '0.1.0': dnaSchemaV1 as DNASchema,
   '0.2.0': dnaSchemaV2 as DNASchema,
+  '0.3.0': dnaSchemaV3 as DNASchema,
 };
 
 export class DNA {
