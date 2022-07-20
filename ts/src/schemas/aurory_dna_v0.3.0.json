@@ -1,0 +1,426 @@
+{
+  "version": "0.3.0",
+  "version_date": "13/07/2022",
+  "global_genes_header": [
+    {
+      "name": "version",
+      "base": 2
+    },
+    {
+      "name": "category",
+      "base": 1
+    }
+  ],
+  "categories": {
+    "0": {
+      "name": "nefties",
+      "category_genes_header": [
+        {
+          "name": "archetype",
+          "base": 1
+        }
+      ],
+      "genes": [
+        {
+          "name": "hp",
+          "base": 1,
+          "type": "range_completeness"
+        },
+        {
+          "name": "initiative",
+          "base": 1,
+          "type": "range_completeness"
+        },
+        {
+          "name": "atk",
+          "base": 1,
+          "type": "range_completeness"
+        },
+        {
+          "name": "def",
+          "base": 1,
+          "type": "range_completeness"
+        },
+        {
+          "name": "eatk",
+          "base": 1,
+          "type": "range_completeness"
+        },
+        {
+          "name": "edef",
+          "base": 1,
+          "type": "range_completeness"
+        },
+        {
+          "name": "skill_a",
+          "base": 1,
+          "type": "index"
+        },
+        {
+          "name": "skill_b",
+          "base": 1,
+          "type": "index"
+        },
+        {
+          "name": "skill_c",
+          "base": 1,
+          "type": "index"
+        }
+      ],
+      "archetypes": {
+        "0": {
+          "fixed_attributes": {
+            "name": "Nefty_Bitebit",
+            "family": "Bitebit",
+            "mp": 4,
+            "passiveSkill": "bitebitPassive",
+            "ultimateSkill": "bouncingClaws"
+          },
+          "encoded_attributes": {
+            "hp": [
+              400,
+              600
+            ],
+            "initiative": [
+              85,
+              115
+            ],
+            "atk": [
+              56,
+              84
+            ],
+            "def": [
+              32,
+              48
+            ],
+            "eatk": [
+              24,
+              36
+            ],
+            "edef": [
+              24,
+              36
+            ],
+            "skill_a": [
+              "clashStance"
+            ],
+            "skill_b": [
+              "LifeforceSink"
+            ],
+            "skill_c": [
+              "backlineDrop"
+            ]
+          }
+        },
+        "1": {
+          "fixed_attributes": {
+            "name": "Nefty_Dipking",
+            "family": "Dipking",
+            "mp": 2,
+            "passiveSkill": "SlipperySkin",
+            "ultimateSkill": "ComboBreaker"
+          },
+          "encoded_attributes": {
+            "hp": [
+              280,
+              420
+            ],
+            "initiative": [
+              85,
+              115
+            ],
+            "atk": [
+              24,
+              36
+            ],
+            "def": [
+              16,
+              24
+            ],
+            "eatk": [
+              56,
+              84
+            ],
+            "edef": [
+              32,
+              48
+            ],
+            "skill_a": [
+              "EtherBlast"
+            ],
+            "skill_b": [
+              "TankBuster"
+            ],
+            "skill_c": [
+              "Dodge"
+            ]
+          }
+        },
+        "2": {
+          "fixed_attributes": {
+            "name": "Nefty_Dinobit",
+            "family": "Dinobit",
+            "mp": 2,
+            "passiveSkill": "dinobitPassive",
+            "ultimateSkill": "dinobit_bulldozer"
+          },
+          "encoded_attributes": {
+            "hp": [
+              640,
+              960
+            ],
+            "initiative": [
+              85,
+              115
+            ],
+            "atk": [
+              40,
+              60
+            ],
+            "def": [
+              48,
+              72
+            ],
+            "eatk": [
+              16,
+              24
+            ],
+            "edef": [
+              32,
+              48
+            ],
+            "skill_a": [
+              "stompAttack"
+            ],
+            "skill_b": [
+              "Throwback"
+            ],
+            "skill_c": [
+              "NoEscape"
+            ]
+          }
+        },
+        "3": {
+          "fixed_attributes": {
+            "name": "Nefty_ShibaIgnite",
+            "family": "Shiba",
+            "mp": 2,
+            "passiveSkill": "shibaPassive",
+            "ultimateSkill": "bigBark"
+          },
+          "encoded_attributes": {
+            "hp": [
+              560,
+              840
+            ],
+            "initiative": [
+              85,
+              115
+            ],
+            "atk": [
+              40,
+              60
+            ],
+            "def": [
+              40,
+              60
+            ],
+            "eatk": [
+              24,
+              36
+            ],
+            "edef": [
+              32,
+              48
+            ],
+            "skill_a": [
+              "ShoutBorn"
+            ],
+            "skill_b": [
+              "GroundControl"
+            ],
+            "skill_c": [
+              "BodyGuard"
+            ]
+          }
+        },
+        "4": {
+          "fixed_attributes": {
+            "name": "Nefty_Zzoo",
+            "family": "Zzoo",
+            "mp": 5,
+            "passiveSkill": "zzooPassive",
+            "ultimateSkill": "FlyingDrop"
+          },
+          "encoded_attributes": {
+            "hp": [
+              280,
+              420
+            ],
+            "initiative": [
+              85,
+              115
+            ],
+            "atk": [
+              48,
+              72
+            ],
+            "def": [
+              16,
+              24
+            ],
+            "eatk": [
+              40,
+              60
+            ],
+            "edef": [
+              32,
+              40
+            ],
+            "skill_a": [
+              "AttackAndBack"
+            ],
+            "skill_b": [
+              "SharpGust"
+            ],
+            "skill_c": [
+              "FlyingEvade"
+            ]
+          }
+        },
+        "5": {
+          "fixed_attributes": {
+            "name": "Nefty_Blockchoy",
+            "family": "Blockchoy",
+            "mp": 3,
+            "passiveSkill": "FreshGreens",
+            "ultimateSkill": "Vitamins"
+          },
+          "encoded_attributes": {
+            "hp": [
+              320,
+              480
+            ],
+            "initiative": [
+              85,
+              115
+            ],
+            "atk": [
+              32,
+              48
+            ],
+            "def": [
+              16,
+              24
+            ],
+            "eatk": [
+              48,
+              72
+            ],
+            "edef": [
+              40,
+              60
+            ],
+            "skill_a": [
+              "LifeCycle"
+            ],
+            "skill_b": [
+              "RootsEmbrace"
+            ],
+            "skill_c": [
+              "AppeaseFeelings"
+            ]
+          }
+        },
+        "6": {
+          "fixed_attributes": {
+            "name": "Nefty_Number9",
+            "family": "Number9",
+            "mp": 4,
+            "passiveSkill": "number9Passive",
+            "ultimateSkill": "JumpScare"
+          },
+          "encoded_attributes": {
+            "hp": [
+              320,
+              480
+            ],
+            "initiative": [
+              85,
+              115
+            ],
+            "atk": [
+              24,
+              36
+            ],
+            "def": [
+              48,
+              72
+            ],
+            "eatk": [
+              56,
+              84
+            ],
+            "edef": [
+              16,
+              24
+            ],
+            "skill_a": [
+              "Pulltergeist"
+            ],
+            "skill_b": [
+              "ScarringAttack"
+            ],
+            "skill_c": [
+              "SoulConduit"
+            ]
+          }
+        },
+        "7": {
+          "fixed_attributes": {
+            "name": "Nefty_Axobubble",
+            "family": "Axobubble",
+            "mp": 3,
+            "passiveSkill": "tailekinesis",
+            "ultimateSkill": "bubbleOut"
+          },
+          "encoded_attributes": {
+            "hp": [
+              400,
+              600
+            ],
+            "initiative": [
+              85,
+              115
+            ],
+            "atk": [
+              24,
+              38
+            ],
+            "def": [
+              24,
+              38
+            ],
+            "eatk": [
+              48,
+              72
+            ],
+            "edef": [
+              48,
+              72
+            ],
+            "skill_a": [
+              "pressureBomb"
+            ],
+            "skill_b": [
+              "defensiveDome"
+            ],
+            "skill_c": [
+              "fateSwap"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
