@@ -36,6 +36,7 @@ describe('Compute possible names, families and abilities', () => {
     assert.deepEqual(
       neftyNames,
       new Set([
+        'Nefty_Axobubble',
         'Nefty_Bitebit',
         'Nefty_Dipking',
         'Nefty_Dinobit',
@@ -47,7 +48,7 @@ describe('Compute possible names, families and abilities', () => {
     );
     assert.deepEqual(
       neftyFamilies,
-      new Set(['Bitebit', 'Dipking', 'Dinobit', 'Shiba', 'Zzoo', 'Blockchoy', 'Number9'])
+      new Set(['Axobubble', 'Bitebit', 'Dipking', 'Dinobit', 'Shiba', 'Zzoo', 'Blockchoy', 'Number9'])
     );
     assert.deepEqual(
       passives,
@@ -59,11 +60,12 @@ describe('Compute possible names, families and abilities', () => {
         'zzooPassive',
         'FreshGreens',
         'number9Passive',
+        'tailekinesis',
       ])
     );
     assert.deepEqual(
       ultimates,
-      new Set(['bouncingClaws', 'ComboBreaker', 'dinobit_bulldozer', 'bigBark', 'FlyingDrop', 'Vitamins', 'JumpScare'])
+      new Set(['bouncingClaws', 'ComboBreaker', 'dinobit_bulldozer', 'bigBark', 'FlyingDrop', 'Vitamins', 'JumpScare', 'bubbleOut'])
     );
     assert.deepEqual(
       abilities,
@@ -88,6 +90,10 @@ describe('Compute possible names, families and abilities', () => {
         'clashStance',
         'defensiveDome',
         'stompAttack',
+        'pressureBomb',
+        'fateSwap',
+        'NoEscape',
+        'Pulltergeist',
       ])
     );
   });
