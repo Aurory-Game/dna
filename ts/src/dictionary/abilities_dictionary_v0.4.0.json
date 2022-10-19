@@ -258,31 +258,31 @@
             "EN": "Jumpscare"
         },
         "creatureAbility.JumpScare.description": {
-            "EN": "Neraby enemies marked by ectoplasm are briefly stunned. Markers are removed, healing Number9 depending on the targets remaining HP.  Number 9 can still use an ability after this."
+            "EN": "Remove Ectoplasm marks from nearby enemies, dealing damage and healing Number 9 proportionally. Number 9 can play again after this."
         },
         "creatureAbility.ScarringAttack.name": {
             "EN": "Scarring Strike"
         },
         "creatureAbility.ScarringAttack.description": {
-            "EN": "Attack an enemy, greatly reducing its defense for 10 UT."
+            "EN": "Wound an enemy, greatly reducing its defense and increasing the damage it receives for a while."
         },
         "creatureAbility.SoulConduit.name": {
             "EN": "Soul Conduit"
         },
         "creatureAbility.SoulConduit.description": {
-            "EN": "Teleport to any empty location. If a creature fainted there, you can Move and use an Ability again this turn."
+            "EN": "Teleport to any empty location. If a creature had fainted there, you can Move and use an Ability again this turn."
         },
         "creatureAbility.number9Passive.name": {
             "EN": "Passession"
         },
         "creatureAbility.number9Passive.description": {
-            "EN": "Number 9 marks creatures by flying through them. If the creature is an enemy, Number 9 gains 1 Hype point. Number 9 can only attack marked creatures."
+            "EN": "Number 9 can only interact with marked creatures. To mark a creature, Number 9 must fly through them. If the creature is an enemy, Number 9 gains 2 Hype points."
         },
         "creatureAbility.Pulltergeist.name": {
             "EN": "Pulltergeist"
         },
         "creatureAbility.Pulltergeist.description": {
-            "EN": "Pulls a target 3 cells toward current position, dealing little damage."
+            "EN": "Pulls a target 4 cells toward current position, dealing little damage."
         },
         "creatureAbility.NoEscape.name": {
             "EN": "No Escape"
