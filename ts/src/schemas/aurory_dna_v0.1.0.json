@@ -75,39 +75,15 @@
             "mp": 4
           },
           "encoded_attributes": {
-            "hp": [
-              50,
-              100
-            ],
-            "initiative": [
-              65,
-              130
-            ],
-            "atk": [
-              70,
-              70
-            ],
-            "def": [
-              50,
-              100
-            ],
-            "eatk": [
-              30,
-              60
-            ],
-            "edef": [
-              40,
-              50
-            ],
-            "skill_a": [
-              "backlineDrop"
-            ],
-            "skill_b": [
-              "LifeforceSink"
-            ],
-            "skill_c": [
-              "clashStance"
-            ]
+            "hp": [50, 100],
+            "initiative": [65, 130],
+            "atk": [70, 70],
+            "def": [50, 100],
+            "eatk": [30, 60],
+            "edef": [40, 50],
+            "skill_a": ["backlineDrop"],
+            "skill_b": ["LifeforceSink"],
+            "skill_c": ["clashStance"]
           }
         },
         "1": {
@@ -117,39 +93,15 @@
             "mp": 2
           },
           "encoded_attributes": {
-            "hp": [
-              35,
-              70
-            ],
-            "initiative": [
-              45,
-              90
-            ],
-            "atk": [
-              50,
-              50
-            ],
-            "def": [
-              40,
-              80
-            ],
-            "eatk": [
-              70,
-              140
-            ],
-            "edef": [
-              50,
-              100
-            ],
-            "skill_a": [
-              "TankBuster"
-            ],
-            "skill_b": [
-              "EtherBlast"
-            ],
-            "skill_c": [
-              "Dodge"
-            ]
+            "hp": [35, 70],
+            "initiative": [45, 90],
+            "atk": [50, 50],
+            "def": [40, 80],
+            "eatk": [70, 140],
+            "edef": [50, 100],
+            "skill_a": ["TankBuster"],
+            "skill_b": ["EtherBlast"],
+            "skill_c": ["Dodge"]
           }
         },
         "2": {
@@ -159,39 +111,15 @@
             "mp": 2
           },
           "encoded_attributes": {
-            "hp": [
-              90,
-              180
-            ],
-            "initiative": [
-              45,
-              90
-            ],
-            "atk": [
-              50,
-              50
-            ],
-            "def": [
-              70,
-              140
-            ],
-            "eatk": [
-              20,
-              40
-            ],
-            "edef": [
-              50,
-              100
-            ],
-            "skill_a": [
-              "stompAttack"
-            ],
-            "skill_b": [
-              "Throwback"
-            ],
-            "skill_c": [
-              "defensiveDome"
-            ]
+            "hp": [90, 180],
+            "initiative": [45, 90],
+            "atk": [50, 50],
+            "def": [70, 140],
+            "eatk": [20, 40],
+            "edef": [50, 100],
+            "skill_a": ["stompAttack"],
+            "skill_b": ["Throwback"],
+            "skill_c": ["defensiveDome"]
           }
         },
         "3": {
@@ -201,39 +129,15 @@
             "mp": 2
           },
           "encoded_attributes": {
-            "hp": [
-              70,
-              140
-            ],
-            "initiative": [
-              48,
-              96
-            ],
-            "atk": [
-              30,
-              30
-            ],
-            "def": [
-              60,
-              120
-            ],
-            "eatk": [
-              30,
-              60
-            ],
-            "edef": [
-              50,
-              100
-            ],
-            "skill_a": [
-              "ShoutBorn"
-            ],
-            "skill_b": [
-              "assertDominance"
-            ],
-            "skill_c": [
-              "BodyGuard"
-            ]
+            "hp": [70, 140],
+            "initiative": [48, 96],
+            "atk": [30, 30],
+            "def": [60, 120],
+            "eatk": [30, 60],
+            "edef": [50, 100],
+            "skill_a": ["ShoutBorn"],
+            "skill_b": ["assertDominance"],
+            "skill_c": ["BodyGuard"]
           }
         },
         "4": {
@@ -243,39 +147,15 @@
             "mp": 5
           },
           "encoded_attributes": {
-            "hp": [
-              35,
-              70
-            ],
-            "initiative": [
-              70,
-              140
-            ],
-            "atk": [
-              60,
-              60
-            ],
-            "def": [
-              30,
-              60
-            ],
-            "eatk": [
-              50,
-              100
-            ],
-            "edef": [
-              50,
-              100
-            ],
-            "skill_a": [
-              "SharpGust"
-            ],
-            "skill_b": [
-              "AttackAndBack"
-            ],
-            "skill_c": [
-              "FlyingEvade"
-            ]
+            "hp": [35, 70],
+            "initiative": [70, 140],
+            "atk": [60, 60],
+            "def": [30, 60],
+            "eatk": [50, 100],
+            "edef": [50, 100],
+            "skill_a": ["SharpGust"],
+            "skill_b": ["AttackAndBack"],
+            "skill_c": ["FlyingEvade"]
           }
         },
         "5": {
@@ -285,39 +165,15 @@
             "mp": 3
           },
           "encoded_attributes": {
-            "hp": [
-              40,
-              80
-            ],
-            "initiative": [
-              55,
-              110
-            ],
-            "atk": [
-              50,
-              50
-            ],
-            "def": [
-              40,
-              80
-            ],
-            "eatk": [
-              60,
-              120
-            ],
-            "edef": [
-              50,
-              100
-            ],
-            "skill_a": [
-              "LifeCycle"
-            ],
-            "skill_b": [
-              "RootsEmbrace"
-            ],
-            "skill_c": [
-              "AppeaseFeelings"
-            ]
+            "hp": [40, 80],
+            "initiative": [55, 110],
+            "atk": [50, 50],
+            "def": [40, 80],
+            "eatk": [60, 120],
+            "edef": [50, 100],
+            "skill_a": ["LifeCycle"],
+            "skill_b": ["RootsEmbrace"],
+            "skill_c": ["AppeaseFeelings"]
           }
         }
       }
