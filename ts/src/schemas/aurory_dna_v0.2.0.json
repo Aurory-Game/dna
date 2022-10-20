@@ -77,39 +77,15 @@
             "ultimateSkill": "bouncingClaws"
           },
           "encoded_attributes": {
-            "hp": [
-              400,
-              600
-            ],
-            "initiative": [
-              85,
-              115
-            ],
-            "atk": [
-              56,
-              84
-            ],
-            "def": [
-              32,
-              48
-            ],
-            "eatk": [
-              24,
-              36
-            ],
-            "edef": [
-              24,
-              36
-            ],
-            "skill_a": [
-              "clashStance"
-            ],
-            "skill_b": [
-              "LifeforceSink"
-            ],
-            "skill_c": [
-              "backlineDrop"
-            ]
+            "hp": [400, 600],
+            "initiative": [85, 115],
+            "atk": [56, 84],
+            "def": [32, 48],
+            "eatk": [24, 36],
+            "edef": [24, 36],
+            "skill_a": ["clashStance"],
+            "skill_b": ["LifeforceSink"],
+            "skill_c": ["backlineDrop"]
           }
         },
         "1": {
@@ -121,39 +97,15 @@
             "ultimateSkill": "ComboBreaker"
           },
           "encoded_attributes": {
-            "hp": [
-              280,
-              420
-            ],
-            "initiative": [
-              85,
-              115
-            ],
-            "atk": [
-              24,
-              36
-            ],
-            "def": [
-              16,
-              24
-            ],
-            "eatk": [
-              56,
-              84
-            ],
-            "edef": [
-              32,
-              48
-            ],
-            "skill_a": [
-              "EtherBlast"
-            ],
-            "skill_b": [
-              "TankBuster"
-            ],
-            "skill_c": [
-              "Dodge"
-            ]
+            "hp": [280, 420],
+            "initiative": [85, 115],
+            "atk": [24, 36],
+            "def": [16, 24],
+            "eatk": [56, 84],
+            "edef": [32, 48],
+            "skill_a": ["EtherBlast"],
+            "skill_b": ["TankBuster"],
+            "skill_c": ["Dodge"]
           }
         },
         "2": {
@@ -165,39 +117,15 @@
             "ultimateSkill": "dinobit_bulldozer"
           },
           "encoded_attributes": {
-            "hp": [
-              640,
-              960
-            ],
-            "initiative": [
-              85,
-              115
-            ],
-            "atk": [
-              40,
-              60
-            ],
-            "def": [
-              48,
-              72
-            ],
-            "eatk": [
-              16,
-              24
-            ],
-            "edef": [
-              32,
-              48
-            ],
-            "skill_a": [
-              "stompAttack"
-            ],
-            "skill_b": [
-              "Throwback"
-            ],
-            "skill_c": [
-              "defensiveDome"
-            ]
+            "hp": [640, 960],
+            "initiative": [85, 115],
+            "atk": [40, 60],
+            "def": [48, 72],
+            "eatk": [16, 24],
+            "edef": [32, 48],
+            "skill_a": ["stompAttack"],
+            "skill_b": ["Throwback"],
+            "skill_c": ["defensiveDome"]
           }
         },
         "3": {
@@ -209,39 +137,15 @@
             "ultimateSkill": "bigBark"
           },
           "encoded_attributes": {
-            "hp": [
-              560,
-              840
-            ],
-            "initiative": [
-              85,
-              115
-            ],
-            "atk": [
-              32,
-              48
-            ],
-            "def": [
-              40,
-              60
-            ],
-            "eatk": [
-              24,
-              36
-            ],
-            "edef": [
-              32,
-              48
-            ],
-            "skill_a": [
-              "ShoutBorn"
-            ],
-            "skill_b": [
-              "GroundControl"
-            ],
-            "skill_c": [
-              "BodyGuard"
-            ]
+            "hp": [560, 840],
+            "initiative": [85, 115],
+            "atk": [32, 48],
+            "def": [40, 60],
+            "eatk": [24, 36],
+            "edef": [32, 48],
+            "skill_a": ["ShoutBorn"],
+            "skill_b": ["GroundControl"],
+            "skill_c": ["BodyGuard"]
           }
         },
         "4": {
@@ -253,39 +157,15 @@
             "ultimateSkill": "FlyingDrop"
           },
           "encoded_attributes": {
-            "hp": [
-              280,
-              420
-            ],
-            "initiative": [
-              85,
-              115
-            ],
-            "atk": [
-              48,
-              72
-            ],
-            "def": [
-              16,
-              24
-            ],
-            "eatk": [
-              40,
-              60
-            ],
-            "edef": [
-              32,
-              40
-            ],
-            "skill_a": [
-              "AttackAndBack"
-            ],
-            "skill_b": [
-              "SharpGust"
-            ],
-            "skill_c": [
-              "FlyingEvade"
-            ]
+            "hp": [280, 420],
+            "initiative": [85, 115],
+            "atk": [48, 72],
+            "def": [16, 24],
+            "eatk": [40, 60],
+            "edef": [32, 40],
+            "skill_a": ["AttackAndBack"],
+            "skill_b": ["SharpGust"],
+            "skill_c": ["FlyingEvade"]
           }
         },
         "5": {
@@ -297,39 +177,15 @@
             "ultimateSkill": "Vitamins"
           },
           "encoded_attributes": {
-            "hp": [
-              320,
-              480
-            ],
-            "initiative": [
-              85,
-              115
-            ],
-            "atk": [
-              40,
-              60
-            ],
-            "def": [
-              16,
-              24
-            ],
-            "eatk": [
-              48,
-              72
-            ],
-            "edef": [
-              40,
-              60
-            ],
-            "skill_a": [
-              "LifeCycle"
-            ],
-            "skill_b": [
-              "RootsEmbrace"
-            ],
-            "skill_c": [
-              "AppeaseFeelings"
-            ]
+            "hp": [320, 480],
+            "initiative": [85, 115],
+            "atk": [40, 60],
+            "def": [16, 24],
+            "eatk": [48, 72],
+            "edef": [40, 60],
+            "skill_a": ["LifeCycle"],
+            "skill_b": ["RootsEmbrace"],
+            "skill_c": ["AppeaseFeelings"]
           }
         },
         "6": {
@@ -341,39 +197,15 @@
             "ultimateSkill": "JumpScare"
           },
           "encoded_attributes": {
-            "hp": [
-              320,
-              480
-            ],
-            "initiative": [
-              85,
-              115
-            ],
-            "atk": [
-              24,
-              36
-            ],
-            "def": [
-              48,
-              72
-            ],
-            "eatk": [
-              56,
-              84
-            ],
-            "edef": [
-              16,
-              24
-            ],
-            "skill_a": [
-              "LifeforceSink"
-            ],
-            "skill_b": [
-              "ScarringAttack"
-            ],
-            "skill_c": [
-              "SoulConduit"
-            ]
+            "hp": [320, 480],
+            "initiative": [85, 115],
+            "atk": [24, 36],
+            "def": [48, 72],
+            "eatk": [56, 84],
+            "edef": [16, 24],
+            "skill_a": ["LifeforceSink"],
+            "skill_b": ["ScarringAttack"],
+            "skill_c": ["SoulConduit"]
           }
         }
       }

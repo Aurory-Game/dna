@@ -2,16 +2,8 @@
   "compilerOptions": {
     "target": "ES5",
     "module": "CommonJS",
-    "rootDir": "./src",
     "declaration": true,
     "moduleResolution": "node",
-    "baseUrl": "./src",
-    "paths": {
-      "@interfaces/*": ["interfaces/*"],
-      "@utils/*": ["utils/*"],
-      "@schemas/*": ["schemas/*"]
-    },
-    "typeRoots": ["node_modules/@types"],
     "types": ["node", "mocha"],
     "resolveJsonModule": true,
     "outDir": "./lib",
@@ -21,6 +13,6 @@
     "noImplicitAny": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "tests/**/*"],
   "exclude": ["node_modules"]
 }

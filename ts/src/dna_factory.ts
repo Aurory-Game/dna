@@ -187,7 +187,7 @@ export class DNAFactory {
         const completeness = value / (Math.pow(2, gene.base * 8) - 1);
         data[gene.name] = Math.round(
           completeness * ((encoded_attribute[1] as number) - (encoded_attribute[0] as number)) +
-          (encoded_attribute[0] as number)
+            (encoded_attribute[0] as number)
         );
       } else if (gene.type === 'index') {
         const rangedValue = value % encoded_attribute.length;
