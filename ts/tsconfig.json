@@ -4,6 +4,7 @@
     "module": "CommonJS",
     "declaration": true,
     "moduleResolution": "node",
+    "typeRoots": ["node_modules/@types"],
     "types": ["node", "mocha"],
     "resolveJsonModule": true,
     "outDir": "./lib",
