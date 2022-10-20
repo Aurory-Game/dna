@@ -65,7 +65,16 @@ describe('Compute possible names, families and abilities', () => {
     );
     assert.deepEqual(
       ultimates,
-      new Set(['bouncingClaws', 'ComboBreaker', 'dinobit_bulldozer', 'bigBark', 'FlyingDrop', 'Vitamins', 'JumpScare', 'bubbleOut'])
+      new Set([
+        'bouncingClaws',
+        'ComboBreaker',
+        'dinobit_bulldozer',
+        'bigBark',
+        'FlyingDrop',
+        'Vitamins',
+        'JumpScare',
+        'bubbleOut',
+      ])
     );
     assert.deepEqual(
       abilities,
@@ -101,7 +110,7 @@ describe('Compute possible names, families and abilities', () => {
 
 describe('Using previous schema 0.1.0', () => {
   it('Parsed stats should reflect the schema parameter as an input', () => {
-    const forceVersion = '0.1.0'
+    const forceVersion = '0.1.0';
     const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory();
     assert.throws(() => {
