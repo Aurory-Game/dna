@@ -15,11 +15,13 @@
     "plugin:import/warnings",
     "plugin:import/typescript"
   ],
+  "plugins": ["prettier"],
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 12
   },
   "rules": {
+    "prettier/prettier": ["error"],
     "no-debugger": 0,
     "no-console": 0
   }
