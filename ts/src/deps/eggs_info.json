@@ -1,0 +1,31 @@
+{
+  "8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK": {
+    "name": "Nefty egg",
+    "description": "So much power in such a tiny egg. Should go well with some bacon.",
+    "archetypes": [
+      "Nefty_Bitebit",
+      "Nefty_Dipking",
+      "Nefty_Dinobit",
+      "Nefty_ShibaIgnite",
+      "Nefty_Zzoo",
+      "Nefty_Blockchoy",
+      "Nefty_Number9",
+      "Nefty_Axobubble"
+    ]
+  },
+  "temp_pk": {
+    "name": "Temp name",
+    "description": "Temp description",
+    "archetypes": [
+      "Nefty_Bitebit",
+      "Nefty_Dipking",
+      "Nefty_Dinobit",
+      "Nefty_ShibaIgnite",
+      "Nefty_Zzoo",
+      "Nefty_Blockchoy",
+      "Nefty_Number9",
+      "Nefty_Axobubble",
+      "Nefty_Unika"
+    ]
+  }
+}
