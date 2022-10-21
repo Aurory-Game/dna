@@ -1,22 +1,153 @@
 import { DNAFactory, EggsFactory } from '../src';
+import nefties_info from '../src/deps/nefties_info.json';
 import assert from 'assert';
+
+const displayNamesProd = [
+  'Axobubble',
+  'Bitebit',
+  'Dipking',
+  'Dinobit',
+  'Shiba Ignite',
+  'Zzoo',
+  'Blockchoy',
+  'Number9',
+  'Unika',
+];
+
+const neftyCodeNamesProd = new Set([
+  'Nefty_Axobubble',
+  'Nefty_Bitebit',
+  'Nefty_Dipking',
+  'Nefty_Dinobit',
+  'Nefty_ShibaIgnite',
+  'Nefty_Zzoo',
+  'Nefty_Blockchoy',
+  'Nefty_Number9',
+  'Nefty_Unika',
+]);
+
+const neftyFamiliesProd = new Set([
+  'Axobubble',
+  'Bitebit',
+  'Dipking',
+  'Dinobit',
+  'Shiba',
+  'Zzoo',
+  'Blockchoy',
+  'Number9',
+  'Unika',
+]);
+
+const passivesProd = new Set([
+  'bitebitPassive',
+  'SlipperySkin',
+  'dinobitPassive',
+  'shibaPassive',
+  'PainfulShriek',
+  'FreshGreens',
+  'number9Passive',
+  'tailekinesis',
+  'Inspiring',
+]);
+
+const ultimatesProd = new Set([
+  'bouncingClaws',
+  'ComboBreaker',
+  'dinobit_bulldozer',
+  'bigBark',
+  'FlyingDrop',
+  'Vitamins',
+  'JumpScare',
+  'bubbleOut',
+  'Encore',
+]);
+
+const abilitiesProd = new Set([
+  'AppeaseFeelings',
+  'AttackAndBack',
+  'BodyGuard',
+  'Dodge',
+  'EtherBlast',
+  'GroundControl',
+  'LifeCycle',
+  'LifeforceSink',
+  'RootsEmbrace',
+  'ScarringAttack',
+  'SharpGust',
+  'ShoutBorn',
+  'SoulConduit',
+  'TankBuster',
+  'Throwback',
+  'backlineDrop',
+  'clashStance',
+  'defensiveDome',
+  'stompAttack',
+  'pressureBomb',
+  'fateSwap',
+  'NoEscape',
+  'Pulltergeist',
+  'ComeAndPlay',
+  'Kickback',
+  'Overtake',
+  'RainbowFlash',
+]);
 
 describe('Basic', () => {
   it('DNA should parse', () => {
     const df = new DNAFactory();
-    const ef = new EggsFactory();
-    const neftyIndex = ef.hatch(0, 5);
-    const dna = df.generateNeftyDNA(neftyIndex);
-    const data = df.parse(dna);
-    console.log(data);
+    Object.entries(EggsFactory.getAllEggs()).forEach(([eggPk, eggInfo]) => {
+      const ef = new EggsFactory(eggPk, df);
+      const droppableNefties = ef.getDroppableNefties();
+      droppableNefties.forEach(({ archetypeKey, archetype }) => {
+        try {
+          const dna = df.generateNeftyDNA(archetypeKey);
+          const data = df.parse(dna);
+          assert.ok(data.data);
+          assert.ok(data.data.name);
+          assert.ok(data.data.family);
+          assert.ok(data.data.mp);
+          assert.ok(data.data.passiveSkill);
+          assert.ok(data.data.ultimateSkill);
+          assert.ok(data.data.description);
+          assert.ok(Number.isInteger(data.data.hp));
+          assert.ok(Number.isInteger(data.data.initiative));
+          assert.ok(Number.isInteger(data.data.atk));
+          assert.ok(Number.isInteger(data.data.def));
+          assert.ok(Number.isInteger(data.data.eatk));
+          assert.ok(Number.isInteger(data.data.edef));
+          assert.ok(data.data.skill_a);
+          assert.ok(data.data.skill_a_info);
+          assert.ok(data.data.skill_a_info.name.EN);
+          assert.ok(data.data.skill_a_info.description.EN);
+          assert.ok(data.data.skill_b);
+          assert.ok(data.data.skill_b_info);
+          assert.ok(data.data.skill_b_info.name.EN);
+          assert.ok(data.data.skill_b_info.description.EN);
+          assert.ok(data.data.skill_c);
+          assert.ok(data.data.skill_c_info);
+          assert.ok(data.data.skill_c_info.name.EN);
+          assert.ok(data.data.skill_c_info.description.EN);
+        } catch (e) {
+          console.error(e);
+          console.log(archetypeKey, archetype.fixed_attributes.name);
+        }
+      });
+    });
+  });
+
+  // Display names are used to compute image URLs
+  it('Ensure display names never change', () => {
+    Object.values(nefties_info.code_to_displayName).forEach((displayName) => {
+      assert(displayNamesProd.includes(displayName));
+    });
   });
 });
 
 describe('Compute possible names, families and abilities', () => {
   it('Possible names, families, abilities, should be as expected', () => {
     const df = new DNAFactory();
-    const ef = new EggsFactory();
-    const neftyIndex = ef.hatch(0, 5);
+    const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
+    const neftyIndex = ef.hatch().archetypeKey;
     const dna = df.generateNeftyDNA(neftyIndex);
     const category = df.getCategory('nefties', df.getDnaVersion(dna));
     const neftyNames = new Set();
@@ -33,78 +164,11 @@ describe('Compute possible names, families and abilities', () => {
       encoded_attributes.skill_b.forEach((v) => abilities.add(v));
       encoded_attributes.skill_c.forEach((v) => abilities.add(v));
     });
-    assert.deepEqual(
-      neftyNames,
-      new Set([
-        'Nefty_Axobubble',
-        'Nefty_Bitebit',
-        'Nefty_Dipking',
-        'Nefty_Dinobit',
-        'Nefty_ShibaIgnite',
-        'Nefty_Zzoo',
-        'Nefty_Blockchoy',
-        'Nefty_Number9',
-      ])
-    );
-    assert.deepEqual(
-      neftyFamilies,
-      new Set(['Axobubble', 'Bitebit', 'Dipking', 'Dinobit', 'Shiba', 'Zzoo', 'Blockchoy', 'Number9'])
-    );
-    assert.deepEqual(
-      passives,
-      new Set([
-        'bitebitPassive',
-        'SlipperySkin',
-        'dinobitPassive',
-        'shibaPassive',
-        'zzooPassive',
-        'FreshGreens',
-        'number9Passive',
-        'tailekinesis',
-      ])
-    );
-    assert.deepEqual(
-      ultimates,
-      new Set([
-        'bouncingClaws',
-        'ComboBreaker',
-        'dinobit_bulldozer',
-        'bigBark',
-        'FlyingDrop',
-        'Vitamins',
-        'JumpScare',
-        'bubbleOut',
-      ])
-    );
-    assert.deepEqual(
-      abilities,
-      new Set([
-        'AppeaseFeelings',
-        'AttackAndBack',
-        'BodyGuard',
-        'Dodge',
-        'EtherBlast',
-        'FlyingEvade',
-        'GroundControl',
-        'LifeCycle',
-        'LifeforceSink',
-        'RootsEmbrace',
-        'ScarringAttack',
-        'SharpGust',
-        'ShoutBorn',
-        'SoulConduit',
-        'TankBuster',
-        'Throwback',
-        'backlineDrop',
-        'clashStance',
-        'defensiveDome',
-        'stompAttack',
-        'pressureBomb',
-        'fateSwap',
-        'NoEscape',
-        'Pulltergeist',
-      ])
-    );
+    assert.deepEqual(Array.from(neftyNames).sort(), Array.from(neftyCodeNamesProd).sort());
+    assert.deepEqual(Array.from(neftyFamilies).sort(), Array.from(neftyFamiliesProd).sort());
+    assert.deepEqual(Array.from(passives).sort(), Array.from(passivesProd).sort());
+    assert.deepEqual(Array.from(ultimates).sort(), Array.from(ultimatesProd).sort());
+    assert.deepEqual(Array.from(abilities).sort(), Array.from(abilitiesProd).sort());
   });
 });
 
@@ -112,15 +176,14 @@ describe('Using previous schema 0.1.0', () => {
   it('Parsed stats should reflect the schema parameter as an input', () => {
     const forceVersion = '0.1.0';
     const df = new DNAFactory(undefined, undefined);
-    const ef = new EggsFactory();
+    const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     assert.throws(() => {
       // 6 does not exist on schema 0.1.0
-      const neftyIndex = ef.hatch(6, 6);
-      const dna = df.generateNeftyDNA(neftyIndex);
+      const dna = df.generateNeftyDNA('6', forceVersion);
       const p = df.parse(dna, forceVersion);
     });
-    const neftyIndex = ef.hatch(2, 2);
-    const dna = df.generateNeftyDNA(neftyIndex);
+    const dinobitArcchetypeIndex = '2';
+    const dna = df.generateNeftyDNA(dinobitArcchetypeIndex);
     const parsed = df.parse(dna, forceVersion);
     assert.equal(parsed.data.name, 'Nefty_Dinobit');
     assert.equal(parsed.data.hp >= 90, true);

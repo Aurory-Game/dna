@@ -1,3 +1,5 @@
+import abiltiesDictionaryV4 from '../deps/dictionaries/abilities_dictionary_v0.4.0.json';
+
 export type GeneType = 'index' | 'range_completeness';
 
 export interface Gene {
@@ -43,9 +45,37 @@ export interface DNASchema {
 }
 
 export interface Parse {
-  data: Record<string, string | number>;
+  data: Record<string, any>;
   raw: Record<string, number>;
   archetype: Archetype;
   metadata: { version: string };
   genes: Gene[];
+}
+
+export interface AbilityLocalizedValue {
+  EN: string;
+}
+
+export type KeywordsKey = keyof typeof abiltiesDictionaryV4.keywords;
+
+export type Keywords = Record<KeywordsKey, AbilityLocalizedValue>;
+
+export interface AbilityDictionary {
+  version: string;
+  version_date: string;
+  keywords: Keywords;
+}
+
+export interface NeftiesInfo {
+  code_to_displayName: Record<string, string>;
+  family_to_description: Record<string, string>;
+}
+
+// eg: Nefty_Bitebit
+type NeftyCodeName = string;
+
+export interface EggInfo {
+  name: string;
+  description: string;
+  archetypes: NeftyCodeName[];
 }

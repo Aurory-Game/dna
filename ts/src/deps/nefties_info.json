@@ -1,0 +1,24 @@
+{
+  "code_to_displayName": {
+    "Nefty_Bitebit": "Bitebit",
+    "Nefty_Dipking": "Dipking",
+    "Nefty_Dinobit": "Dinobit",
+    "Nefty_ShibaIgnite": "Shiba Ignite",
+    "Nefty_Zzoo": "Zzoo",
+    "Nefty_Blockchoy": "Blockchoy",
+    "Nefty_Number9": "Number9",
+    "Nefty_Axobubble": "Axobubble",
+    "Nefty_Unika": "Unika"
+  },
+  "family_to_description": {
+    "Bitebit": "Don't be lured in by Bitebit's cuddly exterior - those aren't paper hands, they're sharp claws!",
+    "Dipking": "Dipking's big eyes are bulging with the magical power pent up inside it. Sadly, all that pent up power means that they also have a tendency to explode.",
+    "Dinobit": "Dinobit is one of the biggest and strongest Nefties around, plowing through enemies with unstoppable force.",
+    "Shiba": "Shiba Ignite is an inexhaustible go-getter who doesn't think twice before jumping into the heat of the action to defend its allies from any perceived threats.",
+    "Zzoo": "The territorial Zzoo has got a big beak and a bad attitude. Zzoo protects its territory with quick hit-and-run harassing strikes.",
+    "Blockchoy": "When a nefty is hurting, they seek out a Blockchoy who are known for their soothing and healing powers.",
+    "Number9": "TO DO",
+    "Axobubble": "We never know what’s hiding in Axobubble’s mind. From buffs to help the team, to curses to slow down the enemy, its bubble is full of mischief.",
+    "Unika": "Don’t be fooled by its delicate appearance,  Unika is not an elegant icecream but a fierce striker! "
+  }
+}
