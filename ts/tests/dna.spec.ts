@@ -104,6 +104,7 @@ describe('Basic', () => {
           const data = df.parse(dna);
           assert.ok(data.data);
           assert.ok(data.data.name);
+          assert.ok(data.data.display_name);
           assert.ok(data.data.family);
           assert.ok(data.data.mp);
           assert.ok(data.data.passiveSkill);
