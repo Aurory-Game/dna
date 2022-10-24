@@ -1,6 +1,6 @@
 {
   "version": "0.4.0",
-  "version_date": "20/10/2022",
+  "version_date": "25/10/2022",
   "global_genes_header": [
     {
       "name": "version",
@@ -159,10 +159,10 @@
           "encoded_attributes": {
             "hp": [360, 440],
             "initiative": [91, 109],
-            "atk": [48, 72],
-            "def": [16, 24],
-            "eatk": [48, 72],
-            "edef": [32, 48],
+            "atk": [68, 83],
+            "def": [27, 33],
+            "eatk": [43, 52],
+            "edef": [68, 83],
             "skill_a": ["AttackAndBack"],
             "skill_b": ["SharpGust"],
             "skill_c": ["Overtake"]
@@ -217,12 +217,12 @@
             "ultimateSkill": "bubbleOut"
           },
           "encoded_attributes": {
-            "hp": [400, 600],
+            "hp": [468, 572],
             "initiative": [91, 109],
-            "atk": [24, 36],
-            "def": [24, 36],
-            "eatk": [48, 72],
-            "edef": [48, 72],
+            "atk": [34, 42],
+            "def": [27, 33],
+            "eatk": [54, 66],
+            "edef": [68, 83],
             "skill_a": ["pressureBomb"],
             "skill_b": ["defensiveDome"],
             "skill_c": ["fateSwap"]
