@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.1.2] - 26/10/2022
+
+### Fix
+
+- dna version 0001 should be treated as 0000 (([#21](https://github.com/Aurory-Game/dna/issues/21)))
+
 ## [v0.1.0] - 25/10/2022
 
 ### Features

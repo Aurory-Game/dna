@@ -98,8 +98,13 @@ export class DNAFactory {
 
   private getLatestSubversion(
     completeVersionsDict: Record<string, DNASchema | AbilityDictionary>,
-    schemaVersion?: string
+    schemaVersionInput?: string
   ): string {
+    const schemaVersion = schemaVersionInput
+      ? parseInt(schemaVersionInput) === 1
+        ? '0'
+        : schemaVersionInput
+      : undefined;
     let completeVersion = undefined;
     let completeVersionSplit: string[] = [];
 
