@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.1.3] - 17/11/2022
+
 ### Features
 
 - Add Everglade egg info
