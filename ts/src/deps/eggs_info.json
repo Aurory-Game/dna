@@ -1,6 +1,6 @@
 {
   "8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK": {
-    "name": "Genesis egg",
+    "name": "Genesis Egg",
     "description": "So much power in such a tiny egg. Should go well with some bacon.",
     "archetypes": [
       "Nefty_Bitebit",
@@ -14,18 +14,8 @@
     ]
   },
   "8nLBJaFaXcMSS2RK4YCGcHLxQuikK3aAPN1EZ3UorDW5": {
-    "name": "Everglade egg",
-    "description": "So much power in such a tiny egg. Should go well with some bacon.",
-    "archetypes": [
-      "Nefty_Bitebit",
-      "Nefty_Dipking",
-      "Nefty_Dinobit",
-      "Nefty_ShibaIgnite",
-      "Nefty_Zzoo",
-      "Nefty_Blockchoy",
-      "Nefty_Number9",
-      "Nefty_Axobubble",
-      "Nefty_Unika"
-    ]
+    "name": "Everglade Egg",
+    "description": "Found deep in the murky swamps, the Everglade Eggs have mutated to camouflage themselves amongst the creeping moss and fungus.",
+    "archetypes": ["Nefty_Bitebit", "Nefty_Dipking", "Nefty_Dinobit", "Nefty_Number9", "Nefty_Axobubble"]
   }
 }

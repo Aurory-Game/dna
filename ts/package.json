@@ -14,7 +14,7 @@
     "build": "tsc -p tsconfig.build.json && cp -r src/deps lib/",
     "prepare": "cd .. && husky install && cd ts && yarn build",
     "prepublishOnly": "yarn test",
-    "lint:fix": "eslint --fix --ext .ts,.json .",
+    "lint:fix": "eslint --fix --ext .ts,.json . && tsc --pretty",
     "lint": "eslint . --ext .ts,.tsx,.json && tsc --pretty"
   },
   "author": "Aurory",
