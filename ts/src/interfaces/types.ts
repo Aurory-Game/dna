@@ -44,8 +44,46 @@ export interface DNASchema {
   categories: Record<string, Category>;
 }
 
+export interface ParseDataRangeCompleteness {
+  mp: number;
+  hp: number;
+  initiative: number;
+  atk: number;
+  def: number;
+  eatk: number;
+  edef: number;
+}
+
+export interface ParseDataNefty {
+  name: string;
+  display_name: string;
+  family: string;
+  passiveSkill: string;
+  ultimateSkill: string;
+  description: string;
+}
+
+export interface ParseDataIndex {
+  skill_a: string;
+  skill_b: string;
+  skill_c: string;
+}
+
+export interface ParseDataSkillInfo {
+  skill_a_info: AbilityInfo;
+  skill_b_info: AbilityInfo;
+  skill_c_info: AbilityInfo;
+}
+
+export type ParseData = ParseDataRangeCompleteness & ParseDataNefty & ParseDataIndex & ParseDataSkillInfo;
+
+export interface AbilityInfo {
+  name: AbilityLocalizedValue;
+  description: AbilityLocalizedValue;
+}
+
 export interface Parse {
-  data: Record<string, any>;
+  data: ParseData;
   raw: Record<string, number>;
   archetype: Archetype;
   metadata: { version: string };

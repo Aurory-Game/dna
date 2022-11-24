@@ -1,6 +1,6 @@
 {
   "name": "@aurory/dnajs",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Aurory-Game/dna.git"
@@ -14,7 +14,7 @@
     "build": "tsc -p tsconfig.build.json && cp -r src/deps lib/",
     "prepare": "cd .. && husky install && cd ts && yarn build",
     "prepublishOnly": "yarn test",
-    "lint:fix": "eslint --fix --ext .ts,.json .",
+    "lint:fix": "eslint --fix --ext .ts,.json . && tsc --pretty",
     "lint": "eslint . --ext .ts,.tsx,.json && tsc --pretty"
   },
   "author": "Aurory",
