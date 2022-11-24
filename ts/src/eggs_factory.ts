@@ -1,4 +1,4 @@
-import { EggInfo, Archetype } from './interfaces/types';
+import { EggInfo, Archetype, DroppableNeftyInfo } from './interfaces/types';
 import eggsInfo from './deps/eggs_info.json';
 import { DNAFactory } from './dna_factory';
 
@@ -14,8 +14,14 @@ export class EggsFactory {
     return eggsInfo;
   }
 
-  getDroppableNefties(): { archetypeKey: string; archetype: Archetype }[] {
-    return this.eggInfo.archetypes.map((neftyCodeName) => this.df.getArchetypeByNeftyCodeName(neftyCodeName));
+  getDroppableNefties(): DroppableNeftyInfo[] {
+    return this.eggInfo.archetypes.map((neftyCodeName) => {
+      const r: DroppableNeftyInfo = {} as DroppableNeftyInfo;
+      Object.assign(r, this.df.getArchetypeByNeftyCodeName(neftyCodeName));
+      r.displayName = this.df.getDisplayNameFromCodeName(neftyCodeName);
+      r.description = this.df.getFamilyDescription(r.archetype.fixed_attributes.family as string);
+      return r;
+    });
   }
 
   hatch(): { archetypeKey: string; archetype: Archetype } {

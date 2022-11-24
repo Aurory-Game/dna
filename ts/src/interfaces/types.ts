@@ -56,7 +56,7 @@ export interface ParseDataRangeCompleteness {
 
 export interface ParseDataNefty {
   name: string;
-  display_name: string;
+  displayName: string;
   family: string;
   passiveSkill: string;
   ultimateSkill: string;
@@ -116,4 +116,11 @@ export interface EggInfo {
   name: string;
   description: string;
   archetypes: NeftyCodeName[];
+}
+
+export interface DroppableNeftyInfo {
+  archetypeKey: string;
+  archetype: Archetype;
+  displayName: string;
+  description: string;
 }

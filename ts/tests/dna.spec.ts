@@ -98,13 +98,15 @@ describe('Basic', () => {
     Object.entries(EggsFactory.getAllEggs()).forEach(([eggPk, eggInfo]) => {
       const ef = new EggsFactory(eggPk, df);
       const droppableNefties = ef.getDroppableNefties();
-      droppableNefties.forEach(({ archetypeKey, archetype }) => {
+      droppableNefties.forEach(({ archetypeKey, archetype, displayName, description }) => {
         try {
+          assert.ok(displayName);
+          assert.ok(description);
           const dna = df.generateNeftyDNA(archetypeKey);
           const data = df.parse(dna);
           assert.ok(data.data);
           assert.ok(data.data.name);
-          assert.ok(data.data.display_name);
+          assert.ok(data.data.displayName);
           assert.ok(data.data.family);
           assert.ok(data.data.mp);
           assert.ok(data.data.passiveSkill);

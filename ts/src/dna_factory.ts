@@ -237,6 +237,14 @@ export class DNAFactory {
     throw new Error(`Ability ${ability} not found in version ${abilityVersion}`);
   }
 
+  getDisplayNameFromCodeName(neftyNameCode: string) {
+    return this.nefiesInfo.code_to_displayName[neftyNameCode];
+  }
+
+  getFamilyDescription(family: string) {
+    return this.nefiesInfo.family_to_description[family];
+  }
+
   parse(dnaString: string, forcedVersion?: version): Parse {
     const dna = new DNA(dnaString, this.encodingBase);
     const dnaMajorVersion = dna.read(2);
@@ -253,8 +261,8 @@ export class DNAFactory {
 
     const data: ParseData = Object.assign({} as ParseData, archetype.fixed_attributes);
     const neftyNameCode = archetype.fixed_attributes.name as string;
-    data['display_name'] = this.nefiesInfo.code_to_displayName[neftyNameCode];
-    data['description'] = this.nefiesInfo.family_to_description[archetype.fixed_attributes.family as string];
+    data['displayName'] = this.getDisplayNameFromCodeName(neftyNameCode);
+    data['description'] = this.getFamilyDescription(archetype.fixed_attributes.family as string);
     const raw: Record<string, number> = {};
     const encoded_attributes = archetype.encoded_attributes;
     for (const gene of category.genes) {

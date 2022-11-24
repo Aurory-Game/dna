@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.1.5] - 24/11/2022
+
+### Features
+
+- **[Breaking]** Rename `parse.data.display_name` to `parse.data.displayName`
+- Add displayName & description field to `ef.getDroppableNefties`
+
 ## [v0.1.4] - 24/11/2022
 
 ### Features

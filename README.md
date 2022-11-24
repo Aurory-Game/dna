@@ -27,3 +27,15 @@ for (const egg of eggs) {
   console.log(eggPk, eggInfo);
 }
 ```
+
+## How to contribute
+
+- Make sure to adding tests for your changes.
+- Make sure to specify the changes you made in the CHANGELOG, under the `Unreleased` section.
+- If a new abilities dictionary or dna schema is added, update the appropriate `latest.ts` file.
+
+## How to release a new version
+
+- Open a branch named `release/vX.X.X`
+- Update the version in `package.json`
+- Update the CHANGELOG to replace the `Unreleased` section with the new version
