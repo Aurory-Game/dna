@@ -8,6 +8,11 @@ import {
   AbilityLocalizedValue,
   KeywordsKey,
   Archetype,
+  ParseData,
+  AbilityInfo,
+  ParseDataRangeCompleteness,
+  ParseDataIndex,
+  ParseDataSkillInfo,
 } from './interfaces/types';
 import dnaSchemaV1 from './deps/schemas/aurory_dna_v0.1.0.json';
 import dnaSchemaV2 from './deps/schemas/aurory_dna_v0.2.0.json';
@@ -219,14 +224,14 @@ export class DNAFactory {
     return this.abilitiesDictionary[this.getLatestAbilitiesDictionarySubversion(version)];
   }
 
-  getAbilityInfo(ability: string, version?: string): Record<string, AbilityLocalizedValue> {
+  getAbilityInfo(ability: string, version?: string): AbilityInfo {
     const abilityVersion = version ?? this.latestAbilitiesVersion;
     const abilityKeywords = this.getAbilitiesDictionary(version ?? this.latestAbilitiesVersion).keywords;
-    const info: Record<string, AbilityLocalizedValue> = {};
+    const info = {} as AbilityInfo;
     for (const keyword in abilityKeywords) {
       const [_, abilityName, infoType] = keyword.split('.');
       if (abilityName !== ability) continue;
-      info[infoType] = abilityKeywords[keyword as KeywordsKey];
+      info[infoType as keyof AbilityInfo] = abilityKeywords[keyword as KeywordsKey];
       if (info.name && info.description) return info;
     }
     throw new Error(`Ability ${ability} not found in version ${abilityVersion}`);
@@ -246,7 +251,7 @@ export class DNAFactory {
     const archetypeIndex = dna.read(archetypeGeneInfo.base);
     const archetype = category.archetypes[this._unpad(archetypeIndex)];
 
-    const data: Record<string, any> = Object.assign({}, archetype.fixed_attributes);
+    const data: ParseData = Object.assign({} as ParseData, archetype.fixed_attributes);
     const neftyNameCode = archetype.fixed_attributes.name as string;
     data['display_name'] = this.nefiesInfo.code_to_displayName[neftyNameCode];
     data['description'] = this.nefiesInfo.family_to_description[archetype.fixed_attributes.family as string];
@@ -259,15 +264,17 @@ export class DNAFactory {
       raw[gene.name] = value;
       if (gene.type === 'range_completeness') {
         const completeness = value / (Math.pow(2, gene.base * 8) - 1);
-        data[gene.name] = Math.round(
+        data[gene.name as keyof ParseDataRangeCompleteness] = Math.round(
           completeness * ((encoded_attribute[1] as number) - (encoded_attribute[0] as number)) +
             (encoded_attribute[0] as number)
         );
       } else if (gene.type === 'index') {
         const rangedValue = value % encoded_attribute.length;
-        data[gene.name] = encoded_attribute[rangedValue];
+        data[gene.name as keyof ParseDataIndex] = encoded_attribute[rangedValue] as string;
         if (gene.name.startsWith('skill_')) {
-          data[`${gene.name}_info`] = this.getAbilityInfo(encoded_attributes[gene.name][0] as string);
+          data[`${gene.name}_info` as keyof ParseDataSkillInfo] = this.getAbilityInfo(
+            encoded_attributes[gene.name][0] as string
+          );
         }
       } else throw new Error(`Gene type ${gene.type} not supported.`);
     }

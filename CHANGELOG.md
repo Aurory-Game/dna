@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.1.4] - 24/11/2022
+
+### Features
+
+- Update Everglade egg info
+- Add README file
+- Add detailed data for `parse`'s data field
+
 ## [v0.1.3] - 17/11/2022
 
 ### Features
