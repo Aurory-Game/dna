@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.1.6] - 24/11/2022
+
+### Features
+
+- Export types
+
 ## [v0.1.5] - 24/11/2022
 
 ### Features
