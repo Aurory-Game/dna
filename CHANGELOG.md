@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## [v0.1.7] - 30/11/2022
+
+### Features
+
+- Update Nefties' descriptions
+
 ## [Unreleased]
 
 ## [v0.1.6] - 24/11/2022
