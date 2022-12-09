@@ -14,7 +14,6 @@ import {
   ParseDataIndex,
   ParseDataSkillInfo,
 } from './interfaces/types';
-import dnaSchemaV1 from './deps/schemas/aurory_dna_v0.1.0.json';
 import dnaSchemaV2 from './deps/schemas/aurory_dna_v0.2.0.json';
 import dnaSchemaV3 from './deps/schemas/aurory_dna_v0.3.0.json';
 import dnaSchemaV4 from './deps/schemas/aurory_dna_v0.4.0.json';
@@ -26,7 +25,6 @@ import neftiesInfo from './deps/nefties_info.json';
 type version = string;
 
 const dnaSchemas: Record<version, DNASchema> = {
-  '0.1.0': dnaSchemaV1 as DNASchema,
   '0.2.0': dnaSchemaV2 as DNASchema,
   '0.3.0': dnaSchemaV3 as DNASchema,
   '0.4.0': dnaSchemaV4 as DNASchema,
@@ -263,6 +261,8 @@ export class DNAFactory {
     const neftyNameCode = archetype.fixed_attributes.name as string;
     data['displayName'] = this.getDisplayNameFromCodeName(neftyNameCode);
     data['description'] = this.getFamilyDescription(archetype.fixed_attributes.family as string);
+    data['passiveSkill_info'] = this.getAbilityInfo(data['passiveSkill']);
+    data['ultimateSkill_info'] = this.getAbilityInfo(data['ultimateSkill']);
     const raw: Record<string, number> = {};
     const encoded_attributes = archetype.encoded_attributes;
     for (const gene of category.genes) {

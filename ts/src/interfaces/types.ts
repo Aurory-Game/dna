@@ -73,6 +73,8 @@ export interface ParseDataSkillInfo {
   skill_a_info: AbilityInfo;
   skill_b_info: AbilityInfo;
   skill_c_info: AbilityInfo;
+  passiveSkill_info: AbilityInfo;
+  ultimateSkill_info: AbilityInfo;
 }
 
 export type ParseData = ParseDataRangeCompleteness & ParseDataNefty & ParseDataIndex & ParseDataSkillInfo;

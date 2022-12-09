@@ -2,14 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+## [v0.1.8] - 09/12/2022
+
+### Features
+
+- [Breaking] Depracate schema v0.1.0 without changing the major version of the SDK
+- Add `passiveSkill_info` and `ultimateSkill_info` to `parse`'s data field
 
 ## [v0.1.7] - 30/11/2022
 
 ### Features
 
 - Update Nefties' descriptions
-
-## [Unreleased]
 
 ## [v0.1.6] - 24/11/2022
 

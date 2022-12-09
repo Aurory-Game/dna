@@ -9,8 +9,8 @@ const displayNamesProd = [
   'Dinobit',
   'Shiba Ignite',
   'Zzoo',
-  'Blockchoy',
-  'Number9',
+  'Block Choy',
+  'Number 9',
   'Unika',
 ];
 
@@ -177,19 +177,19 @@ describe('Compute possible names, families and abilities', () => {
 
 describe('Using previous schema 0.1.0', () => {
   it('Parsed stats should reflect the schema parameter as an input', () => {
-    const forceVersion = '0.1.0';
+    const forceVersion = '0.2.0';
     const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     assert.throws(() => {
-      // 6 does not exist on schema 0.1.0
-      const dna = df.generateNeftyDNA('6', forceVersion);
+      // 7 does not exist on schema 0.1.0
+      const dna = df.generateNeftyDNA('7', forceVersion);
       const p = df.parse(dna, forceVersion);
     });
     const dinobitArcchetypeIndex = '2';
-    const dna = df.generateNeftyDNA(dinobitArcchetypeIndex);
+    const dna = df.generateNeftyDNA(dinobitArcchetypeIndex, forceVersion);
     const parsed = df.parse(dna, forceVersion);
     assert.equal(parsed.data.name, 'Nefty_Dinobit');
-    assert.equal(parsed.data.hp >= 90, true);
-    assert.equal(parsed.data.hp <= 180, true);
+    assert.equal(parsed.data.hp >= 640, true);
+    assert.equal(parsed.data.hp <= 960, true);
   });
 });
