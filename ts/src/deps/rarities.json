@@ -1,0 +1,22 @@
+{
+  "Common": {
+    "average_stats_range": [0, 20],
+    "probability": 50.4
+  },
+  "Uncommon": {
+    "average_stats_range": [21, 40],
+    "probability": 30
+  },
+  "Rare": {
+    "average_stats_range": [41, 60],
+    "probability": 15
+  },
+  "Epic": {
+    "average_stats_range": [61, 80],
+    "probability": 4
+  },
+  "Legendary": {
+    "average_stats_range": [81, 100],
+    "probability": 0.6
+  }
+}

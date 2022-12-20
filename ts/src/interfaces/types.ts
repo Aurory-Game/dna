@@ -37,11 +37,28 @@ export interface Category {
   archetypes: Record<string, Archetype>;
 }
 
-export interface DNASchema {
+export interface DNASchemaV0 {
   version: string;
   version_date: string;
   global_genes_header: Gene[];
   categories: Record<string, Category>;
+}
+
+export interface DNASchemaV2 {
+  version: string;
+  version_date: string;
+  global_genes_header: Gene[];
+  categories: Record<string, Category>;
+  rarities: Record<string, Rarity>;
+}
+
+export type DNASchema = DNASchemaV0 | DNASchemaV2;
+
+export type Rarity = 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
+
+export interface RarityInfo {
+  average_stats_range: number[];
+  probability: number;
 }
 
 export interface ParseDataRangeCompleteness {
@@ -61,6 +78,7 @@ export interface ParseDataNefty {
   passiveSkill: string;
   ultimateSkill: string;
   description: string;
+  rarity: Rarity;
 }
 
 export interface ParseDataIndex {

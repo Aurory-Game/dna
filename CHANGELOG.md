@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Add dna schema v2.0.0 (v1 was skipped because of a bug in the previous version of the SDK).
+- Nefties have a new `category_genes_header` field called rarity.
+- Add a rarities json file (accessible through `df.rarities`)
+- `generateNeftyDNA` now takes a rarity as an optional third argument argument
+- `parse.data` now contains a `rarity` field
+
 ## [v0.1.8] - 09/12/2022
 
 ### Features

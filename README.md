@@ -1,5 +1,13 @@
 # Aurory DNA SDK
 
+Welcome to the Aurory DNA SDK. This SDK is used to generate and parse Nefties' DNA.
+
+## Installation
+
+```bash
+npm i @aurory/dnajs
+```
+
 ## Examples
 
 ### Generate + parse dna
