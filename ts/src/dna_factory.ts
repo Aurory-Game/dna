@@ -16,6 +16,7 @@ import {
   ParseDataIndex,
   ParseDataSkillInfo,
   Rarity,
+  RarityInfo,
   Gene,
   NeftyImageFormat,
 } from './interfaces/types';
@@ -30,7 +31,6 @@ import abiltiesDictionaryV4 from './deps/dictionaries/abilities_dictionary_v0.4.
 import neftiesInfo from './deps/nefties_info.json';
 import rarities from './deps/rarities.json';
 import { DNA } from './dna';
-import { RarityInfo } from './interfaces/types';
 
 type version = string;
 
