@@ -423,6 +423,10 @@ export class DNAFactory {
     data['description'] = this.getFamilyDescription(archetype.fixed_attributes.family as string);
     data['passiveSkill_info'] = this.getAbilityInfo(data['passiveSkill']);
     data['ultimateSkill_info'] = this.getAbilityInfo(data['ultimateSkill']);
+
+    // Due to a bug we don't use rarity indicator from DNA for V2
+    dna.read(rarityGeneInfo.base);
+
     const raw: Record<string, number> = {};
     const encoded_attributes = archetype.encoded_attributes;
     let statsRawSum = 0;
