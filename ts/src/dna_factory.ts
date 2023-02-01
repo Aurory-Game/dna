@@ -1,7 +1,9 @@
 import randomBytes from 'randombytes';
 import {
   DNASchema,
+  DNASchemaV0,
   DNASchemaV2,
+  DNASchemaV3,
   Category,
   Parse,
   AbilityDictionary,
@@ -20,6 +22,7 @@ import dnaSchemaV0_2 from './deps/schemas/aurory_dna_v0.2.0.json';
 import dnaSchemaV0_3 from './deps/schemas/aurory_dna_v0.3.0.json';
 import dnaSchemaV0_4 from './deps/schemas/aurory_dna_v0.4.0.json';
 import dnaSchemaV2_0 from './deps/schemas/aurory_dna_v2.0.0.json';
+import dnaSchemaV3_0 from './deps/schemas/aurory_dna_v3.0.0.json';
 import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from './deps/schemas/latest';
 import { LATEST_VERSION as LATEST_ABILTIIES_VERSION } from './deps/dictionaries/latest';
 import abiltiesDictionaryV4 from './deps/dictionaries/abilities_dictionary_v0.4.0.json';
@@ -35,6 +38,7 @@ const dnaSchemas: Record<version, DNASchema> = {
   '0.3.0': dnaSchemaV0_3 as DNASchema,
   '0.4.0': dnaSchemaV0_4 as DNASchema,
   '2.0.0': dnaSchemaV2_0 as DNASchemaV2,
+  '3.0.0': dnaSchemaV3_0 as DNASchemaV3,
 };
 
 const abilitiesDictionaries: Record<version, AbilityDictionary> = {
@@ -95,21 +99,20 @@ export class DNAFactory {
     const schemaVersion = schemaVersionInput
       ? parseInt(schemaVersionInput) === 1
         ? '0'
-        : schemaVersionInput
+        : `${parseInt(schemaVersionInput)}`
       : undefined;
     let completeVersion = undefined;
     let completeVersionSplit: string[] = [];
 
     for (const localCompleteVersion of Object.keys(completeVersionsDict)) {
+      const localCompleteVersionSplit = localCompleteVersion.split('.');
+      // We only want to find the latest subversion of this major version
+      if (schemaVersion && parseInt(localCompleteVersionSplit[0]) !== parseInt(schemaVersion)) continue;
       if (!completeVersion) {
-        completeVersionSplit = localCompleteVersion.split('.');
-        // We only want to find the latest subversion of this major version
-        if (schemaVersion && parseInt(completeVersionSplit[0]) !== parseInt(schemaVersion)) continue;
         completeVersion = localCompleteVersion;
         continue;
       }
 
-      const localCompleteVersionSplit = localCompleteVersion.split('.');
       for (let index = 0; index < 3; index++) {
         if (completeVersionSplit[index] === localCompleteVersionSplit[index]) continue;
         else if (completeVersionSplit[index] > localCompleteVersionSplit[index]) break;
@@ -145,6 +148,7 @@ export class DNAFactory {
     return completeVersion;
   }
 
+  // Version is either the major version like '3', or a complete version like '3.1.7'
   getDNASchema(version?: string): DNASchema {
     if (!version) return this.dnaSchemas[this.latestSchemaVersion];
     else if (this.dnaSchemas[version]) return this.dnaSchemas[version];
@@ -185,12 +189,7 @@ export class DNAFactory {
     throw new Error(`No rarity found: ${weightsSum}, ${random}`);
   }
 
-  generateNeftyDNAV0(archetypeIndex: string, version?: string) {
-    if (!archetypeIndex) throw new Error('Missing archetypeIndex');
-
-    const dnaSchema = this.getDNASchema(version ?? this.latestSchemaVersion);
-    const schemaVersion = dnaSchema.version;
-
+  generateNeftyDNAV0(archetypeIndex: string, dnaSchema: DNASchemaV0, schemaVersion: string) {
     const categoryKey = this._getCategoryKeyFromName('nefties', dnaSchema.categories);
 
     const versionGeneInfo = dnaSchema.global_genes_header.find((gene_header) => gene_header.name === 'version');
@@ -214,10 +213,12 @@ export class DNAFactory {
     return dna;
   }
 
-  generateNeftyDNAV2(archetypeIndex: string, version?: string, rarityPreset?: Rarity) {
-    if (!archetypeIndex) throw new Error('Missing archetypeIndex');
-    const dnaSchema = this.getDNASchema(version ?? this.latestSchemaVersion) as DNASchemaV2;
-    const schemaVersion = dnaSchema.version;
+  generateNeftyDNALatest(
+    archetypeIndex: string,
+    dnaSchema: DNASchemaV2 | DNASchemaV3,
+    schemaVersion: string,
+    rarityPreset?: Rarity
+  ) {
     const rarity = rarityPreset ?? this._getRandomRarity();
     const rarityIndex = Object.entries(dnaSchema.rarities).find(([_, rarityName]) => rarityName === rarity)?.[0];
     if (!rarityIndex) throw new Error('Rarity not found');
@@ -293,10 +294,19 @@ export class DNAFactory {
 
   generateNeftyDNA(archetypeIndex: string, version?: string, rarityPreset?: Rarity) {
     if (!archetypeIndex) throw new Error('Missing archetypeIndex');
-    if (!version) return this.generateNeftyDNAV2(archetypeIndex, undefined, rarityPreset);
-    const v = this._unpad(version);
-    if (v == '0' || v == '1') return this.generateNeftyDNAV0(archetypeIndex, version);
-    else if (v == '2') return this.generateNeftyDNAV2(archetypeIndex, version, rarityPreset);
+    const dnaSchema = this.getDNASchema(version ?? this.latestSchemaVersion) as DNASchemaV2;
+    const schemaVersion = dnaSchema.version;
+    const categoryKey = this._getCategoryKeyFromName('nefties', dnaSchema.categories);
+    if (!dnaSchema.categories[categoryKey]?.archetypes[archetypeIndex])
+      throw new Error(
+        `Archetype index not found. archetypeIndex ${archetypeIndex} schemaVersion ${schemaVersion} categoryKey ${categoryKey}`
+      );
+
+    const v = version ? this._unpad(version) : null;
+    if (!v) return this.generateNeftyDNALatest(archetypeIndex, dnaSchema, schemaVersion, rarityPreset);
+    if (v == '0' || v == '1') return this.generateNeftyDNAV0(archetypeIndex, dnaSchema, schemaVersion);
+    else if (v == '2' || v == '3')
+      return this.generateNeftyDNALatest(archetypeIndex, dnaSchema, schemaVersion, rarityPreset);
     else throw new Error(`Invalid version ${version}`);
   }
 
@@ -342,11 +352,7 @@ export class DNAFactory {
     return rarity[0] as Rarity;
   }
 
-  parseV0(dnaString: string, forcedVersion?: version): Parse {
-    const dna = new DNA(dnaString, this.encodingBase);
-    const dnaMajorVersion = dna.read(2);
-    const dnaSchema = this.getDNASchema(forcedVersion ?? dnaMajorVersion);
-
+  parseV0(dnaSchema: DNASchemaV0, dna: DNA): Parse {
     const categoryGeneInfo = dnaSchema.global_genes_header.find((gene_header) => gene_header.name === 'category');
     if (!categoryGeneInfo) throw new Error('Missing category gene');
     const categoryIndex = dna.read(categoryGeneInfo.base);
@@ -389,6 +395,60 @@ export class DNAFactory {
     }
 
     data['rarity'] = this.getRarityFromStats(Math.round((statsRawSum / 6) * 100));
+    return {
+      data,
+      raw,
+      metadata: { version: dnaSchema.version },
+      archetype,
+      genes: category.genes,
+    };
+  }
+
+  parseV2(dnaSchema: DNASchemaV2, dna: DNA): Parse {
+    const categoryGeneInfo = dnaSchema.global_genes_header.find((gene_header) => gene_header.name === 'category');
+    if (!categoryGeneInfo) throw new Error('Missing category gene');
+    const categoryIndex = dna.read(categoryGeneInfo.base);
+    const category = dnaSchema.categories[this._unpad(categoryIndex)];
+    const archetypeGeneInfo = category.category_genes_header.find((gene_header) => gene_header.name === 'archetype');
+    if (!archetypeGeneInfo) throw new Error('Missing archetype gene');
+    const archetypeIndex = dna.read(archetypeGeneInfo.base);
+    const archetype = category.archetypes[this._unpad(archetypeIndex)];
+
+    const rarityGeneInfo = category.category_genes_header.find((gene_header) => gene_header.name === 'rarity');
+    if (!rarityGeneInfo) throw new Error('Missing rarity gene');
+
+    const data: ParseData = Object.assign({} as ParseData, archetype.fixed_attributes);
+    const neftyNameCode = archetype.fixed_attributes.name as string;
+    data['displayName'] = this.getDisplayNameFromCodeName(neftyNameCode);
+    data['description'] = this.getFamilyDescription(archetype.fixed_attributes.family as string);
+    data['passiveSkill_info'] = this.getAbilityInfo(data['passiveSkill']);
+    data['ultimateSkill_info'] = this.getAbilityInfo(data['ultimateSkill']);
+    const raw: Record<string, number> = {};
+    const encoded_attributes = archetype.encoded_attributes;
+    let statsRawSum = 0;
+    for (const gene of category.genes) {
+      const encoded_attribute = encoded_attributes[gene.name];
+      if (!encoded_attribute) throw new Error(`Gene ${gene.name} not found in archetype`);
+      const value = parseInt(dna.read(gene.base), this.encodingBase);
+      raw[gene.name] = value;
+      if (gene.type === 'range_completeness') {
+        const completeness = value / (Math.pow(2, gene.base * 8) - 1);
+        statsRawSum += completeness;
+        data[gene.name as keyof ParseDataRangeCompleteness] = Math.round(
+          completeness * ((encoded_attribute[1] as number) - (encoded_attribute[0] as number)) +
+            (encoded_attribute[0] as number)
+        );
+      } else if (gene.type === 'index') {
+        const rangedValue = value % encoded_attribute.length;
+        data[gene.name as keyof ParseDataIndex] = encoded_attribute[rangedValue] as string;
+        if (gene.name.startsWith('skill_')) {
+          data[`${gene.name}_info` as keyof ParseDataSkillInfo] = this.getAbilityInfo(
+            encoded_attributes[gene.name][0] as string
+          );
+        }
+      } else throw new Error(`Gene type ${gene.type} not supported.`);
+    }
+    data['rarity'] = this.getRarityFromStats(Math.round((statsRawSum / 6) * 100));
 
     return {
       data,
@@ -399,11 +459,7 @@ export class DNAFactory {
     };
   }
 
-  parseV2(dnaString: string, forcedVersion?: version): Parse {
-    const dna = new DNA(dnaString, this.encodingBase);
-    const dnaMajorVersion = dna.read(2);
-    const dnaSchema = this.getDNASchema(forcedVersion ?? dnaMajorVersion) as DNASchemaV2;
-
+  parseV3(dnaSchema: DNASchemaV2, dna: DNA): Parse {
     const categoryGeneInfo = dnaSchema.global_genes_header.find((gene_header) => gene_header.name === 'category');
     if (!categoryGeneInfo) throw new Error('Missing category gene');
     const categoryIndex = dna.read(categoryGeneInfo.base);
@@ -460,10 +516,21 @@ export class DNAFactory {
 
   parse(dnaString: string, forcedVersion?: version): Parse {
     const dna = new DNA(dnaString, this.encodingBase);
-    const dnaMajorVersion = parseInt(dna.read(2));
-    if (dnaMajorVersion === 0 || dnaMajorVersion === 1) return this.parseV0(dnaString, forcedVersion);
-    else if (dnaMajorVersion === 2) return this.parseV2(dnaString, forcedVersion);
-    else throw new Error(`Version ${dnaMajorVersion} not supported.`);
+    let dnaVersion;
+    if (forcedVersion && forcedVersion.includes('.')) dnaVersion = forcedVersion;
+    else if (forcedVersion) dnaVersion = this.getLatestSchemaSubversion(forcedVersion);
+    else dnaVersion = this.getLatestSchemaSubversion(dna.read(2));
+
+    // move dna after version if we didn't had to read it.
+    if (dna.cursor === 0) dna.read(2);
+
+    const dnaSchema = this.getDNASchema(dnaVersion);
+    const majorVersion = dnaVersion.split('.')[0];
+    const majorVersionInt = parseInt(majorVersion);
+    if (majorVersionInt === 0 || majorVersionInt === 1) return this.parseV0(dnaSchema, dna);
+    else if (majorVersionInt === 2) return this.parseV2(dnaSchema as DNASchemaV2, dna);
+    else if (majorVersionInt === 3) return this.parseV3(dnaSchema as DNASchemaV3, dna);
+    else throw new Error(`Version ${majorVersionInt} not supported.`);
   }
 
   getDnaVersion(dnaString: string): string {

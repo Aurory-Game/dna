@@ -52,7 +52,9 @@ export interface DNASchemaV2 {
   rarities: Record<string, Rarity>;
 }
 
-export type DNASchema = DNASchemaV0 | DNASchemaV2;
+export type DNASchemaV3 = DNASchemaV2;
+
+export type DNASchema = DNASchemaV0 | DNASchemaV2 | DNASchemaV3;
 
 export type Rarity = 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
 
