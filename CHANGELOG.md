@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Add `defaultImage` & `imageByGame` to parse.data
+
 ## [v0.2.0] - 20/12/2022
 
 - Add dna schema v2.0.0 (v1 was skipped because of a bug in the previous version of the SDK).

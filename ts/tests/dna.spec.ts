@@ -113,6 +113,12 @@ describe('Basic', () => {
           assert.ok(data.data.passiveSkill);
           assert.ok(data.data.ultimateSkill);
           assert.ok(data.data.description);
+          assert.ok(data.data.rarity);
+          assert.ok(data.data.defaultImage);
+          assert.ok(data.data.imageByGame);
+          assert.ok(data.data.imageByGame.tactics);
+          assert.ok(data.data.imageByGame.tactics.medium);
+          assert.ok(data.data.imageByGame.tactics.small);
           assert.ok(Number.isInteger(data.data.hp));
           assert.ok(Number.isInteger(data.data.initiative));
           assert.ok(Number.isInteger(data.data.atk));
@@ -209,14 +215,18 @@ describe('Rarity', () => {
     const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
+    // hardcoded to 255 as for now all range_completeness stats are on 1 base, so max is 2^8 - 1 = 255
+    const maxPerStat = 255;
     Object.entries(rarities).forEach(([rarity, rarityInfo]) => {
       const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, undefined, rarity as Rarity);
       const parsed = df.parse(dna);
-      assert.deepEqual(parsed.data.rarity, rarity);
-      const rawStatsSum = rarityStats.reduce((acc, stat) => acc + (parsed.raw[stat] / 255 / 6) * 100, 0);
-      assert.deepEqual(df.getRarityFromStats(Math.round(rawStatsSum)), rarity);
-      assert.ok(rawStatsSum > rarityInfo.average_stats_range[0]);
-      assert.ok(rawStatsSum < rarityInfo.average_stats_range[1]);
+      assert.equal(parsed.data.rarity, rarity);
+      const rawStatsSum = Math.round(
+        rarityStats.reduce((acc, stat) => acc + (parsed.raw[stat] / maxPerStat / rarityStats.length) * 100, 0)
+      );
+      assert.equal(df.getRarityFromStats(Math.round(rawStatsSum)), rarity);
+      assert.ok(rawStatsSum >= rarityInfo.average_stats_range[0]);
+      assert.ok(rawStatsSum <= rarityInfo.average_stats_range[1]);
     });
   });
 });

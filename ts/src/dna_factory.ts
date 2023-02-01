@@ -15,6 +15,7 @@ import {
   ParseDataSkillInfo,
   Rarity,
   Gene,
+  NeftyImageFormat,
 } from './interfaces/types';
 import dnaSchemaV0_2 from './deps/schemas/aurory_dna_v0.2.0.json';
 import dnaSchemaV0_3 from './deps/schemas/aurory_dna_v0.3.0.json';
@@ -459,9 +460,41 @@ export class DNAFactory {
   parse(dnaString: string, forcedVersion?: version): Parse {
     const dna = new DNA(dnaString, this.encodingBase);
     const dnaMajorVersion = parseInt(dna.read(2));
-    if (dnaMajorVersion === 0 || dnaMajorVersion === 1) return this.parseV0(dnaString, forcedVersion);
-    else if (dnaMajorVersion === 2) return this.parseV2(dnaString, forcedVersion);
+    let parse: Parse;
+    if (dnaMajorVersion === 0 || dnaMajorVersion === 1) parse = this.parseV0(dnaString, forcedVersion);
+    else if (dnaMajorVersion === 2) parse = this.parseV2(dnaString, forcedVersion);
     else throw new Error(`Version ${dnaMajorVersion} not supported.`);
+
+    parse.data = this.addNeftyImageData(parse);
+    return parse;
+  }
+
+  getNeftyImageName(neftyName: string, rarity: Rarity, format?: NeftyImageFormat): string {
+    const neftyCodeName = encodeURIComponent(neftyName.toLowerCase().trim().replace(/\s/g, '_'));
+    const rarityToFrame = {
+      Common: 'bronze',
+      Uncommon: 'silver',
+      Rare: 'gold',
+      Epic: 'diamond',
+      Legendary: 'mythtic',
+    };
+    const rarityCodeName = rarityToFrame[rarity];
+    let url = '';
+    if (format) url = `https://images.cdn.aurory.io/nefties/${neftyCodeName}/${rarityCodeName}-${format}.png`;
+    else url = `https://images.cdn.aurory.io/nefties/${neftyCodeName}/${rarityCodeName}.png`;
+    return url;
+  }
+
+  addNeftyImageData(parse: Parse): ParseData {
+    const data = JSON.parse(JSON.stringify(parse.data));
+    data.defaultImage = this.getNeftyImageName(data.displayName, data.rarity);
+    data.imageByGame = {
+      tactics: {
+        small: this.getNeftyImageName(data.displayName, data.rarity, 'small'),
+        medium: this.getNeftyImageName(data.displayName, data.rarity, 'medium'),
+      },
+    };
+    return data;
   }
 
   getDnaVersion(dnaString: string): string {
