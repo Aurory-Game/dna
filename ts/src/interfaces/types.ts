@@ -73,6 +73,13 @@ export interface ParseDataRangeCompleteness {
   edef: number;
 }
 
+export interface ImageNeftyByGame {
+  medium: string;
+  small: string;
+}
+
+export type NeftyImageFormat = keyof ImageNeftyByGame;
+
 export interface ParseDataNefty {
   name: string;
   displayName: string;
@@ -81,6 +88,8 @@ export interface ParseDataNefty {
   ultimateSkill: string;
   description: string;
   rarity: Rarity;
+  defaultImage: string;
+  imageByGame: { tactics: ImageNeftyByGame };
 }
 
 export interface ParseDataIndex {

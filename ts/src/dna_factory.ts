@@ -17,6 +17,7 @@ import {
   ParseDataSkillInfo,
   Rarity,
   Gene,
+  NeftyImageFormat,
 } from './interfaces/types';
 import dnaSchemaV0_2 from './deps/schemas/aurory_dna_v0.2.0.json';
 import dnaSchemaV0_3 from './deps/schemas/aurory_dna_v0.3.0.json';
@@ -531,10 +532,42 @@ export class DNAFactory {
     const dnaSchema = this.getDNASchema(dnaVersion);
     const majorVersion = dnaVersion.split('.')[0];
     const majorVersionInt = parseInt(majorVersion);
-    if (majorVersionInt === 0 || majorVersionInt === 1) return this.parseV0(dnaSchema, dna);
-    else if (majorVersionInt === 2) return this.parseV2(dnaSchema as DNASchemaV2, dna);
-    else if (majorVersionInt === 3) return this.parseV3(dnaSchema as DNASchemaV3, dna);
+    let parse: Parse;
+    if (majorVersionInt === 0 || majorVersionInt === 1) parse = this.parseV0(dnaSchema, dna);
+    else if (majorVersionInt === 2) parse = this.parseV2(dnaSchema as DNASchemaV2, dna);
+    else if (majorVersionInt === 3) parse = this.parseV3(dnaSchema as DNASchemaV3, dna);
     else throw new Error(`Version ${majorVersionInt} not supported.`);
+
+    parse.data = this.addNeftyImageData(parse);
+    return parse;
+  }
+
+  getNeftyImageName(neftyName: string, rarity: Rarity, format?: NeftyImageFormat): string {
+    const neftyCodeName = encodeURIComponent(neftyName.toLowerCase().trim().replace(/\s/g, '_'));
+    const rarityToFrame = {
+      Common: 'bronze',
+      Uncommon: 'silver',
+      Rare: 'gold',
+      Epic: 'diamond',
+      Legendary: 'mythtic',
+    };
+    const rarityCodeName = rarityToFrame[rarity];
+    let url = '';
+    if (format) url = `https://images.cdn.aurory.io/nefties/${neftyCodeName}/${rarityCodeName}-${format}.png`;
+    else url = `https://images.cdn.aurory.io/nefties/${neftyCodeName}/${rarityCodeName}.png`;
+    return url;
+  }
+
+  addNeftyImageData(parse: Parse): ParseData {
+    const data = JSON.parse(JSON.stringify(parse.data));
+    data.defaultImage = this.getNeftyImageName(data.displayName, data.rarity);
+    data.imageByGame = {
+      tactics: {
+        small: this.getNeftyImageName(data.displayName, data.rarity, 'small'),
+        medium: this.getNeftyImageName(data.displayName, data.rarity, 'medium'),
+      },
+    };
+    return data;
   }
 
   getDnaVersion(dnaString: string): string {

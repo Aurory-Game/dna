@@ -121,6 +121,12 @@ describe('Basic', () => {
           assert.ok(data.data.passiveSkill);
           assert.ok(data.data.ultimateSkill);
           assert.ok(data.data.description);
+          assert.ok(data.data.rarity);
+          assert.ok(data.data.defaultImage);
+          assert.ok(data.data.imageByGame);
+          assert.ok(data.data.imageByGame.tactics);
+          assert.ok(data.data.imageByGame.tactics.medium);
+          assert.ok(data.data.imageByGame.tactics.small);
           assert.ok(Number.isInteger(data.data.hp));
           assert.ok(Number.isInteger(data.data.initiative));
           assert.ok(Number.isInteger(data.data.atk));
