@@ -173,14 +173,16 @@ export class DNAFactory {
   }
 
   private _getRandomRarity(): Rarity {
-    const weightsSum = Object.values(this.rarities).reduce((acc, rarity) => acc + rarity.probability, 0);
-    const random = Math.floor(Math.random() * (weightsSum + 1));
+    const precision = 3;
+    const multiplier = Math.pow(10, precision);
+    const weightsSum = Object.values(this.rarities).reduce((acc, rarity) => acc + rarity.probability * multiplier, 0);
+    const random = Math.random() * weightsSum;
     let total = 0;
     for (const [rarity, rarityInfo] of Object.entries(this.rarities)) {
-      total += rarityInfo.probability;
-      if (random < total) return rarity as Rarity;
+      total += rarityInfo.probability * multiplier;
+      if (random <= total) return rarity as Rarity;
     }
-    throw new Error('No rarity found');
+    throw new Error(`No rarity found: ${weightsSum}, ${random}`);
   }
 
   generateNeftyDNAV0(archetypeIndex: string, version?: string) {
@@ -273,10 +275,10 @@ export class DNAFactory {
     const maxValuePerStat: number[] = [];
     let maxStatsSum = 0;
     filteredGenes.forEach((gene) => {
-      const m = Math.pow(2, gene.base * 8);
+      const m = Math.pow(2, gene.base * 8) - 1;
       // Max value is m - 1 but as we use it to generate a random number we add 1 to make it incluse of m - 1.
       maxValuePerStat.push(m);
-      maxStatsSum += m - 1;
+      maxStatsSum += m;
     });
     while (average < min || average > max) {
       t = [];

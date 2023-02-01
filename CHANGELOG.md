@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Fix `_getRandomRarity` generating whole random number instead of float. Now supports probabilities with a precision of 3. (([#27](https://github.com/Aurory-Game/dna/issues/27)))
+- Fix `_generateStatsForRarity` generating stats up to 2^base instead of 2^base - 1, leading inconsistencies with parse. (([#27](https://github.com/Aurory-Game/dna/issues/27)))
+- Add `defaultImage` & `imageByGame` to parse.data
+
 ## [v0.2.0] - 20/12/2022
 
 - Add dna schema v2.0.0 (v1 was skipped because of a bug in the previous version of the SDK).
