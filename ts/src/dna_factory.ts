@@ -543,13 +543,13 @@ export class DNAFactory {
   }
 
   getNeftyImageName(neftyName: string, rarity: Rarity, format?: NeftyImageFormat): string {
-    const neftyCodeName = encodeURIComponent(neftyName.toLowerCase().trim().replace(/\s/g, '_'));
+    const neftyCodeName = encodeURIComponent(neftyName.toLowerCase().trim().replace(/\s/g, '-'));
     const rarityToFrame = {
       Common: 'bronze',
       Uncommon: 'silver',
       Rare: 'gold',
       Epic: 'diamond',
-      Legendary: 'mythtic',
+      Legendary: 'mythic',
     };
     const rarityCodeName = rarityToFrame[rarity];
     let url = '';
