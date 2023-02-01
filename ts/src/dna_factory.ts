@@ -16,6 +16,7 @@ import {
   ParseDataIndex,
   ParseDataSkillInfo,
   Rarity,
+  RarityInfo,
   Gene,
   NeftyImageFormat,
 } from './interfaces/types';
@@ -30,7 +31,6 @@ import abiltiesDictionaryV4 from './deps/dictionaries/abilities_dictionary_v0.4.
 import neftiesInfo from './deps/nefties_info.json';
 import rarities from './deps/rarities.json';
 import { DNA } from './dna';
-import { RarityInfo } from './interfaces/types';
 
 type version = string;
 
@@ -543,13 +543,13 @@ export class DNAFactory {
   }
 
   getNeftyImageName(neftyName: string, rarity: Rarity, format?: NeftyImageFormat): string {
-    const neftyCodeName = encodeURIComponent(neftyName.toLowerCase().trim().replace(/\s/g, '_'));
+    const neftyCodeName = encodeURIComponent(neftyName.toLowerCase().trim().replace(/\s/g, '-'));
     const rarityToFrame = {
       Common: 'bronze',
       Uncommon: 'silver',
       Rare: 'gold',
       Epic: 'diamond',
-      Legendary: 'mythtic',
+      Legendary: 'mythic',
     };
     const rarityCodeName = rarityToFrame[rarity];
     let url = '';
