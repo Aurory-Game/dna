@@ -38,7 +38,7 @@ for (const egg of eggs) {
 
 ## How to contribute
 
-- Make sure to adding tests for your changes.
+- Make sure to add tests for your changes.
 - Make sure to specify the changes you made in the CHANGELOG, under the `Unreleased` section.
 - If a new abilities dictionary or dna schema is added, update the appropriate `latest.ts` file.
 
