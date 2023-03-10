@@ -31,6 +31,7 @@ import neftiesInfo from './deps/nefties_info.json';
 import rarities from './deps/rarities.json';
 import { DNA } from './dna';
 import { RarityInfo } from './interfaces/types';
+import { getAverageFromRaw, getCategoryKeyFromName, getLatestSubversion, randomInt } from './utils';
 
 type version = string;
 
@@ -73,7 +74,7 @@ export class DNAFactory {
     this.rarities = rarities;
   }
 
-  generateDNA(storageSize: number, encodingBase?: number): string | Buffer {
+  private _generateDNA(storageSize: number, encodingBase?: number): string | Buffer {
     const data = randomBytes(storageSize);
     if (!encodingBase) return data;
     switch (encodingBase) {
@@ -84,91 +85,6 @@ export class DNAFactory {
       default:
         throw new Error(`Encoding ${encodingBase} not supported. Try 16 or 64`);
     }
-  }
-
-  loadDNASchema(version: string): DNASchema {
-    const dnaSchema = dnaSchemas[version];
-    if (version !== dnaSchema.version)
-      throw new Error(`Versions mismatch: ${version} (filename) vs ${dnaSchema.version} (schema)`);
-    return dnaSchema as DNASchema;
-  }
-
-  private getLatestSubversion(
-    completeVersionsDict: Record<string, DNASchema | AbilityDictionary>,
-    schemaVersionInput?: string
-  ): string {
-    const schemaVersion = schemaVersionInput
-      ? parseInt(schemaVersionInput) === 1
-        ? '0'
-        : `${parseInt(schemaVersionInput)}`
-      : undefined;
-    let completeVersion = undefined;
-    let completeVersionSplit: string[] = [];
-
-    for (const localCompleteVersion of Object.keys(completeVersionsDict)) {
-      const localCompleteVersionSplit = localCompleteVersion.split('.');
-      // We only want to find the latest subversion of this major version
-      if (schemaVersion && parseInt(localCompleteVersionSplit[0]) !== parseInt(schemaVersion)) continue;
-      if (!completeVersion) {
-        completeVersion = localCompleteVersion;
-        continue;
-      }
-
-      for (let index = 0; index < 3; index++) {
-        if (completeVersionSplit[index] === localCompleteVersionSplit[index]) continue;
-        else if (completeVersionSplit[index] > localCompleteVersionSplit[index]) break;
-        completeVersion = localCompleteVersion;
-        completeVersionSplit = localCompleteVersionSplit;
-      }
-    }
-
-    if (!completeVersion) throw new Error(`No complete version found for ${schemaVersion}`);
-
-    return completeVersion;
-  }
-
-  // get latest minor version from a major version
-  getLatestSchemaSubversion(schemaVersion?: string): string {
-    if (!schemaVersion) return this.latestSchemaVersion;
-    else if (schemaVersion?.includes('.')) return schemaVersion;
-    else if (schemaVersion && this.latestSchemasSubversions[schemaVersion])
-      return this.latestSchemasSubversions[schemaVersion];
-    const completeVersion = this.getLatestSubversion(this.dnaSchemas, schemaVersion);
-    this.latestSchemasSubversions[schemaVersion] = completeVersion;
-    return completeVersion;
-  }
-
-  // get latest minor version from a major version
-  getLatestAbilitiesDictionarySubversion(schemaVersion?: string): string {
-    if (!schemaVersion) return this.latestAbilitiesVersion;
-    else if (schemaVersion?.includes('.')) return schemaVersion;
-    else if (schemaVersion && this.latestDictionariesSubversions[schemaVersion])
-      return this.latestDictionariesSubversions[schemaVersion];
-    const completeVersion = this.getLatestSubversion(this.abilitiesDictionary, schemaVersion);
-    this.latestDictionariesSubversions[schemaVersion] = completeVersion;
-    return completeVersion;
-  }
-
-  // Version is either the major version like '3', or a complete version like '3.1.7'
-  getDNASchema(version?: string): DNASchema {
-    if (!version) return this.dnaSchemas[this.latestSchemaVersion];
-    else if (this.dnaSchemas[version]) return this.dnaSchemas[version];
-    else if (this.latestSchemasSubversions[version]) return this.dnaSchemas[this.latestSchemasSubversions[version]];
-
-    const completeVersion = version.includes('.') ? version : this.getLatestSchemaSubversion(version);
-
-    if (!completeVersion) throw new Error(`No schema found for ${version}`);
-
-    this.dnaSchemas[completeVersion] = this.loadDNASchema(completeVersion);
-
-    return this.dnaSchemas[completeVersion];
-  }
-
-  private _getCategoryKeyFromName(name: string, categories: Record<string, Category>) {
-    for (const categoryKey in categories) {
-      if (categories[categoryKey].name === name) return categoryKey;
-    }
-    throw new Error(`Category with name "${name}" not found`);
   }
 
   private _toPaddedBase(n: string, base: number): string {
@@ -190,8 +106,81 @@ export class DNAFactory {
     throw new Error(`No rarity found: ${weightsSum}, ${random}`);
   }
 
+  /**
+   * Generate statsCount number of stats with a mean value in the rarity range.
+   * @param rarity Rarity
+   * @param statsCount Number of stats to generate
+   */
+  private _generateStatsForRarity(rarity: Rarity, genes: Gene[]): number[] {
+    let t = [];
+    let average = -1;
+    const filteredGenes = genes.filter((gene) => gene.type === 'range_completeness');
+    const maxValuePerStat: number[] = [];
+    filteredGenes.forEach((gene) => {
+      const m = Math.pow(2, gene.base * 8) - 1;
+      maxValuePerStat.push(m);
+    });
+    while (this.getRarityFromStatsAvg(average, false) !== rarity) {
+      t = [];
+      for (let i = 0; i < maxValuePerStat.length; i++) {
+        const n = randomInt(0, maxValuePerStat[i]);
+        t.push(n);
+      }
+      average = getAverageFromRaw(t, maxValuePerStat) * 100;
+    }
+    return t;
+  }
+
+  private _unpad(v: string): string {
+    return parseInt(v, this.encodingBase).toString();
+  }
+
+  loadDNASchema(version: string): DNASchema {
+    const dnaSchema = dnaSchemas[version];
+    if (version !== dnaSchema.version)
+      throw new Error(`Versions mismatch: ${version} (filename) vs ${dnaSchema.version} (schema)`);
+    return dnaSchema as DNASchema;
+  }
+
+  // get latest minor version from a major version
+  getLatestSchemaSubversion(schemaVersion?: string): string {
+    if (!schemaVersion) return this.latestSchemaVersion;
+    else if (schemaVersion?.includes('.')) return schemaVersion;
+    else if (schemaVersion && this.latestSchemasSubversions[schemaVersion])
+      return this.latestSchemasSubversions[schemaVersion];
+    const completeVersion = getLatestSubversion(this.dnaSchemas, schemaVersion);
+    this.latestSchemasSubversions[schemaVersion] = completeVersion;
+    return completeVersion;
+  }
+
+  // get latest minor version from a major version
+  getLatestAbilitiesDictionarySubversion(schemaVersion?: string): string {
+    if (!schemaVersion) return this.latestAbilitiesVersion;
+    else if (schemaVersion?.includes('.')) return schemaVersion;
+    else if (schemaVersion && this.latestDictionariesSubversions[schemaVersion])
+      return this.latestDictionariesSubversions[schemaVersion];
+    const completeVersion = getLatestSubversion(this.abilitiesDictionary, schemaVersion);
+    this.latestDictionariesSubversions[schemaVersion] = completeVersion;
+    return completeVersion;
+  }
+
+  // Version is either the major version like '3', or a complete version like '3.1.7'
+  getDNASchema(version?: string): DNASchema {
+    if (!version) return this.dnaSchemas[this.latestSchemaVersion];
+    else if (this.dnaSchemas[version]) return this.dnaSchemas[version];
+    else if (this.latestSchemasSubversions[version]) return this.dnaSchemas[this.latestSchemasSubversions[version]];
+
+    const completeVersion = version.includes('.') ? version : this.getLatestSchemaSubversion(version);
+
+    if (!completeVersion) throw new Error(`No schema found for ${version}`);
+
+    this.dnaSchemas[completeVersion] = this.loadDNASchema(completeVersion);
+
+    return this.dnaSchemas[completeVersion];
+  }
+
   generateNeftyDNAV0(archetypeIndex: string, dnaSchema: DNASchemaV0, schemaVersion: string) {
-    const categoryKey = this._getCategoryKeyFromName('nefties', dnaSchema.categories);
+    const categoryKey = getCategoryKeyFromName('nefties', dnaSchema.categories);
 
     const versionGeneInfo = dnaSchema.global_genes_header.find((gene_header) => gene_header.name === 'version');
     if (!versionGeneInfo) throw new Error('Missing version gene');
@@ -208,7 +197,7 @@ export class DNAFactory {
 
     const randomDNAlen = this.dnaBytes - versionGeneInfo.base - categoryGeneInfo.base - archetypeGeneInfo.base;
 
-    const randomDNA = this.generateDNA(randomDNAlen, this.encodingBase);
+    const randomDNA = this._generateDNA(randomDNAlen, this.encodingBase);
     const dna = versionDNAFormat + categoryDNAFormat + archetypeDNAFormat + randomDNA;
 
     return dna;
@@ -224,7 +213,7 @@ export class DNAFactory {
     const rarityIndex = Object.entries(dnaSchema.rarities).find(([_, rarityName]) => rarityName === rarity)?.[0];
     if (!rarityIndex) throw new Error('Rarity not found');
 
-    const categoryKey = this._getCategoryKeyFromName('nefties', dnaSchema.categories);
+    const categoryKey = getCategoryKeyFromName('nefties', dnaSchema.categories);
 
     const versionGeneInfo = dnaSchema.global_genes_header.find((gene_header) => gene_header.name === 'version');
     if (!versionGeneInfo) throw new Error('Missing version gene');
@@ -248,7 +237,7 @@ export class DNAFactory {
     const randomDNAlen =
       this.dnaBytes - versionGeneInfo.base - categoryGeneInfo.base - archetypeGeneInfo.base - rarityGeneInfo.base;
 
-    const randomDNA = this.generateDNA(randomDNAlen, this.encodingBase) as string;
+    const randomDNA = this._generateDNA(randomDNAlen, this.encodingBase) as string;
     const randomStats = this._generateStatsForRarity(rarity, dnaSchema.categories[categoryKey].genes);
     const dnaTacticsStats = randomStats.map((stat) => this._toPaddedBase(stat.toString(), 1)).join('');
 
@@ -262,50 +251,11 @@ export class DNAFactory {
     return dna;
   }
 
-  /**
-   * Generate statsCount number of stats with a mean value in the rarity range.
-   * @param rarity Rarity
-   * @param statsCount Number of stats to generate
-   */
-  private _generateStatsForRarity(rarity: Rarity, genes: Gene[]): number[] {
-    const rarityInfo = this.rarities[rarity];
-    const min = rarityInfo.average_stats_range[0];
-    const max = rarityInfo.average_stats_range[1];
-    let t = [];
-    let average = -1;
-    const filteredGenes = genes.filter((gene) => gene.type === 'range_completeness');
-    const maxValuePerStat: number[] = [];
-    filteredGenes.forEach((gene) => {
-      const m = Math.pow(2, gene.base * 8) - 1;
-      maxValuePerStat.push(m);
-    });
-    while (this.getRarityFromStatsAvg(average, false) !== rarity) {
-      t = [];
-      for (let i = 0; i < maxValuePerStat.length; i++) {
-        const n = this.randomInt(0, maxValuePerStat[i]);
-        t.push(n);
-      }
-      average = this.getAverageFromRaw(t, maxValuePerStat) * 100;
-    }
-    return t;
-  }
-
-  // min and max included
-  randomInt(min: number, max: number, excludeMax = false): number {
-    if (excludeMax) max -= 1;
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-
-  // you should multiply by 100 to get in %
-  getAverageFromRaw(numbers: number[], maxValuePerStat: number[]): number {
-    return numbers.reduce((prev, curr, index) => prev + curr / maxValuePerStat[index], 0) / numbers.length;
-  }
-
   generateNeftyDNA(archetypeIndex: string, version?: string, rarityPreset?: Rarity) {
     if (!archetypeIndex) throw new Error('Missing archetypeIndex');
     const dnaSchema = this.getDNASchema(version ?? this.latestSchemaVersion) as DNASchemaV2;
     const schemaVersion = dnaSchema.version;
-    const categoryKey = this._getCategoryKeyFromName('nefties', dnaSchema.categories);
+    const categoryKey = getCategoryKeyFromName('nefties', dnaSchema.categories);
     if (!dnaSchema.categories[categoryKey]?.archetypes[archetypeIndex])
       throw new Error(
         `Archetype index not found. archetypeIndex ${archetypeIndex} schemaVersion ${schemaVersion} categoryKey ${categoryKey}`
@@ -317,10 +267,6 @@ export class DNAFactory {
     else if (v == '2' || v == '3')
       return this.generateNeftyDNALatest(archetypeIndex, dnaSchema, schemaVersion, rarityPreset);
     else throw new Error(`Invalid version ${version}`);
-  }
-
-  private _unpad(v: string): string {
-    return parseInt(v, this.encodingBase).toString();
   }
 
   getAbilitiesDictionary(version?: string): AbilityDictionary {
@@ -589,7 +535,7 @@ export class DNAFactory {
 
   getCategory(categoryName: string, dnaVersion: string): Category {
     const dnaSchema = this.getDNASchema(this._unpad(dnaVersion));
-    const categoryIndex = this._getCategoryKeyFromName(categoryName, dnaSchema.categories);
+    const categoryIndex = getCategoryKeyFromName(categoryName, dnaSchema.categories);
     const category = dnaSchema.categories[this._unpad(categoryIndex)];
     return category;
   }

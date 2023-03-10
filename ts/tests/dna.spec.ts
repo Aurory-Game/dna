@@ -1,4 +1,4 @@
-import { DNAFactory, EggsFactory, Rarity } from '../src';
+import { DNAFactory, EggsFactory, Rarity, utils } from '../src';
 import nefties_info from '../src/deps/nefties_info.json';
 import assert from 'assert';
 import rarities from '../src/deps/rarities.json';
@@ -242,7 +242,7 @@ describe('Rarity', () => {
         const parsed = df.parse(dna);
         assert.deepEqual(parsed.data.rarity, rarity);
         const statsAvg =
-          df.getAverageFromRaw(
+          utils.getAverageFromRaw(
             rarityStats.map((v) => parsed.raw[v]),
             rarityStats.map((v) => 255)
           ) * 100;
@@ -263,7 +263,7 @@ describe('Rarity', () => {
         const parsed = df.parse(dna);
         assert.deepEqual(parsed.data.rarity, rarity);
         const statsAvg =
-          df.getAverageFromRaw(
+          utils.getAverageFromRaw(
             rarityStats.map((v) => parsed.raw[v]),
             rarityStats.map((v) => 255)
           ) * 100;
@@ -284,7 +284,7 @@ describe('Rarity', () => {
         const parsed = df.parse(dna);
         assert.deepEqual(parsed.data.rarity, rarity);
         const statsAvg =
-          df.getAverageFromRaw(
+          utils.getAverageFromRaw(
             rarityStats.map((v) => parsed.raw[v]),
             rarityStats.map((v) => 255)
           ) * 100;
