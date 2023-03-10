@@ -236,29 +236,62 @@ describe('Rarity', () => {
     const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
-    Object.entries(rarities).forEach(([rarity, rarityInfo]) => {
-      const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, '2.0.0', rarity as Rarity);
-      const parsed = df.parse(dna);
-      assert.deepEqual(parsed.data.rarity, rarity);
-      const rawStatsSum = Math.round(rarityStats.reduce((acc, stat) => acc + (parsed.raw[stat] / 255 / 6) * 100, 0));
-      assert.deepEqual(df.getRarityFromStats(Math.round(rawStatsSum)), rarity);
-      assert.ok(rawStatsSum >= rarityInfo.average_stats_range[0]);
-      assert.ok(rawStatsSum <= rarityInfo.average_stats_range[1]);
-    });
+    for (let i = 0; i < 1e3; i++) {
+      Object.entries(rarities).forEach(([rarity, rarityInfo]) => {
+        const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, '2.0.0', rarity as Rarity);
+        const parsed = df.parse(dna);
+        assert.deepEqual(parsed.data.rarity, rarity);
+        const statsAvg =
+          df.getAverageFromRaw(
+            rarityStats.map((v) => parsed.raw[v]),
+            rarityStats.map((v) => 255)
+          ) * 100;
+        assert.deepEqual(df.getRarityFromStatsAvg(statsAvg), rarity);
+        assert.ok(statsAvg >= rarityInfo.average_stats_range[0]);
+        assert.ok(statsAvg < rarityInfo.average_stats_range[1]);
+      });
+    }
   });
 
   it('Rarity matches the average stats for V3', () => {
     const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
-    Object.entries(rarities).forEach(([rarity, rarityInfo]) => {
-      const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, '3.0.0', rarity as Rarity);
-      const parsed = df.parse(dna);
-      assert.deepEqual(parsed.data.rarity, rarity);
-      const rawStatsSum = Math.round(rarityStats.reduce((acc, stat) => acc + (parsed.raw[stat] / 255 / 6) * 100, 0));
-      assert.deepEqual(df.getRarityFromStats(Math.round(rawStatsSum)), rarity);
-      assert.ok(rawStatsSum >= rarityInfo.average_stats_range[0]);
-      assert.ok(rawStatsSum <= rarityInfo.average_stats_range[1]);
-    });
+    for (let i = 0; i < 1e3; i++) {
+      Object.entries(rarities).forEach(([rarity, rarityInfo]) => {
+        const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, '3.0.0', rarity as Rarity);
+        const parsed = df.parse(dna);
+        assert.deepEqual(parsed.data.rarity, rarity);
+        const statsAvg =
+          df.getAverageFromRaw(
+            rarityStats.map((v) => parsed.raw[v]),
+            rarityStats.map((v) => 255)
+          ) * 100;
+        assert.deepEqual(df.getRarityFromStatsAvg(statsAvg), rarity);
+        assert.ok(statsAvg >= rarityInfo.average_stats_range[0]);
+        assert.ok(statsAvg < rarityInfo.average_stats_range[1]);
+      });
+    }
+  });
+
+  it('Rarity matches the average stats for latest version', () => {
+    const df = new DNAFactory(undefined, undefined);
+    const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
+    const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
+    for (let i = 0; i < 1e3; i++) {
+      Object.entries(rarities).forEach(([rarity, rarityInfo]) => {
+        const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, undefined, rarity as Rarity);
+        const parsed = df.parse(dna);
+        assert.deepEqual(parsed.data.rarity, rarity);
+        const statsAvg =
+          df.getAverageFromRaw(
+            rarityStats.map((v) => parsed.raw[v]),
+            rarityStats.map((v) => 255)
+          ) * 100;
+        assert.deepEqual(df.getRarityFromStatsAvg(statsAvg), rarity);
+        assert.ok(statsAvg >= rarityInfo.average_stats_range[0]);
+        assert.ok(statsAvg < rarityInfo.average_stats_range[1]);
+      });
+    }
   });
 });
