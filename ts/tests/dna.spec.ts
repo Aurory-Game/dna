@@ -248,7 +248,8 @@ describe('Rarity', () => {
           ) * 100;
         assert.deepEqual(df.getRarityFromStatsAvg(statsAvg), rarity);
         assert.ok(statsAvg >= rarityInfo.average_stats_range[0]);
-        assert.ok(statsAvg < rarityInfo.average_stats_range[1]);
+        if (statsAvg === 100) assert.ok(statsAvg === rarityInfo.average_stats_range[1]);
+        else assert.ok(statsAvg < rarityInfo.average_stats_range[1]);
       });
     }
   });
@@ -269,7 +270,8 @@ describe('Rarity', () => {
           ) * 100;
         assert.deepEqual(df.getRarityFromStatsAvg(statsAvg), rarity);
         assert.ok(statsAvg >= rarityInfo.average_stats_range[0]);
-        assert.ok(statsAvg < rarityInfo.average_stats_range[1]);
+        if (statsAvg === 100) assert.ok(statsAvg === rarityInfo.average_stats_range[1]);
+        else assert.ok(statsAvg < rarityInfo.average_stats_range[1]);
       });
     }
   });
@@ -290,7 +292,8 @@ describe('Rarity', () => {
           ) * 100;
         assert.deepEqual(df.getRarityFromStatsAvg(statsAvg), rarity);
         assert.ok(statsAvg >= rarityInfo.average_stats_range[0]);
-        assert.ok(statsAvg < rarityInfo.average_stats_range[1]);
+        if (statsAvg === 100) assert.ok(statsAvg === rarityInfo.average_stats_range[1]);
+        else assert.ok(statsAvg < rarityInfo.average_stats_range[1]);
       });
     }
   });
