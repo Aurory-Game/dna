@@ -275,22 +275,30 @@ export class DNAFactory {
     let average = -1;
     const filteredGenes = genes.filter((gene) => gene.type === 'range_completeness');
     const maxValuePerStat: number[] = [];
-    let maxStatsSum = 0;
     filteredGenes.forEach((gene) => {
       const m = Math.pow(2, gene.base * 8) - 1;
-      // Max value is m - 1 but as we use it to generate a random number we add 1 to make it incluse of m - 1.
       maxValuePerStat.push(m);
-      maxStatsSum += m;
     });
-    while (average < min || average > max) {
+    while (this.getRarityFromStatsAvg(average, false) !== rarity) {
       t = [];
       for (let i = 0; i < maxValuePerStat.length; i++) {
-        const n = Math.round(Math.random() * maxValuePerStat[i]);
+        const n = this.randomInt(0, maxValuePerStat[i]);
         t.push(n);
       }
-      average = Math.round((t.reduce((prev, curr) => prev + curr, 0) * 100) / maxStatsSum);
+      average = this.getAverageFromRaw(t, maxValuePerStat) * 100;
     }
     return t;
+  }
+
+  // min and max included
+  randomInt(min: number, max: number, excludeMax = false): number {
+    if (excludeMax) max -= 1;
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  // you should multiply by 100 to get in %
+  getAverageFromRaw(numbers: number[], maxValuePerStat: number[]): number {
+    return numbers.reduce((prev, curr, index) => prev + curr / maxValuePerStat[index], 0) / numbers.length;
   }
 
   generateNeftyDNA(archetypeIndex: string, version?: string, rarityPreset?: Rarity) {
@@ -345,11 +353,14 @@ export class DNAFactory {
    * Returns rarity from stats average
    * @param statsAverage average of all stats, from 0 to 100;
    */
-  getRarityFromStats(statsAverage: number): Rarity {
+  getRarityFromStatsAvg(statsAverage: number, raiseErrorOnNotFound = true): Rarity | null {
     const rarity = Object.entries(this.rarities).find(([rarity, rarityInfo]) => {
-      return statsAverage >= rarityInfo.average_stats_range[0] && statsAverage <= rarityInfo.average_stats_range[1];
+      return statsAverage >= rarityInfo.average_stats_range[0] && statsAverage < rarityInfo.average_stats_range[1];
     });
-    if (!rarity) throw new Error(`Rarity not found for stats average ${statsAverage}`);
+    if (!rarity) {
+      if (raiseErrorOnNotFound) throw new Error(`Rarity not found for stats average ${statsAverage}`);
+      else return null;
+    }
     return rarity[0] as Rarity;
   }
 
@@ -395,7 +406,7 @@ export class DNAFactory {
       } else throw new Error(`Gene type ${gene.type} not supported.`);
     }
 
-    data['rarity'] = this.getRarityFromStats(Math.round((statsRawSum / 6) * 100));
+    data['rarity'] = this.getRarityFromStatsAvg((statsRawSum * 100) / 6) as Rarity;
     return {
       data,
       raw,
@@ -453,7 +464,7 @@ export class DNAFactory {
         }
       } else throw new Error(`Gene type ${gene.type} not supported.`);
     }
-    data['rarity'] = this.getRarityFromStats(Math.round((statsRawSum / 6) * 100));
+    data['rarity'] = this.getRarityFromStatsAvg((statsRawSum / 6) * 100) as Rarity;
 
     return {
       data,

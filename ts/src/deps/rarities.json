@@ -4,19 +4,19 @@
     "probability": 50.4
   },
   "Uncommon": {
-    "average_stats_range": [21, 40],
+    "average_stats_range": [20, 40],
     "probability": 30
   },
   "Rare": {
-    "average_stats_range": [41, 60],
+    "average_stats_range": [40, 60],
     "probability": 15
   },
   "Epic": {
-    "average_stats_range": [61, 80],
+    "average_stats_range": [60, 80],
     "probability": 4
   },
   "Legendary": {
-    "average_stats_range": [81, 100],
+    "average_stats_range": [80, 100],
     "probability": 0.6
   }
 }
