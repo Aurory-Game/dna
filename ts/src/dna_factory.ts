@@ -15,8 +15,8 @@ import {
   ParseDataRangeCompleteness,
   ParseDataIndex,
   ParseDataSkillInfo,
-  Rarity,
   RarityInfo,
+  Rarity,
   Gene,
   NeftyImageFormat,
 } from './interfaces/types';
@@ -31,7 +31,7 @@ import abiltiesDictionaryV4 from './deps/dictionaries/abilities_dictionary_v0.4.
 import neftiesInfo from './deps/nefties_info.json';
 import rarities from './deps/rarities.json';
 import { DNA } from './dna';
-import { getAverageFromRaw, getCategoryKeyFromName, getLatestSubversion, randomInt } from './utils';
+import { getAverageFromRaw, getCategoryKeyFromName, getLatestSubversion, randomInt, randomNormal } from './utils';
 
 type version = string;
 
@@ -112,23 +112,118 @@ export class DNAFactory {
    * @param statsCount Number of stats to generate
    */
   private _generateStatsForRarity(rarity: Rarity, genes: Gene[]): number[] {
-    let t = [];
-    let average = -1;
     const filteredGenes = genes.filter((gene) => gene.type === 'range_completeness');
+    const nStats = filteredGenes.length;
+    const [minStatAvg, maxStatAvg] = this.rarities[rarity].average_stats_range;
+    let totalPoints;
+    let mean;
+    let stats = Array.from(Array(nStats).keys()).map(() => 0);
+    // glitched or schimerring
+    let isSpecialProba = 0;
+    let isSpecial = false;
+    const SCHIMMERING_PERIOD = 3000;
+    const GLITCHED_PERIOD = 1500;
+    const GLITCHED_RANGE_START = 5;
+    const SCHIMMERING_RANGE_START = 95;
+    if (rarity === 'Common') {
+      isSpecialProba = 1 / ((this.rarities[rarity].probability / 100) * GLITCHED_PERIOD);
+    } else if (rarity === 'Legendary') {
+      isSpecialProba = 1 / ((this.rarities[rarity].probability / 100) * SCHIMMERING_PERIOD);
+    }
+
+    // special handling for glitched and schimerring nefties has their rarity is controlled through a drop period.
+    if (rarity === 'Common' && Math.random() < isSpecialProba) {
+      // is glitched
+      isSpecial = true;
+      mean = randomInt(0, GLITCHED_RANGE_START);
+      // if mean = 5, totalPoints shouldn't exceed 5 * 6
+      totalPoints = Math.min(mean * nStats + randomInt(0, nStats, true), GLITCHED_RANGE_START * nStats);
+    } else if (rarity === 'Legendary' && Math.random() < isSpecialProba) {
+      // is schimerring
+      isSpecial = true;
+      mean = randomInt(SCHIMMERING_RANGE_START, 100);
+      // we set all stats to 95
+      stats = Array.from(Array(nStats).keys()).map(() => SCHIMMERING_RANGE_START);
+      totalPoints = (mean - SCHIMMERING_RANGE_START) * 6;
+      if (mean != 100) totalPoints += randomInt(0, nStats, true);
+    } else if (rarity === 'Common') {
+      // we need to make sure at least one stat is over 5
+      // 0 makes a guaranteed glitched nefty
+      mean = randomInt(1, maxStatAvg, true);
+      // totalPoints < 6 makes a guaranted glitched
+      totalPoints = Math.max(mean * nStats + randomInt(0, nStats, true), GLITCHED_RANGE_START + 1);
+      // we make sure at least 1 stat is at nStats
+      stats[randomInt(0, stats.length - 1)] = GLITCHED_RANGE_START + 1;
+      totalPoints -= GLITCHED_RANGE_START + 1;
+    } else if (rarity === 'Legendary') {
+      // 100 makes a guaranteed schimerring
+      mean = randomInt(minStatAvg, 99);
+      totalPoints = mean * nStats;
+      // if mean = 99, totalPoints shouldn't exceed 99 * 6 or a schimerring will be guaranteed
+      if (mean < 99) totalPoints += randomInt(0, nStats, true);
+    } else {
+      mean = randomInt(minStatAvg, maxStatAvg, true);
+      // adding up to 5 will still result in the same mean as we are rounding down
+      totalPoints = mean * nStats + randomInt(0, nStats, true);
+    }
+
+    const distributePoints = () => {
+      while (pointsLeft) {
+        const statIndex = randomInt(0, stats.length, true);
+        const statValue = stats[statIndex];
+        let maxPoints;
+
+        if (rarity === 'Common' && isSpecial) {
+          // make sure all stats are bellow 5
+          maxPoints = Math.min(pointsLeft, GLITCHED_RANGE_START - statValue);
+        } else if (
+          rarity === 'Legendary' &&
+          !isSpecial &&
+          statValue < SCHIMMERING_RANGE_START &&
+          stats.filter((stat) => stat < SCHIMMERING_RANGE_START).length === 1
+        ) {
+          // we make sure at least 1 stat is under 95
+          maxPoints = Math.min(pointsLeft, SCHIMMERING_RANGE_START - statValue - 1);
+        } else {
+          maxPoints = Math.min(pointsLeft, 100 - statValue);
+        }
+        if (!maxPoints) continue;
+        if (pointsLeft < 0) throw new Error('pointsLeft < 0');
+        const points = randomNormal(1, maxPoints, -100, 200);
+
+        stats[statIndex] += points;
+        pointsLeft -= points;
+      }
+    };
+
     const maxValuePerStat: number[] = [];
     filteredGenes.forEach((gene) => {
       const m = Math.pow(2, gene.base * 8) - 1;
       maxValuePerStat.push(m);
     });
-    while (this.getRarityFromStatsAvg(average, false) !== rarity) {
-      t = [];
-      for (let i = 0; i < maxValuePerStat.length; i++) {
-        const n = randomInt(0, maxValuePerStat[i]);
-        t.push(n);
-      }
-      average = getAverageFromRaw(t, maxValuePerStat) * 100;
+
+    let pointsLeft = totalPoints;
+    let raw = [] as number[];
+    let average;
+    while (pointsLeft) {
+      distributePoints();
+      raw = stats.map((stat, index) => Math.round((stat / 100) * maxValuePerStat[index]));
+
+      average = Math.floor(
+        getAverageFromRaw(
+          raw,
+          stats.map((_, index) => maxValuePerStat[index])
+        ) * 100
+      );
+
+      // the average is done on raw stats but points are distributed on the % stats. It may happen the means are not the same.
+      if (Math.floor(average) !== mean) pointsLeft += 1;
     }
-    return t;
+
+    // if average = 1 for a non glitched or 95 for a schimmering, we may end up not enterring in the previous loop
+    if (!raw.length) raw = stats.map((stat, index) => Math.round((stat / 100) * maxValuePerStat[index]));
+
+    return raw;
   }
 
   private _unpad(v: string): string {
@@ -301,7 +396,11 @@ export class DNAFactory {
    */
   getRarityFromStatsAvg(statsAverage: number, raiseErrorOnNotFound = true): Rarity | null {
     const rarity = Object.entries(this.rarities).find(([rarity, rarityInfo]) => {
-      return statsAverage >= rarityInfo.average_stats_range[0] && statsAverage < rarityInfo.average_stats_range[1];
+      return (
+        statsAverage >= rarityInfo.average_stats_range[0] &&
+        ((statsAverage === 100 && statsAverage === rarityInfo.average_stats_range[1]) ||
+          statsAverage < rarityInfo.average_stats_range[1])
+      );
     });
     if (!rarity) {
       if (raiseErrorOnNotFound) throw new Error(`Rarity not found for stats average ${statsAverage}`);
