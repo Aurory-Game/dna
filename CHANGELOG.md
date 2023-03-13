@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Add Prairie Egg
+
 ## [v0.3.1] - 01/02/2023
 
 - Add `defaultImage` & `imageByGame` to parse.data
