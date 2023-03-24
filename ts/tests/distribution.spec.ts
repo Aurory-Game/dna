@@ -38,7 +38,6 @@ describe('Distribution', () => {
         statMeans[key] = statMeans[key] ? statMeans[key] + value : value;
       });
       loopDone += loopPerThread;
-      process.stdout.write(`\r${loopDone}, ${Math.round((loopDone / loopCount) * 100)}%`);
     };
 
     const workerPath = './workers/stats-mean-worker.ts';
@@ -48,6 +47,7 @@ describe('Distribution', () => {
       workers.push({ id: worker.threadId, worker });
     }
     const idx = setInterval(() => {
+      process.stdout.write(`\r${loopDone}, ${Math.round((loopDone / loopCount) * 100)}%`);
       if (workers.length < maxParallelWorkers && loopDone < loopCount) {
         const worker = addWorker(loopPerThread, workerPath, resultHandler);
         workers.push({ id: worker.threadId, worker });
@@ -122,7 +122,6 @@ describe('Distribution', () => {
       glitchedCount += result.glitchedCount;
       schimmeringCount += result.schimmeringCount;
       loopDone += loopPerThread;
-      process.stdout.write(`\r${loopDone}, ${Math.round((loopDone / loopCount) * 100)}%`);
     };
     const workerPath = './workers/distribution-worker.ts';
     for (let index = 0; index < maxParallelWorkers; index++) {
@@ -130,6 +129,7 @@ describe('Distribution', () => {
       workers.push({ id: worker.threadId, worker });
     }
     const idx = setInterval(() => {
+      process.stdout.write(`\r${loopDone}, ${Math.round((loopDone / loopCount) * 100)}%`);
       if (workers.length < maxParallelWorkers && loopDone < loopCount) {
         const worker = addWorker(loopPerThread, workerPath, resultHandler);
         workers.push({ id: worker.threadId, worker });
