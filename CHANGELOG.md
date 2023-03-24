@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Fix stats generation script to have less 0% stats
+- Add stats distribution tests
+
 ## [v0.3.3] - 13/03/2023
 
 - Add Prairie Egg
