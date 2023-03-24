@@ -236,8 +236,8 @@ describe('Rarity', () => {
     const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
-    for (let i = 0; i < 1e3; i++) {
-      Object.entries(rarities).forEach(([rarity, rarityInfo]) => {
+    Object.entries(rarities).forEach(([rarity, rarityInfo]) => {
+      for (let i = 0; i < 1e3; i++) {
         const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, '2.0.0', rarity as Rarity);
         const parsed = df.parse(dna);
         assert.deepEqual(parsed.data.rarity, rarity);
@@ -250,16 +250,16 @@ describe('Rarity', () => {
         assert.ok(statsAvg >= rarityInfo.average_stats_range[0]);
         if (statsAvg === 100) assert.ok(statsAvg === rarityInfo.average_stats_range[1]);
         else assert.ok(statsAvg < rarityInfo.average_stats_range[1]);
-      });
-    }
+      }
+    });
   });
 
   it('Rarity matches the average stats for V3', () => {
     const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
-    for (let i = 0; i < 1e3; i++) {
-      Object.entries(rarities).forEach(([rarity, rarityInfo]) => {
+    Object.entries(rarities).forEach(([rarity, rarityInfo]) => {
+      for (let i = 0; i < 1e3; i++) {
         const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, '3.0.0', rarity as Rarity);
         const parsed = df.parse(dna);
         assert.deepEqual(parsed.data.rarity, rarity);
@@ -272,16 +272,16 @@ describe('Rarity', () => {
         assert.ok(statsAvg >= rarityInfo.average_stats_range[0]);
         if (statsAvg === 100) assert.ok(statsAvg === rarityInfo.average_stats_range[1]);
         else assert.ok(statsAvg < rarityInfo.average_stats_range[1]);
-      });
-    }
+      }
+    });
   });
 
   it('Rarity matches the average stats for latest version', () => {
     const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
-    for (let i = 0; i < 1e3; i++) {
-      Object.entries(rarities).forEach(([rarity, rarityInfo]) => {
+    Object.entries(rarities).forEach(([rarity, rarityInfo]) => {
+      for (let i = 0; i < 1e3; i++) {
         const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, undefined, rarity as Rarity);
         const parsed = df.parse(dna);
         assert.deepEqual(parsed.data.rarity, rarity);
@@ -294,7 +294,7 @@ describe('Rarity', () => {
         assert.ok(statsAvg >= rarityInfo.average_stats_range[0]);
         if (statsAvg === 100) assert.ok(statsAvg === rarityInfo.average_stats_range[1]);
         else assert.ok(statsAvg < rarityInfo.average_stats_range[1]);
-      });
-    }
+      }
+    });
   });
 });

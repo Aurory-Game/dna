@@ -32,6 +32,7 @@ import neftiesInfo from './deps/nefties_info.json';
 import rarities from './deps/rarities.json';
 import { DNA } from './dna';
 import { getAverageFromRaw, getCategoryKeyFromName, getLatestSubversion, randomInt, randomNormal } from './utils';
+import { GLITCHED_PERIOD, GLITCHED_RANGE_START, SCHIMMERING_PERIOD, SCHIMMERING_RANGE_START } from './constants';
 
 type version = string;
 
@@ -121,14 +122,10 @@ export class DNAFactory {
     // glitched or schimerring
     let isSpecialProba = 0;
     let isSpecial = false;
-    const SCHIMMERING_PERIOD = 3000;
-    const GLITCHED_PERIOD = 1500;
-    const GLITCHED_RANGE_START = 5;
-    const SCHIMMERING_RANGE_START = 95;
     if (rarity === 'Common') {
-      isSpecialProba = 1 / ((this.rarities[rarity].probability / 100) * GLITCHED_PERIOD);
+      isSpecialProba = 1 / (this.rarities[rarity].probability / 100) / GLITCHED_PERIOD;
     } else if (rarity === 'Legendary') {
-      isSpecialProba = 1 / ((this.rarities[rarity].probability / 100) * SCHIMMERING_PERIOD);
+      isSpecialProba = 1 / (this.rarities[rarity].probability / 100) / SCHIMMERING_PERIOD;
     }
 
     // special handling for glitched and schimerring nefties has their rarity is controlled through a drop period.
@@ -189,8 +186,7 @@ export class DNAFactory {
         }
         if (!maxPoints) continue;
         if (pointsLeft < 0) throw new Error('pointsLeft < 0');
-        const points = randomNormal(1, maxPoints, -100, 200);
-
+        const points = randomNormal(1, Math.ceil(maxPoints / stats.length), -100, 200);
         stats[statIndex] += points;
         pointsLeft -= points;
       }
@@ -222,7 +218,6 @@ export class DNAFactory {
 
     // if average = 1 for a non glitched or 95 for a schimmering, we may end up not enterring in the previous loop
     if (!raw.length) raw = stats.map((stat, index) => Math.round((stat / 100) * maxValuePerStat[index]));
-
     return raw;
   }
 
