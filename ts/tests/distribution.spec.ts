@@ -32,6 +32,7 @@ describe('Distribution', () => {
     const resultHandler = async (result: StatsMeanWorker, worker: Worker) => {
       const index = workers.findIndex((v) => v.id === worker.threadId);
       await workers[index].worker.terminate();
+      if (loopDone > loopCount) return;
       workers.splice(index, 1);
       Object.entries(result.statMeans).forEach(([key, value]) => {
         statMeans[key] = statMeans[key] ? statMeans[key] + value : value;
@@ -113,6 +114,7 @@ describe('Distribution', () => {
     const resultHandler = async (result: DistributionWorker, worker: Worker) => {
       const index = workers.findIndex((v) => v.id === worker.threadId);
       await workers[index].worker.terminate();
+      if (loopDone > loopCount) return;
       workers.splice(index, 1);
       Object.entries(result.rarityCount).forEach(([rarity, count]) => {
         rarityCount[rarity as Rarity] = (rarityCount[rarity as Rarity] || 0) + (count as number);

@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.3.4] - 24/03/2023
+
 - Fix stats generation script to have less 0% stats
 - Add stats distribution tests
 
