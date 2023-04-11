@@ -23,7 +23,9 @@ import {
 import dnaSchemaV0_2 from './deps/schemas/aurory_dna_v0.2.0.json';
 import dnaSchemaV0_3 from './deps/schemas/aurory_dna_v0.3.0.json';
 import dnaSchemaV0_4 from './deps/schemas/aurory_dna_v0.4.0.json';
+import dnaSchemaV0_5 from './deps/schemas/aurory_dna_v0.5.0.json';
 import dnaSchemaV2_0 from './deps/schemas/aurory_dna_v2.0.0.json';
+import dnaSchemaV2_1 from './deps/schemas/aurory_dna_v2.1.0.json';
 import dnaSchemaV3_0 from './deps/schemas/aurory_dna_v3.0.0.json';
 import dnaSchemaV3_1 from './deps/schemas/aurory_dna_v3.1.0.json';
 import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from './deps/schemas/latest';
@@ -41,7 +43,9 @@ const dnaSchemas: Record<version, DNASchema> = {
   '0.2.0': dnaSchemaV0_2 as DNASchema,
   '0.3.0': dnaSchemaV0_3 as DNASchema,
   '0.4.0': dnaSchemaV0_4 as DNASchema,
+  '0.5.0': dnaSchemaV0_5 as DNASchema,
   '2.0.0': dnaSchemaV2_0 as DNASchemaV2,
+  '2.1.0': dnaSchemaV2_1 as DNASchemaV2,
   '3.0.0': dnaSchemaV3_0 as DNASchemaV3,
   '3.1.0': dnaSchemaV3_1 as DNASchemaV3,
 };
