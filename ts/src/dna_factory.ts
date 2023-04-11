@@ -25,6 +25,7 @@ import dnaSchemaV0_3 from './deps/schemas/aurory_dna_v0.3.0.json';
 import dnaSchemaV0_4 from './deps/schemas/aurory_dna_v0.4.0.json';
 import dnaSchemaV2_0 from './deps/schemas/aurory_dna_v2.0.0.json';
 import dnaSchemaV3_0 from './deps/schemas/aurory_dna_v3.0.0.json';
+import dnaSchemaV3_1 from './deps/schemas/aurory_dna_v3.1.0.json';
 import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from './deps/schemas/latest';
 import { LATEST_VERSION as LATEST_ABILTIIES_VERSION } from './deps/dictionaries/latest';
 import abiltiesDictionaryV4 from './deps/dictionaries/abilities_dictionary_v0.4.0.json';
@@ -42,6 +43,7 @@ const dnaSchemas: Record<version, DNASchema> = {
   '0.4.0': dnaSchemaV0_4 as DNASchema,
   '2.0.0': dnaSchemaV2_0 as DNASchemaV2,
   '3.0.0': dnaSchemaV3_0 as DNASchemaV3,
+  '3.1.0': dnaSchemaV3_1 as DNASchemaV3,
 };
 
 const abilitiesDictionaries: Record<version, AbilityDictionary> = {
