@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.3.6] - 12/04/2023
+
+- Add updated stats for older versions of the schema
+
 ## [v0.3.5] - 11/04/2023
 
 - Update Dinobit edef
