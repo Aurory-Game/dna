@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Refactor parse logic
+
 ## [v0.3.6] - 12/04/2023
 
 - Add updated stats for older versions of the schema

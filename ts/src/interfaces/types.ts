@@ -116,6 +116,7 @@ export interface AbilityInfo {
 export interface Parse {
   data: ParseData;
   raw: Record<string, number>;
+  // percentages: Record<string, number>;
   archetype: Archetype;
   metadata: { version: string };
   genes: Gene[];
@@ -155,3 +156,12 @@ export interface DroppableNeftyInfo {
   displayName: string;
   description: string;
 }
+
+export type version = string;
+
+export type GeneWithValues = Gene & {
+  rawValue: number;
+  value: string | number;
+  completeness?: number;
+  skill_info?: AbilityInfo;
+};

@@ -83,3 +83,7 @@ export function randomNormal(min: number, max: number, leftLimit: number, rightL
   }
   return Math.round(num);
 }
+
+export function unpad(v: string, encodingBase: number | undefined): string {
+  return parseInt(v, encodingBase).toString();
+}

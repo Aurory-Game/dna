@@ -16,4 +16,20 @@ export class DNA {
     this.cursor += cursorShift;
     return value;
   }
+
+  /**
+   * Set the cursor to 0.
+   */
+  reset() {
+    this.cursor = 0;
+  }
+
+  /**
+   * Used to not impact the original DNA offset.
+   */
+  clone(): DNA {
+    const dna = new DNA(this.dna, this.encodingBase);
+    dna.read(this.cursor);
+    return dna;
+  }
 }
