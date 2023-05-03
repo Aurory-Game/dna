@@ -145,6 +145,11 @@ describe('Basic', () => {
           assert.ok(data.data.skill_c_info);
           assert.ok(data.data.skill_c_info.name.EN);
           assert.ok(data.data.skill_c_info.description.EN);
+          assert.ok(data.dataAdv);
+          assert.ok(Number.isInteger(data.dataAdv.vitality));
+          assert.ok(Number.isInteger(data.dataAdv.speed));
+          assert.ok(Number.isInteger(data.dataAdv.power));
+          assert.ok(Number.isInteger(data.dataAdv.defense));
         } catch (e) {
           console.error(e);
           console.log(archetypeKey, archetype.fixed_attributes.name);

@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 - Add Adventures' stats `parse.dataAdv`:
 - Set the max possible average for non schimmering to 98 instead of 99
 - Update getAverageFromRaw to use rounded stats instead of raw stats for average computation
+- Fix adventure stats not rounded
 
 ## [v0.3.6] - 12/04/2023
 

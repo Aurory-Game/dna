@@ -122,10 +122,10 @@ function advArrToObj(advArr: number[]): ParseDataAdv {
 
 function convertStats(tacticsStats: ParseDataRangeCompleteness): ParseDataAdv {
   const floorAvgGame1 = floorAverage(tacticsStatsObjToArr(tacticsStats));
-  const hpGame2 = tacticsStats.hp;
-  const powerGame2 = (tacticsStats.atk + tacticsStats.eatk) / 2;
-  const defenseGame2 = (tacticsStats.def + tacticsStats.edef) / 2;
-  const initiativeGame2 = tacticsStats.initiative;
+  const hpGame2 = Math.round(tacticsStats.hp);
+  const powerGame2 = Math.round((tacticsStats.atk + tacticsStats.eatk) / 2);
+  const defenseGame2 = Math.round((tacticsStats.def + tacticsStats.edef) / 2);
+  const initiativeGame2 = Math.round(tacticsStats.initiative);
   let adventuresStats = [hpGame2, initiativeGame2, powerGame2, defenseGame2];
 
   while (floorAverage(adventuresStats) !== floorAvgGame1) {
