@@ -45,6 +45,7 @@ import {
 } from './utils';
 import { GLITCHED_PERIOD, GLITCHED_RANGE_START, SCHIMMERING_PERIOD, SCHIMMERING_RANGE_START } from './constants';
 import { DNASchemaReader } from './dna_schema_reader';
+import { getAdventuresStats } from './adventure_stats';
 
 const dnaSchemas: Record<version, DNASchema> = {
   '0.2.0': dnaSchemaV0_2 as DNASchema,
@@ -166,11 +167,11 @@ export class DNAFactory {
       stats[randomInt(0, stats.length - 1)] = GLITCHED_RANGE_START + 1;
       totalPoints -= GLITCHED_RANGE_START + 1;
     } else if (rarity === 'Legendary') {
-      // 100 makes a guaranteed schimerring
-      mean = randomInt(minStatAvg, 99);
+      // 100 makes a guaranteed schimerring, 99 also in advenures.
+      mean = randomInt(minStatAvg, 98);
       totalPoints = mean * nStats;
-      // if mean = 99, totalPoints shouldn't exceed 99 * 6 or a schimerring will be guaranteed
-      if (mean < 99) totalPoints += randomInt(0, nStats, true);
+      // if mean = 99, totalPoints shouldn't exceed 99 * 6 or a schimerring will be guaranteed. Same for 98 in adventures.
+      if (mean < 98) totalPoints += randomInt(0, nStats, true);
     } else {
       mean = randomInt(minStatAvg, maxStatAvg, true);
       // adding up to 5 will still result in the same mean as we are rounding down
@@ -214,6 +215,7 @@ export class DNAFactory {
     let pointsLeft = totalPoints;
     let raw = [] as number[];
     let average;
+
     while (pointsLeft) {
       distributePoints();
       raw = stats.map((stat, index) => Math.round((stat / 100) * maxValuePerStat[index]));
@@ -451,8 +453,12 @@ export class DNAFactory {
     this._setStats(data, dnaSchemaReader);
     this._setSkills(data, dnaSchemaReader);
     this._addNeftyImageData(data);
+
+    const dataAdv = getAdventuresStats(dnaSchemaReader);
+
     return {
       data,
+      dataAdv,
       raw,
       metadata: { version: dnaSchema.version },
       archetype,

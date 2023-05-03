@@ -113,8 +113,16 @@ export interface AbilityInfo {
   description: AbilityLocalizedValue;
 }
 
+export interface ParseDataAdv {
+  vitality: number;
+  power: number;
+  defense: number;
+  speed: number;
+}
+
 export interface Parse {
   data: ParseData;
+  dataAdv: ParseDataAdv;
   raw: Record<string, number>;
   // percentages: Record<string, number>;
   archetype: Archetype;
