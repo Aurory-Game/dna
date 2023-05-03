@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.4.0] - 03/05/2023
+
 - Refactor parse logic
 - Add Adventures' stats `parse.dataAdv`:
 - Set the max possible average for non schimmering to 98 instead of 99
