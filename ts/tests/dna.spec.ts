@@ -2,7 +2,12 @@ import { DNAFactory, EggsFactory, Rarity, utils } from '../src';
 import nefties_info from '../src/deps/nefties_info.json';
 import assert from 'assert';
 import rarities from '../src/deps/rarities.json';
-import { readdirSync } from 'fs';
+import { readdirSync, readFileSync } from 'fs';
+import { LATEST_VERSION as LATEST_ADVENTURES_STATS_VERSION } from '../src/deps/schemas/adventures/latest';
+import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from '../src/deps/schemas/latest';
+import { DNASchema } from '../src/interfaces/types';
+import { execPath } from 'process';
+import { TACTICS_ADV_NAMES_MAP } from '../src/constants';
 
 const displayNamesProd = [
   'Axobubble',
@@ -147,9 +152,13 @@ describe('Basic', () => {
           assert.ok(data.data.skill_c_info.description.EN);
           assert.ok(data.dataAdv);
           assert.ok(Number.isInteger(data.dataAdv.vitality));
+          assert.ok(Number.isInteger(data.dataAdv.vitalityComputed));
           assert.ok(Number.isInteger(data.dataAdv.speed));
+          assert.ok(Number.isInteger(data.dataAdv.speedComputed));
           assert.ok(Number.isInteger(data.dataAdv.power));
+          assert.ok(Number.isInteger(data.dataAdv.powerComputed));
           assert.ok(Number.isInteger(data.dataAdv.defense));
+          assert.ok(Number.isInteger(data.dataAdv.defenseComputed));
         } catch (e) {
           console.error(e);
           console.log(archetypeKey, archetype.fixed_attributes.name);
@@ -278,6 +287,35 @@ describe('Rarity', () => {
       if (statsAvg === 100) assert.ok(statsAvg === rarityInfo.average_stats_range[1]);
       else assert.ok(statsAvg < rarityInfo.average_stats_range[1]);
       // }
+    });
+  });
+});
+
+const adventuresStatsNames = [
+  'bitebit',
+  'dipking',
+  'dinobit',
+  'shiba ignite',
+  'zzoo',
+  'block choy',
+  'number 9',
+  'axobubble',
+  'unika',
+  'chocomint',
+];
+
+describe('Adventures', () => {
+  it('All archetypes have adventure stats', () => {
+    const schema: DNASchema = JSON.parse(
+      readFileSync(`./src/deps/schemas/aurory_dna_v${LATEST_SCHEMA_VERSION}.json`, 'utf8')
+    );
+    Object.values(schema.categories['0'].archetypes).forEach((archetype) => {
+      assert.ok(
+        TACTICS_ADV_NAMES_MAP[archetype.fixed_attributes.name],
+        `${archetype.fixed_attributes.name} not found in TACTICS_ADV_NAMES_MAP: ${JSON.stringify(
+          TACTICS_ADV_NAMES_MAP
+        )}`
+      );
     });
   });
 });

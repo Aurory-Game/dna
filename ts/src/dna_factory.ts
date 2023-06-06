@@ -20,6 +20,7 @@ import {
   Gene,
   NeftyImageFormat,
   version,
+  AdvStatsJSON,
 } from './interfaces/types';
 import dnaSchemaV0_2 from './deps/schemas/aurory_dna_v0.2.0.json';
 import dnaSchemaV0_3 from './deps/schemas/aurory_dna_v0.3.0.json';
@@ -29,6 +30,8 @@ import dnaSchemaV2_0 from './deps/schemas/aurory_dna_v2.0.0.json';
 import dnaSchemaV2_1 from './deps/schemas/aurory_dna_v2.1.0.json';
 import dnaSchemaV3_0 from './deps/schemas/aurory_dna_v3.0.0.json';
 import dnaSchemaV3_1 from './deps/schemas/aurory_dna_v3.1.0.json';
+import adventuresStatsV0_0_5 from './deps/schemas/adventures/v0.0.5.json';
+import { LATEST_VERSION as LATEST_ADVENTURES_STATS_VERSION } from './deps/schemas/adventures/latest';
 import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from './deps/schemas/latest';
 import { LATEST_VERSION as LATEST_ABILTIIES_VERSION } from './deps/dictionaries/latest';
 import abiltiesDictionaryV4 from './deps/dictionaries/abilities_dictionary_v0.4.0.json';
@@ -58,6 +61,10 @@ const dnaSchemas: Record<version, DNASchema> = {
   '3.1.0': dnaSchemaV3_1 as DNASchemaV3,
 };
 
+const adventuresStats: Record<version, AdvStatsJSON> = {
+  '0.0.5': adventuresStatsV0_0_5,
+};
+
 const abilitiesDictionaries: Record<version, AbilityDictionary> = {
   '0.4.0': abiltiesDictionaryV4 as AbilityDictionary,
 };
@@ -74,6 +81,7 @@ export class DNAFactory {
   latestSchemasSubversions: Record<version, version>;
   latestDictionariesSubversions: Record<version, version>;
   rarities: Record<Rarity, RarityInfo>;
+  adventuresStats: Record<string, AdvStatsJSON>;
 
   constructor(dnaBytes?: number, encodingBase?: number) {
     this.dnaBytes = dnaBytes ?? 64;
@@ -87,6 +95,7 @@ export class DNAFactory {
     this.latestSchemasSubversions = {};
     this.latestDictionariesSubversions = {};
     this.rarities = rarities;
+    this.adventuresStats = adventuresStats;
   }
 
   private _generateDNA(storageSize: number, encodingBase?: number): string | Buffer {
@@ -431,7 +440,7 @@ export class DNAFactory {
     return { dnaSchema, majorVersionInt };
   }
 
-  parse(dnaString: string, forcedVersion?: version): Parse {
+  parse(dnaString: string, forcedVersion?: version, forcedAdvStatsVersion?: version): Parse {
     const dna = new DNA(dnaString, this.encodingBase);
     const { dnaSchema } = this.getDNASchemaFromDNA(dna.clone(), forcedVersion);
     const dnaSchemaReader = new DNASchemaReader(dnaSchema, dna);
@@ -454,7 +463,11 @@ export class DNAFactory {
     this._setSkills(data, dnaSchemaReader);
     this._addNeftyImageData(data);
 
-    const dataAdv = getAdventuresStats(dnaSchemaReader);
+    const advStatsJSON = forcedAdvStatsVersion
+      ? this.adventuresStats[forcedAdvStatsVersion]
+      : this.adventuresStats[LATEST_ADVENTURES_STATS_VERSION];
+
+    const dataAdv = getAdventuresStats(dnaSchemaReader, advStatsJSON);
 
     return {
       data,
