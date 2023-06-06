@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.4.1] - 06/06/2023
+
+- Add computed adventures stats to `parse.dataAdv`
+
 ## [v0.4.0] - 03/05/2023
 
 - Refactor parse logic
