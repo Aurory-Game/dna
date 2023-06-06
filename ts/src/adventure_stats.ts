@@ -1,5 +1,12 @@
+import { TACTICS_ADV_NAMES_MAP } from './constants';
 import { DNASchemaReader } from './dna_schema_reader';
-import { GeneWithValues, ParseDataAdv, ParseDataRangeCompleteness } from './interfaces/types';
+import {
+  GeneWithValues,
+  ParseDataAdv,
+  ParseDataRangeCompleteness,
+  AdvStatsJSON,
+  ParseDataPerc,
+} from './interfaces/types';
 
 /**
  * Allow to pick a random number from an array, but in a deterministic way.
@@ -111,7 +118,7 @@ function tacticsStatsObjToArr(tacticsStats: ParseDataRangeCompleteness): number[
   ];
 }
 
-function advArrToObj(advArr: number[]): ParseDataAdv {
+function advArrToObj(advArr: number[]): ParseDataPerc {
   return {
     vitality: advArr[0],
     speed: advArr[1],
@@ -120,7 +127,7 @@ function advArrToObj(advArr: number[]): ParseDataAdv {
   };
 }
 
-function convertStats(tacticsStats: ParseDataRangeCompleteness): ParseDataAdv {
+function convertStats(tacticsStats: ParseDataRangeCompleteness): ParseDataPerc {
   const floorAvgGame1 = floorAverage(tacticsStatsObjToArr(tacticsStats));
   const hpGame2 = Math.round(tacticsStats.hp);
   const powerGame2 = Math.round((tacticsStats.atk + tacticsStats.eatk) / 2);
@@ -138,8 +145,8 @@ function convertStats(tacticsStats: ParseDataRangeCompleteness): ParseDataAdv {
 
 function fixGlitchedSchimmering(
   tacticsStatsObj: ParseDataRangeCompleteness,
-  adventuresStatsObj: ParseDataAdv
-): ParseDataAdv {
+  adventuresStatsObj: ParseDataPerc
+): ParseDataPerc {
   const tacticsStats = tacticsStatsObjToArr(tacticsStatsObj);
   const floorAvgGame1 = floorAverage(tacticsStats);
   const adventuresStats = Object.values(adventuresStatsObj);
@@ -161,12 +168,29 @@ function fixGlitchedSchimmering(
   return advArrToObj(adventuresStatsCorrected);
 }
 
-export function getAdventuresStats(dnaSchemaReader: DNASchemaReader): ParseDataAdv {
+export function getAdventuresStats(dnaSchemaReader: DNASchemaReader, adventuresStats: AdvStatsJSON): ParseDataAdv {
   const tacticsStats: any = {};
   dnaSchemaReader.getCompletenessGenes().forEach((gene: GeneWithValues) => {
     tacticsStats[gene.name] = Math.round((gene.completeness as number) * 100);
   });
   const adventureStats = convertStats(tacticsStats);
   const fixedStats = fixGlitchedSchimmering(tacticsStats, adventureStats);
-  return fixedStats;
+
+  const advName = TACTICS_ADV_NAMES_MAP[dnaSchemaReader.archetype.fixed_attributes.name];
+  const advStatsRanges = adventuresStats.nefties[advName];
+  const statsNameMap: Record<keyof typeof fixedStats, keyof typeof advStatsRanges> = {
+    vitality: 'Health',
+    power: 'Power',
+    defense: 'Defense',
+    speed: 'Speed',
+  };
+
+  Object.keys(fixedStats).forEach((key) => {
+    const { min, max } = advStatsRanges[statsNameMap[key as keyof typeof fixedStats]];
+    (fixedStats as ParseDataAdv)[`${key}Computed` as keyof ParseDataAdv] = Math.round(
+      (fixedStats[key as keyof typeof fixedStats] / 100) * (max - min) + min
+    );
+  });
+
+  return fixedStats as ParseDataAdv;
 }

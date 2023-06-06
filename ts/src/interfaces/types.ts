@@ -113,11 +113,33 @@ export interface AbilityInfo {
   description: AbilityLocalizedValue;
 }
 
-export interface ParseDataAdv {
+export type ParseDataAdv = ParseDataPerc & ParseDataComputed;
+
+export interface ParseDataPerc {
   vitality: number;
   power: number;
   defense: number;
   speed: number;
+}
+
+export interface ParseDataComputed {
+  vitalityComputed: number;
+  powerComputed: number;
+  defenseComputed: number;
+  speedComputed: number;
+}
+
+export interface AdvStatsJSON {
+  nefties: AdvStatsJSONRecord;
+}
+
+export type AdvStatsJSONRecord = Record<string, AdvStatsJSONValue>;
+
+export interface AdvStatsJSONValue {
+  Health: { min: number; max: number };
+  Power: { min: number; max: number };
+  Defense: { min: number; max: number };
+  Speed: { min: number; max: number };
 }
 
 export interface Parse {
