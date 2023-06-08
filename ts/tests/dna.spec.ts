@@ -31,6 +31,7 @@ const neftyCodeNamesProd = new Set([
   'Nefty_Blockchoy',
   'Nefty_Number9',
   'Nefty_Unika',
+  'Nefty_Chocomint',
 ]);
 
 const neftyFamiliesProd = new Set([
@@ -43,6 +44,7 @@ const neftyFamiliesProd = new Set([
   'Blockchoy',
   'Number9',
   'Unika',
+  'Chocomint',
 ]);
 
 const passivesProd = new Set([
@@ -55,6 +57,7 @@ const passivesProd = new Set([
   'number9Passive',
   'tailekinesis',
   'Inspiring',
+  'TastyMint',
 ]);
 
 const ultimatesProd = new Set([
@@ -67,6 +70,7 @@ const ultimatesProd = new Set([
   'JumpScare',
   'bubbleOut',
   'Encore',
+  'ChocomintUltimate',
 ]);
 
 const abilitiesProd = new Set([
@@ -97,6 +101,9 @@ const abilitiesProd = new Set([
   'Kickback',
   'Overtake',
   'RainbowFlash',
+  'FreshCherry',
+  'FrostyMood',
+  'RottenCherry',
 ]);
 
 const allSchemaVersions = readdirSync('./src/deps/schemas')
