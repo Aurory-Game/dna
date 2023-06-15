@@ -13,4 +13,5 @@ export const TACTICS_ADV_NAMES_MAP: Record<string, string> = {
   Nefty_Number9: 'number 9',
   Nefty_Axobubble: 'axobubble',
   Nefty_Unika: 'unika',
+  Nefty_Chocomint: 'chocomint',
 };
