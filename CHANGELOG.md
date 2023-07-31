@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 - Refactor parse logic
 
+## [v0.4.3] - 31/07/2023
+
+- Add Chocomint and Quantum Egg support
+
 ## [v0.3.6] - 12/04/2023
 
 - Add updated stats for older versions of the schema
