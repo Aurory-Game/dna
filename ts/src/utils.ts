@@ -4,9 +4,9 @@ import { AbilityDictionary, Category, DNASchema } from './interfaces/types';
 export function getAverageFromRaw(numbers: number[], maxValuePerStat: number[]): number {
   const v =
     numbers.reduce((prev, curr, index) => {
-      return prev + Math.round((curr / maxValuePerStat[index]) * 100);
+      return prev + curr / maxValuePerStat[index];
     }, 0) / numbers.length;
-  return v / 100;
+  return v;
 }
 
 // min and max included

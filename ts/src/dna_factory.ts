@@ -20,7 +20,6 @@ import {
   Gene,
   NeftyImageFormat,
   version,
-  AdvStatsJSON,
 } from './interfaces/types';
 import dnaSchemaV0_2 from './deps/schemas/aurory_dna_v0.2.0.json';
 import dnaSchemaV0_3 from './deps/schemas/aurory_dna_v0.3.0.json';
@@ -31,8 +30,6 @@ import dnaSchemaV2_1 from './deps/schemas/aurory_dna_v2.1.0.json';
 import dnaSchemaV3_0 from './deps/schemas/aurory_dna_v3.0.0.json';
 import dnaSchemaV3_1 from './deps/schemas/aurory_dna_v3.1.0.json';
 import dnaSchemaV3_2 from './deps/schemas/aurory_dna_v3.2.0.json';
-import adventuresStatsV0_0_5 from './deps/schemas/adventures/v0.0.5.json';
-import { LATEST_VERSION as LATEST_ADVENTURES_STATS_VERSION } from './deps/schemas/adventures/latest';
 import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from './deps/schemas/latest';
 import { LATEST_VERSION as LATEST_ABILTIIES_VERSION } from './deps/dictionaries/latest';
 import abiltiesDictionaryV4 from './deps/dictionaries/abilities_dictionary_v0.4.0.json';
@@ -49,7 +46,6 @@ import {
 } from './utils';
 import { GLITCHED_PERIOD, GLITCHED_RANGE_START, SCHIMMERING_PERIOD, SCHIMMERING_RANGE_START } from './constants';
 import { DNASchemaReader } from './dna_schema_reader';
-import { getAdventuresStats } from './adventure_stats';
 
 const dnaSchemas: Record<version, DNASchema> = {
   '0.2.0': dnaSchemaV0_2 as DNASchema,
@@ -61,10 +57,6 @@ const dnaSchemas: Record<version, DNASchema> = {
   '3.0.0': dnaSchemaV3_0 as DNASchemaV3,
   '3.1.0': dnaSchemaV3_1 as DNASchemaV3,
   '3.2.0': dnaSchemaV3_2 as DNASchemaV3,
-};
-
-const adventuresStats: Record<version, AdvStatsJSON> = {
-  '0.0.5': adventuresStatsV0_0_5,
 };
 
 const abilitiesDictionaries: Record<version, AbilityDictionary> = {
@@ -83,7 +75,6 @@ export class DNAFactory {
   latestSchemasSubversions: Record<version, version>;
   latestDictionariesSubversions: Record<version, version>;
   rarities: Record<Rarity, RarityInfo>;
-  adventuresStats: Record<string, AdvStatsJSON>;
 
   constructor(dnaBytes?: number, encodingBase?: number) {
     this.dnaBytes = dnaBytes ?? 64;
@@ -97,7 +88,6 @@ export class DNAFactory {
     this.latestSchemasSubversions = {};
     this.latestDictionariesSubversions = {};
     this.rarities = rarities;
-    this.adventuresStats = adventuresStats;
   }
 
   private _generateDNA(storageSize: number, encodingBase?: number): string | Buffer {
@@ -178,11 +168,11 @@ export class DNAFactory {
       stats[randomInt(0, stats.length - 1)] = GLITCHED_RANGE_START + 1;
       totalPoints -= GLITCHED_RANGE_START + 1;
     } else if (rarity === 'Legendary') {
-      // 100 makes a guaranteed schimerring, 99 also in advenures.
-      mean = randomInt(minStatAvg, 98);
+      // 100 makes a guaranteed schimerring
+      mean = randomInt(minStatAvg, 99);
       totalPoints = mean * nStats;
-      // if mean = 99, totalPoints shouldn't exceed 99 * 6 or a schimerring will be guaranteed. Same for 98 in adventures.
-      if (mean < 98) totalPoints += randomInt(0, nStats, true);
+      // if mean = 99, totalPoints shouldn't exceed 99 * 6 or a schimerring will be guaranteed
+      if (mean < 99) totalPoints += randomInt(0, nStats, true);
     } else {
       mean = randomInt(minStatAvg, maxStatAvg, true);
       // adding up to 5 will still result in the same mean as we are rounding down
@@ -226,7 +216,6 @@ export class DNAFactory {
     let pointsLeft = totalPoints;
     let raw = [] as number[];
     let average;
-
     while (pointsLeft) {
       distributePoints();
       raw = stats.map((stat, index) => Math.round((stat / 100) * maxValuePerStat[index]));
@@ -442,7 +431,7 @@ export class DNAFactory {
     return { dnaSchema, majorVersionInt };
   }
 
-  parse(dnaString: string, forcedVersion?: version, forcedAdvStatsVersion?: version): Parse {
+  parse(dnaString: string, forcedVersion?: version): Parse {
     const dna = new DNA(dnaString, this.encodingBase);
     const { dnaSchema } = this.getDNASchemaFromDNA(dna.clone(), forcedVersion);
     const dnaSchemaReader = new DNASchemaReader(dnaSchema, dna);
@@ -464,16 +453,8 @@ export class DNAFactory {
     this._setStats(data, dnaSchemaReader);
     this._setSkills(data, dnaSchemaReader);
     this._addNeftyImageData(data);
-
-    const advStatsJSON = forcedAdvStatsVersion
-      ? this.adventuresStats[forcedAdvStatsVersion]
-      : this.adventuresStats[LATEST_ADVENTURES_STATS_VERSION];
-
-    const dataAdv = getAdventuresStats(dnaSchemaReader, advStatsJSON);
-
     return {
       data,
-      dataAdv,
       raw,
       metadata: { version: dnaSchema.version },
       archetype,

@@ -4,21 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [v0.4.2] - 15/06/2023
-
-- Add Chocomint's archetype
-
-## [v0.4.1] - 06/06/2023
-
-- Add computed adventures stats to `parse.dataAdv`
-
-## [v0.4.0] - 03/05/2023
-
 - Refactor parse logic
-- Add Adventures' stats `parse.dataAdv`:
-- Set the max possible average for non schimmering to 98 instead of 99
-- Update getAverageFromRaw to use rounded stats instead of raw stats for average computation
-- Fix adventure stats not rounded
 
 ## [v0.3.6] - 12/04/2023
 
