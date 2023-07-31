@@ -258,7 +258,7 @@
             "family": "Chocomint",
             "mp": 5,
             "passiveSkill": "TastyMint",
-            "ultimateSkill": "ChocomintUltimate"
+            "ultimateSkill": "MightyMint"
           },
           "encoded_attributes": {
             "hp": [468, 572],
