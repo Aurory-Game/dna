@@ -19,6 +19,7 @@ const displayNamesProd = [
   'Block Choy',
   'Number 9',
   'Unika',
+  'Chocomint',
 ];
 
 const neftyCodeNamesProd = new Set([
@@ -177,7 +178,7 @@ describe('Basic', () => {
   // Display names are used to compute image URLs
   it('Ensure display names never change', () => {
     Object.values(nefties_info.code_to_displayName).forEach((displayName) => {
-      assert(displayNamesProd.includes(displayName));
+      assert(displayNamesProd.includes(displayName), `${displayName} is not in displayNamesProd`);
     });
   });
 
