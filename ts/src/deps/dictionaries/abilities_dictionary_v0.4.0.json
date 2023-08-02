@@ -362,10 +362,10 @@
     "creatureAbility.FreshCherry.description": {
       "EN": "Throw a protective bomb that explodes in a cross pattern. Affected allies will avoid the next direct attack."
     },
-    "creatureAbility.RottenChery.name": {
+    "creatureAbility.RottenCherry.name": {
       "EN": "Rotten Cherry"
     },
-    "creatureAbility.RottenChery.description": {
+    "creatureAbility.RottenCherry.description": {
       "EN": "Toss a bomb that deals damage in a cross pattern."
     },
     "creatureAbility.FrostyMood.name": {
@@ -373,7 +373,7 @@
     },
     "creatureAbility.FrostyMood.description": {
       "EN": "STANCE Purge all buffs and debuffs of the next creature to move within range."
-    },    
+    },
     "creatureAbility.MightyMint.name": {
       "EN": "Mighty Mint"
     },

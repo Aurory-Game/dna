@@ -71,7 +71,7 @@ const ultimatesProd = new Set([
   'JumpScare',
   'bubbleOut',
   'Encore',
-  'Mighty Mint',
+  'MightyMint',
 ]);
 
 const abilitiesProd = new Set([
