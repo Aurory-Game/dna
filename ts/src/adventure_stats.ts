@@ -173,8 +173,7 @@ export function getAdventuresStats(dnaSchemaReader: DNASchemaReader, adventuresS
   dnaSchemaReader.getCompletenessGenes().forEach((gene: GeneWithValues) => {
     tacticsStats[gene.name] = Math.round((gene.completeness as number) * 100);
   });
-  const adventureStats = convertStats(tacticsStats);
-  const fixedStats = fixGlitchedSchimmering(tacticsStats, adventureStats);
+  const fixedStats = convertStats(tacticsStats);
 
   const advName = TACTICS_ADV_NAMES_MAP[dnaSchemaReader.archetype.fixed_attributes.name];
   const advStatsRanges = adventuresStats.nefties[advName];
