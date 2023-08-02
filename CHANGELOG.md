@@ -4,9 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [v0.4.2] - 15/06/2023
+## [v0.5.0] - 03/08/2023
 
 - Add Chocomint's archetype
+- Remove glitched & shimmering link to stats
 
 ## [v0.4.1] - 06/06/2023
 
