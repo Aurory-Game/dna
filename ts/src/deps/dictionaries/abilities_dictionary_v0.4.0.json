@@ -349,6 +349,36 @@
     },
     "creatureAbility.Encore.description": {
       "EN": "For the cost of Encore, use last ability again with a 25% damage increase buff."
+    },
+    "creatureAbility.TastyMint.name": {
+      "EN": "Tasty Mint"
+    },
+    "creatureAbility.TastyMint.description": {
+      "EN": "Each turn, the first time Chocomint moves, it leaves behind a mark that any creature can pick up to get a shield."
+    },
+    "creatureAbility.FreshCherry.name": {
+      "EN": "Fresh Cherry"
+    },
+    "creatureAbility.FreshCherry.description": {
+      "EN": "Throw a protective bomb that explodes in a cross pattern. Affected allies will avoid the next direct attack."
+    },
+    "creatureAbility.RottenCherry.name": {
+      "EN": "Rotten Cherry"
+    },
+    "creatureAbility.RottenCherry.description": {
+      "EN": "Toss a bomb that deals damage in a cross pattern."
+    },
+    "creatureAbility.FrostyMood.name": {
+      "EN": "Frosty Mood"
+    },
+    "creatureAbility.FrostyMood.description": {
+      "EN": "STANCE Purge all buffs and debuffs of the next creature to move within range."
+    },
+    "creatureAbility.MightyMint.name": {
+      "EN": "Mighty Mint"
+    },
+    "creatureAbility.MightyMint.description": {
+      "EN": "Reduce enemy Ether Defenses and shield allies nearby."
     }
   }
 }
