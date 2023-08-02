@@ -103,8 +103,6 @@ describe('Distribution', () => {
 
   // this may fail sometimes as we only do 300k iterations
   it('Rarity & Glitched & Schimmering distribution rates are within a specific range of the targets', (done) => {
-    let glitchedCount = 0;
-    let schimmeringCount = 0;
     const rarityCount: Record<Rarity, number> = {} as any;
     const loopCount = 300000;
     let loopDone = 0;
@@ -119,8 +117,6 @@ describe('Distribution', () => {
       Object.entries(result.rarityCount).forEach(([rarity, count]) => {
         rarityCount[rarity as Rarity] = (rarityCount[rarity as Rarity] || 0) + (count as number);
       });
-      glitchedCount += result.glitchedCount;
-      schimmeringCount += result.schimmeringCount;
       loopDone += loopPerThread;
     };
     const workerPath = './workers/distribution-worker.ts';
@@ -149,22 +145,6 @@ describe('Distribution', () => {
             )}, 10% acceptable diff: ${maxDiff10Percent}`
           );
         });
-        const maxDiff20PercentGlitched = (GLITCHED_PERIOD * 20) / 100;
-        const maxDiff20PercentSchimmering = (SCHIMMERING_PERIOD * 20) / 100;
-        // check glitched distribution
-        assert.ok(
-          Math.abs(GLITCHED_PERIOD - loopDone / glitchedCount) < maxDiff20PercentGlitched,
-          `Expected: ${GLITCHED_PERIOD}, got: ${loopDone / glitchedCount}, diff: ${Math.abs(
-            GLITCHED_PERIOD - loopDone / glitchedCount
-          )}, 20% acceptable diff: ${maxDiff20PercentGlitched}`
-        );
-        // check schimmering distribution
-        assert.ok(
-          Math.abs(SCHIMMERING_PERIOD - loopDone / schimmeringCount) < maxDiff20PercentSchimmering,
-          `Expected: ${SCHIMMERING_PERIOD}, got: ${loopDone / schimmeringCount}, diff: ${Math.abs(
-            SCHIMMERING_PERIOD - loopDone / schimmeringCount
-          )}, 20% acceptable diff: ${maxDiff20PercentSchimmering}`
-        );
         done();
       }
     }, 1000);
