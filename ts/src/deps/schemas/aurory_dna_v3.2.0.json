@@ -261,7 +261,7 @@
             "ultimateSkill": "MightyMint"
           },
           "encoded_attributes": {
-            "hp": [468, 572],
+            "hp": [410, 502],
             "initiative": [91, 109],
             "atk": [27, 33],
             "def": [34, 42],
