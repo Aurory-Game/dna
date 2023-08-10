@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.5.1] - 10/08/2023
+- Adjust Chocomint stats
+
 ## [v0.5.0] - 03/08/2023
 
 - Add Chocomint's archetype
