@@ -1,384 +1,1596 @@
 {
   "version": "0.4.0",
-  "version_date": "18/10/2022",
+  "version_date": "12/09/2023",
   "keywords": {
-    "creatureAbility.move.name": {
-      "EN": "Move"
-    },
-    "creatureAbility.move.description": {
-      "EN": "Move somewhere"
-    },
-    "creatureAbility.dinobit_bulldozer.name": {
-      "EN": "Bulldozer"
-    },
-    "creatureAbility.dinobit_bulldozer.description": {
-      "EN": "Charges in a straight line, pushing and damaging all creatures in a 3 cells wide band."
-    },
-    "creatureAbility.bigBark.name": {
-      "EN": "Big Bark"
-    },
-    "creatureAbility.bigBark.description": {
-      "EN": "A big bark that damages and pushes aways nearby creatures"
-    },
-    "creatureAbility.Dodge.name": {
-      "EN": "Dodge"
-    },
-    "creatureAbility.Dodge.description": {
-      "EN": "Get ready to dodge next direct attack."
-    },
-    "creatureAbility.basicAttack.name": {
-      "EN": "Attack"
-    },
-    "creatureAbility.basicAttack.description": {
-      "EN": "Slap some sense into that fool!"
-    },
-    "creatureAbility.walkBump.name": {
-      "EN": "InternalSkill"
-    },
-    "creatureAbility.walkBump.description": {
-      "EN": "You should not be reading this"
-    },
-    "creatureAbility.defensiveDome.name": {
-      "EN": "Defensive Dome"
-    },
-    "creatureAbility.defensiveDome.description": {
-      "EN": "Set up a shield on the ground, reducing any damage received for the creatures covered."
-    },
-    "creatureAbility.stompAttack.name": {
-      "EN": "Stomp"
-    },
-    "creatureAbility.stompAttack.description": {
-      "EN": "Stomp damages the targeted entity, and stuns it for a short while."
-    },
-    "creatureAbility.ShoutBorn.name": {
-      "EN": "Shout Born"
-    },
-    "creatureAbility.ShoutBorn.description": {
-      "EN": "Shouts at a target, pushing it away, dealing moderate damage"
-    },
-    "creatureAbility.unstoppableForce.name": {
-      "EN": "Unstoppable Force"
-    },
-    "creatureAbility.unstoppableForce.description": {
-      "EN": "This creature gets immune to any movement impeding effects for a while."
-    },
-    "creatureAbility.dodgeReaction.name": {
-      "EN": "Dodge that !"
-    },
-    "creatureAbility.dodgeReaction.description": {
-      "EN": "Who's a good dodger? You're a good dodger!"
-    },
-    "creatureAbility.assertDominance.name": {
-      "EN": "Assert Dominance"
-    },
-    "creatureAbility.assertDominance.description": {
-      "EN": "Bite a nearby creature. If that creature tries to hurt an ally during its turn, it will be biten again."
-    },
-    "creatureAbility.clashStance.name": {
-      "EN": "Clash Stance"
-    },
-    "creatureAbility.clashStance.description": {
-      "EN": "This creature gets ready to counter-attack. Next time an enemy strikes it, and until its next turn, this creature will strike back with proportional force."
-    },
-    "creatureAbility.backlineDrop.name": {
-      "EN": "Backline Drop"
-    },
-    "creatureAbility.backlineDrop.description": {
-      "EN": "Jump over creatures in a line, then hit the last one if not an ally."
-    },
-    "creatureAbility.LifeforceSink.name": {
-      "EN": "Lifeforce Drain"
-    },
-    "creatureAbility.LifeforceSink.description": {
-      "EN": "Hit a target, stealing some of its lifeforce."
-    },
-    "creatureAbility.bouncingClaws.name": {
-      "EN": "Bouncing Claws"
-    },
-    "creatureAbility.bouncingClaws.description": {
-      "EN": "Jump on a target, dealing damage depending on its missing health. If the target is downed, repeat the action on another target."
-    },
-    "creatureAbility.FlyingEvade.name": {
-      "EN": "High Evade "
-    },
-    "creatureAbility.FlyingEvade.description": {
-      "EN": "Fly high enough so enemies cant touch you"
-    },
-    "creatureAbility.FlyingDrop.name": {
-      "EN": "Sky Drop"
-    },
-    "creatureAbility.FlyingDrop.description": {
-      "EN": "Take off to prepare a devastating dive attack next turn"
-    },
-    "creatureAbility.AttackAndBack.name": {
-      "EN": "Attack & Back"
-    },
-    "creatureAbility.AttackAndBack.description": {
-      "EN": "Strike an enemy, then jump back out of reach"
-    },
-    "creatureAbility.SharpGust.name": {
-      "EN": "Sharp Gust"
-    },
-    "creatureAbility.SharpGust.description": {
-      "EN": "Push a strong gust of wind that will cause damage 3 cells in a row."
-    },
-    "creatureAbility.EtherBlast.name": {
-      "EN": "Ether Blast"
-    },
-    "creatureAbility.EtherBlast.description": {
-      "EN": "Use raw Ether power to strike a target"
-    },
-    "creatureAbility.TankBuster.name": {
-      "EN": "Tank Buster"
-    },
-    "creatureAbility.TankBuster.description": {
-      "EN": "Deal damage to a target proportional to its current health points"
-    },
-    "creatureAbility.ComboBreaker.name": {
-      "EN": "ComboBreaker"
-    },
-    "creatureAbility.ComboBreaker.description": {
-      "EN": "Expel 3 explosive waves that deal damage to all nearby cells"
-    },
-    "creatureAbility.AppeaseFeelings.name": {
-      "EN": "Appease Feelings"
-    },
-    "creatureAbility.AppeaseFeelings.description": {
-      "EN": "Calm down a creature for 2 turns, reducing its physical and magical powers and removing 3 hype points."
-    },
-    "creatureAbility.LifeCycle.name": {
-      "EN": "Life Cycle"
-    },
-    "creatureAbility.LifeCycle.description": {
-      "EN": "Heals an entity at the cost of its own health"
-    },
-    "creatureAbility.Root.name": {
-      "EN": "Root"
-    },
-    "creatureAbility.Root.description": {
-      "EN": "Prevents a target from moving, being pushed or pulled for 2 seconds"
-    },
-    "creatureAbility.LeavesRain.name": {
-      "EN": "Leaves Rain"
-    },
-    "creatureAbility.LeavesRain.description": {
-      "EN": "Heals all living things on the map"
-    },
-    "creatureAbility.dumbCharge.name": {
-      "EN": "Frontline Worker"
-    },
-    "creatureAbility.dumbCharge.description": {
-      "EN": "Charges at a target with complete disregard for its own health. His management approves."
-    },
-    "creatureAbility.JumpBomb.name": {
-      "EN": "Disruptive Drop"
-    },
-    "creatureAbility.JumpBomb.description": {
-      "EN": "Jump on cell, damaging nearby entities"
-    },
-    "creatureAbility.BearsSafe.name": {
-      "EN": "Bear's Safe"
-    },
-    "creatureAbility.BearsSafe.description": {
-      "EN": "Steal hypes from nearby enemies, hyping his team"
-    },
-    "creatureAbility.FreshGreens.name": {
-      "EN": "Fresh Greens"
-    },
-    "creatureAbility.FreshGreens.description": {
-      "EN": "Uses his body in a legal way to heal the target creature"
-    },
-    "creatureAbility.SlipperySkin.name": {
-      "EN": "Slippery Skin"
-    },
-    "creatureAbility.SlipperySkin.description": {
-      "EN": "Dipking's slippery skin causes every fourth effect from any source to miss him."
-    },
-    "creatureAbility.Throwback.name": {
-      "EN": "Throwback"
-    },
-    "creatureAbility.Throwback.description": {
-      "EN": "Throw a target behind, dealing little damage"
-    },
-    "creatureAbility.RootsEmbrace.name": {
-      "EN": "Roots' Embrace"
-    },
-    "creatureAbility.RootsEmbrace.description": {
-      "EN": "Roots and boost defenses of the target for 4TU"
-    },
-    "creatureAbility.Vitamins.name": {
-      "EN": "Vitagreens"
-    },
-    "creatureAbility.Vitamins.description": {
-      "EN": "BlockChoy gives all his hype to his friends, and gives them a temporary movement range and hastens their next turn."
-    },
-    "creatureAbility.BodyGuard.name": {
-      "EN": "Bodyguard"
-    },
-    "creatureAbility.BodyGuard.description": {
-      "EN": "If an ally is about to get hit, this creature will jump to the rescue and cancel the attack, dealing light damage."
-    },
-    "creatureAbility.shibaPassive.name": {
-      "EN": "Pack Protector"
-    },
-    "creatureAbility.shibaPassive.description": {
-      "EN": "Shiba has movement bonus when on cells next to allies. Shiba's abilities deal no damage to allies."
-    },
-    "creatureAbility.bitebitPassive.name": {
-      "EN": "Catrenaline"
-    },
-    "creatureAbility.bitebitPassive.description": {
-      "EN": "Catrenaline stacks with each basic attack, adding extra strikes to that ability."
-    },
-    "creatureAbility.PainfulShriek.name": {
-      "EN": "Painful Shriek"
-    },
-    "creatureAbility.PainfulShriek.description": {
-      "EN": "Zzoo lets out an air-tearing shriek when hurt, dealing damage to nearby creatures."
-    },
-    "creatureAbility.dinobitPassive.name": {
-      "EN": "Unstoppable Force"
-    },
-    "creatureAbility.dinobitPassive.description": {
-      "EN": "Dinobit can end his movement on a creature-occupied cell, pushing it away."
-    },
     "creatureAbility.MysteryAbility.name": {
-      "EN": "Unrevealed Ability"
+      "EN": "Unrevealed Ability",
+      "FR": "Capacité non révélée",
+      "DE": "Verborgene Fähigkeit",
+      "IT": "Abilità celata",
+      "ZH": "未知招数",
+      "ZH-TW": "未揭曉的技能",
+      "ES": "Capacidad sin manifestar",
+      "PT": "Habilidade não revelada"
     },
     "creatureAbility.MysteryAbility.description": {
-      "EN": "This ability will be revealed when it gets used."
+      "EN": "This ability will be revealed when it gets used.",
+      "FR": "Cette capacité sera révélée lors de son utilisation.",
+      "DE": "Diese Fähigkeit wird bei Benutzung enthüllt.",
+      "IT": "Questa abilità sarà rivelata dopo l'uso.",
+      "ZH": "将在使用后揭晓此招数。",
+      "ZH-TW": "這個技能會在使用時揭曉。",
+      "ES": "Esta capacidad se manifestará cuando se use.",
+      "PT": "Esta habilidade será revelada quando for usada."
     },
-    "creatureAbility.GroundControl.name": {
-      "EN": "Ground Control"
-    },
-    "creatureAbility.GroundControl.description": {
-      "EN": "Any hostile moving in the direct vicinity will be painfully shown the way out."
-    },
-    "creatureAbility.JumpScare.name": {
-      "EN": "Jumpscare"
-    },
-    "creatureAbility.JumpScare.description": {
-      "EN": "Remove Ectoplasm marks from nearby enemies, dealing damage and healing Number 9 proportionally. Number 9 can play again after this."
-    },
-    "creatureAbility.ScarringAttack.name": {
-      "EN": "Scarring Strike"
-    },
-    "creatureAbility.ScarringAttack.description": {
-      "EN": "Wound an enemy, greatly reducing its defense and increasing the damage it receives for a while."
-    },
-    "creatureAbility.SoulConduit.name": {
-      "EN": "Soul Conduit"
-    },
-    "creatureAbility.SoulConduit.description": {
-      "EN": "Teleport to any empty location. If a creature had fainted there, you can Move and use an Ability again this turn."
-    },
-    "creatureAbility.number9Passive.name": {
-      "EN": "Passession"
-    },
-    "creatureAbility.number9Passive.description": {
-      "EN": "Number 9 can only interact with marked creatures. To mark a creature, Number 9 must fly through them. If the creature is an enemy, Number 9 gains 2 Hype points."
-    },
-    "creatureAbility.Pulltergeist.name": {
-      "EN": "Pulltergeist"
-    },
-    "creatureAbility.Pulltergeist.description": {
-      "EN": "Pulls a target 4 cells toward current position, dealing little damage."
-    },
-    "creatureAbility.NoEscape.name": {
-      "EN": "No Escape"
-    },
-    "creatureAbility.NoEscape.description": {
-      "EN": "Until next turn, next enemy moving to or from a nearby cell gets pulled behind, taking light damage"
-    },
-    "creatureAbility.fateSwap.name": {
-      "EN": "Fate Swap"
-    },
-    "creatureAbility.fateSwap.description": {
-      "EN": "If this creature gets targeted by an attack during next turn, its HP and Hype points will be swapped with its aggressor."
-    },
-    "creatureAbility.tailekinesis.name": {
-      "EN": "Tailekinesis"
-    },
-    "creatureAbility.tailekinesis.description": {
-      "EN": "Axobubble tail attacks are ranged and push creatures back. Can target allies."
-    },
-    "creatureAbility.pressureBomb.name": {
-      "EN": "Pressure Bomb"
-    },
-    "creatureAbility.pressureBomb.description": {
-      "EN": "Throw a bubble bomb at a location, triggering an explosion. Creatures in the blast zone will be pushed away, while a direct hit will deal more damage and stun the target."
+    "creatureAbility.attack.name": {
+      "EN": "Attack",
+      "FR": "Attaque",
+      "DE": "Angriff",
+      "IT": "Attacco",
+      "ZH": "攻击",
+      "ZH-TW": "攻擊",
+      "ES": "Ataque",
+      "PT": "Ataque"
     },
     "creatureAbility.bubbleOut.name": {
-      "EN": "Bubble Out"
+      "EN": "Bubble Out",
+      "FR": "Bulle d'exode",
+      "DE": "Blasividerci",
+      "IT": "Bolla fugace",
+      "ZH": "气泡瞬移",
+      "ZH-TW": "泡泡先走",
+      "ES": "Burbuja de viaje",
+      "PT": "Borbulhar"
     },
     "creatureAbility.bubbleOut.description": {
-      "EN": "Teleports away along nearby creatures."
+      "EN": "Teleports away, bringing along all nearby creatures.",
+      "FR": "Se téléporte, entraînant avec lui toutes les créatures à proximité.",
+      "DE": "Teleportiert sich davon und nimmt Kreaturen in der Nähe mit.",
+      "IT": "Teletrasporta altrove, portando con sé tutte le creature vicine.",
+      "ZH": "带着附近所有的生物瞬移离开。",
+      "ZH-TW": "傳送離開，並帶走附近所有生物。",
+      "ES": "Se teletransporta y se lleva a todas las criaturas cercanas.",
+      "PT": "Teletransporta-se para longe, levando junto todas as criaturas nas proximidades."
     },
-    "creatureAbility.Overtake.name": {
-      "EN": "Overtake"
+    "creatureAbility.pressureBomb.name": {
+      "EN": "Pressure Bomb",
+      "FR": "Bombe à pression",
+      "DE": "Druckbombe",
+      "IT": "Bomba a pressione",
+      "ZH": "高压炸弹",
+      "ZH-TW": "壓力彈",
+      "ES": "Bomba de presión",
+      "PT": "Bomba de Pressão"
     },
-    "creatureAbility.Overtake.description": {
-      "EN": "If attacked at close range before next turn, jump behind the aggressor and play your next turn ealier."
+    "creatureAbility.pressureBomb.description": {
+      "EN": "Throw a bubble bomb that delays creatures hit and pushes them away. Direct hit applies more damage and a stun.",
+      "FR": "Lancez une bombe à bulles qui retarde les créatures touchées et les repousse. Un coup direct inflige plus de dégâts et provoque un étourdissement.",
+      "DE": "Wirft eine Blasenbombe, die getroffene Kreaturen verzögert und zurückstößt. Direkte Treffer verursachen mehr Schaden und betäuben.",
+      "IT": "Lancia una bomba a bolla che rallenta le creature colpite e le respinge. I colpi diretti infliggono danni maggiori e stordimento.",
+      "ZH": "抛出一个气泡炸弹，推开被击中的生物，并推迟其行动。直接命中能造成更多伤害并使目标眩晕。",
+      "ZH-TW": "丟出一個泡泡炸彈，能延遲擊中生物，並推開牠們。直接命中會造成較高的傷害，並造成暈眩。",
+      "ES": "Lanza una burbuja bomba que retrasa los golpes de las criaturas y las aleja de un empujón. Los impactos directos infligen más daño y aturdimiento.",
+      "PT": "Atire uma bomba de bolhas que atrasa as criaturas atingidas e as afasta. O acerto direto causa mais dano e aplica atordoamento."
     },
-    "creatureAbility.RainbowFlash.name": {
-      "EN": "Rainbow Flash"
+    "creatureAbility.defensiveDome.name": {
+      "EN": "Defensive Dome",
+      "FR": "Dôme défensif",
+      "DE": "Verteidigungs-\r\nkuppel",
+      "IT": "Cupola difensiva",
+      "ZH": "护盾穹顶",
+      "ZH-TW": "圓頂防護罩",
+      "ES": "Cúpula defensiva",
+      "PT": "Redoma Defensiva"
     },
-    "creatureAbility.RainbowFlash.description": {
-      "EN": "Instantly dash in a straight line for 5 cells through obstacles, dealing damage to any creatures on the way."
+    "creatureAbility.defensiveDome.description": {
+      "EN": "Set up a shield around Axobubble, protecting allies. Enemies are damaged, pushed away and cannot enter the dome until it breaks or expires.",
+      "FR": "Dressez un bouclier autour d'Axobubble pour protéger les alliés. Les ennemis subissent des dégâts, sont repoussés et ne peuvent pas entrer dans le dôme jusqu'à ce que celui-ci se brise ou expire.",
+      "DE": "Errichtet um Axobubble herum einen Schild, um Verbündete zu schützen. Gegner erleiden Schaden, werden zurückgestoßen und können die Kuppel nicht betreten, bis sie zerstört wird oder verschwindet.",
+      "IT": "Genera uno scudo intorno a Axobubble che protegge gli alleati e ferisce e respinge i nemici, che non potranno varcare la barriera finché questa non sarà distrutta o svanita.",
+      "ZH": "在 Axobubble 周围设置一个防护罩，保护盟友。敌人会受到伤害且被推开，无法进入防护罩，直至其破裂或失效。",
+      "ZH-TW": "在 Axobubble 周圍形成護盾保護盟友。敵人會受到傷害並被推開，且在護盾被破壞或失效前無法進入其中。",
+      "ES": "Coloca un escudo alrededor de Axobubble que protege a sus aliados. Los enemigos reciben daño, son alejados de un empujón y no pueden acceder a la cúpula hasta que se rompe o caduca.",
+      "PT": "Erga um escudo ao redor de Axobubble, protegendo os aliados. Inimigos sofrem dano, são afastados e só entram no domo quando ele se quebra ou expira."
     },
-    "creatureAbility.ComeAndPlay.name": {
-      "EN": "Come and Play"
+    "creatureAbility.fateSwap.name": {
+      "EN": "Fate Swap",
+      "FR": "Destin croisé",
+      "DE": "Schicksalswandel",
+      "IT": "Destini incrociati",
+      "ZH": "命运交换",
+      "ZH-TW": "命運交換",
+      "ES": "Intercambio de destino",
+      "PT": "Troca de Destino"
     },
-    "creatureAbility.ComeAndPlay.description": {
-      "EN": "Charge in a straight line, throwing the first encountered creature behind, dealing damage."
+    "creatureAbility.fateSwap.description": {
+      "EN": "If this creature gets targeted by an attack during next turn, its HP and Hype points will be swapped with its aggressor.",
+      "FR": "Si cette créature est ciblée par une attaque au cours du prochain tour, ses PV et points d'Émulation seront échangés avec son assaillant.",
+      "DE": "Wenn diese Kreatur in der nächsten Runde Ziel eines Angriffs wird, werden ihre LP und ihre Hype-Punkte mit dem Angreifer getauscht.",
+      "IT": "Se questa creatura subisce un attacco nel turno successivo, i suoi PS e punti hype vengono scambiati con quelli dell'aggressore.",
+      "ZH": "如果此生物在下一回合被视为攻击目标，它的生命值和超能点数将与攻击者互换。",
+      "ZH-TW": "如果此生物在下回合中成為攻擊的目標，則其生命值與興奮值將與攻擊者對調。",
+      "ES": "Si esta criatura recibe un ataque en el siguiente turno, sus PV y puntos de entusiasmo se intercambiarán con los de su agresor.",
+      "PT": "Se esta criatura for alvo de um ataque durante o próximo turno, seus pontos de vida e de Hype serão trocados com quem a atacou."
     },
-    "creatureAbility.Kickback.name": {
-      "EN": "Kickback"
+    "creatureAbility.bouncingClaws.name": {
+      "EN": "Bouncing Claws",
+      "FR": "Griffe-tout",
+      "DE": "Springende Krallen",
+      "IT": "Artigli elastici",
+      "ZH": "飞跃利爪",
+      "ZH-TW": "彈跳利爪",
+      "ES": "Garras rebotadoras",
+      "PT": "Garras Saltitantes"
     },
-    "creatureAbility.Kickback.description": {
-      "EN": "Kicks away the creature directly behind, or the next to coming there before next turn."
+    "creatureAbility.bouncingClaws.description": {
+      "EN": "Jump on a target, dealing damage depending on its missing health. Can bounces twice to other targets. Grants up to 3 Catrenaline stacks.",
+      "FR": "Se jette sur une cible, lui infligeant des dégâts en fonction de sa santé manquante. Peut se rediriger à deux reprises vers d'autres cibles. Accorde jusqu'à 3 cumuls de Chadrénaline.",
+      "DE": "Springt auf ein Ziel und fügt ihm Schaden in Höhe seiner fehlenden LP zu. Kann zu zwei weiteren Zielen springen. Verleiht bis zu 3 „Adrekrallin“-Stapel.",
+      "IT": "Salta sul bersaglio, infliggendo danni proporzionali alla salute mancante. Può rimbalzare due volte su altri bersagli. Fornisce fino a 3 accumuli di Gatrenalina.",
+      "ZH": "跳到一个目标上，根据其缺失的生命值造成伤害。可弹跳到其他目标上两次。可叠加最多三层肾上猫素。",
+      "ZH-TW": "跳到一個目標上，根據其損失的生命值造成傷害。可以跳到其他目標上兩次。最多賦予 3 層喵喵腎上腺素疊加。",
+      "ES": "Salta sobre un objetivo e inflige daño según la vida que le falte. Puede rebotar dos veces en otros objetivos. Proporciona hasta 3 acumulaciones de Felinalina.",
+      "PT": "Pule em um alvo, causando dano com base na vida perdida dele. Pode saltar duas vezes para outros alvos. Concede até 3 acúmulos de Adrenalina Felina."
     },
-    "creatureAbility.Inspiring.name": {
-      "EN": "Inspiring"
+    "creatureAbility.backlineDrop.name": {
+      "EN": "Backline Drop",
+      "FR": "Prise à revers",
+      "DE": "Linienlauf",
+      "IT": "Catapulta",
+      "ZH": "后方坠击",
+      "ZH-TW": "降落後排",
+      "ES": "Ataque de atrás",
+      "PT": "Salto Traseiro"
     },
-    "creatureAbility.Inspiring.description": {
-      "EN": "The first time Unika moves each turn, it leaves behind an inspiring mark that any creature can pick up. The mark moves the creature 3 Time Units back, and restores the ability to Move if it was already used."
+    "creatureAbility.backlineDrop.description": {
+      "EN": "Jump over obstacles in a line. If the last obstacle is an enemy, Bitebit attacks it.",
+      "FR": "Saute par-dessus les obstacles. Si le dernier obstacle est un ennemi, Bitebit l'attaque.",
+      "DE": "Springt in einer Linie über Hindernisse. Wenn das letzte Hindernis ein Gegner ist, wird ihm absoluter Schaden zugefügt.",
+      "IT": "Salta gli ostacoli in linea retta. Se l'ultimo ostacolo è un nemico, lo attacca infliggendo danni puri.",
+      "ZH": "跳过一排的障碍物。如果最后一个障碍物是敌人，会对其造成真实伤害。",
+      "ZH-TW": "躍過直線上的障礙物。如果最後一個障礙物是敵人，攻擊敵人可造成真實傷害。",
+      "ES": "Salta sobre los obstáculos en fila. Si el último es un enemigo, lo atacará y le provocará daño de verdad.",
+      "PT": "Pule obstáculos em uma linha. Se o último obstáculo for um inimigo, atacá-lo causará dano verdadeiro."
     },
-    "creatureAbility.Encore.name": {
-      "EN": "Encore"
+    "creatureAbility.clashStance.name": {
+      "EN": "Clash Stance",
+      "FR": "Retour de griffe",
+      "DE": "Konfrontations-\r\nhaltung",
+      "IT": "Postura combattiva",
+      "ZH": "御敌姿态",
+      "ZH-TW": "對決架式",
+      "ES": "Postura de choque",
+      "PT": "Postura de Impacto"
     },
-    "creatureAbility.Encore.description": {
-      "EN": "For the cost of Encore, use last ability again with a 25% damage increase buff."
+    "creatureAbility.clashStance.description": {
+      "EN": "This creature gets ready to counter-attack. Next time an enemy strikes it, and until its next turn, this creature will strike back with proportional force.",
+      "FR": "Cette créature se prépare à contre-attaquer. La prochaine fois qu'un ennemi la touchera, et jusqu'à son prochain tour, elle ripostera avec une force proportionnelle.",
+      "DE": "Diese Kreatur macht sich zum Gegenangriff bereit. Wenn sie bis zu ihrer nächsten Runde das nächste Mal von einem Gegner angegriffen wird, kontert sie mit proportionaler Wucht.",
+      "IT": "Questa creatura si prepara a contrattaccare. Se un nemico la aggredisce, e fino al turno successivo, reagisce con un attacco di pari potenza.",
+      "ZH": "此生物准备好反击。下次有敌人攻击它时，直至它的下一个回合，这个生物将以相等的力量进行反击。",
+      "ZH-TW": "此生物準備好進行反擊。直到牠的下回合，下次受到敵人時，此生物會用等比例的力道反擊。",
+      "ES": "Esta criatura se prepara para contraatacar. La próxima vez que un enemigo la golpee y hasta su siguiente turno, la criatura contraatacará con una fuerza equivalente.",
+      "PT": "Essa criatura se prepara para contra-atacar. Da próxima vez que um inimigo a atingir e até seu próximo turno, essa criatura atacará com força proporcional."
     },
-    "creatureAbility.TastyMint.name": {
-      "EN": "Tasty Mint"
+    "creatureAbility.LifeforceSink.name": {
+      "EN": "Lifeforce Drain",
+      "FR": "Absorption vitale",
+      "DE": "Lebenskraftentzug",
+      "IT": "Assorbimento vitale",
+      "ZH": "生命汲取",
+      "ZH-TW": "生命力耗損",
+      "ES": "Robo de vida",
+      "PT": "Drenagem de Força Vital"
     },
-    "creatureAbility.TastyMint.description": {
-      "EN": "Each turn, the first time Chocomint moves, it leaves behind a mark that any creature can pick up to get a shield."
+    "creatureAbility.LifeforceSink.description": {
+      "EN": "Steals life from the target. The more life the target has, the better!",
+      "FR": "Vole la santé de la cible. Plus elle en a, mieux c'est !",
+      "DE": "Raubt dem Ziel Leben. Je mehr Leben es hat, desto besser!",
+      "IT": "Sottrae energia vitale al bersaglio. Più la vittima è in salute, meglio è!",
+      "ZH": "偷取目标的生命。目标的生命值越多，效果越好！",
+      "ZH-TW": "竊取目標的生命值。目標生命值越高越好！",
+      "ES": "Le roba la vida al objetivo. ¡Así que cuanta más vida tenga, mejor!",
+      "PT": "Rouba a vida do alvo. Quanto mais vida o alvo tiver, melhor!"
     },
-    "creatureAbility.FreshCherry.name": {
-      "EN": "Fresh Cherry"
+    "creatureAbility.Vitamins.name": {
+      "EN": "Vitagreens",
+      "FR": "Vertamines",
+      "DE": "Vitalitätsgemüse",
+      "IT": "Multivitaminico",
+      "ZH": "鲜绿维他命",
+      "ZH-TW": "維他綠",
+      "ES": "Vitaverde",
+      "PT": "Vitaverde"
     },
-    "creatureAbility.FreshCherry.description": {
-      "EN": "Throw a protective bomb that explodes in a cross pattern. Affected allies will avoid the next direct attack."
+    "creatureAbility.Vitamins.description": {
+      "EN": "Block Choy gives all his hype to his friends, gives them a temporary movement range boost and hastens their next turn.",
+      "FR": "Block Choy émule ses compagnons, leur donne un boost temporaire de portée et accélère leur prochain tour.",
+      "DE": "Block Choy gibt seinen Hype an seine Freunde weiter und verleiht ihnen vorübergehend Bewegungsreichweite und in ihrer nächsten Runde Eile.",
+      "IT": "Block Choy cede tutto il suo hype agli alleati, aumentandone brevemente il raggio di movimento e affrettando il loro turno successivo.",
+      "ZH": "Block Choy 将其所有的超能点数都给予盟友，并为其提供临时的移动范围增益，且让其的下一个回合更快到来。",
+      "ZH-TW": "Block Choy 將自己所有的興奮值給他的朋友，使朋友暫時獲得移動距離加成，並加快該朋友的下一個回合。",
+      "ES": "Block Choy les da a sus amigos todo su entusiasmo y un impulso de alcance de movimiento temporal, además de acelerar su próximo turno.",
+      "PT": "Block Choy dá todo seu Hype para os amigos, além de um aumento de alcance de movimento temporário, e acelera o próximo turno dele."
     },
-    "creatureAbility.RottenCherry.name": {
-      "EN": "Rotten Cherry"
+    "creatureAbility.LifeCycle.name": {
+      "EN": "Life Cycle",
+      "FR": "Cycle de vie",
+      "DE": "Kreislauf des Lebens",
+      "IT": "Ciclo vitale",
+      "ZH": "生命轮换",
+      "ZH-TW": "生命循環",
+      "ES": "Ciclo de vida",
+      "PT": "Ciclo de Vida"
     },
-    "creatureAbility.RottenCherry.description": {
-      "EN": "Toss a bomb that deals damage in a cross pattern."
+    "creatureAbility.LifeCycle.description": {
+      "EN": "Heals an entity at the cost of its own health.",
+      "FR": "Soigne une entité en puisant dans sa propre santé.",
+      "DE": "Heilt eine Kreatur auf Kosten der eigenen LP.",
+      "IT": "Cura il bersaglio sacrificando la propria salute.",
+      "ZH": "以自己的生命值为代价治疗一个单位。",
+      "ZH-TW": "消耗自己的生命值治療一個實體。",
+      "ES": "Cura a una entidad a cambio de su propia vida.",
+      "PT": "Cura uma entidade pelo preço de sua própria vida."
     },
-    "creatureAbility.FrostyMood.name": {
-      "EN": "Frosty Mood"
+    "creatureAbility.AppeaseFeelings.name": {
+      "EN": "Appease Feelings",
+      "FR": "Apaisement",
+      "DE": "Gefühle beschwichtigen",
+      "IT": "Pace dei sensi",
+      "ZH": "平息情绪",
+      "ZH-TW": "撫平情緒",
+      "ES": "Sentimientos aplacados",
+      "PT": "Sentimentos de Calma"
     },
-    "creatureAbility.FrostyMood.description": {
-      "EN": "Purge all buffs and debuffs of the next creature to move within range."
+    "creatureAbility.AppeaseFeelings.description": {
+      "EN": "Consume the target's Hype Points to heal it, and greatly decrease their damage until the end of their next turn.",
+      "FR": "Consomme les Points d'Exaltation de la cible pour la soigner et réduit grandement ses dégâts jusqu'à la fin de son prochain tour.",
+      "DE": "Verbrauche die Hype-Punkte des Ziels, um es zu heilen, und verringere seinen Schaden bis zum Ende seines nächsten Zuges stark.",
+      "IT": "Consuma i Punti di Frenesia del bersaglio per curarlo e riduci notevolmente il suo danno fino alla fine del suo prossimo turno.",
+      "ZH": "消耗目标的炒劲点来治愈它，并且大幅降低他们的伤害，直到他们下一回合结束。",
+      "ZH-TW": "消耗目標的炒勁點來治癒它，並且大幅降低他們的傷害，直到他們下一回合結束。",
+      "ES": "Consume los Puntos de Euforia del objetivo para curarlo y reduce en gran medida su daño hasta el final de su próximo turno.",
+      "PT": "Consome os Pontos de Frenesi do alvo para curá-lo e diminui muito o dano dele até o final de seu próximo turno."
     },
-    "creatureAbility.MightyMint.name": {
-      "EN": "Mighty Mint"
+    "creatureAbility.RootsEmbrace.name": {
+      "EN": "Roots' Embrace",
+      "FR": "Enracinage",
+      "DE": "Wurzelumarmung",
+      "IT": "Morsa di radici",
+      "ZH": "根须之力",
+      "ZH-TW": "根我擁抱",
+      "ES": "Abrazo de raíz",
+      "PT": "Abraço Enraizado"
     },
-    "creatureAbility.MightyMint.description": {
-      "EN": "Reduce enemy Ether Defenses and shield allies nearby."
+    "creatureAbility.RootsEmbrace.description": {
+      "EN": "Roots the target and boosts its defenses until the end of its next turn.",
+      "FR": "Enracine la cible et augmente ses défenses jusqu'à la fin de son prochain tour.",
+      "DE": "Wurzelt das Ziel fest und erhöht seine Abwehr für 4 Zeiteinheiten.",
+      "IT": "Radica a terra il bersaglio e ne incrementa le difese per 4 turni.",
+      "ZH": "使目标定身，并提升其防御力，持续 4 时间单位。",
+      "ZH-TW": "使目標紮根，並使該目標的防禦提升 4 時間單位。",
+      "ES": "Inmoviliza al objetivo y potencia sus defensas durante 4 unidades de tiempo.",
+      "PT": "Enraíza o alvo e aumenta suas defesas por 4 TU."
+    },
+    "creatureAbility.waitHarder.name": {
+      "EN": "Wait Harder",
+      "FR": "Attend plus fort",
+      "DE": "Konzentriertes Warten",
+      "IT": "Lunga attesa",
+      "ZH": "厚积薄发",
+      "ZH-TW": "等得更認真",
+      "ES": "Empeño de espera",
+      "PT": "Longa Espera"
+    },
+    "creatureAbility.waitHarder.description": {
+      "EN": "Bob focuses his energy into waiting harder, pushing him down the timeline and forcing the next creature to play sooner than expected.",
+      "FR": "Bob concentre son énergie pour mieux attendre, ce qui le fait évoluer dans le temps et oblige la créature suivante à jouer plus tôt que prévu.",
+      "DE": "Bob konzentriert all seine Energie darauf, noch leidenschaftlicher zu warten. Er rutscht in der Zeitleiste nach hinten und zwingt die nächste Kreatur zum Zug.",
+      "IT": "Bob infonde tutta la sua energia nell'attesa, retrocedendo nella linea temporale e costringendo la creatura successiva ad agire prima del previsto.",
+      "ZH": "Bob 将精力集中到“厚积薄发”上，将自己推到时间轴后方，迫使下一个生物提前行动。",
+      "ZH-TW": "Bob 全神貫注更認真等待，使他在時間線上往後移，強迫下一個生物提早開始行動。",
+      "ES": "Bob concentra su energía en esperar con más empeño, lo que acelera la línea temporal y obliga a la siguiente criatura a jugar antes de lo esperado.",
+      "PT": "Bob foca sua energia em esperar mais, voltando na Linha do Tempo e forçando a próxima criatura a jogar antes do que o esperado."
+    },
+    "creatureAbility.disruptiveDrop.name": {
+      "EN": "Disruptive Drop",
+      "FR": "Entrée fracassante",
+      "DE": "Störsturz",
+      "IT": "Picchiata devastante",
+      "ZH": "破坏之跃",
+      "ZH-TW": "落地干擾",
+      "ES": "Caída nociva",
+      "PT": "Salto Perturbador"
+    },
+    "creatureAbility.disruptiveDrop.description": {
+      "EN": "Jump on cell, damaging nearby entities.",
+      "FR": "Saute sur une case, endommageant les entités proches.",
+      "DE": "Springt auf das Feld und fügt Kreaturen in der Nähe Schaden zu.",
+      "IT": "Salta sulla casella, infliggendo danni alle entità circostanti.",
+      "ZH": "跳到一个格子上，对附近单位造成伤害。",
+      "ZH-TW": "跳到一個格子上，對附近的實體造成傷害。",
+      "ES": "Salta sobre una casilla y daña a las entidades cercanas.",
+      "PT": "Pule em uma célula, causando dano a entidades próximas."
+    },
+    "creatureAbility.frontlineWorker.name": {
+      "EN": "Frontline Worker",
+      "FR": "Employé dynamique",
+      "DE": "Arbeiter an der Front",
+      "IT": "Dedizione alla causa",
+      "ZH": "前线职工",
+      "ZH-TW": "第一線勞工",
+      "ES": "Trabajador del frente",
+      "PT": "Trabalhador da Linha de Frente"
+    },
+    "creatureAbility.frontlineWorker.description": {
+      "EN": "Charge at a target with complete disregard for its own health. His management approves.",
+      "FR": "Charge une cible en ignorant totalement son intégrité physique. Approuvé par la direction.",
+      "DE": "Stürmt ohne Rücksicht auf die eigene Gesundheit zum Ziel. Sein Chef wäre stolz auf ihn.",
+      "IT": "Carica verso il bersaglio senza alcun riguardo per la propria incolumità, e per la gioia dei superiori.",
+      "ZH": "完全不顾自己的生命值，向一个目标发起冲锋。已经过管理部门批准。",
+      "ZH-TW": "不顧自己的生命值，朝目標衝鋒。他的主管非常滿意。",
+      "ES": "Arremete contra un objetivo con total desprecio por su propia vida. Sus jefes aprueban su acción.",
+      "PT": "Corre até um alvo sem se importar com a própria vida. A gerência aprova."
+    },
+    "creatureAbility.dinobit_bulldozer.name": {
+      "EN": "Bulldozer",
+      "FR": "Bulldozer",
+      "DE": "Bulldozer",
+      "IT": "Bulldozer",
+      "ZH": "蛮牛冲撞",
+      "ZH-TW": "一路碾壓",
+      "ES": "Bulldozer",
+      "PT": "Escavadeira"
+    },
+    "creatureAbility.dinobit_bulldozer.description": {
+      "EN": "Charges in a straight line, pushing and damaging all creatures in a 3 cells wide path.",
+      "FR": "Charge en ligne droite, poussant et infligeant des dégâts à toutes les créatures dans un rayon de 3 cases.",
+      "DE": "Stürmt in einer geraden Linie vor. Stößt alle Kreaturen in einem 3 Felder breiten Pfad zurück und fügt ihnen Schaden zu.",
+      "IT": "Carica in linea retta, spostando e ferendo tutte le creature nel raggio di 3 caselle.",
+      "ZH": "直线冲撞，在 3 格宽的路径上推动并伤害所有单位。",
+      "ZH-TW": "按照直線衝鋒，將 3 格寬路線上所有的生物推開，並造成傷害。",
+      "ES": "Arremete en línea recta, de modo que empuja y daña a todas las criaturas en una trayectoria con una anchura de 3 casillas.",
+      "PT": "Corre em uma linha reta, empurrando e causando dano a todas as criaturas em um percurso de 3 células."
+    },
+    "creatureAbility.stomp.name": {
+      "EN": "Stomp",
+      "FR": "Piétinement",
+      "DE": "Stampfen",
+      "IT": "Pestone",
+      "ZH": "全力重踏",
+      "ZH-TW": "踩踏",
+      "ES": "Pisotón",
+      "PT": "Pisotear"
+    },
+    "creatureAbility.stomp.description": {
+      "EN": "Stomp damages the targeted entity and stuns it for 5 TU.",
+      "FR": "Piétinement inflige des dégâts à l'entité ciblée et l'étourdit pour 5 UT (unités temporelles).",
+      "DE": "Fügt der Zielkreatur Schaden zu und betäubt sie für 5 Zeiteinheiten.",
+      "IT": "Infligge danni al bersaglio e lo stordisce per 5 turni.",
+      "ZH": "重踏并伤害目标单位，同时使其眩晕 5 回合。",
+      "ZH-TW": "踩踏會對目標實體造成傷害，並使其暈眩 5 時間單位。",
+      "ES": "El pisotón daña a la entidad objetivo y la aturde durante 5 unidades de tiempo.",
+      "PT": "Pisotear causa dano à entidade que for alvo e a atordoa por 5 Unidades de Tempo."
+    },
+    "creatureAbility.Throwback.name": {
+      "EN": "Throwback",
+      "FR": "Déblayage",
+      "DE": "Zurückwerfen",
+      "IT": "Lancio all'indietro",
+      "ZH": "向后一掷",
+      "ZH-TW": "往後丟",
+      "ES": "Retroceso",
+      "PT": "Regresso"
+    },
+    "creatureAbility.Throwback.description": {
+      "EN": "Throw a target behind, dealing light damage.",
+      "FR": "Projetez une cible en arrière, lui infligeant des dégâts légers.",
+      "DE": "Wirft ein Ziel hinter sich und verursacht leichten Schaden.",
+      "IT": "Lancia il bersaglio all'indietro, infliggendogli danni lievi.",
+      "ZH": "将一个目标扔到后面，造成轻微伤害。",
+      "ZH-TW": "把一個目標向後丟，造成少量傷害。",
+      "ES": "Lanza a un objetivo hacia atrás y le inflige un poco de daño.",
+      "PT": "Joga um alvo para trás, causando dano leve."
+    },
+    "creatureAbility.noEscape.name": {
+      "EN": "No Escape",
+      "FR": "Aucune échappatoire",
+      "DE": "Kein Entkommen",
+      "IT": "Nessuno scampo",
+      "ZH": "无路可逃",
+      "ZH-TW": "無法逃脫",
+      "ES": "Sin salida",
+      "PT": "Sem Escapatória"
+    },
+    "creatureAbility.noEscape.description": {
+      "EN": "Next enemy moving to or from a nearby cell gets pulled behind, taking light damage.",
+      "FR": "Le prochain ennemi se déplaçant vers ou depuis une case avoisinante est repoussé, subissant des dégâts légers.",
+      "DE": "Der nächste Gegner, der sich von oder zu einem Feld in der Nähe bewegt, wird nach hinten gezogen und erleidet leichten Schaden.",
+      "IT": "Il primo nemico a muoversi verso o da una casella vicina viene trascinato indietro, subendo lievi danni.",
+      "ZH": "下一个前往或来自附近格子的敌人会被拉到后面，受到轻微伤害。",
+      "ZH-TW": "下一個前往或離開附近格子的敵人被往後拉，並受到少量傷害。",
+      "ES": "El siguiente enemigo que venga de una casilla cercana o vaya hacia ella será empujado hacia atrás y sufrirá un poco de daño.",
+      "PT": "O próximo inimigo a se mover de ou para uma célula nas proximidades é puxado para trás, sofrendo dano leve."
+    },
+    "creatureAbility.ComboBreaker.name": {
+      "EN": "Combo Breaker",
+      "FR": "Triple Trempe",
+      "DE": "Kombozerstörer",
+      "IT": "Anticombo",
+      "ZH": "爆破连击",
+      "ZH-TW": "打斷連擊",
+      "ES": "Rompecombos",
+      "PT": "Rompe-Combos"
+    },
+    "creatureAbility.ComboBreaker.description": {
+      "EN": "Expel 3 explosive waves that deal damage to all nearby cells.",
+      "FR": "Provoquez 3 vagues explosives qui infligent des dégâts à toutes les cases à proximité.",
+      "DE": "Entsendet drei explosive Wellen, die auf allen Feldern in der Nähe Schaden verursachen.",
+      "IT": "Genera 3 ondate esplosive che infliggono danni a tutte le caselle vicine.",
+      "ZH": "释放 3 道爆炸波，对附近所有格子造成伤害。",
+      "ZH-TW": "發出 3 次爆炸波，對附近所有格子造成傷害。",
+      "ES": "Expele 3 oleadas explosivas que infligen daño a todas las casillas cercanas.",
+      "PT": "Expele 3 ondas explosivas que causam dano a todas as células nas proximidades."
+    },
+    "creatureAbility.EtherBlast.name": {
+      "EN": "Ether Blast",
+      "FR": "Salve d'Ether",
+      "DE": "Ätherstoß",
+      "IT": "Esplosione eterea",
+      "ZH": "以太震爆",
+      "ZH-TW": "乙太爆破",
+      "ES": "Estallido de éter",
+      "PT": "Explosão de Éter"
+    },
+    "creatureAbility.EtherBlast.description": {
+      "EN": "Use raw Ether power to strike a target for heavy damage.",
+      "FR": "Utilisez la puissance brute de l'Ether pour atteindre une cible et lui infliger de lourds dégâts.",
+      "DE": "Setzt reine Ätherkraft ein, um einem Ziel schweren Schaden zuzufügen.",
+      "IT": "Convoglia la potenza eterea per infliggere danni devastanti a un bersaglio.",
+      "ZH": "使用原始的以太力量来攻击目标，造成严重伤害。",
+      "ZH-TW": "用純粹的乙太力量攻擊目標，造成大量傷害。",
+      "ES": "Usa pura potencia de éter para atacar a un objetivo y causarle daño grave.",
+      "PT": "Usa o poder de Éter bruto para atingir um alvo e causar dano grave."
+    },
+    "creatureAbility.TankBuster.name": {
+      "EN": "Tank Buster",
+      "FR": "Déblindage",
+      "DE": "Kolossfäller",
+      "IT": "Anticarro",
+      "ZH": "坦克破坏者",
+      "ZH-TW": "突破坦克",
+      "ES": "Rompetanques",
+      "PT": "Destruidor de Tanque"
+    },
+    "creatureAbility.TankBuster.description": {
+      "EN": "Deal true damage based on the target's current HP and significantly weaken their defenses until the start of their second turn.",
+      "FR": "Inflige des dégâts bruts basés sur les PV actuels de la cible et affaiblit considérablement ses défenses jusqu'au début de son deuxième tour.",
+      "DE": "Füge wahren Schaden basierend auf den aktuellen LP des Ziels zu und schwäche ihre Verteidigung bis zum Beginn ihres zweiten Zuges deutlich.",
+      "IT": "Infliggi danni veri basati sugli HP attuali del bersaglio e indebolisci significativamente le sue difese fino all'inizio del suo secondo turno.",
+      "ZH": "根据目标当前的生命值造成真实伤害，并在他们的第二回合开始之前显著削弱他们的防御。",
+      "ZH-TW": "根據目標當前的生命值造成真實傷害，並在他們的第二回合開始之前顯著削弱他們的防禦。",
+      "ES": "Inflige daño verdadero basado en los PV actuales del objetivo y debilita significativamente sus defensas hasta el comienzo de su segundo turno.",
+      "PT": "Causa dano verdadeiro com base nos atuais PV do alvo e enfraquece significativamente suas defesas até o início de seu segundo turno."
+    },
+    "creatureAbility.Dodge.name": {
+      "EN": "Dodge",
+      "FR": "Esquive",
+      "DE": "Ausweichen",
+      "IT": "Schivata",
+      "ZH": "灵巧闪避",
+      "ZH-TW": "閃避",
+      "ES": "Elusión",
+      "PT": "Desviar"
+    },
+    "creatureAbility.Dodge.description": {
+      "EN": "This creature is ready to dodge the next direct attack.",
+      "FR": "Cette créature est prête à esquiver la prochaine attaque directe.",
+      "DE": "Diese Kreatur ist bereit, dem nächsten direkten Angriff auszuweichen.",
+      "IT": "Si prepara a schivare il successivo attacco diretto.",
+      "ZH": "此生物准备好躲避下一次直接攻击。",
+      "ZH-TW": "此生物準備好閃避下一次直接攻擊。",
+      "ES": "Esta criatura está lista para esquivar el siguiente ataque directo.",
+      "PT": "Esta criatura está pronta para desviar do próximo ataque direto."
+    },
+    "creatureAbility.jumpscare.name": {
+      "EN": "Jumpscare",
+      "FR": "Grosse frayeur",
+      "DE": "Jumpscare",
+      "IT": "Brivido di paura",
+      "ZH": "魂飞魄散",
+      "ZH-TW": "突然驚嚇",
+      "ES": "Salto de susto",
+      "PT": "Pulo de Medo"
+    },
+    "creatureAbility.jumpscare.description": {
+      "EN": "Remove Ectoplasm marks from nearby enemies, pulling them and dealing damage and healing Number 9 proportionally. Number 9 can use an Ability or Attack again afterward.",
+      "FR": "Retirez les marques d'ectoplasme des ennemis proches, en les attirant et infligeant des dégâts, tout en soignant le Numéro 9 de manière proportionnelle. Le Numéro 9 peut ensuite utiliser une capacité ou attaquer à nouveau.",
+      "DE": "Entferne Ektoplasmamarkierungen von nahen Feinden, ziehe sie an und füge ihnen Schaden zu, während Nummer 9 proportional geheilt wird. Nummer 9 kann danach eine Fähigkeit oder einen Angriff erneut verwenden.",
+      "IT": "Rimuovi i segni di ectoplasma dai nemici vicini, attirandoli e infliggendo danni e curando il Numero 9 proporzionalmente. Il Numero 9 può poi utilizzare una Abilità o un Attacco di nuovo.",
+      "ZH": "移除附近敌人的 ectoplasm 标记，将它们拉过来并造成伤害，同时按比例治疗第九号。第九号随后可以再次使用一个技能或进行攻击。",
+      "ZH-TW": "移除附近敵人的 ectoplasm 標記，將它們拉過來並造成傷害，同時按比例治療第九號。第九號隨後可以再次使用一個技能或進行攻擊。",
+      "ES": "Elimina las marcas de ectoplasma de los enemigos cercanos, atrayéndolos y causándoles daño y curando al Número 9 de manera proporcional. El Número 9 puede luego usar una Habilidad o Atacar de nuevo.",
+      "PT": "Remova as marcas de ectoplasma dos inimigos próximos, puxando-os e causando dano e curando o Número 9 de forma proporcional. O Número 9 pode usar uma Habilidade ou Atacar novamente em seguida."
+    },
+    "creatureAbility.scarringStrike.name": {
+      "EN": "Scarring Strike",
+      "FR": "Esprit frappeur",
+      "DE": "Vernarbender Schlag",
+      "IT": "Ferita profonda",
+      "ZH": "惊魂一击",
+      "ZH-TW": "重傷襲擊",
+      "ES": "Ataque con cicatriz",
+      "PT": "Ataque Cicatrizante"
+    },
+    "creatureAbility.scarringStrike.description": {
+      "EN": "Wound an enemy, greatly reducing its defense and increasing the damage it receives for the next attack.",
+      "FR": "Blessez un ennemi, réduisant fortement sa défense et augmentant les dégâts reçus lors de la prochaine attaque.",
+      "DE": "Verwundet einen Gegner, um seine Abwehr enorm zu verringern und den Schaden des nächsten erlittenen Angriffs zu erhöhen.",
+      "IT": "Ferisce un nemico, riducendone nettamente la difesa e incrementando i danni subiti dall'attacco successivo.",
+      "ZH": "伤害一个敌人，大幅降低其防御力，并提高其下一次受到的攻击伤害。",
+      "ZH-TW": "使一名敵人受傷，大幅降低對方的防禦，並大幅提高對方下一次攻擊受到的傷害。",
+      "ES": "Hiere a un enemigo, lo que reduce mucho su defensa y aumenta el daño que recibe en el siguiente ataque.",
+      "PT": "Fira um inimigo, reduzindo grande parte da defesa dele e aumentando o dano que ele sofrerá do próximo ataque."
+    },
+    "creatureAbility.pulltergeist.name": {
+      "EN": "Pulltergeist",
+      "FR": "Esprit joueur",
+      "DE": "Soggespenst",
+      "IT": "Attrazione fantasma",
+      "ZH": "强力拉近",
+      "ZH-TW": "拉攏目標",
+      "ES": "Tirón fantasmal",
+      "PT": "Puxetergeist"
+    },
+    "creatureAbility.pulltergeist.description": {
+      "EN": "Pulls a target 4 cells toward current position, dealing little damage. Removes the Ectoplasm mark.",
+      "FR": "Tire une cible de 4 cellules vers la position actuelle, infligeant peu de dégâts. Supprime la marque d'Ectoplasme.",
+      "DE": "Zieht ein Ziel um 4 Zellen in Richtung aktueller Position und verursacht geringen Schaden. Entfernt die Ektoplasma-Markierung.",
+      "IT": "Tira un bersaglio di 4 celle verso la posizione attuale, infliggendo pochi danni. Rimuove il marchio di Ectoplasma.",
+      "ZH": "将目标向当前位置拉动4个单元格，造成轻微伤害。移除异质标记。",
+      "ZH-TW": "將目標向當前位置拉動4個儲存格，造成輕微傷害。移除異質標記。",
+      "ES": "Arrastra un objetivo 4 celdas hacia la posición actual, infligiendo poco daño. Elimina la marca de Ectoplasma.",
+      "PT": "Puxa um alvo em 4 células em direção à posição atual, causando pouco dano. Remove a marca de Ectoplasma."
+    },
+    "creatureAbility.soulConduit.name": {
+      "EN": "Soul Conduit",
+      "FR": "Porte des âmes",
+      "DE": "Seelenkanal",
+      "IT": "Varco spirituale",
+      "ZH": "灵魂传导",
+      "ZH-TW": "靈魂導體",
+      "ES": "Conducto de alma",
+      "PT": "Canal da Alma"
+    },
+    "creatureAbility.soulConduit.description": {
+      "EN": "Teleport to any empty location. If a creature had fainted there, 5 Hype points are refunded and you can Move and use an Ability again this turn.",
+      "FR": "Téléportez-vous vers n'importe quel emplacement vide. Si une créature avait perdu connaissance là-bas, 5 points d'Exaltation sont remboursés et vous pouvez vous Déplacer et utiliser à nouveau une Capacité ce tour-ci.",
+      "DE": "Teleportiere dich an einen beliebigen leeren Ort. Wenn dort bereits ein Wesen besiegt wurde, werden 5 Hype-Punkte erstattet und du kannst dich in diesem Zug erneut bewegen und eine Fähigkeit einsetzen.",
+      "IT": "Teletrasportati in qualsiasi posizione vuota. Se una creatura è svenuta lì, verranno rimborsati 5 Punti Frenesia e puoi Muoverti e utilizzare nuovamente un'Abilità in questo turno.",
+      "ZH": "传送至任意空地。如果有生物在那里失去意识，将返还5点炒劲点，本回合你可以再次移动并使用一项能力。",
+      "ZH-TW": "傳送至任意空地。如果有生物在那裡失去意識，將返還5點炒勁點，本回合你可以再次移動並使用一項能力。",
+      "ES": "Teletranspórtate a cualquier ubicación vacía. Si una criatura ha perdido el conocimiento allí, se reembolsan 5 puntos de Euforia y puedes Moverte y usar una Habilidad nuevamente en este turno.",
+      "PT": "Teleporte-se para qualquer local vazio. Se uma criatura tiver desmaiado lá, 5 pontos de Frenesi são reembolsados e você pode se Mover e usar uma Habilidade novamente neste turno."
+    },
+    "creatureAbility.bigBark.name": {
+      "EN": "Big Bark",
+      "FR": "Gros Ouaf",
+      "DE": "Lautes Bellen",
+      "IT": "Latrato feroce",
+      "ZH": "愤怒狂吠",
+      "ZH-TW": "大聲嘶吼",
+      "ES": "Gran ladrido",
+      "PT": "Latido Alto"
+    },
+    "creatureAbility.bigBark.description": {
+      "EN": "A big bark that damages and pushes enemies out of the affected area.",
+      "FR": "Un gros ouaf qui inflige des dégâts et repousse les enemis en dehors de la zone affectée. ",
+      "DE": "Ein lautes Bellen, das Kreaturen Schaden zufügt und sie 3 Felder zurückstößt. Gegner werden 3 Felder zurückgestoßen, Verbündete 1.",
+      "IT": "Possente latrato che ferisce e respinge le creature di 3 caselle. Sposta i nemici di 3 caselle e gli alleati di 1 casella.",
+      "ZH": "发出愤怒狂吠，对生物造成伤害并将其推开 3 格。敌人会被推开 3 格，盟友会被推开 1 格。",
+      "ZH-TW": "大聲吼叫，傷害並將生物推開 3 格。敵人被推開 3 格，盟友被推開 1 格。",
+      "ES": "Un gran ladrido que daña y aleja a las criaturas 3 casillas de un empujón. Los enemigos se alejan 3 casillas y los aliados, 1.",
+      "PT": "Um latido alto que causa dano e empurra as criaturas em 3 células de distância. Os inimigos são empurrados em 3 células, e os aliados em 1."
+    },
+    "creatureAbility.ShoutBorn.name": {
+      "EN": "Shout Born",
+      "FR": "Coup de canin",
+      "DE": "Schreigeboren",
+      "IT": "Grido travolgente",
+      "ZH": "示威喊叫",
+      "ZH-TW": "吼走",
+      "ES": "Grito de lejos",
+      "PT": "Gritaria"
+    },
+    "creatureAbility.ShoutBorn.description": {
+      "EN": "Barks at a target, pushing it 4 cells away, dealing moderate damage.",
+      "FR": "Aboie sur une cible, la repoussant de 4 cases et lui infligeant des dégâts modérés.",
+      "DE": "Brüllt ein Ziel an, stößt es 3 Felder zurück und fügt ihm moderaten Schaden zu.",
+      "IT": "Grida contro un bersaglio, respingendolo di 3 caselle e infliggendo danni moderati.",
+      "ZH": "对一个目标喊叫，将其推到 3 个格子之外，造成中等伤害。",
+      "ZH-TW": "對一個目標吼叫，將其推開 3 格，造成中量傷害。",
+      "ES": "Grita a un objetivo y lo aleja 3 casillas, lo que le provoca un daño moderado.",
+      "PT": "Grita para um alvo, empurrando-o em 3 células de distância, causando dano moderado."
+    },
+    "creatureAbility.BodyGuard.name": {
+      "EN": "Bodyguard",
+      "FR": "Garde du corps",
+      "DE": "Leibwächter",
+      "IT": "Guardia del corpo",
+      "ZH": "贴身护卫",
+      "ZH-TW": "保鏢",
+      "ES": "Guardaespaldas",
+      "PT": "Guarda-costas"
+    },
+    "creatureAbility.BodyGuard.description": {
+      "EN": "If any ally is about to get hit, this creature will jump to the rescue and cancel the attack, dealing light damage.",
+      "FR": "Si un allié est sur le point d'être touché, cette créature sautera à la rescousse et neutralisera l'attaque, infligeant des dégâts légers.",
+      "DE": "Wenn ein Verbündeter gleich getroffen wird, springt diese Kreatur dazwischen, unterbricht den Angriff und verursacht leichten Schaden.",
+      "IT": "Se un alleato sta per essere colpito, questa creatura interviene in suo aiuto e annulla l'attacco, infliggendo danni lievi.",
+      "ZH": "如果任何盟友即将被击中，此生物会跳去救援并取消攻击，造成轻微伤害。",
+      "ZH-TW": "如果任何盟友即將被擊中，此生物就會跳去救援，取消該攻擊，並造成少量傷害。",
+      "ES": "Si algún aliado está a punto de ser golpeado, esta criatura saltará para rescatarlo y cancelará el ataque, lo que provoca un poco de daño.",
+      "PT": "Se qualquer aliado estiver prestes a ser atingido, essa criatura pulará para salvá-lo e cancelará o ataque, causando dano leve."
+    },
+    "creatureAbility.groundControl.name": {
+      "EN": "Ground Control",
+      "FR": "Terrain gardé",
+      "DE": "Bodenkontrolle",
+      "IT": "Difesa del territorio",
+      "ZH": "地面控制",
+      "ZH-TW": "地面控制",
+      "ES": "Control de tierra",
+      "PT": "Controle de Solo"
+    },
+    "creatureAbility.groundControl.description": {
+      "EN": "Jump to a cell, pushing enemies away. You can play another ability after this.",
+      "FR": "Bondit sur une case en repoussant les ennemis. Vous pouvez ensuite utiliser une autre compétence.",
+      "DE": "Springt auf ein Feld. Diese Fähigkeit zählt als Bewegung, also kannst du danach angreifen.",
+      "IT": "Salta ad una casella, respingendo gli avversari. Un'altra abilità può essere usata subito dopo.",
+      "ZH": "跳到一个格子上。此招数算作一次行动，你可以在使用之后发动攻击。",
+      "ZH-TW": "跳到一個格子上。此技能屬於移動，使用後可以進行攻擊。",
+      "ES": "Salta hacia una casilla empujando a los enemigos. Se puede usar otra habilidad despues de esto.",
+      "PT": "Pule em uma célula, empurrando os inimigos para longe. Você pode usar outra habilidade em seguida."
+    },
+    "creatureAbility.encore.name": {
+      "EN": "Encore",
+      "FR": "Encore",
+      "DE": "Zugabe",
+      "IT": "Bis",
+      "ZH": "再来一回",
+      "ZH-TW": "安可",
+      "ES": "Repetición",
+      "PT": "Repetir"
+    },
+    "creatureAbility.encore.description": {
+      "EN": "For the cost of Encore, use last ability again with a 25% damage increase buff.",
+      "FR": "Avec un bonus de dégâts de 25 %, utilisez à nouveau la dernière capacité pour le coût de Encore.",
+      "DE": "Setzt für die Kosten von „Zugabe“ die letzte Fähigkeit mit einem Schadensbonus von 25 % erneut ein.",
+      "IT": "Al costo di Bis, usa di nuovo l'ultima abilità eseguita con un bonus di 25% ai danni.",
+      "ZH": "消耗“再来一回”，再次使用最后一次使用过的招数，且附带 25% 的伤害提高增益。",
+      "ZH-TW": "消耗安可，再次使用上次的技能，並附加 25% 傷害提升增益。",
+      "ES": "A cambio de la Repetición, vuelve a usar la última habilidad con una ventaja de aumento del 25 %.",
+      "PT": "Pelo custo de Repetir, use a última habilidade novamente com um aumento de 25% de dano."
+    },
+    "creatureAbility.rainbowFlash.name": {
+      "EN": "Rainbow Flash",
+      "FR": "Flash arc-en-ciel",
+      "DE": "Regenbogenblitz",
+      "IT": "Lampo arcobaleno",
+      "ZH": "彩虹冲刺",
+      "ZH-TW": "彩虹閃光",
+      "ES": "Destello arcoíris",
+      "PT": "Raio Arco-íris"
+    },
+    "creatureAbility.rainbowFlash.description": {
+      "EN": "Instantly dash in a straight line for 5 cells through obstacles, dealing damage to any creatures on the way.",
+      "FR": "Courez instantanément en ligne droite sur 5 cases au travers des obstacles, en infligeant des dégâts à toutes les créatures sur votre passage.",
+      "DE": "Saust sofort in einer geraden Linie 5 Felder weit und durchquert Hindernisse. Fügt Kreaturen auf dem Weg Schaden zu.",
+      "IT": "Scatta in linea retta per 5 caselle attraversando gli ostacoli e infliggendo danni alle creature presenti lungo il percorso.",
+      "ZH": "立即以直线向前冲刺 5 格，穿过障碍物，对途中的一切生物造成伤害。",
+      "ZH-TW": "立刻直線衝刺 5 格，穿越障礙物，並對途中的任何生物造成傷害。",
+      "ES": "Se abalanza al instante en línea recta, recorre 5 casillas a través de obstáculos e inflige daño a las criaturas que encuentra a su paso.",
+      "PT": "Corra instantaneamente em uma linha reta por 5 células através de obstáculos, causando dano a quaisquer criaturas que estejam no caminho."
+    },
+    "creatureAbility.comeAndPlay.name": {
+      "EN": "Come and Play",
+      "FR": "Viens jouer",
+      "DE": "Komm spielen",
+      "IT": "Giochiamo insieme",
+      "ZH": "迎面会友",
+      "ZH-TW": "來一起玩",
+      "ES": "Ven a jugar",
+      "PT": "Venha Brincar"
+    },
+    "creatureAbility.comeAndPlay.description": {
+      "EN": "Charge in a straight line, throwing the first encountered creature behind, dealing damage.",
+      "FR": "Chargez en ligne droite, projetant la première créature rencontrée derrière vous et lui infligeant des dégâts.",
+      "DE": "Stürmt in einer geraden Linie vor, wirft die erste Kreatur auf dem Weg hinter sich und fügt ihr Schaden zu.",
+      "IT": "Carica in linea retta, lanciando all'indietro la prima creatura che incontra e infliggendole danni.",
+      "ZH": "直线冲锋，将第一个遇到的生物扔到后面，并对其造成伤害。",
+      "ZH-TW": "朝直線衝鋒，將碰到的生物向後丟，造成傷害。",
+      "ES": "Arremete en línea recta y lanza hacia atrás a la primera criatura que encuentra, causándole daño.",
+      "PT": "Corra em uma linha reta, jogando a primeira criatura que encontrar para trás e causando dano."
+    },
+    "creatureAbility.kickback.name": {
+      "EN": "Kickback",
+      "FR": "Contrecoup",
+      "DE": "Rücktritt",
+      "IT": "Scalciata",
+      "ZH": "大力飞踢",
+      "ZH-TW": "踢回去",
+      "ES": "Patada atrás",
+      "PT": "Recuo"
+    },
+    "creatureAbility.kickback.description": {
+      "EN": "This creature will kick the next creature behind it.",
+      "FR": "Cette créature attaque la prochaine créature derrière elle.",
+      "DE": "Diese Kreatur tritt die nächste Kreatur hinter sich.",
+      "IT": "La creatura sferra un calcio al primo nemico che si posizioni alle sue spalle.",
+      "ZH": "这个生物会踢它身后的下一个生物。",
+      "ZH-TW": "此生物會踢下一個在後面的生物。",
+      "ES": "Esta criatura le dará una patada a la próxima criatura que tenga detrás.",
+      "PT": "Esta criatura chutará a criatura que estiver atrás dela."
+    },
+    "creatureAbility.FlyingDrop.name": {
+      "EN": "Sky Drop",
+      "FR": "Plongeon céleste",
+      "DE": "Himmelssturz",
+      "IT": "Attacco aereo",
+      "ZH": "空中袭击",
+      "ZH-TW": "空降",
+      "ES": "Picado celestial",
+      "PT": "Ataque Aéreo"
+    },
+    "creatureAbility.FlyingDrop.description": {
+      "EN": "Take off to prepare a devastating dive attack next turn",
+      "FR": "Décollez pour préparer une attaque en piqué dévastatrice au prochain tour.",
+      "DE": "Hebt ab, um nächste Runde einen verheerenden Sturzangriff auszuführen.",
+      "IT": "Spicca il volo per prepararsi a un devastante attacco in tuffo nel turno successivo.",
+      "ZH": "起飞，准备在下一回合发动毁灭性的俯冲攻击",
+      "ZH-TW": "起飛，準備在下回合發動高殺傷力的俯衝攻擊。",
+      "ES": "Despega para preparar un ataque en picado devastador en el siguiente turno.",
+      "PT": "Decole para preparar um ataque devastador de investida no próximo turno."
+    },
+    "creatureAbility.AttackAndBack.name": {
+      "EN": "Attack & Back",
+      "FR": "Frappe-échappe",
+      "DE": "Fluchtangriff",
+      "IT": "Attacco e fuga",
+      "ZH": "一击脱离",
+      "ZH-TW": "攻擊退後",
+      "ES": "Ataque y atrás",
+      "PT": "Atacar e Voltar"
+    },
+    "creatureAbility.AttackAndBack.description": {
+      "EN": "Strike an enemy, then jump back out of reach.",
+      "FR": "Frappez un ennemi, puis sautez en arrière pour vous mettre hors de portée.",
+      "DE": "Greift einen Gegner an und springt dann außer Reichweite.",
+      "IT": "Colpisce un nemico e indietreggia con un salto fuori dalla sua portata.",
+      "ZH": "对一个敌人发动攻击，然后跳回至其无法攻击的位置。",
+      "ZH-TW": "攻擊敵人，再向後跳出範圍。",
+      "ES": "Ataca a un enemigo y luego salta hacia atrás para salir de su alcance.",
+      "PT": "Atinja um inimigo e depois pule para longe do alcance dele."
+    },
+    "creatureAbility.SharpGust.name": {
+      "EN": "Sharp Gust",
+      "FR": "Vent tranchant",
+      "DE": "Scharfe Böe",
+      "IT": "Raffica di vento",
+      "ZH": "锐利劲风",
+      "ZH-TW": "刺人風暴",
+      "ES": "Ráfaga afilada",
+      "PT": "Rajada Afiada"
+    },
+    "creatureAbility.SharpGust.description": {
+      "EN": "Trigger a strong gust of wind that causes damage and pushes creatures in 3-cells line.",
+      "FR": "Déclenche une forte rafale de vent qui inflige des dégâts sur 3 cases consécutives et repousse les créatures.",
+      "DE": "Entfesselt eine starke Böe, die auf 3 Feldern in einer Reihe Schaden verursacht.",
+      "IT": "Genera una raffica di vento che infligge danni per 3 caselle in linea retta.",
+      "ZH": "发动一阵强风，对排成一排的 3 个格子造成伤害。",
+      "ZH-TW": "刮起一陣強風，會對連續 3 格造成傷害。",
+      "ES": "Lanza una fuerte ráfaga de viento que causa daño en 3 casillas seguidas.",
+      "PT": "Lance uma rajada de vento forte que causará dano por 3 células consecutivas."
+    },
+    "creatureAbility.overtake.name": {
+      "EN": "Overtake",
+      "FR": "Ascendance",
+      "DE": "Überholen",
+      "IT": "Sorpasso",
+      "ZH": "超越追击",
+      "ZH-TW": "超前",
+      "ES": "Adelantamiento",
+      "PT": "Ultrapassar"
+    },
+    "creatureAbility.overtake.description": {
+      "EN": "If attacked at close range before next turn, jump behind the aggressor and play its next turn ealier.",
+      "FR": "Si vous êtes attaqué à bout portant avant votre prochain tour, sautez derrière l'agresseur et jouez votre prochain tour plus tôt.",
+      "DE": "Wenn du vor nächster Runde auf kurze Distanz angegriffen wirst, springst du hinter den Angreifer und bist früher dran.",
+      "IT": "Se subisce un attacco ravvicinato prima del turno successivo, salta alle spalle dell'aggressore e inizia in anticipo il proprio turno.",
+      "ZH": "如果在下一回合前受到近距离攻击，就会跳到攻击者后面并提前开始下一回合。",
+      "ZH-TW": "如果在下回合前受到近距離攻擊，則跳到攻擊者後方，並提早開始自己的下一個回合。",
+      "ES": "Si recibe un ataque a corta distancia antes del siguiente turno, salta detrás del agresor y juega su siguiente turno antes.",
+      "PT": "Se atacado em curto alcance antes do próximo turno, pule atrás do agressor e jogue o próximo turno dele mais cedo."
+    },
+    "creatureAbility.freshCherry.name": {
+      "EN": "Fresh Cherry",
+      "FR": "Cerise Fraîche",
+      "DE": "Frische Kirsche",
+      "IT": "Ciliegia Fresca",
+      "ZH": "新鲜樱桃",
+      "ZH-TW": "新鮮櫻桃",
+      "ES": "Cereza Fresca",
+      "PT": "Cereja Fresca"
+    },
+    "creatureAbility.freshCherry.description": {
+      "EN": "Throw a protective bomb that explodes in a cross pattern. Affected allies will Dodge the next direct attack. Expires at the start of the affected ally's turn.",
+      "FR": "Lancez une bombe protectrice qui explose en forme de croix. Les alliés touchés esquiveront la prochaine attaque directe. Expire au début du tour de l'allié affecté.",
+      "DE": "Wirf eine schützende Bombe, die sich in einem Kreuzmuster explodiert. Betroffene Verbündete werden dem nächsten direkten Angriff ausweichen. Verfällt zu Beginn des Zuges des betroffenen Verbündeten.",
+      "IT": "Lancia una bomba protettiva che esplode a forma di croce. Gli alleati colpiti schiveranno il prossimo attacco diretto. Scade all'inizio del turno dell'alleato colpito.",
+      "ZH": "投掷一颗保护性炸弹，爆炸成十字形。受影响的盟友将躲避下一次直接攻击。在受影响盟友的回合开始时失效。",
+      "ZH-TW": "投擲一顆保護性炸彈，爆炸成十字形。受影響的盟友將躲避下一次直接攻擊。在受影響盟友的回合開始時失效。",
+      "ES": "Lanza una bomba protectora que explota en forma de cruz. Los aliados afectados esquivarán el próximo ataque directo. Expira al comienzo del turno del aliado afectado.",
+      "PT": "Arremesse uma bomba protetora que explode em um padrão em cruz. Aliados afetados irão esquivar do próximo ataque direto. Expira no início do turno do aliado afetado"
+    },
+    "creatureAbility.rottenCherry.name": {
+      "EN": "Rotten Cherry",
+      "FR": "Cerise Pourrie",
+      "DE": "Verfaulte Kirsche",
+      "IT": "Ciliegia Marcia",
+      "ZH": "腐烂的樱桃",
+      "ZH-TW": "腐爛的櫻桃",
+      "ES": "Cereza Podrida",
+      "PT": "Cereja Podre"
+    },
+    "creatureAbility.rottenCherry.description": {
+      "EN": "Toss a bomb that deals damage in a cross pattern.",
+      "FR": "Lancez une bombe qui inflige des dégâts en forme de croix.",
+      "DE": "Wirf eine Bombe, die Schaden in Form eines Kreuzes verursacht.",
+      "IT": "Lancia una bomba che infligge danni in un pattern a croce.",
+      "ZH": "投掷一颗爆炸成十字形的炸弹，对敌人造成伤害。",
+      "ZH-TW": "投擲一顆爆炸成十字形的炸彈，對敵人造成傷害。",
+      "ES": "Lanza una bomba que causa daño en un patrón de cruz.",
+      "PT": "Arremesse uma bomba que causa dano em um padrão em cruz."
+    },
+    "creatureAbility.frostyMood.name": {
+      "EN": "Frosty Mood",
+      "FR": "Ambiance glaciale",
+      "DE": "Eisige Stimmung",
+      "IT": "Atmosfera gelida",
+      "ZH": "冷冽的情绪",
+      "ZH-TW": "冷冽的情緒",
+      "ES": "Estado de ánimo frío",
+      "PT": "Humor frio"
+    },
+    "creatureAbility.frostyMood.description": {
+      "EN": "Purge buffs and debuffs from the next creature to move within range",
+      "FR": "Supprime les améliorations et les affaiblissements de la prochaine créature à se déplacer dans la zone",
+      "DE": "Entferne Verstärkungen und Schwächungen von der nächsten Kreatur, die sich innerhalb der Reichweite bewegt",
+      "IT": "Rimuovi i potenziamenti e gli indebolimenti dalla prossima creatura che si muove entro il raggio",
+      "ZH": "从下一个移动到范围内的生物身上清除增益和减益效果",
+      "ZH-TW": "從下一個移動到範圍內的生物身上清除增益和減益效果",
+      "ES": "Elimina los beneficios y perjuicios de la siguiente criatura que se mueva dentro del rango",
+      "PT": "Remove os buffs e debuffs da próxima criatura a se mover dentro do alcance"
+    },
+    "creatureAbility.mightyMint.name": {
+      "EN": "Mighty Mint",
+      "FR": "Menthe puissante",
+      "DE": "Mächtige Minze",
+      "IT": "Menta potente",
+      "ZH": "强大薄荷",
+      "ZH-TW": "強大薄荷",
+      "ES": "Menta poderosa",
+      "PT": "Menta poderosa"
+    },
+    "creatureAbility.mightyMint.description": {
+      "EN": "Place a shield on nearby allies, and reduce enemy Ether Defenses by 90%.",
+      "FR": "Place un bouclier sur les alliés à proximité et réduit les défenses d'éther de l'ennemi de 90%.",
+      "DE": "Platziere einen Schild auf nahegelegenen Verbündeten und reduziere die Äther-Verteidigung des Feindes um 90%.",
+      "IT": "Applica uno scudo agli alleati vicini e riduce le difese di Ether del nemico del 90%.",
+      "ZH": "为附近的盟友施加一个护盾，并将敌方的以太防御降低90%。",
+      "ZH-TW": "為附近的盟友施加一個護盾，並將敵方的乙太防禦降低90%。",
+      "ES": "Coloca un escudo en los aliados cercanos y reduce las defensas de éter del enemigo en un 90%.",
+      "PT": "Coloca um escudo nos aliados próximos e reduz as defesas de Éter do inimigo em 90%."
+    },
+    "creatureAbility.tailekinesis.name": {
+      "EN": "Tailekinesis",
+      "FR": "Queulékinésie",
+      "DE": "Telekinetischer Schwanz",
+      "IT": "Codacinesi",
+      "ZH": "尾巴横扫",
+      "ZH-TW": "尾巴念動力",
+      "ES": "Colaquinesis",
+      "PT": "Telecinesia da Cauda"
+    },
+    "creatureAbility.tailekinesis.description": {
+      "EN": "Axobubble's tail attacks are ranged and push creatures back. Can target allies.",
+      "FR": "Les coups de queue d'Axobubble sont des attaques à distance qui repoussent les créatures. Peut cibler les alliés.",
+      "DE": "Die Schwanzangriffe von Axobubble sind Fernkampfangriffe und stoßen Kreaturen zurück. Auch gegen Verbündete einsetzbar.",
+      "IT": "Gli attacchi di coda di Axobubble colpiscono a distanza e respingono le creature. Possono ferire anche gli alleati.",
+      "ZH": "Axobubble 用尾巴发动范围攻击，并将生物推回。可对盟友发动。",
+      "ZH-TW": "Axobubble 的尾巴攻擊改為遠程攻擊，並會將生物推開。可以盟友為目標。",
+      "ES": "Los ataques con la cola de Axobubble son a larga distancia y empujan a las criaturas hacia atrás. Puede fijar como objetivos a aliados.",
+      "PT": "Os ataques da cauda de Axobubble são de longo alcance e empurram as criaturas para trás. Pode atingir aliados."
+    },
+    "creatureAbility.bitebitPassive.name": {
+      "EN": "Catrenaline",
+      "FR": "Chadrénaline",
+      "DE": "Adrekrallin",
+      "IT": "Gatrenalina",
+      "ZH": "肾上猫素",
+      "ZH-TW": "喵喵腎上腺素",
+      "ES": "Felinalina",
+      "PT": "Adrenalina Felina"
+    },
+    "creatureAbility.bitebitPassive.description": {
+      "EN": "Gain Catrenaline stacks when dealing damage with special abilities. Each stack adds an extra strike to the basic attack.",
+      "FR": "Gagnez des cumuls de Chadrénaline lorsque vous infligez des dégâts avec des capacités spéciales. Chaque cumul ajoute un coup supplémentaire à l'attaque de base.",
+      "DE": "Erhalte „Adrekrallin“-Stapel, wenn du mit bestimmten Fähigkeiten Schaden verursachst. Jeder Stapel fügt dem normalen Angriff einen zusätzlichen Hieb hinzu.",
+      "IT": "Accumula Gatrenalina quando infligge danni con abilità speciali. Ogni accumulo aggiunge un colpo all'attacco base.",
+      "ZH": "用特殊招数造成伤害时可叠加肾上猫素层数。每层都能为基本攻击增加一次额外攻击次数。",
+      "ZH-TW": "用特殊技能造成傷害時獲得喵喵腎上腺素疊加。每層疊加使基本攻擊額外攻擊一次。",
+      "ES": "Obtienes acumulaciones de Felinalina cuando infliges daño con habilidades especiales. Cada acumulación suma golpes adicionales al ataque básico.",
+      "PT": "Ganhe acúmulos de Adrenalina Felina ao causar dano com habilidades especiais. Cada acúmulo adiciona um ataque extra ao básico."
+    },
+    "creatureAbility.freshGreens.name": {
+      "EN": "Fresh Greens",
+      "FR": "Plante fraîche",
+      "DE": "Frisches Gemüse",
+      "IT": "Effetto detox",
+      "ZH": "治愈鲜绿",
+      "ZH-TW": "新鮮青菜",
+      "ES": "Verdura fresca",
+      "PT": "Revigoramento"
+    },
+    "creatureAbility.freshGreens.description": {
+      "EN": "Blockchoy's aura lightly heals any creatures ending its turn nearby.",
+      "FR": "L'aura de Block Choy soigne légèrement toutes les créatures achevant leur tour à proximité.",
+      "DE": "Block Choys Aura heilt Kreaturen, die in der Nähe ihre Runde beenden, leicht.",
+      "IT": "L'aura di Block Choy cura le creature che concludono il proprio turno nelle vicinanze.",
+      "ZH": "Block Choy 的光环可以略微治疗附近结束其回合的一切生物。",
+      "ZH-TW": "Block Choy 的氣場能為附近結束回合的生物提供少量治療。",
+      "ES": "El aura de Block Choy cura un poco a cualquier criatura que termine su turno cerca.",
+      "PT": "A aura de Blockchoy cura levemente qualquer criatura que termine o turno nas proximidades."
+    },
+    "creatureAbility.satisfyingNoise.name": {
+      "EN": "Satisfying Noise",
+      "FR": "Bruit rigolo",
+      "DE": "Befriedigendes Geräusch",
+      "IT": "Balsamo sonoro",
+      "ZH": "愉悦之声",
+      "ZH-TW": "清脆的聲響",
+      "ES": "Sonido de satisfacción",
+      "PT": "Ruído Agradável"
+    },
+    "creatureAbility.satisfyingNoise.description": {
+      "EN": "Bob makes a satisfying noise when he's hit. This grants Hype to his attackers.",
+      "FR": "Bob émet un son gracieux lorsqu'il est touché. Confère de l'Émulation à ses attaquants.",
+      "DE": "Bob macht ein befriedigendes Geräusch, wenn er getroffen wird. Angreifer erhalten dadurch Hype.",
+      "IT": "Bob emette un suono piacevole quando subisce un colpo, fornendo hype a chi attacca.",
+      "ZH": "Bob 被击中时，会发出愉悦之声。这会使他的攻击者得到超能点数。",
+      "ZH-TW": "Bob 被擊中時發出清脆的聲響，使攻擊者獲得興奮值。",
+      "ES": "Bob emite un sonido de satisfacción cuando lo golpean. Esto proporciona entusiasmo a sus atacantes.",
+      "PT": "Bob faz um ruído agradável quando é atingido. Isso garante Hype a seus agressores."
+    },
+    "creatureAbility.dinobitPassive.name": {
+      "EN": "Unstoppable Force",
+      "FR": "Force majeure",
+      "DE": "Unaufhaltsame Kraft",
+      "IT": "Forza inarrestabile",
+      "ZH": "势不可挡",
+      "ZH-TW": "勢不可擋",
+      "ES": "Fuerza imparable",
+      "PT": "Força Imparável"
+    },
+    "creatureAbility.dinobitPassive.description": {
+      "EN": "When moving, Dinobit can end its walk on a cell occupied by another creature, pushing it away.",
+      "FR": "Lorsqu'il se déplace, Dinobit peut terminer sa course sur une case occupée par une autre créature, la repoussant alors.",
+      "DE": "Wenn Dinobit sich bewegt, kann er auf einem Feld stehenbleiben, das bereits von einer Kreatur belegt ist, um sie zurückzustoßen.",
+      "IT": "Quando si muove, Dinobit può fermarsi su una casella occupata da un'altra creatura, respingendola.",
+      "ZH": "移动时，Dinobit 可以停在另一个生物占据的格子上，并将其推开。",
+      "ZH-TW": "Dinobit 移動時可結束在已被其他生物佔據的格子，並將該生物推開。",
+      "ES": "Al moverse, Dinobit puede terminar su recorrido en una casilla ocupada por otra criatura y, en ese caso, la empujará para sacarla de ese lugar.",
+      "PT": "Ao se mover, Dinobit pode terminar sua caminhada em uma célula ocupada por outra criatura, empurrando-a para longe."
+    },
+    "creatureAbility.SlipperySkin.name": {
+      "EN": "Slippery Skin",
+      "FR": "Peau glissante",
+      "DE": "Glitschige Haut",
+      "IT": "Pelle scivolosa",
+      "ZH": "光滑皮肤",
+      "ZH-TW": "滑溜溜",
+      "ES": "Piel resbaladiza",
+      "PT": "Pele Pegajosa"
+    },
+    "creatureAbility.SlipperySkin.description": {
+      "EN": "Every fourth effect that should be applied to Dipking fails - including when coming from allies' abilities.",
+      "FR": "Chaque quatrième effet censé s'appliquer à Dipking échoue, y compris ceux provenant des capacités des alliés.",
+      "DE": "Jeder vierte Effekt, der Dipking betrifft, schlägt fehl. Das umfasst auch Effekte von verbündeten Fähigkeiten.",
+      "IT": "Ogni quarto effetto applicato a Dipking manca il bersaglio, inclusi quelli provenienti dalle abilità degli alleati.",
+      "ZH": "本应施加于 Dipking 的第四次效果都会失效，包括来自盟友招数的效果。",
+      "ZH-TW": "Dipking 每承受四個效果，其中第四個會失效，包含盟友技能的效果。",
+      "ES": "Cada cuarto efecto que debería aplicársele a Dipking falla, aunque proceda de las habilidades de sus aliados.",
+      "PT": "Todo quarto efeito que deveria ser aplicado ao Dipking falha, inclusive se vier das habilidades de aliados."
+    },
+    "creatureAbility.passession.name": {
+      "EN": "Passession",
+      "FR": "Passession",
+      "DE": "Besitz erfliegen",
+      "IT": "Possessione",
+      "ZH": "飞越高空",
+      "ZH-TW": "幽靈穿體",
+      "ES": "Pasesión",
+      "PT": "Paixesão"
+    },
+    "creatureAbility.passession.description": {
+      "EN": "Number 9 can only interact with marked creatures. To mark a creature, Number 9 must fly through them. If the creature is an enemy, Number 9 gains 1 Hype point.",
+      "FR": "Number 9 ne peut interagir qu'avec des créatures marquées. Pour marquer une créature, Number 9 doit la traverser en volant. Si la créature est un ennemi, Number 9 gagne 1 point d'Émulation.",
+      "DE": "Number 9 kann nur mit markierten Kreaturen interagieren. Um eine Kreatur zu markieren, muss Number 9 durch sie hindurchfliegen. Sollte es sich um einen Gegner handeln, erhält Number 9 1 Hype-Punkt.",
+      "IT": "Number 9 può interagire solo con le creature marchiate. Per marchiare una creatura, deve attraversarla in volo. Se la creatura è un nemico, Number 9 ottiene 1 punto hype.",
+      "ZH": "Number 9 只能与被标记的生物互动。要标记一个生物，Number 9 必须飞过它们。如果该生物是一个敌人，Number 9 会获得 1 点超能点数。",
+      "ZH-TW": "Number 9 只能和被標記的生物互動。Number 9 必須穿透生物，才能進行標記。如果該生物是敵人，則 Number 9 獲得 1 點興奮值。",
+      "ES": "Number 9 solo puede interactuar con criaturas marcadas. Para marcar a una criatura, Number 9 debe atravesarla volando. Si la criatura es un enemigo, Number 9 obtiene 1 punto de entusiasmo.",
+      "PT": "Number 9 só pode interagir com as criaturas marcadas. Para marcar uma criatura, Number 9 deve voar através dela. Se a criatura for um inimigo, Number 9 ganha 1 ponto de Hype."
+    },
+    "creatureAbility.shibaPassive.name": {
+      "EN": "Pack protector",
+      "FR": "Garde-meutre",
+      "DE": "Rudelverteidiger",
+      "IT": "Capobranco",
+      "ZH": "兽群守护",
+      "ZH-TW": "獸群守護者",
+      "ES": "Protector de la manada",
+      "PT": "Protetor do Grupo"
+    },
+    "creatureAbility.shibaPassive.description": {
+      "EN": "Shiba has up to +40 physical power, +40 ether power and +6 move range depending on how badly his allies are hurt.",
+      "FR": "En fonction de la gravité de la blessure de ses alliés, Shiba bénéficie d'une Puissance Physique allant jusqu'à +40, d'une Puissance Ether allant jusqu'à +40 et de Points de Mouvement allant jusqu'à +6.",
+      "DE": "Shiba verfügt abhängig davon, wie schwer verletzt seine Verbündeten sind, über bis zu +40 Physische Kraft, +40 Ätherkraft und +6 Bewegungsreichweite.",
+      "IT": "Shiba riceve fino a +40 potenza fisica, +40 potenza eterea e +6 raggio di movimento, in base alla gravità dei danni subiti dai suoi alleati.",
+      "ZH": "Shiba 最多可以拥有 +40 物理强度，+40 以太强度和 +6 移动距离 ，取决于他的盟友受伤害的严重程度。",
+      "ZH-TW": "Shiba 根據盟友的受傷程度，最多可獲得 +40 物理威力、+40 乙太威力和 +6 移動距離。",
+      "ES": "Shiba tiene hasta +40 de potencia física, +40 de potencia de éter y +6 de alcance de movimiento, según el daño que estén sufriendo sus aliados.",
+      "PT": "Shiba ganha até +40 de poder físico, +40 de poder de éter e +6 de alcance de movimento, dependendo da gravidade dos ferimentos dos aliados."
+    },
+    "creatureAbility.inspiring.name": {
+      "EN": "Inspiring",
+      "FR": "Inspirant",
+      "DE": "Inspirierend",
+      "IT": "Incoraggiante",
+      "ZH": "鼓舞人心",
+      "ZH-TW": "鼓舞人心",
+      "ES": "Inspiración",
+      "PT": "Inspiração"
+    },
+    "creatureAbility.inspiring.description": {
+      "EN": "Each turn, the first time Unika moves, it leaves behind an inspiring mark that any creature can pick up to get an extra move.",
+      "FR": "À chaque tour, lors du premier mouvement d'Unika, ce dernier laisse derrière lui une marque d'inspiration que toute créature peut ramasser pour obtenir un déplacement supplémentaire.",
+      "DE": "Unika hinterlässt bei der ersten Bewegung jede Runde eine inspirierende Markierung, die andere Kreaturen aufsammeln können, damit sie sich erneut bewegen können.",
+      "IT": "A ogni turno, la prima volta che Unika si muove lascia dietro di sé un segno di incoraggiamento che fornisce un movimento bonus a chi lo raccoglie.",
+      "ZH": "每一回合，当 Unika 第一次移动时，会留下一个鼓舞人心的标记，任何生物都可以拾取此标记，以获得一次额外的移动机会。",
+      "ZH-TW": "Unika 每回合第一次移動時，會留下鼓舞記號。任何生物都能撿起該記號，並獲得一次額外行動機會。",
+      "ES": "En cada turno, la primera vez que mueve Unika, deja atrás una marca inspiradora que cualquier criatura puede recoger para recibir un movimiento adicional.",
+      "PT": "A cada turno, na primeira vez que Unika se mover, deixa para trás uma marca inspiradora que qualquer criatura pode pegar para receber um movimento extra."
+    },
+    "creatureAbility.PainfulShriek.name": {
+      "EN": "Painful Shriek",
+      "FR": "Cri perçant",
+      "DE": "Schmerzhaftes Kreischen",
+      "IT": "Grido lancinante",
+      "ZH": "痛苦尖叫",
+      "ZH-TW": "刺耳尖叫",
+      "ES": "Chillido de dolor",
+      "PT": "Grito Doloroso"
+    },
+    "creatureAbility.PainfulShriek.description": {
+      "EN": "Zzoo lets out an air-tearing shriek when hurt, dealing damage to nearby creatures.",
+      "FR": "Zzoo pousse un cri strident lorsqu'il est blessé, infligeant des dégâts aux créatures à proximité.",
+      "DE": "Zzoo stößt ein Kreischen aus, das die Luft zerreißt und Kreaturen in der Nähe Schaden zufügt.",
+      "IT": "Se subisce una ferita, Zzoo emette un grido terrificante che infligge danni alle creature vicine.",
+      "ZH": "Zzoo 在受伤时会发出令人撕心裂肺的尖叫声，对附近的生物造成伤害。",
+      "ZH-TW": "Zzoo 受傷時發出震耳欲聾的尖叫，對附近的生物造成傷害。",
+      "ES": "Cuando lo hieren, Zzoo deja escapar un chillido desgarrador que daña a las criaturas cercanas.",
+      "PT": "Quando machucado, Zzoo solta um grito que rompe o ar, causando dano às criaturas próximas."
+    },
+    "creatureAbility.tastyMint.name": {
+      "EN": "Tasty Mint",
+      "FR": "Menthe Savoureuse",
+      "DE": "Leckere Minze",
+      "IT": "Menta Gustosa",
+      "ZH": "美味薄荷",
+      "ZH-TW": "美味薄荷",
+      "ES": "Menta Sabrosa",
+      "PT": "Menta Saborosa"
+    },
+    "creatureAbility.tastyMint.description": {
+      "EN": "Each turn, Chocomint's first move leaves behind a mark that grants a shield.",
+      "FR": "À chaque tour, le premier mouvement de Chocomint laisse une marque qui accorde un bouclier.",
+      "DE": "Jede runde hinterlässt Chocomints erster Zug eine Markierung, die einen Schild gewährt.",
+      "IT": "Ogni turno, la prima mossa di Chocomint lascia un segno che garantisce uno scudo.",
+      "ZH": "每回合，Chocomint的第一次行动会留下一个印记，授予一个护盾。",
+      "ZH-TW": "每回合，Chocomint的第一次行動會留下一個印記，授予一個護盾。",
+      "ES": "En cada turno, el primer movimiento de Chocomint deja una marca que otorga un escudo.",
+      "PT": "A cada turno, o primeiro movimento do Chocomint deixa uma marca que concede um escudo."
+    },
+    "creatureAbility.assertDominance.name": {
+      "EN": "Assert Dominance",
+      "FR": "Domination affirmée",
+      "DE": "Dominanzverhalten",
+      "IT": "Prova di forza",
+      "ZH": "主导地位",
+      "ZH-TW": "展現威望",
+      "ES": "Afirmación de dominio",
+      "PT": "Dominância Imposta"
+    },
+    "creatureAbility.assertDominance.description": {
+      "EN": "Bites a nearby creature. If that creature tries to hurt an ally during its turn, it will be bitten again for extra damage.",
+      "FR": "Mord une créature proche. Si cette créature tente de blesser un allié pendant son tour, elle sera mordue à nouveau et subira des dégâts supplémentaires.",
+      "DE": "Beißt eine Kreatur in der Nähe. Sollte sie in ihrer Runde versuchen, einen Verbündeten zu verletzen, wird sie erneut gebissen und erleidet zusätzlichen Schaden.",
+      "IT": "Morde una creatura vicina. Se durante il suo turno tenta di ferire un alleato, la vittima del morso viene colpita di nuovo subendo ulteriori danni.",
+      "ZH": "啃咬附近的一个生物。如果该生物在它的回合中试图伤害一名盟友，它将再次被咬，受到额外伤害。",
+      "ZH-TW": "咬附近的一個生物。如果該生物在自身回合內試圖傷害盟友，則會再被咬一次，造成額外傷害。",
+      "ES": "Muerde a una criatura cercana. Si esa criatura intenta herir a un aliado en su turno, la volverá a morder para provocarle daño adicional.",
+      "PT": "Morde uma criatura próxima. Se essa criatura tentar machucar um aliado durante seu turno, ela será mordida novamente e sofrerá dano extra."
+    },
+    "creatureAbility.defenseDown.name": {
+      "EN": "Defense Down",
+      "FR": "Défense réduite",
+      "DE": "Abwehr verringert",
+      "IT": "Difesa ridotta",
+      "ZH": "防御降低",
+      "ZH-TW": "防禦降低",
+      "ES": "Reducción de defensa",
+      "PT": "Defesa Reduzida"
+    },
+    "creatureAbility.defenseDown.description": {
+      "EN": "Decreased Physical / Ether Defense",
+      "FR": "Réduction Défense Physique/Défense Ether",
+      "DE": "Verringerte physische Abwehr/Ätherabwehr",
+      "IT": "Difesa fisica ed eterea ridotta",
+      "ZH": "物理 / 以太防御降低",
+      "ZH-TW": "物理／乙太防禦降低",
+      "ES": "Defensa física/de éter reducida.",
+      "PT": "Defesa Física/de Éter reduzida"
+    },
+    "creatureAbility.defenseUp.name": {
+      "EN": "Defense Up",
+      "FR": "Défense augmentée",
+      "DE": "Abwehr erhöht",
+      "IT": "Difesa incrementata",
+      "ZH": "防御提高",
+      "ZH-TW": "防禦提升",
+      "ES": "Aumento de defensa",
+      "PT": "Defesa Aumentada"
+    },
+    "creatureAbility.defenseUp.description": {
+      "EN": "Increased Physical / Ether Defense",
+      "FR": "Augmentation Défense Physique/Défense Ether",
+      "DE": "Erhöhte physische Abwehr/Ätherabwehr",
+      "IT": "Difesa fisica ed eterea incrementata",
+      "ZH": "物理 / 以太防御提高",
+      "ZH-TW": "物理／乙太防禦提升",
+      "ES": "Defensa física/de éter aumentada.",
+      "PT": "Defesa Física/de Éter aumentada"
+    },
+    "creatureAbility.magicalDefenseDown.name": {
+      "EN": "Ether Defense Down",
+      "FR": "Défense d'Ether réduite",
+      "DE": "Ether-Verteidigung verringert",
+      "IT": "Difesa Ether abbassata",
+      "ZH": "以太防御降低",
+      "ZH-TW": "以太防禦降低",
+      "ES": "Defensa de Ether reducida",
+      "PT": "Defesa de Ether diminuída"
+    },
+    "creatureAbility.magicalDefenseDown.description": {
+      "EN": "Decreased Ether Defense",
+      "FR": "Réduction Défense Ether",
+      "DE": "Verringerte Ether-Verteidigung",
+      "IT": "Difesa Ether ridotta",
+      "ZH": "以太防御减少",
+      "ZH-TW": "以太防禦減少",
+      "ES": "Defensa de Ether disminuida",
+      "PT": "Redução na defesa de Ether"
+    },
+    "creatureAbility.FlyingEvade.name": {
+      "EN": "Flying",
+      "FR": "Volant",
+      "DE": "Fliegend",
+      "IT": "Volo",
+      "ZH": "飞翔",
+      "ZH-TW": "飛行",
+      "ES": "Vuelo",
+      "PT": "Voo"
+    },
+    "creatureAbility.FlyingEvade.description": {
+      "EN": "This creature believes it can fly.",
+      "FR": "Cette créature pense qu'elle peut voler.",
+      "DE": "Diese Kreatur glaubt, fliegen zu können.",
+      "IT": "Questa creatura si convince di poter volare.",
+      "ZH": "此生物相信自己可以飞。",
+      "ZH-TW": "此生物相信自己會飛。",
+      "ES": "Esta criatura cree que puede volar.",
+      "PT": "Esta criatura acredita que pode voar."
+    },
+    "creatureAbility.fragile.name": {
+      "EN": "Fragile",
+      "FR": "Vulnérable",
+      "DE": "Zerbrechlich",
+      "IT": "Fragile",
+      "ZH": "脆弱",
+      "ZH-TW": "脆弱",
+      "ES": "Fragilidad",
+      "PT": "Frágil"
+    },
+    "creatureAbility.fragile.description": {
+      "EN": "Damage against this creature is increased.",
+      "FR": "Les dégâts subis par cette créature sont augmentés.",
+      "DE": "Diese Kreatur erleidet mehr Schaden.",
+      "IT": "Incrementa i danni contro questa creatura.",
+      "ZH": "对此生物造成的伤害提高。",
+      "ZH-TW": "對此生物造成的傷害提升。",
+      "ES": "El daño contra esta criatura aumenta.",
+      "PT": "O dano contra esta criatura é aumentado."
+    },
+    "creatureAbility.heal.name": {
+      "EN": "Heal",
+      "FR": "Soin",
+      "DE": "Heilung",
+      "IT": "Cura",
+      "ZH": "治疗",
+      "ZH-TW": "治療",
+      "ES": "Curación",
+      "PT": "Cura"
+    },
+    "creatureAbility.heal.description": {
+      "EN": "This creatures is being healed over time.",
+      "FR": "Ces créatures se soignent sur la durée.",
+      "DE": "Diese Kreatur wird mit der Zeit geheilt.",
+      "IT": "Cura nel tempo la creatura.",
+      "ZH": "此生物正在获得持续治疗。",
+      "ZH-TW": "此生物會持續受到治療。",
+      "ES": "Esta criatura se está curando con el tiempo.",
+      "PT": "Esta criatura está recebendo cura ao longo do tempo."
+    },
+    "creatureAbility.hypeDown.name": {
+      "EN": "Hype Down",
+      "FR": "Émulation réduite",
+      "DE": "Hype verringert",
+      "IT": "Hype ridotto",
+      "ZH": "超能降低",
+      "ZH-TW": "興奮值降低",
+      "ES": "Reducción de entusiasmo",
+      "PT": "Hype Reduzido"
+    },
+    "creatureAbility.hypeDown.description": {
+      "EN": "This creature's Hype is temporary lowered.",
+      "FR": "L'Émulation de cette créature est temporairement réduite.",
+      "DE": "Der Hype dieser Kreatur ist vorübergehend verringert.",
+      "IT": "Riduce temporaneamente l'hype di questa creatura.",
+      "ZH": "此生物的超能被临时降低。",
+      "ZH-TW": "此生物的興奮值暫時降低。",
+      "ES": "El entusiasmo de esta criatura se encuentra temporalmente reducido.",
+      "PT": "O Hype desta criatura está temporariamente reduzido."
+    },
+    "creatureAbility.invisible.name": {
+      "EN": "Invisible",
+      "FR": "Invisible",
+      "DE": "Unsichtbar",
+      "IT": "Invisibilità",
+      "ZH": "隐形",
+      "ZH-TW": "隱形",
+      "ES": "Invisibilidad",
+      "PT": "Invisível"
+    },
+    "creatureAbility.invisible.description": {
+      "EN": "This creature is not visible to enemies.",
+      "FR": "Cette créature est invisible pour les ennemis.",
+      "DE": "Gegner können diese Kreatur nicht sehen.",
+      "IT": "Rende invisibile ai nemici questa creatura.",
+      "ZH": "敌人看不见此生物。",
+      "ZH-TW": "此生物不會被敵人看見。",
+      "ES": "Esta criatura no es visible a los enemigos.",
+      "PT": "Esta criatura não pode ser vista pelos inimigos."
+    },
+    "creatureAbility.moveRangeDown.name": {
+      "EN": "Move Range Down",
+      "FR": "Points de Mouvement réduits",
+      "DE": "Bew.-Reichweite verringert",
+      "IT": "Raggio di movimento ridotto",
+      "ZH": "移动距离降低",
+      "ZH-TW": "移動距離降低",
+      "ES": "Reducción de alcance de mov.",
+      "PT": "Alcance de Movimento Reduzido"
+    },
+    "creatureAbility.moveRangeDown.description": {
+      "EN": "The entity has an decreased move range",
+      "FR": "L'entité a une capacité de mouvement réduite.",
+      "DE": "Die Bewegungsreichweite dieser Kreatur wurde verringert.",
+      "IT": "Riduce il raggio di movimento dell'entità.",
+      "ZH": "此单位的移动距离降低",
+      "ZH-TW": "此實體的移動距離降低",
+      "ES": "El alcance de movimiento de la entidad se encuentra reducido.",
+      "PT": "A entidade tem alcance de movimento reduzido"
+    },
+    "creatureAbility.moveRangeUp.name": {
+      "EN": "Move Range Up",
+      "FR": "Points de Mouvement augmentés",
+      "DE": "Bew.-Reichweite erhöht",
+      "IT": "Raggio di movimento incrementato",
+      "ZH": "移动距离提高",
+      "ZH-TW": "移動距離提升",
+      "ES": "Aumento de alcance de mov.",
+      "PT": "Alcance de Movimento Aumentado"
+    },
+    "creatureAbility.moveRangeUp.description": {
+      "EN": "The entity has an increased move range",
+      "FR": "L'entité a une capacité de mouvement augmenté.",
+      "DE": "Die Bewegungsreichweite dieser Kreatur wurde erhöht.",
+      "IT": "Incrementa il raggio di movimento dell'entità.",
+      "ZH": "此单位的移动距离提高",
+      "ZH-TW": "此實體的移動距離提升",
+      "ES": "El alcance de movimiento de la entidad se encuentra aumentado.",
+      "PT": "A entidade tem alcance de movimento aumentado"
+    },
+    "creatureAbility.ectoplasmed.name": {
+      "EN": "Ectoplasmed",
+      "FR": "Ectoplasmé",
+      "DE": "Ektoplasmiert",
+      "IT": "Ectoplasma",
+      "ZH": "灵质印记",
+      "ZH-TW": "靈質命中",
+      "ES": "Ectoplasmación",
+      "PT": "Ectoplasmado"
+    },
+    "creatureAbility.ectoplasmed.description": {
+      "EN": "This creature has been marked by a Number 9.",
+      "FR": "Cette créature a été marquée par Number 9.",
+      "DE": "Diese Kreatur wurde von einem Number 9 markiert.",
+      "IT": "Questa creatura è stata marchiata da Number 9.",
+      "ZH": "此生物已被 Number 9 标记。",
+      "ZH-TW": "此生物已被 Number 9 標記。",
+      "ES": "Esta criatura ha sido marcada por un Number 9.",
+      "PT": "Esta criatura foi marcada por um Number 9."
+    },
+    "creatureAbility.overcharged.name": {
+      "EN": "Overcharged",
+      "FR": "Surchargé",
+      "DE": "Überladen",
+      "IT": "Effetto sovraccarico",
+      "ZH": "过度充能",
+      "ZH-TW": "興奮過頭",
+      "ES": "Sobrecarga",
+      "PT": "Sobrecarregado"
+    },
+    "creatureAbility.overcharged.description": {
+      "EN": "This creature has used Overcharge to convert its Hype points into a temporary stats increase.",
+      "FR": "Cette créature a utilisé Surcharge pour convertir ses points d'Émulation en une augmentation temporaire de ses statistiques.",
+      "DE": "Diese Kreatur hat „Überladen“ eingesetzt, um ihre Hype-Punkte in vorübergehende Statuswerte umzuwandeln.",
+      "IT": "Questa creatura ha utilizzato Sovraccarico per convertire i suoi punti hype in un incremento temporaneo dei propri valori.",
+      "ZH": "这个生物使用了“过度充能”，将它的超能点数转换为临时的属性加成。",
+      "ZH-TW": "此生物用「興奮過頭」轉換興奮值，暫時提升數值。",
+      "ES": "Esta criatura ha usado Sobrecarga para convertir sus puntos de entusiasmo en un aumento temporal de sus atributos.",
+      "PT": "Esta criatura usou Sobrecarregar para converter seus pontos de Hype em um aumento temporário de atributos."
+    },
+    "creatureAbility.passThrough.name": {
+      "EN": "Pass Through",
+      "FR": "Passage à travers",
+      "DE": "Hindurch",
+      "IT": "Attraversamento",
+      "ZH": "自由穿越",
+      "ZH-TW": "穿透",
+      "ES": "A través",
+      "PT": "Atravessar"
+    },
+    "creatureAbility.passThrough.description": {
+      "EN": "This creature can move through obstacles and other entities.",
+      "FR": "Cette créature peut se déplacer à travers les obstacles et les autres entités.",
+      "DE": "Diese Kreatur kann sich durch Hindernisse und andere Kreaturen bewegen.",
+      "IT": "Questa creatura può attraversare ostacoli e altre entità.",
+      "ZH": "此生物在移动时可以通过障碍物和其他单位。",
+      "ZH-TW": "此生物能穿過障礙物和其他實體。",
+      "ES": "Esta criatura puede atravesar obstáculos y a otras entidades.",
+      "PT": "Esta criatura pode se mover através de obstáculos e outras entidades."
+    },
+    "creatureAbility.poison.name": {
+      "EN": "Poison",
+      "FR": "Poison",
+      "DE": "Gift",
+      "IT": "Veleno",
+      "ZH": "中毒",
+      "ZH-TW": "中毒",
+      "ES": "Veneno",
+      "PT": "Veneno"
+    },
+    "creatureAbility.poison.description": {
+      "EN": "This creature has been poisoned.",
+      "FR": "Cette créature a été empoisonnée.",
+      "DE": "Diese Kreatur wurde vergiftet.",
+      "IT": "Questa creatura è stata avvelenata.",
+      "ZH": "此生物中毒了。",
+      "ZH-TW": "此生物中毒了。",
+      "ES": "Esta criatura ha sido envenenada.",
+      "PT": "Esta criatura foi envenenada."
+    },
+    "creatureAbility.powerDown.name": {
+      "EN": "Power Down",
+      "FR": "Puissance réduite",
+      "DE": "Kraft verringert",
+      "IT": "Potenza ridotta",
+      "ZH": "强度降低",
+      "ZH-TW": "威力降低",
+      "ES": "Reducción de potencia",
+      "PT": "Poder Reduzido"
+    },
+    "creatureAbility.powerDown.description": {
+      "EN": "Decreased Attack Power",
+      "FR": "Puissance d'Attaque Réduite",
+      "DE": "Verringerte Angriffskraft",
+      "IT": "Potenza d'Attacco Ridotta",
+      "ZH": " 攻击力降低",
+      "ZH-TW": "攻擊力降低",
+      "ES": "Poder de Ataque Disminuido",
+      "PT": "Poder de Ataque Reduzido"
+    },
+    "creatureAbility.powerUp.name": {
+      "EN": "Power Up",
+      "FR": "Puissance augmentée",
+      "DE": "Kraft erhöht",
+      "IT": "Potenza incrementata",
+      "ZH": "强度提高",
+      "ZH-TW": "威力提升",
+      "ES": "Aumento de potencia",
+      "PT": "Poder Aumentado"
+    },
+    "creatureAbility.powerUp.description": {
+      "EN": "Increased Physical / Ether Power",
+      "FR": "Augmentation Puis. Physique/Puis. Ether",
+      "DE": "Erhöhte physische Kraft/Ätherkraft",
+      "IT": "Potenza fisica ed eterea incrementata",
+      "ZH": "物理 / 以太强度提高",
+      "ZH-TW": "物理／乙太威力提升",
+      "ES": "Potencia física/de éter aumentada.",
+      "PT": "Poder Físico/de Éter aumentado"
+    },
+    "creatureAbility.rooted.name": {
+      "EN": "Rooted",
+      "FR": "Enraciné",
+      "DE": "Angewurzelt",
+      "IT": "Radicamento",
+      "ZH": "定身",
+      "ZH-TW": "紮根",
+      "ES": "Enraizamiento",
+      "PT": "Enraizado"
+    },
+    "creatureAbility.rooted.description": {
+      "EN": "This creature cannot move nor be displaced by external forces.",
+      "FR": "Cette créature ne peut pas bouger ni être déplacée par des forces extérieures.",
+      "DE": "Diese Kreatur kann sich nicht bewegen oder durch Einwirkung von außen bewegt werden.",
+      "IT": "Questa creatura non può muoversi né essere spostata da agenti esterni.",
+      "ZH": "此生物不能移动，也不能被外部力量移动位置。",
+      "ZH-TW": "此生物無法移動，也無法因外力移位。",
+      "ES": "Esta criatura no se puede mover y tampoco puede ser desplazada por fuerzas externas.",
+      "PT": "Essa criatura não pode se mover ou ser deslocada por forças externas."
+    },
+    "creatureAbility.shield.name": {
+      "EN": "Shield",
+      "FR": "Bouclier",
+      "DE": "Schild",
+      "IT": "Scudo",
+      "ZH": "护盾",
+      "ZH-TW": "護盾",
+      "ES": "Escudo",
+      "PT": "Escudo"
+    },
+    "creatureAbility.shield.description": {
+      "EN": "Damage that would affect this creature is reduced.",
+      "FR": "Les dégâts qui affectent cette créature sont réduits.",
+      "DE": "Der Schaden, den diese Kreatur erleiden soll, wird verringert.",
+      "IT": "Riduce i danni indirizzati a questa creatura.",
+      "ZH": "此生物受到的伤害会降低。",
+      "ZH-TW": "針對此生物的傷害降低。",
+      "ES": "Reduce el daño que afectaría a esta criatura.",
+      "PT": "O dano que afetaria esta criatura é reduzido."
+    },
+    "creatureAbility.silence.name": {
+      "EN": "Silence",
+      "FR": "Silence",
+      "DE": "Verstummt",
+      "IT": "Silenzio",
+      "ZH": "沉默",
+      "ZH-TW": "沉默",
+      "ES": "Silencio",
+      "PT": "Silenciar"
+    },
+    "creatureAbility.silence.description": {
+      "EN": "This creature cannot use hype-based abilities.",
+      "FR": "Cette créature ne peut pas utiliser les capacités utilisant l'Émulation.",
+      "DE": "Diese Kreatur kann keine Hype-Fähigkeiten einsetzen.",
+      "IT": "Impedisce a questa creatura di usare abilità basate sull'hype.",
+      "ZH": "此生物无法使用超能招数。",
+      "ZH-TW": "此生物無法用需要興奮值的技能。",
+      "ES": "Esta criatura no puede usar habilidades basadas en el entusiasmo.",
+      "PT": "Esta criatura não pode usar habilidades com base em Hype."
+    },
+    "creatureAbility.stunned.name": {
+      "EN": "Stunned",
+      "FR": "Étourdi",
+      "DE": "Betäubt",
+      "IT": "Stordimento",
+      "ZH": "眩晕",
+      "ZH-TW": "暈眩",
+      "ES": "Aturdimiento",
+      "PT": "Atordoado"
+    },
+    "creatureAbility.stunned.description": {
+      "EN": "This creature cannot act nor react.",
+      "FR": "Cette créature ne peut ni agir ni réagir.",
+      "DE": "Diese Kreatur kann keine Aktionen oder Reaktionen ausführen.",
+      "IT": "Inibisce qualunque azione o reazione.",
+      "ZH": "此生物无法行动，也无法做出反应。",
+      "ZH-TW": "此生物無法行動，也無法做出反應。",
+      "ES": "Esta criatura no actúa ni reacciona.",
+      "PT": "Esta criatura não pode agir ou reagir."
+    },
+    "creatureAbility.inspired.name": {
+      "EN": "Inspired",
+      "FR": "Inspiré",
+      "DE": "Inspiriert",
+      "IT": "Incoraggiamento",
+      "ZH": "激励",
+      "ZH-TW": "受鼓舞",
+      "ES": "Inspiración",
+      "PT": "Inspirado"
+    },
+    "creatureAbility.inspired.description": {
+      "EN": "unikaMoveAgainPassive (need description)",
+      "FR": "unikaMoveAgainPassive (need description)",
+      "DE": "unikaMoveAgainPassive (need description)",
+      "IT": "Descrizione da inserire",
+      "ZH": "unikaMoveAgainPassive （需要描述文本）",
+      "ZH-TW": "unikaMoveAgainPassive (need description)",
+      "ES": "unikaMoveAgainPassive (need description)",
+      "PT": "unikaMoveAgainPassive (need description)"
+    },
+    "creatureAbility.untargetable.name": {
+      "EN": "Untargetable",
+      "FR": "Intouchable",
+      "DE": "Nicht anvisierbar",
+      "IT": "Sfuggente",
+      "ZH": "无法瞄准",
+      "ZH-TW": "無法成為目標",
+      "ES": "Inalcanzable",
+      "PT": "Inatingível"
+    },
+    "creatureAbility.untargetable.description": {
+      "EN": "This creature cannot be targeted.",
+      "FR": "Cette créature ne peut pas être ciblée.",
+      "DE": "Diese Kreatur kann nicht als Ziel ausgewählt werden.",
+      "IT": "Questa creatura non può essere presa di mira.",
+      "ZH": "此生物无法被瞄准。",
+      "ZH-TW": "此生物無法成為目標。",
+      "ES": "Esta criatura no se puede fijar como objetivo.",
+      "PT": "Esta criatura não pode ser um alvo."
+    },
+    "creatureAbility.disuasiveShriek.name": {
+      "EN": "Disuassive Shriek",
+      "FR": "Cri dissuasif",
+      "DE": "Abschreckendes Kreischen",
+      "IT": "Grido dissuasore",
+      "ZH": "劝阻尖叫",
+      "ZH-TW": "勸退尖叫",
+      "ES": "Chillido disuasorio",
+      "PT": "Grito Desestimulante"
+    },
+    "creatureAbility.disuasiveShriek.description": {
+      "EN": "Whenever Zzoo takes damages, he lets out a powerfull shriek damaging nearby creatures.",
+      "FR": "Chaque fois que Zzoo est touché, il pousse un cri strident qui inflige des dégâts aux créatures à proximité.",
+      "DE": "Wenn Zzoo Schaden erleidet, stößt er ein lautstarkes Kreischen aus, das Kreaturen in der Nähe Schaden zufügt.",
+      "IT": "Quando Zzoo subisce danni, emette un potente grido che ferisce le creature vicine.",
+      "ZH": "每当 Zzoo 受到伤害时，他就会发出一声有力的尖叫，伤害附近的生物。",
+      "ZH-TW": "Zzoo 受到傷害時會大聲尖叫，對附近的生物造成傷害。",
+      "ES": "Cuando Zzoo recibe daño, emite un poderoso chillido que daña a las criaturas cercanas.",
+      "PT": "Sempre que Zzoo sofre dano, solta um poderoso grito que causa dano às criaturas próximas."
     }
   }
 }
