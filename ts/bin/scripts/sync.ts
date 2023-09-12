@@ -1,7 +1,8 @@
 import * as fs from 'fs';
 import dotenv from 'dotenv';
-import { snakeCase } from 'snake-case';
 import { camelCase } from 'camel-case';
+
+import abilitiesDictionaryV4 from '../../src/deps/dictionaries/abilities_dictionary_v0.4.0_old.json';
 
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 
@@ -118,7 +119,7 @@ async function syncAbilitiesData() {
   const abilitiesDictionary = {
     version: '0.4.0',
     version_date: '12/09/2023',
-    keywords: abilities,
+    keywords: { ...abilitiesDictionaryV4, ...abilities },
   };
 
   const nsFile = `${TRANSLATIONS_DIR}/abilities_dictionary_v0.4.0.json`;
