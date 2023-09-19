@@ -455,6 +455,7 @@ export class DNAFactory {
     const genes = dnaSchema.categories[dnaSchemaReader.categoryKey].genes;
     const data: ParseData = Object.assign({} as ParseData, archetype.fixed_attributes);
     this._setRarity(data, dnaSchemaReader, dnaSchema);
+    this._setGrade(data, dnaSchemaReader, dnaSchema);
     const neftyNameCode = archetype.fixed_attributes.name as string;
     data['displayName'] = this.getDisplayNameFromCodeName(neftyNameCode);
     data['description'] = this.getFamilyDescription(archetype.fixed_attributes.family as string);
@@ -462,7 +463,7 @@ export class DNAFactory {
     data['ultimateSkill_info'] = this.getAbilityInfo(data['ultimateSkill']);
     this._setStats(data, dnaSchemaReader);
     this._setSkills(data, dnaSchemaReader);
-    this._addNeftyImageData(data);
+    this._addNeftyImageData(data, 'prime');
 
     const advStatsJSON = forcedAdvStatsVersion
       ? this.adventuresStats[forcedAdvStatsVersion]
@@ -505,7 +506,17 @@ export class DNAFactory {
     }
   }
 
-  getNeftyImageName(neftyName: string, rarity: Rarity, format?: NeftyImageFormat): string {
+  private _setGrade(data: ParseData, dnaSchemaReader: DNASchemaReader, dnaSchema: DNASchema) {
+    if (dnaSchemaReader.categoryGenesHeader.grade) {
+      // grade needs to be added to the dna generation process to support this
+      // data.grade = (dnaSchema as DNASchemaV3).grades[dnaSchemaReader.categoryGenesHeader.grade];
+    } else {
+      // all nefties were prime before grade was introduced
+      data.grade = 'prime';
+    }
+  }
+
+  getNeftyImageName(neftyName: string, rarity: Rarity, grade: Grade, format?: NeftyImageFormat): string {
     const neftyCodeName = encodeURIComponent(neftyName.toLowerCase().trim().replace(/\s/g, '-'));
     const rarityToFrame = {
       Common: 'bronze',
@@ -515,18 +526,21 @@ export class DNAFactory {
       Legendary: 'mythic',
     };
     const rarityCodeName = rarityToFrame[rarity];
-    let url = '';
-    if (format) url = `https://images.cdn.aurory.io/nefties/${neftyCodeName}/${rarityCodeName}-${format}.png`;
-    else url = `https://images.cdn.aurory.io/nefties/${neftyCodeName}/${rarityCodeName}.png`;
-    return url;
+    const gradeCodeName = grade === 'standard' ? '-standard' : '';
+    const rarityAndGrade = `${rarityCodeName}${gradeCodeName}`;
+    if (format) {
+      return `https://images.cdn.aurory.io/nefties/${neftyCodeName}/${rarityAndGrade}-${format}.png`;
+    } else {
+      return `https://images.cdn.aurory.io/nefties/${neftyCodeName}/${rarityAndGrade}.png`;
+    }
   }
 
-  private _addNeftyImageData(data: ParseData): void {
-    data.defaultImage = this.getNeftyImageName(data.displayName, data.rarity);
+  private _addNeftyImageData(data: ParseData, grade: Grade): void {
+    data.defaultImage = this.getNeftyImageName(data.displayName, data.rarity, grade);
     data.imageByGame = {
       tactics: {
-        small: this.getNeftyImageName(data.displayName, data.rarity, 'small'),
-        medium: this.getNeftyImageName(data.displayName, data.rarity, 'medium'),
+        small: this.getNeftyImageName(data.displayName, data.rarity, grade, 'small'),
+        medium: this.getNeftyImageName(data.displayName, data.rarity, grade, 'medium'),
       },
     };
   }

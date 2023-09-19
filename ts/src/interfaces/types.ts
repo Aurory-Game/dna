@@ -90,6 +90,7 @@ export interface ParseDataNefty {
   ultimateSkill: string;
   description: string;
   rarity: Rarity;
+  grade: Grade;
   defaultImage: string;
   imageByGame: { tactics: ImageNeftyByGame };
 }
