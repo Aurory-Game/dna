@@ -18,6 +18,7 @@ import {
   RarityInfo,
   Rarity,
   Gene,
+  Grade,
   NeftyImageFormat,
   version,
   AdvStatsJSON,
@@ -47,7 +48,6 @@ import {
   randomNormal,
   unpad,
 } from './utils';
-import { GLITCHED_PERIOD, GLITCHED_RANGE_START, SCHIMMERING_PERIOD, SCHIMMERING_RANGE_START } from './constants';
 import { DNASchemaReader } from './dna_schema_reader';
 import { getAdventuresStats } from './adventure_stats';
 
@@ -82,7 +82,7 @@ export class DNAFactory {
   baseSize: number;
   latestSchemasSubversions: Record<version, version>;
   latestDictionariesSubversions: Record<version, version>;
-  rarities: Record<Rarity, RarityInfo>;
+  rarities: Record<string, Record<Rarity, RarityInfo>>;
   adventuresStats: Record<string, AdvStatsJSON>;
 
   constructor(dnaBytes?: number, encodingBase?: number) {
@@ -119,13 +119,17 @@ export class DNAFactory {
       .padStart(base * this.baseSize, '0');
   }
 
-  private _getRandomRarity(): Rarity {
+  private _getRandomRarity(grade: Grade): Rarity {
+    const rarities = this.rarities[grade];
+    if (!rarities) {
+      throw new Error(`No rarity found for input ${grade}`);
+    }
     const precision = 3;
     const multiplier = Math.pow(10, precision);
-    const weightsSum = Object.values(this.rarities).reduce((acc, rarity) => acc + rarity.probability * multiplier, 0);
+    const weightsSum = Object.values(rarities).reduce((acc, rarity) => acc + rarity.probability * multiplier, 0);
     const random = Math.random() * weightsSum;
     let total = 0;
-    for (const [rarity, rarityInfo] of Object.entries(this.rarities)) {
+    for (const [rarity, rarityInfo] of Object.entries(rarities)) {
       total += rarityInfo.probability * multiplier;
       if (random <= total) return rarity as Rarity;
     }
@@ -137,14 +141,11 @@ export class DNAFactory {
    * @param rarity Rarity
    * @param statsCount Number of stats to generate
    */
-  private _generateStatsForRarity(rarity: Rarity, genes: Gene[]): number[] {
+  private _generateStatsForRarity(grade: Grade, rarity: Rarity, genes: Gene[]): number[] {
     const filteredGenes = genes.filter((gene) => gene.type === 'range_completeness');
     const nStats = filteredGenes.length;
-    const [minStatAvg, maxStatAvg] = this.rarities[rarity].average_stats_range;
+    const [minStatAvg, maxStatAvg] = this.rarities[grade][rarity].average_stats_range;
     const stats = Array.from(Array(nStats).keys()).map(() => 0);
-    // glitched or schimerring
-    const isSpecialProba = 0;
-    const isSpecial = false;
 
     const mean = randomInt(minStatAvg, maxStatAvg, true);
     // adding up to 5 will still result in the same mean as we are rounding down
@@ -268,11 +269,12 @@ export class DNAFactory {
 
   generateNeftyDNALatest(
     archetypeIndex: string,
+    grade: Grade,
     dnaSchema: DNASchemaV2 | DNASchemaV3,
     schemaVersion: string,
     rarityPreset?: Rarity
   ) {
-    const rarity = rarityPreset ?? this._getRandomRarity();
+    const rarity = rarityPreset ?? this._getRandomRarity(grade);
     const rarityIndex = Object.entries(dnaSchema.rarities).find(([_, rarityName]) => rarityName === rarity)?.[0];
     if (!rarityIndex) throw new Error('Rarity not found');
 
@@ -301,7 +303,7 @@ export class DNAFactory {
       this.dnaBytes - versionGeneInfo.base - categoryGeneInfo.base - archetypeGeneInfo.base - rarityGeneInfo.base;
 
     const randomDNA = this._generateDNA(randomDNAlen, this.encodingBase) as string;
-    const randomStats = this._generateStatsForRarity(rarity, dnaSchema.categories[categoryKey].genes);
+    const randomStats = this._generateStatsForRarity(grade, rarity, dnaSchema.categories[categoryKey].genes);
     const dnaTacticsStats = randomStats.map((stat) => this._toPaddedBase(stat.toString(), 1)).join('');
 
     const dna =
@@ -314,7 +316,7 @@ export class DNAFactory {
     return dna;
   }
 
-  generateNeftyDNA(archetypeIndex: string, version?: string, rarityPreset?: Rarity) {
+  generateNeftyDNA(archetypeIndex: string, grade: Grade, version?: string, rarityPreset?: Rarity) {
     if (!archetypeIndex) throw new Error('Missing archetypeIndex');
     const dnaSchema = this.getDNASchema(version ?? this.latestSchemaVersion) as DNASchemaV2;
     const schemaVersion = dnaSchema.version;
@@ -325,11 +327,61 @@ export class DNAFactory {
       );
 
     const v = version ? unpad(version, this.encodingBase) : null;
-    if (!v) return this.generateNeftyDNALatest(archetypeIndex, dnaSchema, schemaVersion, rarityPreset);
+    if (!v) return this.generateNeftyDNALatest(archetypeIndex, grade, dnaSchema, schemaVersion, rarityPreset);
     if (v == '0' || v == '1') return this.generateNeftyDNAV0(archetypeIndex, dnaSchema, schemaVersion);
     else if (v == '2' || v == '3')
-      return this.generateNeftyDNALatest(archetypeIndex, dnaSchema, schemaVersion, rarityPreset);
+      return this.generateNeftyDNALatest(archetypeIndex, grade, dnaSchema, schemaVersion, rarityPreset);
     else throw new Error(`Invalid version ${version}`);
+  }
+
+  generateStarterNeftyDNA(archetypeIndex: string) {
+    if (!archetypeIndex) throw new Error('Missing archetypeIndex');
+    const dnaSchema = this.getDNASchema(this.latestSchemaVersion) as DNASchemaV2;
+    const schemaVersion = dnaSchema.version;
+    const categoryKey = getCategoryKeyFromName('nefties', dnaSchema.categories);
+    if (!dnaSchema.categories[categoryKey]?.archetypes[archetypeIndex])
+      throw new Error(
+        `Archetype index not found. archetypeIndex ${archetypeIndex} schemaVersion ${schemaVersion} categoryKey ${categoryKey}`
+      );
+    const rarity = 'Common';
+    const rarityIndex = Object.entries(dnaSchema.rarities).find(([_, rarityName]) => rarityName === rarity)?.[0];
+    if (!rarityIndex) throw new Error('Rarity not found');
+
+    const versionGeneInfo = dnaSchema.global_genes_header.find((gene_header) => gene_header.name === 'version');
+    if (!versionGeneInfo) throw new Error('Missing version gene');
+    const categoryGeneInfo = dnaSchema.global_genes_header.find((gene_header) => gene_header.name === 'category');
+    if (!categoryGeneInfo) throw new Error('Missing category gene');
+
+    const archetypeGeneInfo = dnaSchema.categories[categoryKey].category_genes_header.find(
+      (gene_header) => gene_header.name === 'archetype'
+    );
+    if (!archetypeGeneInfo) throw new Error('Missing archetype gene');
+    const rarityGeneInfo = dnaSchema.categories[categoryKey].category_genes_header.find(
+      (gene_header) => gene_header.name === 'rarity'
+    );
+    if (!rarityGeneInfo) throw new Error('Missing rarity gene');
+
+    const versionDNAFormat = this._toPaddedBase(schemaVersion, versionGeneInfo.base);
+    const categoryDNAFormat = this._toPaddedBase(categoryKey, categoryGeneInfo.base);
+    const archetypeDNAFormat = this._toPaddedBase(archetypeIndex, archetypeGeneInfo.base);
+    const rarityDNAFormat = this._toPaddedBase(rarityIndex, rarityGeneInfo.base);
+
+    const randomDNAlen =
+      this.dnaBytes - versionGeneInfo.base - categoryGeneInfo.base - archetypeGeneInfo.base - rarityGeneInfo.base;
+
+    const randomDNA = this._generateDNA(randomDNAlen, this.encodingBase) as string;
+    const starterEggStat = Math.floor(255 / 10);
+    const stats = Array(6).fill(starterEggStat);
+    const dnaTacticsStats = stats.map((stat) => this._toPaddedBase(stat.toString(), 1)).join('');
+
+    const dna =
+      versionDNAFormat +
+      categoryDNAFormat +
+      archetypeDNAFormat +
+      rarityDNAFormat +
+      dnaTacticsStats +
+      randomDNA.slice(dnaTacticsStats.length);
+    return dna;
   }
 
   getAbilitiesDictionary(version?: string): AbilityDictionary {
@@ -362,8 +414,8 @@ export class DNAFactory {
    * Returns rarity from stats average
    * @param statsAverage average of all stats, from 0 to 100;
    */
-  getRarityFromStatsAvg(statsAverage: number, raiseErrorOnNotFound = true): Rarity | null {
-    const rarity = Object.entries(this.rarities).find(([rarity, rarityInfo]) => {
+  getRarityFromStatsAvg(statsAverage: number, raiseErrorOnNotFound = true, grade: Grade = 'prime'): Rarity | null {
+    const rarity = Object.entries(this.rarities[grade]).find(([rarity, rarityInfo]) => {
       return (
         statsAverage >= rarityInfo.average_stats_range[0] &&
         ((statsAverage === 100 && statsAverage === rarityInfo.average_stats_range[1]) ||

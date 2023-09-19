@@ -3,10 +3,8 @@ import nefties_info from '../src/deps/nefties_info.json';
 import assert from 'assert';
 import rarities from '../src/deps/rarities.json';
 import { readdirSync, readFileSync } from 'fs';
-import { LATEST_VERSION as LATEST_ADVENTURES_STATS_VERSION } from '../src/deps/schemas/adventures/latest';
 import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from '../src/deps/schemas/latest';
 import { DNASchema } from '../src/interfaces/types';
-import { execPath } from 'process';
 import { TACTICS_ADV_NAMES_MAP } from '../src/constants';
 
 const displayNamesProd = [
@@ -124,7 +122,7 @@ describe('Basic', () => {
         try {
           assert.ok(displayName);
           assert.ok(description);
-          const dna = df.generateNeftyDNA(archetypeKey);
+          const dna = df.generateNeftyDNA(archetypeKey, 'prime');
           const data = df.parse(dna);
           assert.ok(data.data);
           assert.ok(data.data.name);
@@ -188,7 +186,7 @@ describe('Basic', () => {
     for (let index = 0; index < allSchemaVersions.length; index++) {
       const version = allSchemaVersions[index];
       const majorVersion = version.split('.')[0];
-      const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, version);
+      const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', version);
       const parsed = df.parse(dna);
       const parsedMajorVersion = parsed.metadata.version.split('.')[0];
       assert.equal(majorVersion, parsedMajorVersion);
@@ -201,7 +199,7 @@ describe('Compute possible names, families and abilities', () => {
     const df = new DNAFactory();
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     const neftyIndex = ef.hatch().archetypeKey;
-    const dna = df.generateNeftyDNA(neftyIndex);
+    const dna = df.generateNeftyDNA(neftyIndex, 'prime');
     const category = df.getCategory('nefties', df.getDnaVersion(dna));
     const neftyNames = new Set();
     const neftyFamilies = new Set();
@@ -232,11 +230,11 @@ describe('Using previous schema 0.2.0', () => {
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     assert.throws(() => {
       // 7 does not exist on schema 0.2.0
-      const dna = df.generateNeftyDNA('7', forceVersion);
+      const dna = df.generateNeftyDNA('7', 'prime', forceVersion);
       const p = df.parse(dna, forceVersion);
     });
-    const dinobitArcchetypeIndex = '2';
-    const dna = df.generateNeftyDNA(dinobitArcchetypeIndex, forceVersion);
+    const dinobitArchetypeIndex = '2';
+    const dna = df.generateNeftyDNA(dinobitArchetypeIndex, 'prime', forceVersion);
     const parsed = df.parse(dna, forceVersion);
     assert.equal(parsed.data.name, 'Nefty_Dinobit');
     assert.equal(parsed.data.hp >= 640, true);
@@ -249,7 +247,7 @@ describe('Rarity', () => {
     const forceVersion = '0.4.0';
     const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
-    const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, forceVersion);
+    const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', forceVersion);
     const parsed = df.parse(dna, forceVersion);
     assert.ok(parsed.data.rarity);
   });
@@ -258,9 +256,9 @@ describe('Rarity', () => {
     const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
-    Object.entries(rarities).forEach(([rarity, rarityInfo]) => {
+    Object.entries(rarities.prime).forEach(([rarity, rarityInfo]) => {
       // for (let i = 0; i < 1e3; i++) {
-      const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, '2.0.0', rarity as Rarity);
+      const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', '2.0.0', rarity as Rarity);
       const parsed = df.parse(dna);
       assert.deepEqual(parsed.data.rarity, rarity);
       const statsAvg =
@@ -280,9 +278,9 @@ describe('Rarity', () => {
     const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
-    Object.entries(rarities).forEach(([rarity, rarityInfo]) => {
+    Object.entries(rarities.prime).forEach(([rarity, rarityInfo]) => {
       // for (let i = 0; i < 1e3; i++) {
-      const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, undefined, rarity as Rarity);
+      const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', undefined, rarity as Rarity);
       const parsed = df.parse(dna);
       assert.deepEqual(parsed.data.rarity, rarity);
       const statsAvg =
@@ -324,6 +322,48 @@ describe('Adventures', () => {
           TACTICS_ADV_NAMES_MAP
         )}`
       );
+    });
+  });
+});
+
+describe('starter eggs', () => {
+  it('Starter egg should be hatched with constant stats and rarity', () => {
+    const standardEggs = EggsFactory.getAllStandardEggs();
+    const eggPk = Object.keys(standardEggs)[0];
+    const df = new DNAFactory();
+    const ef = new EggsFactory(eggPk, df);
+    const dna = df.generateStarterNeftyDNA(ef.hatchStandard().archetypeKey);
+    assert(dna);
+    const data = df.parse(dna);
+    const expectedRawStatValue = Math.floor(255 * 0.1);
+    assert.equal(['Bitebit', 'Block Choy', 'Number 9'].includes(data.data.displayName), true);
+    assert.equal(data.raw.hp, expectedRawStatValue);
+    assert.equal(data.raw.atk, expectedRawStatValue);
+    assert.equal(data.raw.def, expectedRawStatValue);
+    assert.equal(data.raw.eatk, expectedRawStatValue);
+    assert.equal(data.raw.edef, expectedRawStatValue);
+    assert.equal(data.raw.initiative, expectedRawStatValue);
+  });
+});
+
+describe('standard eggs', () => {
+  it('all starter eggs should be hatchable', () => {
+    const df = new DNAFactory();
+    const standardEggs = EggsFactory.getAllStandardEggs();
+    Object.keys(standardEggs).forEach((eggName) => {
+      const ef = new EggsFactory(eggName, df);
+      const archetypeKey = ef.hatchStandard().archetypeKey;
+      if (eggName === 'starter_egg') {
+        const dna = df.generateStarterNeftyDNA(archetypeKey);
+        assert(dna);
+        const parsedDna = df.parse(dna);
+        assert.equal(standardEggs[eggName].archetypes.includes(parsedDna.data.name), true);
+      } else {
+        const dna = df.generateNeftyDNA(archetypeKey, 'standard');
+        assert(dna);
+        const parsedDna = df.parse(dna);
+        assert.equal(standardEggs[eggName].archetypes.includes(parsedDna.data.name), true);
+      }
     });
   });
 });

@@ -16,7 +16,7 @@ async function run(loopCount: number): Promise<StatsMeanWorker> {
   const statMeans = {} as any;
   Object.entries(rarities).forEach(([rarity]) => {
     for (let i = 0; i < loopCount; i++) {
-      const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, undefined, rarity as Rarity);
+      const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', undefined, rarity as Rarity);
       const parsed = df.parse(dna);
       const statsMean = Math.floor(
         utils.getAverageFromRaw(
