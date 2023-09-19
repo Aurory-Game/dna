@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.5.4] - 19/09/2023
+- Sync dictionary with ability names and descriptions from unity team
+
 ## [v0.5.1] - 10/08/2023
 - Adjust Chocomint stats
 
