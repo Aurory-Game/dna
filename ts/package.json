@@ -17,7 +17,8 @@
     "prepare": "cd .. && husky install && cd ts && yarn build",
     "prepublishOnly": "yarn test",
     "lint:fix": "eslint --fix --ext .ts,.json . && tsc --pretty",
-    "lint": "eslint . --ext .ts,.tsx,.json && tsc --pretty"
+    "lint": "eslint . --ext .ts,.tsx,.json && tsc --pretty",
+    "i18n:sync": "ts-node bin/scripts/sync.ts"
   },
   "author": "Aurory",
   "license": "MIT",
@@ -28,6 +29,7 @@
     "@types/eslint": "^8.4.3",
     "@types/eslint-plugin-prettier": "^3.1.0",
     "@types/expect": "^24.3.0",
+    "@types/google-spreadsheet": "3.3.1",
     "@types/mocha": "^9.1.1",
     "@types/node": "^18.11.2",
     "@types/prettier": "^2.6.3",
@@ -50,6 +52,10 @@
   "types": "lib/index.d.ts",
   "dependencies": {
     "@types/randombytes": "^2.0.0",
-    "randombytes": "^2.1.0"
+    "camel-case": "^4.1.2",
+    "dotenv": "^16.3.1",
+    "google-spreadsheet": "^3.3.0",
+    "randombytes": "^2.1.0",
+    "snake-case": "^3.0.4"
   }
 }
