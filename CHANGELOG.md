@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.6.0] - 09/18/2023
+- Introduce grade for DNA generation
+- Add standard egg support in EggFactory
+
 ## [v0.5.1] - 10/08/2023
 - Adjust Chocomint stats
 
