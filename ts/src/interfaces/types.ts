@@ -157,6 +157,13 @@ export interface Parse {
 
 export interface AbilityLocalizedValue {
   EN: string;
+  FR: string;
+  DE: string;
+  IT: string;
+  ZH: string;
+  'ZH-TW': string;
+  ES: string;
+  PT: string;
 }
 
 export type KeywordsKey = keyof typeof abiltiesDictionaryV4.keywords;
