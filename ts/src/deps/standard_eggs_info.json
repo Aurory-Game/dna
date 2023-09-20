@@ -1,7 +1,7 @@
 {
   "starter_egg": {
     "name": "Starter Egg",
-    "description": "So much power in such a tiny egg. Should go well with some bacon.",
+    "description": "Contained within this egg are all the essentials an adventurer requires to initiate their journey within the realm of Tokane. While it might not be the finest available, it undoubtedly promises to be of great assistance!",
     "archetypes": ["Nefty_Dipking", "Nefty_Blockchoy", "Nefty_Number9"]
   },
   "genesis_egg": {
