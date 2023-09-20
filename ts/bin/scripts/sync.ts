@@ -119,7 +119,7 @@ async function syncAbilitiesData() {
   const abilitiesDictionary = {
     version: '0.4.0',
     version_date: '12/09/2023',
-    keywords: { ...abilitiesDictionaryV4, ...abilities },
+    keywords: { ...abilitiesDictionaryV4['keywords'], ...abilities },
   };
 
   const nsFile = `${TRANSLATIONS_DIR}/abilities_dictionary_v0.4.0.json`;
