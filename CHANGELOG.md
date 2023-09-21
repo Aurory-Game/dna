@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.5.5] - 19/09/2023
+- Sync dictionary with ability names and descriptions from unity team
+- Fix type errors from v0.5.4
+
 ## [v0.5.4] - 19/09/2023
 - Sync dictionary with ability names and descriptions from unity team
 
