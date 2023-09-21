@@ -1,0 +1,34 @@
+{
+  "starter_egg": {
+    "name": "Starter Egg",
+    "description": "Contained within this egg are all the essentials an adventurer requires to initiate their journey within the realm of Tokane. While it might not be the finest available, it undoubtedly promises to be of great assistance!",
+    "archetypes": ["Nefty_Dipking", "Nefty_Blockchoy", "Nefty_Number9"]
+  },
+  "genesis_egg": {
+    "name": "Genesis Egg",
+    "description": "So much power in such a tiny egg. Should go well with some bacon.",
+    "archetypes": [
+      "Nefty_Bitebit",
+      "Nefty_Dipking",
+      "Nefty_Dinobit",
+      "Nefty_ShibaIgnite",
+      "Nefty_Zzoo",
+      "Nefty_Blockchoy"
+    ]
+  },
+  "everglade_egg": {
+    "name": "Everglade Egg",
+    "description": "Found deep in the murky swamps, the Everglade Eggs have mutated to camouflage themselves amongst the creeping moss and fungus.",
+    "archetypes": ["Nefty_Bitebit", "Nefty_Dipking", "Nefty_Dinobit", "Nefty_Number9", "Nefty_Axobubble"]
+  },
+  "prairie_egg": {
+    "name": "Prairie Egg",
+    "description": "Prairie Eggs thrive in dry heat and are often found in the tall grass - whatever's inside may share attributes with this unique environment...",
+    "archetypes": ["Nefty_Unika", "Nefty_Zzoo", "Nefty_Blockchoy", "Nefty_ShibaIgnite"]
+  },
+  "quantum_egg": {
+    "name": "Quantum Egg",
+    "description": "The Quantum Egg stands as an enigmatic marvel, its shiny shell mirroring the colours of far-off and incredible places, teasing at the everchanging mysterious creature tucked inside...",
+    "archetypes": ["Nefty_Chocomint", "Nefty_Number9", "Nefty_Unika", "Nefty_Axobubble"]
+  }
+}

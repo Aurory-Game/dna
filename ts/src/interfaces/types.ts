@@ -8,6 +8,8 @@ export interface Gene {
   type?: GeneType;
 }
 
+export type Grade = 'standard' | 'prime';
+
 export interface Archetype {
   fixed_attributes: Record<string, string | number>;
   encoded_attributes: Record<string, number[] | string[]>;
@@ -88,6 +90,7 @@ export interface ParseDataNefty {
   ultimateSkill: string;
   description: string;
   rarity: Rarity;
+  grade: Grade;
   defaultImage: string;
   imageByGame: { tactics: ImageNeftyByGame };
 }

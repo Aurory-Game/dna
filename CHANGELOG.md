@@ -4,9 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [v0.5.5] - 19/09/2023
-- Sync dictionary with ability names and descriptions from unity team
-- Fix type errors from v0.5.4
+## [v0.6.0] - 09/18/2023
+- Introduce grade for DNA generation
+- Add standard egg support in EggFactory
 
 ## [v0.5.4] - 19/09/2023
 - Sync dictionary with ability names and descriptions from unity team

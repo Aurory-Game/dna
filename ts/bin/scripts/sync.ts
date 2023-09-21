@@ -80,7 +80,7 @@ async function main() {
 async function syncAbilitiesData() {
   const { remoteData: rows } = await getAbilitiesRemoteData();
 
-  let abilities: Record<string, Record<string, Record<string, string>>> = {};
+  const abilities: Record<string, Record<string, Record<string, string>>> = {};
 
   for (const row of rows) {
     for (const locale of LOCALES) {

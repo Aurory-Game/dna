@@ -21,7 +21,7 @@ describe('Distribution', () => {
    * It does this by creating 15k DNAs for each rarity group,
    * then checks if the deviation from the expected distribution is less than 20%.
    */
-  it('Means are evenely distributed', (done) => {
+  it('Means are evenly distributed', (done) => {
     const statMeans = {} as any;
     const loopCount = 15000;
     let loopDone = 0;
@@ -85,9 +85,9 @@ describe('Distribution', () => {
     const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
     const statsCount = {} as any;
     const loopCount = 1000;
-    Object.entries(rarities).forEach(([rarity, rarityInfo]) => {
+    Object.entries(rarities.prime).forEach(([rarity, rarityInfo]) => {
       for (let i = 0; i < loopCount; i++) {
-        const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, undefined, rarity as Rarity);
+        const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', undefined, rarity as Rarity);
         const parsed = df.parse(dna);
         const statPercentages = rarityStats.map((v) => Math.round((parsed.raw[v] / 255) * 100));
         statPercentages.forEach((v) => {
@@ -134,7 +134,7 @@ describe('Distribution', () => {
         clearInterval(idx);
 
         // check rarity distribution
-        Object.entries(rarities).forEach(([rarity, rarityInfo]) => {
+        Object.entries(rarities.prime).forEach(([rarity, rarityInfo]) => {
           const targetRate = rarityInfo.probability / 100;
           const computedProbability = rarityCount[rarity as Rarity] / loopDone;
           const maxDiff10Percent = (rarityInfo.probability / 100) * 0.1;

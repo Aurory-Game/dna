@@ -1,384 +1,384 @@
 {
-    "version": "0.4.0",
-    "version_date": "18/10/2022",
-    "keywords": {
-        "creatureAbility.move.name": {
-        "EN": "Move"
-        },
-        "creatureAbility.move.description": {
-        "EN": "Move somewhere"
-        },
-        "creatureAbility.dinobit_bulldozer.name": {
-        "EN": "Bulldozer"
-        },
-        "creatureAbility.dinobit_bulldozer.description": {
-        "EN": "Charges in a straight line, pushing and damaging all creatures in a 3 cells wide band."
-        },
-        "creatureAbility.bigBark.name": {
-        "EN": "Big Bark"
-        },
-        "creatureAbility.bigBark.description": {
-        "EN": "A big bark that damages and pushes aways nearby creatures"
-        },
-        "creatureAbility.Dodge.name": {
-        "EN": "Dodge"
-        },
-        "creatureAbility.Dodge.description": {
-        "EN": "Get ready to dodge next direct attack."
-        },
-        "creatureAbility.basicAttack.name": {
-        "EN": "Attack"
-        },
-        "creatureAbility.basicAttack.description": {
-        "EN": "Slap some sense into that fool!"
-        },
-        "creatureAbility.walkBump.name": {
-        "EN": "InternalSkill"
-        },
-        "creatureAbility.walkBump.description": {
-        "EN": "You should not be reading this"
-        },
-        "creatureAbility.defensiveDome.name": {
-        "EN": "Defensive Dome"
-        },
-        "creatureAbility.defensiveDome.description": {
-        "EN": "Set up a shield on the ground, reducing any damage received for the creatures covered."
-        },
-        "creatureAbility.stompAttack.name": {
-        "EN": "Stomp"
-        },
-        "creatureAbility.stompAttack.description": {
-        "EN": "Stomp damages the targeted entity, and stuns it for a short while."
-        },
-        "creatureAbility.ShoutBorn.name": {
-        "EN": "Shout Born"
-        },
-        "creatureAbility.ShoutBorn.description": {
-        "EN": "Shouts at a target, pushing it away, dealing moderate damage"
-        },
-        "creatureAbility.unstoppableForce.name": {
-        "EN": "Unstoppable Force"
-        },
-        "creatureAbility.unstoppableForce.description": {
-        "EN": "This creature gets immune to any movement impeding effects for a while."
-        },
-        "creatureAbility.dodgeReaction.name": {
-        "EN": "Dodge that !"
-        },
-        "creatureAbility.dodgeReaction.description": {
-        "EN": "Who's a good dodger? You're a good dodger!"
-        },
-        "creatureAbility.assertDominance.name": {
-        "EN": "Assert Dominance"
-        },
-        "creatureAbility.assertDominance.description": {
-        "EN": "Bite a nearby creature. If that creature tries to hurt an ally during its turn, it will be biten again."
-        },
-        "creatureAbility.clashStance.name": {
-        "EN": "Clash Stance"
-        },
-        "creatureAbility.clashStance.description": {
-        "EN": "This creature gets ready to counter-attack. Next time an enemy strikes it, and until its next turn, this creature will strike back with proportional force."
-        },
-        "creatureAbility.backlineDrop.name": {
-        "EN": "Backline Drop"
-        },
-        "creatureAbility.backlineDrop.description": {
-        "EN": "Jump over creatures in a line, then hit the last one if not an ally."
-        },
-        "creatureAbility.LifeforceSink.name": {
-        "EN": "Lifeforce Drain"
-        },
-        "creatureAbility.LifeforceSink.description": {
-        "EN": "Hit a target, stealing some of its lifeforce."
-        },
-        "creatureAbility.bouncingClaws.name": {
-        "EN": "Bouncing Claws"
-        },
-        "creatureAbility.bouncingClaws.description": {
-        "EN": "Jump on a target, dealing damage depending on its missing health. If the target is downed, repeat the action on another target."
-        },
-        "creatureAbility.FlyingEvade.name": {
-        "EN": "High Evade "
-        },
-        "creatureAbility.FlyingEvade.description": {
-        "EN": "Fly high enough so enemies cant touch you"
-        },
-        "creatureAbility.FlyingDrop.name": {
-        "EN": "Sky Drop"
-        },
-        "creatureAbility.FlyingDrop.description": {
-        "EN": "Take off to prepare a devastating dive attack next turn"
-        },
-        "creatureAbility.AttackAndBack.name": {
-        "EN": "Attack & Back"
-        },
-        "creatureAbility.AttackAndBack.description": {
-        "EN": "Strike an enemy, then jump back out of reach"
-        },
-        "creatureAbility.SharpGust.name": {
-        "EN": "Sharp Gust"
-        },
-        "creatureAbility.SharpGust.description": {
-        "EN": "Push a strong gust of wind that will cause damage 3 cells in a row."
-        },
-        "creatureAbility.EtherBlast.name": {
-        "EN": "Ether Blast"
-        },
-        "creatureAbility.EtherBlast.description": {
-        "EN": "Use raw Ether power to strike a target"
-        },
-        "creatureAbility.TankBuster.name": {
-        "EN": "Tank Buster"
-        },
-        "creatureAbility.TankBuster.description": {
-        "EN": "Deal damage to a target proportional to its current health points"
-        },
-        "creatureAbility.ComboBreaker.name": {
-        "EN": "ComboBreaker"
-        },
-        "creatureAbility.ComboBreaker.description": {
-        "EN": "Expel 3 explosive waves that deal damage to all nearby cells"
-        },
-        "creatureAbility.AppeaseFeelings.name": {
-        "EN": "Appease Feelings"
-        },
-        "creatureAbility.AppeaseFeelings.description": {
-        "EN": "Calm down a creature for 2 turns, reducing its physical and magical powers and removing 3 hype points."
-        },
-        "creatureAbility.LifeCycle.name": {
-        "EN": "Life Cycle"
-        },
-        "creatureAbility.LifeCycle.description": {
-        "EN": "Heals an entity at the cost of its own health"
-        },
-        "creatureAbility.Root.name": {
-        "EN": "Root"
-        },
-        "creatureAbility.Root.description": {
-        "EN": "Prevents a target from moving, being pushed or pulled for 2 seconds"
-        },
-        "creatureAbility.LeavesRain.name": {
-        "EN": "Leaves Rain"
-        },
-        "creatureAbility.LeavesRain.description": {
-        "EN": "Heals all living things on the map"
-        },
-        "creatureAbility.dumbCharge.name": {
-        "EN": "Frontline Worker"
-        },
-        "creatureAbility.dumbCharge.description": {
-        "EN": "Charges at a target with complete disregard for its own health. His management approves."
-        },
-        "creatureAbility.JumpBomb.name": {
-        "EN": "Disruptive Drop"
-        },
-        "creatureAbility.JumpBomb.description": {
-        "EN": "Jump on cell, damaging nearby entities"
-        },
-        "creatureAbility.BearsSafe.name": {
-        "EN": "Bear's Safe"
-        },
-        "creatureAbility.BearsSafe.description": {
-        "EN": "Steal hypes from nearby enemies, hyping his team"
-        },
-        "creatureAbility.FreshGreens.name": {
-        "EN": "Fresh Greens"
-        },
-        "creatureAbility.FreshGreens.description": {
-        "EN": "Uses his body in a legal way to heal the target creature"
-        },
-        "creatureAbility.SlipperySkin.name": {
-        "EN": "Slippery Skin"
-        },
-        "creatureAbility.SlipperySkin.description": {
-        "EN": "Dipking's slippery skin causes every fourth effect from any source to miss him."
-        },
-        "creatureAbility.Throwback.name": {
-        "EN": "Throwback"
-        },
-        "creatureAbility.Throwback.description": {
-        "EN": "Throw a target behind, dealing little damage"
-        },
-        "creatureAbility.RootsEmbrace.name": {
-        "EN": "Roots' Embrace"
-        },
-        "creatureAbility.RootsEmbrace.description": {
-        "EN": "Roots and boost defenses of the target for 4TU"
-        },
-        "creatureAbility.Vitamins.name": {
-        "EN": "Vitagreens"
-        },
-        "creatureAbility.Vitamins.description": {
-        "EN": "BlockChoy gives all his hype to his friends, and gives them a temporary movement range and hastens their next turn."
-        },
-        "creatureAbility.BodyGuard.name": {
-        "EN": "Bodyguard"
-        },
-        "creatureAbility.BodyGuard.description": {
-        "EN": "If an ally is about to get hit, this creature will jump to the rescue and cancel the attack, dealing light damage."
-        },
-        "creatureAbility.shibaPassive.name": {
-        "EN": "Pack Protector"
-        },
-        "creatureAbility.shibaPassive.description": {
-        "EN": "Shiba has movement bonus when on cells next to allies. Shiba's abilities deal no damage to allies."
-        },
-        "creatureAbility.bitebitPassive.name": {
-        "EN": "Catrenaline"
-        },
-        "creatureAbility.bitebitPassive.description": {
-        "EN": "Catrenaline stacks with each basic attack, adding extra strikes to that ability."
-        },
-        "creatureAbility.PainfulShriek.name": {
-        "EN": "Painful Shriek"
-        },
-        "creatureAbility.PainfulShriek.description": {
-        "EN": "Zzoo lets out an air-tearing shriek when hurt, dealing damage to nearby creatures."
-        },
-        "creatureAbility.dinobitPassive.name": {
-        "EN": "Unstoppable Force"
-        },
-        "creatureAbility.dinobitPassive.description": {
-        "EN": "Dinobit can end his movement on a creature-occupied cell, pushing it away."
-        },
-        "creatureAbility.MysteryAbility.name": {
-        "EN": "Unrevealed Ability"
-        },
-        "creatureAbility.MysteryAbility.description": {
-        "EN": "This ability will be revealed when it gets used."
-        },
-        "creatureAbility.GroundControl.name": {
-        "EN": "Ground Control"
-        },
-        "creatureAbility.GroundControl.description": {
-        "EN": "Any hostile moving in the direct vicinity will be painfully shown the way out."
-        },
-        "creatureAbility.JumpScare.name": {
-        "EN": "Jumpscare"
-        },
-        "creatureAbility.JumpScare.description": {
-        "EN": "Remove Ectoplasm marks from nearby enemies, dealing damage and healing Number 9 proportionally. Number 9 can play again after this."
-        },
-        "creatureAbility.ScarringAttack.name": {
-        "EN": "Scarring Strike"
-        },
-        "creatureAbility.ScarringAttack.description": {
-        "EN": "Wound an enemy, greatly reducing its defense and increasing the damage it receives for a while."
-        },
-        "creatureAbility.SoulConduit.name": {
-        "EN": "Soul Conduit"
-        },
-        "creatureAbility.SoulConduit.description": {
-        "EN": "Teleport to any empty location. If a creature had fainted there, you can Move and use an Ability again this turn."
-        },
-        "creatureAbility.number9Passive.name": {
-        "EN": "Passession"
-        },
-        "creatureAbility.number9Passive.description": {
-        "EN": "Number 9 can only interact with marked creatures. To mark a creature, Number 9 must fly through them. If the creature is an enemy, Number 9 gains 2 Hype points."
-        },
-        "creatureAbility.Pulltergeist.name": {
-        "EN": "Pulltergeist"
-        },
-        "creatureAbility.Pulltergeist.description": {
-        "EN": "Pulls a target 4 cells toward current position, dealing little damage."
-        },
-        "creatureAbility.NoEscape.name": {
-        "EN": "No Escape"
-        },
-        "creatureAbility.NoEscape.description": {
-        "EN": "Until next turn, next enemy moving to or from a nearby cell gets pulled behind, taking light damage"
-        },
-        "creatureAbility.fateSwap.name": {
-        "EN": "Fate Swap"
-        },
-        "creatureAbility.fateSwap.description": {
-        "EN": "If this creature gets targeted by an attack during next turn, its HP and Hype points will be swapped with its aggressor."
-        },
-        "creatureAbility.tailekinesis.name": {
-        "EN": "Tailekinesis"
-        },
-        "creatureAbility.tailekinesis.description": {
-        "EN": "Axobubble tail attacks are ranged and push creatures back. Can target allies."
-        },
-        "creatureAbility.pressureBomb.name": {
-        "EN": "Pressure Bomb"
-        },
-        "creatureAbility.pressureBomb.description": {
-        "EN": "Throw a bubble bomb at a location, triggering an explosion. Creatures in the blast zone will be pushed away, while a direct hit will deal more damage and stun the target."
-        },
-        "creatureAbility.bubbleOut.name": {
-        "EN": "Bubble Out"
-        },
-        "creatureAbility.bubbleOut.description": {
-        "EN": "Teleports away along nearby creatures."
-        },
-        "creatureAbility.Overtake.name": {
-        "EN": "Overtake"
-        },
-        "creatureAbility.Overtake.description": {
-        "EN": "If attacked at close range before next turn, jump behind the aggressor and play your next turn ealier."
-        },
-        "creatureAbility.RainbowFlash.name": {
-        "EN": "Rainbow Flash"
-        },
-        "creatureAbility.RainbowFlash.description": {
-        "EN": "Instantly dash in a straight line for 5 cells through obstacles, dealing damage to any creatures on the way."
-        },
-        "creatureAbility.ComeAndPlay.name": {
-        "EN": "Come and Play"
-        },
-        "creatureAbility.ComeAndPlay.description": {
-        "EN": "Charge in a straight line, throwing the first encountered creature behind, dealing damage."
-        },
-        "creatureAbility.Kickback.name": {
-        "EN": "Kickback"
-        },
-        "creatureAbility.Kickback.description": {
-        "EN": "Kicks away the creature directly behind, or the next to coming there before next turn."
-        },
-        "creatureAbility.Inspiring.name": {
-        "EN": "Inspiring"
-        },
-        "creatureAbility.Inspiring.description": {
-        "EN": "The first time Unika moves each turn, it leaves behind an inspiring mark that any creature can pick up. The mark moves the creature 3 Time Units back, and restores the ability to Move if it was already used."
-        },
-        "creatureAbility.Encore.name": {
-        "EN": "Encore"
-        },
-        "creatureAbility.Encore.description": {
-        "EN": "For the cost of Encore, use last ability again with a 25% damage increase buff."
-        },
-        "creatureAbility.TastyMint.name": {
-        "EN": "Tasty Mint"
-        },
-        "creatureAbility.TastyMint.description": {
-        "EN": "Each turn, the first time Chocomint moves, it leaves behind a mark that any creature can pick up to get a shield."
-        },
-        "creatureAbility.FreshCherry.name": {
-        "EN": "Fresh Cherry"
-        },
-        "creatureAbility.FreshCherry.description": {
-        "EN": "Throw a protective bomb that explodes in a cross pattern. Affected allies will avoid the next direct attack."
-        },
-        "creatureAbility.RottenCherry.name": {
-        "EN": "Rotten Cherry"
-        },
-        "creatureAbility.RottenCherry.description": {
-        "EN": "Toss a bomb that deals damage in a cross pattern."
-        },
-        "creatureAbility.FrostyMood.name": {
-        "EN": "Frosty Mood"
-        },
-        "creatureAbility.FrostyMood.description": {
-        "EN": "Purge all buffs and debuffs of the next creature to move within range."
-        },
-        "creatureAbility.MightyMint.name": {
-        "EN": "Mighty Mint"
-        },
-        "creatureAbility.MightyMint.description": {
-        "EN": "Reduce enemy Ether Defenses and shield allies nearby."
-        }
+  "version": "0.4.0",
+  "version_date": "18/10/2022",
+  "keywords": {
+    "creatureAbility.move.name": {
+      "EN": "Move"
+    },
+    "creatureAbility.move.description": {
+      "EN": "Move somewhere"
+    },
+    "creatureAbility.dinobit_bulldozer.name": {
+      "EN": "Bulldozer"
+    },
+    "creatureAbility.dinobit_bulldozer.description": {
+      "EN": "Charges in a straight line, pushing and damaging all creatures in a 3 cells wide band."
+    },
+    "creatureAbility.bigBark.name": {
+      "EN": "Big Bark"
+    },
+    "creatureAbility.bigBark.description": {
+      "EN": "A big bark that damages and pushes aways nearby creatures"
+    },
+    "creatureAbility.Dodge.name": {
+      "EN": "Dodge"
+    },
+    "creatureAbility.Dodge.description": {
+      "EN": "Get ready to dodge next direct attack."
+    },
+    "creatureAbility.basicAttack.name": {
+      "EN": "Attack"
+    },
+    "creatureAbility.basicAttack.description": {
+      "EN": "Slap some sense into that fool!"
+    },
+    "creatureAbility.walkBump.name": {
+      "EN": "InternalSkill"
+    },
+    "creatureAbility.walkBump.description": {
+      "EN": "You should not be reading this"
+    },
+    "creatureAbility.defensiveDome.name": {
+      "EN": "Defensive Dome"
+    },
+    "creatureAbility.defensiveDome.description": {
+      "EN": "Set up a shield on the ground, reducing any damage received for the creatures covered."
+    },
+    "creatureAbility.stompAttack.name": {
+      "EN": "Stomp"
+    },
+    "creatureAbility.stompAttack.description": {
+      "EN": "Stomp damages the targeted entity, and stuns it for a short while."
+    },
+    "creatureAbility.ShoutBorn.name": {
+      "EN": "Shout Born"
+    },
+    "creatureAbility.ShoutBorn.description": {
+      "EN": "Shouts at a target, pushing it away, dealing moderate damage"
+    },
+    "creatureAbility.unstoppableForce.name": {
+      "EN": "Unstoppable Force"
+    },
+    "creatureAbility.unstoppableForce.description": {
+      "EN": "This creature gets immune to any movement impeding effects for a while."
+    },
+    "creatureAbility.dodgeReaction.name": {
+      "EN": "Dodge that !"
+    },
+    "creatureAbility.dodgeReaction.description": {
+      "EN": "Who's a good dodger? You're a good dodger!"
+    },
+    "creatureAbility.assertDominance.name": {
+      "EN": "Assert Dominance"
+    },
+    "creatureAbility.assertDominance.description": {
+      "EN": "Bite a nearby creature. If that creature tries to hurt an ally during its turn, it will be biten again."
+    },
+    "creatureAbility.clashStance.name": {
+      "EN": "Clash Stance"
+    },
+    "creatureAbility.clashStance.description": {
+      "EN": "This creature gets ready to counter-attack. Next time an enemy strikes it, and until its next turn, this creature will strike back with proportional force."
+    },
+    "creatureAbility.backlineDrop.name": {
+      "EN": "Backline Drop"
+    },
+    "creatureAbility.backlineDrop.description": {
+      "EN": "Jump over creatures in a line, then hit the last one if not an ally."
+    },
+    "creatureAbility.LifeforceSink.name": {
+      "EN": "Lifeforce Drain"
+    },
+    "creatureAbility.LifeforceSink.description": {
+      "EN": "Hit a target, stealing some of its lifeforce."
+    },
+    "creatureAbility.bouncingClaws.name": {
+      "EN": "Bouncing Claws"
+    },
+    "creatureAbility.bouncingClaws.description": {
+      "EN": "Jump on a target, dealing damage depending on its missing health. If the target is downed, repeat the action on another target."
+    },
+    "creatureAbility.FlyingEvade.name": {
+      "EN": "High Evade "
+    },
+    "creatureAbility.FlyingEvade.description": {
+      "EN": "Fly high enough so enemies cant touch you"
+    },
+    "creatureAbility.FlyingDrop.name": {
+      "EN": "Sky Drop"
+    },
+    "creatureAbility.FlyingDrop.description": {
+      "EN": "Take off to prepare a devastating dive attack next turn"
+    },
+    "creatureAbility.AttackAndBack.name": {
+      "EN": "Attack & Back"
+    },
+    "creatureAbility.AttackAndBack.description": {
+      "EN": "Strike an enemy, then jump back out of reach"
+    },
+    "creatureAbility.SharpGust.name": {
+      "EN": "Sharp Gust"
+    },
+    "creatureAbility.SharpGust.description": {
+      "EN": "Push a strong gust of wind that will cause damage 3 cells in a row."
+    },
+    "creatureAbility.EtherBlast.name": {
+      "EN": "Ether Blast"
+    },
+    "creatureAbility.EtherBlast.description": {
+      "EN": "Use raw Ether power to strike a target"
+    },
+    "creatureAbility.TankBuster.name": {
+      "EN": "Tank Buster"
+    },
+    "creatureAbility.TankBuster.description": {
+      "EN": "Deal damage to a target proportional to its current health points"
+    },
+    "creatureAbility.ComboBreaker.name": {
+      "EN": "ComboBreaker"
+    },
+    "creatureAbility.ComboBreaker.description": {
+      "EN": "Expel 3 explosive waves that deal damage to all nearby cells"
+    },
+    "creatureAbility.AppeaseFeelings.name": {
+      "EN": "Appease Feelings"
+    },
+    "creatureAbility.AppeaseFeelings.description": {
+      "EN": "Calm down a creature for 2 turns, reducing its physical and magical powers and removing 3 hype points."
+    },
+    "creatureAbility.LifeCycle.name": {
+      "EN": "Life Cycle"
+    },
+    "creatureAbility.LifeCycle.description": {
+      "EN": "Heals an entity at the cost of its own health"
+    },
+    "creatureAbility.Root.name": {
+      "EN": "Root"
+    },
+    "creatureAbility.Root.description": {
+      "EN": "Prevents a target from moving, being pushed or pulled for 2 seconds"
+    },
+    "creatureAbility.LeavesRain.name": {
+      "EN": "Leaves Rain"
+    },
+    "creatureAbility.LeavesRain.description": {
+      "EN": "Heals all living things on the map"
+    },
+    "creatureAbility.dumbCharge.name": {
+      "EN": "Frontline Worker"
+    },
+    "creatureAbility.dumbCharge.description": {
+      "EN": "Charges at a target with complete disregard for its own health. His management approves."
+    },
+    "creatureAbility.JumpBomb.name": {
+      "EN": "Disruptive Drop"
+    },
+    "creatureAbility.JumpBomb.description": {
+      "EN": "Jump on cell, damaging nearby entities"
+    },
+    "creatureAbility.BearsSafe.name": {
+      "EN": "Bear's Safe"
+    },
+    "creatureAbility.BearsSafe.description": {
+      "EN": "Steal hypes from nearby enemies, hyping his team"
+    },
+    "creatureAbility.FreshGreens.name": {
+      "EN": "Fresh Greens"
+    },
+    "creatureAbility.FreshGreens.description": {
+      "EN": "Uses his body in a legal way to heal the target creature"
+    },
+    "creatureAbility.SlipperySkin.name": {
+      "EN": "Slippery Skin"
+    },
+    "creatureAbility.SlipperySkin.description": {
+      "EN": "Dipking's slippery skin causes every fourth effect from any source to miss him."
+    },
+    "creatureAbility.Throwback.name": {
+      "EN": "Throwback"
+    },
+    "creatureAbility.Throwback.description": {
+      "EN": "Throw a target behind, dealing little damage"
+    },
+    "creatureAbility.RootsEmbrace.name": {
+      "EN": "Roots' Embrace"
+    },
+    "creatureAbility.RootsEmbrace.description": {
+      "EN": "Roots and boost defenses of the target for 4TU"
+    },
+    "creatureAbility.Vitamins.name": {
+      "EN": "Vitagreens"
+    },
+    "creatureAbility.Vitamins.description": {
+      "EN": "BlockChoy gives all his hype to his friends, and gives them a temporary movement range and hastens their next turn."
+    },
+    "creatureAbility.BodyGuard.name": {
+      "EN": "Bodyguard"
+    },
+    "creatureAbility.BodyGuard.description": {
+      "EN": "If an ally is about to get hit, this creature will jump to the rescue and cancel the attack, dealing light damage."
+    },
+    "creatureAbility.shibaPassive.name": {
+      "EN": "Pack Protector"
+    },
+    "creatureAbility.shibaPassive.description": {
+      "EN": "Shiba has movement bonus when on cells next to allies. Shiba's abilities deal no damage to allies."
+    },
+    "creatureAbility.bitebitPassive.name": {
+      "EN": "Catrenaline"
+    },
+    "creatureAbility.bitebitPassive.description": {
+      "EN": "Catrenaline stacks with each basic attack, adding extra strikes to that ability."
+    },
+    "creatureAbility.PainfulShriek.name": {
+      "EN": "Painful Shriek"
+    },
+    "creatureAbility.PainfulShriek.description": {
+      "EN": "Zzoo lets out an air-tearing shriek when hurt, dealing damage to nearby creatures."
+    },
+    "creatureAbility.dinobitPassive.name": {
+      "EN": "Unstoppable Force"
+    },
+    "creatureAbility.dinobitPassive.description": {
+      "EN": "Dinobit can end his movement on a creature-occupied cell, pushing it away."
+    },
+    "creatureAbility.MysteryAbility.name": {
+      "EN": "Unrevealed Ability"
+    },
+    "creatureAbility.MysteryAbility.description": {
+      "EN": "This ability will be revealed when it gets used."
+    },
+    "creatureAbility.GroundControl.name": {
+      "EN": "Ground Control"
+    },
+    "creatureAbility.GroundControl.description": {
+      "EN": "Any hostile moving in the direct vicinity will be painfully shown the way out."
+    },
+    "creatureAbility.JumpScare.name": {
+      "EN": "Jumpscare"
+    },
+    "creatureAbility.JumpScare.description": {
+      "EN": "Remove Ectoplasm marks from nearby enemies, dealing damage and healing Number 9 proportionally. Number 9 can play again after this."
+    },
+    "creatureAbility.ScarringAttack.name": {
+      "EN": "Scarring Strike"
+    },
+    "creatureAbility.ScarringAttack.description": {
+      "EN": "Wound an enemy, greatly reducing its defense and increasing the damage it receives for a while."
+    },
+    "creatureAbility.SoulConduit.name": {
+      "EN": "Soul Conduit"
+    },
+    "creatureAbility.SoulConduit.description": {
+      "EN": "Teleport to any empty location. If a creature had fainted there, you can Move and use an Ability again this turn."
+    },
+    "creatureAbility.number9Passive.name": {
+      "EN": "Passession"
+    },
+    "creatureAbility.number9Passive.description": {
+      "EN": "Number 9 can only interact with marked creatures. To mark a creature, Number 9 must fly through them. If the creature is an enemy, Number 9 gains 2 Hype points."
+    },
+    "creatureAbility.Pulltergeist.name": {
+      "EN": "Pulltergeist"
+    },
+    "creatureAbility.Pulltergeist.description": {
+      "EN": "Pulls a target 4 cells toward current position, dealing little damage."
+    },
+    "creatureAbility.NoEscape.name": {
+      "EN": "No Escape"
+    },
+    "creatureAbility.NoEscape.description": {
+      "EN": "Until next turn, next enemy moving to or from a nearby cell gets pulled behind, taking light damage"
+    },
+    "creatureAbility.fateSwap.name": {
+      "EN": "Fate Swap"
+    },
+    "creatureAbility.fateSwap.description": {
+      "EN": "If this creature gets targeted by an attack during next turn, its HP and Hype points will be swapped with its aggressor."
+    },
+    "creatureAbility.tailekinesis.name": {
+      "EN": "Tailekinesis"
+    },
+    "creatureAbility.tailekinesis.description": {
+      "EN": "Axobubble tail attacks are ranged and push creatures back. Can target allies."
+    },
+    "creatureAbility.pressureBomb.name": {
+      "EN": "Pressure Bomb"
+    },
+    "creatureAbility.pressureBomb.description": {
+      "EN": "Throw a bubble bomb at a location, triggering an explosion. Creatures in the blast zone will be pushed away, while a direct hit will deal more damage and stun the target."
+    },
+    "creatureAbility.bubbleOut.name": {
+      "EN": "Bubble Out"
+    },
+    "creatureAbility.bubbleOut.description": {
+      "EN": "Teleports away along nearby creatures."
+    },
+    "creatureAbility.Overtake.name": {
+      "EN": "Overtake"
+    },
+    "creatureAbility.Overtake.description": {
+      "EN": "If attacked at close range before next turn, jump behind the aggressor and play your next turn ealier."
+    },
+    "creatureAbility.RainbowFlash.name": {
+      "EN": "Rainbow Flash"
+    },
+    "creatureAbility.RainbowFlash.description": {
+      "EN": "Instantly dash in a straight line for 5 cells through obstacles, dealing damage to any creatures on the way."
+    },
+    "creatureAbility.ComeAndPlay.name": {
+      "EN": "Come and Play"
+    },
+    "creatureAbility.ComeAndPlay.description": {
+      "EN": "Charge in a straight line, throwing the first encountered creature behind, dealing damage."
+    },
+    "creatureAbility.Kickback.name": {
+      "EN": "Kickback"
+    },
+    "creatureAbility.Kickback.description": {
+      "EN": "Kicks away the creature directly behind, or the next to coming there before next turn."
+    },
+    "creatureAbility.Inspiring.name": {
+      "EN": "Inspiring"
+    },
+    "creatureAbility.Inspiring.description": {
+      "EN": "The first time Unika moves each turn, it leaves behind an inspiring mark that any creature can pick up. The mark moves the creature 3 Time Units back, and restores the ability to Move if it was already used."
+    },
+    "creatureAbility.Encore.name": {
+      "EN": "Encore"
+    },
+    "creatureAbility.Encore.description": {
+      "EN": "For the cost of Encore, use last ability again with a 25% damage increase buff."
+    },
+    "creatureAbility.TastyMint.name": {
+      "EN": "Tasty Mint"
+    },
+    "creatureAbility.TastyMint.description": {
+      "EN": "Each turn, the first time Chocomint moves, it leaves behind a mark that any creature can pick up to get a shield."
+    },
+    "creatureAbility.FreshCherry.name": {
+      "EN": "Fresh Cherry"
+    },
+    "creatureAbility.FreshCherry.description": {
+      "EN": "Throw a protective bomb that explodes in a cross pattern. Affected allies will avoid the next direct attack."
+    },
+    "creatureAbility.RottenCherry.name": {
+      "EN": "Rotten Cherry"
+    },
+    "creatureAbility.RottenCherry.description": {
+      "EN": "Toss a bomb that deals damage in a cross pattern."
+    },
+    "creatureAbility.FrostyMood.name": {
+      "EN": "Frosty Mood"
+    },
+    "creatureAbility.FrostyMood.description": {
+      "EN": "Purge all buffs and debuffs of the next creature to move within range."
+    },
+    "creatureAbility.MightyMint.name": {
+      "EN": "Mighty Mint"
+    },
+    "creatureAbility.MightyMint.description": {
+      "EN": "Reduce enemy Ether Defenses and shield allies nearby."
     }
+  }
 }

@@ -18,7 +18,7 @@ async function run(loopCount: number) {
   let schimmeringCount = 0;
   const rarityCount: Record<Rarity, number> = {} as any;
   for (let i = 0; i < loopCount; i++) {
-    const dna = df.generateNeftyDNA(ef.hatch().archetypeKey);
+    const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime');
     const parsed = df.parse(dna);
     const statsAvg =
       utils.getAverageFromRaw(
@@ -36,7 +36,7 @@ async function run(loopCount: number) {
         schimmeringCount += 1;
       }
     }
-    const rarity = df.getRarityFromStatsAvg(statsAvg)!;
+    const rarity = df.getRarityFromStatsAvg(statsAvg, true, 'prime')!;
     if (rarityCount[rarity]) rarityCount[rarity] += 1;
     else rarityCount[rarity] = 1;
   }
