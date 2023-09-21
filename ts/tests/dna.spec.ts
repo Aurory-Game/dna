@@ -336,7 +336,7 @@ describe('starter eggs', () => {
     assert(dna);
     const data = df.parse(dna);
     const expectedRawStatValue = Math.floor(255 * 0.1);
-    assert.equal(['Bitebit', 'Block Choy', 'Number 9'].includes(data.data.displayName), true);
+    assert.equal(['Dipking', 'Block Choy', 'Number 9'].includes(data.data.displayName), true);
     assert.equal(data.raw.hp, expectedRawStatValue);
     assert.equal(data.raw.atk, expectedRawStatValue);
     assert.equal(data.raw.def, expectedRawStatValue);

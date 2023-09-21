@@ -373,7 +373,6 @@ export class DNAFactory {
     const starterEggStat = Math.floor(255 / 10);
     const stats = Array(6).fill(starterEggStat);
     const dnaTacticsStats = stats.map((stat) => this._toPaddedBase(stat.toString(), 1)).join('');
-    console.log(dnaTacticsStats);
     const dna =
       versionDNAFormat +
       categoryDNAFormat +
