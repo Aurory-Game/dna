@@ -32,6 +32,7 @@ import dnaSchemaV2_1 from './deps/schemas/aurory_dna_v2.1.0.json';
 import dnaSchemaV3_0 from './deps/schemas/aurory_dna_v3.0.0.json';
 import dnaSchemaV3_1 from './deps/schemas/aurory_dna_v3.1.0.json';
 import dnaSchemaV3_2 from './deps/schemas/aurory_dna_v3.2.0.json';
+import dnaSchemaV3_3 from './deps/schemas/aurory_dna_v3.3.0.json';
 import adventuresStatsV0_0_5 from './deps/schemas/adventures/v0.0.5.json';
 import { LATEST_VERSION as LATEST_ADVENTURES_STATS_VERSION } from './deps/schemas/adventures/latest';
 import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from './deps/schemas/latest';
@@ -61,6 +62,7 @@ const dnaSchemas: Record<version, DNASchema> = {
   '3.0.0': dnaSchemaV3_0 as DNASchemaV3,
   '3.1.0': dnaSchemaV3_1 as DNASchemaV3,
   '3.2.0': dnaSchemaV3_2 as DNASchemaV3,
+  '3.3.0': dnaSchemaV3_3 as DNASchemaV3,
 };
 
 const adventuresStats: Record<version, AdvStatsJSON> = {
