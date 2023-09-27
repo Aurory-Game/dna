@@ -120,20 +120,20 @@ function tacticsStatsObjToArr(tacticsStats: ParseDataRangeCompleteness): number[
 
 function advArrToObj(advArr: number[]): ParseDataPerc {
   return {
-    vitality: advArr[0],
-    speed: advArr[1],
-    power: advArr[2],
-    defense: advArr[3],
+    hp: advArr[0],
+    atk: advArr[1],
+    def: advArr[2],
+    speed: advArr[3],
   };
 }
 
 function convertStats(tacticsStats: ParseDataRangeCompleteness): ParseDataPerc {
   const floorAvgGame1 = floorAverage(tacticsStatsObjToArr(tacticsStats));
   const hpGame2 = Math.round(tacticsStats.hp);
-  const powerGame2 = Math.round((tacticsStats.atk + tacticsStats.eatk) / 2);
+  const atkGame2 = Math.round((tacticsStats.atk + tacticsStats.eatk) / 2);
   const defenseGame2 = Math.round((tacticsStats.def + tacticsStats.edef) / 2);
-  const initiativeGame2 = Math.round(tacticsStats.initiative);
-  let adventuresStats = [hpGame2, initiativeGame2, powerGame2, defenseGame2];
+  const speedGame2 = Math.round(tacticsStats.initiative);
+  let adventuresStats = [hpGame2, atkGame2, defenseGame2, speedGame2];
 
   while (floorAverage(adventuresStats) !== floorAvgGame1) {
     const diff = floorAvgGame1 - floorAverage(adventuresStats);
@@ -169,19 +169,19 @@ function fixGlitchedSchimmering(
 }
 
 export function getAdventuresStats(dnaSchemaReader: DNASchemaReader, adventuresStats: AdvStatsJSON): ParseDataAdv {
-  const tacticsStats: any = {};
+  const tacticsStats: Partial<ParseDataRangeCompleteness> = {};
   dnaSchemaReader.getCompletenessGenes().forEach((gene: GeneWithValues) => {
-    tacticsStats[gene.name] = Math.round((gene.completeness as number) * 100);
+    tacticsStats[gene.name as keyof ParseDataRangeCompleteness] = Math.round((gene.completeness as number) * 100);
   });
-  const fixedStats = convertStats(tacticsStats);
+  const fixedStats = convertStats(tacticsStats as ParseDataRangeCompleteness);
 
   const advName = TACTICS_ADV_NAMES_MAP[dnaSchemaReader.archetype.fixed_attributes.name];
   const advStatsRanges = adventuresStats.nefties[advName];
   const statsNameMap: Record<keyof typeof fixedStats, keyof typeof advStatsRanges> = {
-    vitality: 'Health',
-    power: 'Power',
-    defense: 'Defense',
-    speed: 'Speed',
+    hp: 'hp',
+    atk: 'atk',
+    def: 'def',
+    speed: 'speed',
   };
 
   Object.keys(fixedStats).forEach((key) => {

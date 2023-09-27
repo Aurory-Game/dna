@@ -1,64 +1,64 @@
 {
   "nefties": {
     "bitebit": {
-      "Health": { "min": 120, "max": 160 },
-      "Power": { "min": 18, "max": 24 },
-      "Defense": { "min": 24, "max": 36 },
-      "Speed": { "min": 30, "max": 50 }
+      "hp": { "min": 120, "max": 160 },
+      "atk": { "min": 18, "max": 24 },
+      "def": { "min": 24, "max": 36 },
+      "speed": { "min": 30, "max": 50 }
     },
     "dipking": {
-      "Health": { "min": 96, "max": 128 },
-      "Power": { "min": 18, "max": 24 },
-      "Defense": { "min": 30, "max": 45 },
-      "Speed": { "min": 30, "max": 50 }
+      "hp": { "min": 96, "max": 128 },
+      "atk": { "min": 18, "max": 24 },
+      "def": { "min": 30, "max": 45 },
+      "speed": { "min": 30, "max": 50 }
     },
     "dinobit": {
-      "Health": { "min": 144, "max": 192 },
-      "Power": { "min": 12, "max": 16 },
-      "Defense": { "min": 30, "max": 45 },
-      "Speed": { "min": 30, "max": 50 }
+      "hp": { "min": 144, "max": 192 },
+      "atk": { "min": 12, "max": 16 },
+      "def": { "min": 30, "max": 45 },
+      "speed": { "min": 30, "max": 50 }
     },
     "shiba ignite": {
-      "Health": { "min": 144, "max": 192 },
-      "Power": { "min": 15, "max": 20 },
-      "Defense": { "min": 30, "max": 45 },
-      "Speed": { "min": 24, "max": 40 }
+      "hp": { "min": 144, "max": 192 },
+      "atk": { "min": 15, "max": 20 },
+      "def": { "min": 30, "max": 45 },
+      "speed": { "min": 24, "max": 40 }
     },
     "zzoo": {
-      "Health": { "min": 96, "max": 128 },
-      "Power": { "min": 18, "max": 24 },
-      "Defense": { "min": 30, "max": 45 },
-      "Speed": { "min": 30, "max": 50 }
+      "hp": { "min": 96, "max": 128 },
+      "atk": { "min": 18, "max": 24 },
+      "def": { "min": 30, "max": 45 },
+      "speed": { "min": 30, "max": 50 }
     },
     "block choy": {
-      "Health": { "min": 120, "max": 160 },
-      "Power": { "min": 12, "max": 16 },
-      "Defense": { "min": 36, "max": 54 },
-      "Speed": { "min": 30, "max": 50 }
+      "hp": { "min": 120, "max": 160 },
+      "atk": { "min": 12, "max": 16 },
+      "def": { "min": 36, "max": 54 },
+      "speed": { "min": 30, "max": 50 }
     },
     "number 9": {
-      "Health": { "min": 96, "max": 128 },
-      "Power": { "min": 18, "max": 24 },
-      "Defense": { "min": 30, "max": 45 },
-      "Speed": { "min": 30, "max": 50 }
+      "hp": { "min": 96, "max": 128 },
+      "atk": { "min": 18, "max": 24 },
+      "def": { "min": 30, "max": 45 },
+      "speed": { "min": 30, "max": 50 }
     },
     "axobubble": {
-      "Health": { "min": 96, "max": 128 },
-      "Power": { "min": 15, "max": 20 },
-      "Defense": { "min": 36, "max": 54 },
-      "Speed": { "min": 30, "max": 50 }
+      "hp": { "min": 96, "max": 128 },
+      "atk": { "min": 15, "max": 20 },
+      "def": { "min": 36, "max": 54 },
+      "speed": { "min": 30, "max": 50 }
     },
     "unika": {
-      "Health": { "min": 120, "max": 160 },
-      "Power": { "min": 12, "max": 16 },
-      "Defense": { "min": 36, "max": 54 },
-      "Speed": { "min": 30, "max": 50 }
+      "hp": { "min": 120, "max": 160 },
+      "atk": { "min": 12, "max": 16 },
+      "def": { "min": 36, "max": 54 },
+      "speed": { "min": 30, "max": 50 }
     },
     "chocomint": {
-      "Health": { "min": 120, "max": 160 },
-      "Power": { "min": 15, "max": 20 },
-      "Defense": { "min": 24, "max": 36 },
-      "Speed": { "min": 36, "max": 60 }
+      "hp": { "min": 120, "max": 160 },
+      "atk": { "min": 15, "max": 20 },
+      "def": { "min": 24, "max": 36 },
+      "speed": { "min": 36, "max": 60 }
     }
   }
 }
