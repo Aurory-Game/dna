@@ -119,16 +119,16 @@ export interface AbilityInfo {
 export type ParseDataAdv = ParseDataPerc & ParseDataComputed;
 
 export interface ParseDataPerc {
-  vitality: number;
-  power: number;
-  defense: number;
+  hp: number;
+  atk: number;
+  def: number;
   speed: number;
 }
 
 export interface ParseDataComputed {
-  vitalityComputed: number;
-  powerComputed: number;
-  defenseComputed: number;
+  hpComputed: number;
+  atkComputed: number;
+  defComputed: number;
   speedComputed: number;
 }
 
@@ -139,10 +139,10 @@ export interface AdvStatsJSON {
 export type AdvStatsJSONRecord = Record<string, AdvStatsJSONValue>;
 
 export interface AdvStatsJSONValue {
-  Health: { min: number; max: number };
-  Power: { min: number; max: number };
-  Defense: { min: number; max: number };
-  Speed: { min: number; max: number };
+  hp: { min: number; max: number };
+  atk: { min: number; max: number };
+  def: { min: number; max: number };
+  speed: { min: number; max: number };
 }
 
 export interface Parse {

@@ -157,14 +157,15 @@ describe('Basic', () => {
           assert.ok(data.data.skill_c_info.name.EN);
           assert.ok(data.data.skill_c_info.description.EN);
           assert.ok(data.dataAdv);
-          assert.ok(Number.isInteger(data.dataAdv.vitality));
-          assert.ok(Number.isInteger(data.dataAdv.vitalityComputed));
+          assert.ok(Number.isInteger(data.dataAdv.hp));
+          assert.ok(Number.isInteger(data.dataAdv.hpComputed));
+
+          assert.ok(Number.isInteger(data.dataAdv.atk));
+          assert.ok(Number.isInteger(data.dataAdv.atkComputed));
+          assert.ok(Number.isInteger(data.dataAdv.def));
+          assert.ok(Number.isInteger(data.dataAdv.defComputed));
           assert.ok(Number.isInteger(data.dataAdv.speed));
           assert.ok(Number.isInteger(data.dataAdv.speedComputed));
-          assert.ok(Number.isInteger(data.dataAdv.power));
-          assert.ok(Number.isInteger(data.dataAdv.powerComputed));
-          assert.ok(Number.isInteger(data.dataAdv.defense));
-          assert.ok(Number.isInteger(data.dataAdv.defenseComputed));
         } catch (e) {
           console.error(e);
           console.log(archetypeKey, archetype.fixed_attributes.name);
