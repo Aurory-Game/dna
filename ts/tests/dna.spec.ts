@@ -348,7 +348,7 @@ describe('starter eggs', () => {
 });
 
 describe('standard eggs', () => {
-  it('all starter eggs should be hatchable', () => {
+  it('all standard eggs should be hatchable', () => {
     const df = new DNAFactory();
     const standardEggs = EggsFactory.getAllStandardEggs();
     Object.keys(standardEggs).forEach((eggName) => {
@@ -365,6 +365,18 @@ describe('standard eggs', () => {
         const parsedDna = df.parse(dna);
         assert.equal(standardEggs[eggName].archetypes.includes(parsedDna.data.name), true);
       }
+    });
+  });
+
+  it('can get droppable nefties', () => {
+    const df = new DNAFactory();
+    const standardEggs = EggsFactory.getAllStandardEggs();
+    Object.keys(standardEggs).forEach((eggName) => {
+      const ef = new EggsFactory(eggName, df);
+      const droppableStandardNefties = ef.getDroppableStandardNefties();
+
+      assert(droppableStandardNefties);
+      assert.equal(droppableStandardNefties.length, standardEggs[eggName].archetypes.length);
     });
   });
 });

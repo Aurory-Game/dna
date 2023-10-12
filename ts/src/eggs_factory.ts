@@ -31,6 +31,16 @@ export class EggsFactory {
     });
   }
 
+  getDroppableStandardNefties(): DroppableNeftyInfo[] {
+    return this.standardEggInfo.archetypes.map((neftyCodeName) => {
+      const r: DroppableNeftyInfo = {} as DroppableNeftyInfo;
+      Object.assign(r, this.df.getArchetypeByNeftyCodeName(neftyCodeName));
+      r.displayName = this.df.getDisplayNameFromCodeName(neftyCodeName);
+      r.description = this.df.getFamilyDescription(r.archetype.fixed_attributes.family as string);
+      return r;
+    });
+  }
+
   hatch(): { archetypeKey: string; archetype: Archetype } {
     const droppableArchetypes = this.eggInfo.archetypes;
     const neftyCodeName = droppableArchetypes[Math.floor(Math.random() * droppableArchetypes.length)];
