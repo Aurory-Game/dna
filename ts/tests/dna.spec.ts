@@ -344,6 +344,10 @@ describe('starter eggs', () => {
     assert.equal(data.raw.eatk, expectedRawStatValue);
     assert.equal(data.raw.edef, expectedRawStatValue);
     assert.equal(data.raw.initiative, expectedRawStatValue);
+    assert.equal(data.dataAdv.hp, 10);
+    assert.equal(data.dataAdv.speed, 10);
+    assert.equal(data.dataAdv.atk, 10);
+    assert.equal(data.dataAdv.def, 10);
   });
 });
 

@@ -128,6 +128,15 @@ function advArrToObj(advArr: number[]): ParseDataPerc {
 }
 
 function convertStats(tacticsStats: ParseDataRangeCompleteness): ParseDataPerc {
+  const starterStatValue = Math.floor(255 / 10);
+  if (Object.values(tacticsStats).every((value) => value === starterStatValue)) {
+    return {
+      hp: starterStatValue,
+      atk: starterStatValue,
+      def: starterStatValue,
+      speed: starterStatValue,
+    };
+  }
   const floorAvgGame1 = floorAverage(tacticsStatsObjToArr(tacticsStats));
   const hpGame2 = Math.round(tacticsStats.hp);
   const atkGame2 = Math.round((tacticsStats.atk + tacticsStats.eatk) / 2);
