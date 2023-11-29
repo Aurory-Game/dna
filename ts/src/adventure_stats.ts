@@ -180,9 +180,6 @@ export function getAdventuresStats(dnaSchemaReader: DNASchemaReader, adventuresS
   const advStatsRanges = adventuresStats.nefties[`id_${neftieName}`];
 
   Object.keys(fixedStats).forEach((key) => {
-    if (!['hp', 'atk', 'def', 'speed'].includes(key)) {
-      return;
-    }
     const min = advStatsRanges[`${key}Min` as keyof AdvStatsJSONValue] as number;
     const max = advStatsRanges[`${key}Max` as keyof AdvStatsJSONValue] as number;
     (fixedStats as ParseDataAdv)[`${key}Computed` as keyof ParseDataAdv] = Math.round(
