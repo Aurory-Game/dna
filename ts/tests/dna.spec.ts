@@ -18,6 +18,8 @@ const displayNamesProd = [
   'Number 9',
   'Unika',
   'Chocomint',
+  'Cybertooth',
+  'Wassie',
 ];
 
 const neftyCodeNamesProd = new Set([
@@ -31,6 +33,8 @@ const neftyCodeNamesProd = new Set([
   'Nefty_Number9',
   'Nefty_Unika',
   'Nefty_Chocomint',
+  'Nefty_Cybertooth',
+  'Nefty_Wassie',
 ]);
 
 const neftyFamiliesProd = new Set([
@@ -44,6 +48,8 @@ const neftyFamiliesProd = new Set([
   'Number9',
   'Unika',
   'Chocomint',
+  'Cybertooth',
+  'Wassie',
 ]);
 
 const passivesProd = new Set([

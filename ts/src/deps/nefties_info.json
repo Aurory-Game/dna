@@ -9,7 +9,9 @@
     "Nefty_Number9": "Number 9",
     "Nefty_Axobubble": "Axobubble",
     "Nefty_Unika": "Unika",
-    "Nefty_Chocomint": "Chocomint"
+    "Nefty_Chocomint": "Chocomint",
+    "Nefty_Cybertooth": "Cybertooth",
+    "Nefty_Wassie": "Wassie"
   },
   "family_to_description": {
     "Bitebit": "Bitebit may look cuddly, but don't be fooled by its charm - those aren't paper hands... they're DIAMOND CLAWS!",
@@ -21,6 +23,8 @@
     "Number9": "Number 9 is a solid choice despite appearances, but remember - it has to FLY THROUGH ENEMIES before it can attack them.",
     "Axobubble": "Axobubble is a born defender, but its magic is sneaky - buffs, curses and other mischief are sure to bubble up to HELP THE TEAM.",
     "Unika": "Unika is cool under pressure, but don't let its delicate appearance confuse you - it's ready with an ICE COLD STRIKE!",
-    "Chocomint": "Chocomints are born with a remnant of their shells on their heads. To pass into adulthood, a joust between two young Chocomints takes place. The victor is the one who cracks its shell to unveil its cherry."
+    "Chocomint": "Chocomints are born with a remnant of their shells on their heads. To pass into adulthood, a joust between two young Chocomints takes place. The victor is the one who cracks its shell to unveil its cherry.",
+    "Cybertooth": "Cybertooth is fierce",
+    "Wassie": "Wassie is cool"
   }
 }

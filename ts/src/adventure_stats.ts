@@ -6,6 +6,7 @@ import {
   ParseDataRangeCompleteness,
   AdvStatsJSON,
   ParseDataPerc,
+  AdvStatsJSONValue,
 } from './interfaces/types';
 
 /**
@@ -175,17 +176,15 @@ export function getAdventuresStats(dnaSchemaReader: DNASchemaReader, adventuresS
   });
   const fixedStats = convertStats(tacticsStats as ParseDataRangeCompleteness);
 
-  const advName = TACTICS_ADV_NAMES_MAP[dnaSchemaReader.archetype.fixed_attributes.name];
-  const advStatsRanges = adventuresStats.nefties[advName];
-  const statsNameMap: Record<keyof typeof fixedStats, keyof typeof advStatsRanges> = {
-    hp: 'hp',
-    atk: 'atk',
-    def: 'def',
-    speed: 'speed',
-  };
+  const neftieName = TACTICS_ADV_NAMES_MAP[dnaSchemaReader.archetype.fixed_attributes.name];
+  const advStatsRanges = adventuresStats.nefties[`id_${neftieName}`];
 
   Object.keys(fixedStats).forEach((key) => {
-    const { min, max } = advStatsRanges[statsNameMap[key as keyof typeof fixedStats]];
+    if (!['hp', 'atk', 'def', 'speed'].includes(key)) {
+      return;
+    }
+    const min = advStatsRanges[`${key}Min` as keyof AdvStatsJSONValue] as number;
+    const max = advStatsRanges[`${key}Max` as keyof AdvStatsJSONValue] as number;
     (fixedStats as ParseDataAdv)[`${key}Computed` as keyof ParseDataAdv] = Math.round(
       (fixedStats[key as keyof typeof fixedStats] / 100) * (max - min) + min
     );
