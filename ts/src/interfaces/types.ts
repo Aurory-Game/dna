@@ -141,14 +141,14 @@ export interface AdvStatsJSON {
 export type AdvStatsJSONRecord = Record<string, AdvStatsJSONValue>;
 
 export interface AdvStatsJSONValue {
-  hpMin: number;
-  hpMax: number;
-  atkMin: number;
-  atkMax: number;
-  defMin: number;
-  defMax: number;
-  speedMin: number;
-  speedMax: number;
+  hpMin: string;
+  hpMax: string;
+  atkMin: string;
+  atkMax: string;
+  defMin: string;
+  defMax: string;
+  speedMin: string;
+  speedMax: string;
 }
 
 export interface Parse {

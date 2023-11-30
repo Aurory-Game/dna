@@ -63,6 +63,7 @@ const passivesProd = new Set([
   'tailekinesis',
   'Inspiring',
   'TastyMint',
+  'N/A',
 ]);
 
 const ultimatesProd = new Set([
@@ -76,6 +77,7 @@ const ultimatesProd = new Set([
   'bubbleOut',
   'Encore',
   'MightyMint',
+  'N/A',
 ]);
 
 const abilitiesProd = new Set([
@@ -109,6 +111,7 @@ const abilitiesProd = new Set([
   'FreshCherry',
   'FrostyMood',
   'RottenCherry',
+  'N/A',
 ]);
 
 const allSchemaVersions = readdirSync('./src/deps/schemas')
