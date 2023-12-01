@@ -165,10 +165,10 @@ describe('Basic', () => {
           assert.ok(data.data.skill_c_info);
           assert.ok(data.data.skill_c_info.name.EN);
           assert.ok(data.data.skill_c_info.description.EN);
+
           assert.ok(data.dataAdv);
           assert.ok(Number.isInteger(data.dataAdv.hp));
           assert.ok(Number.isInteger(data.dataAdv.hpComputed));
-
           assert.ok(Number.isInteger(data.dataAdv.atk));
           assert.ok(Number.isInteger(data.dataAdv.atkComputed));
           assert.ok(Number.isInteger(data.dataAdv.def));

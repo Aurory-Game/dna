@@ -1771,6 +1771,12 @@
       "ZH-TW": "Zzoo 受到傷害時會大聲尖叫，對附近的生物造成傷害。",
       "ES": "Cuando Zzoo recibe daño, emite un poderoso chillido que daña a las criaturas cercanas.",
       "PT": "Sempre que Zzoo sofre dano, solta um poderoso grito que causa dano às criaturas próximas."
+    },
+    "creatureAbility.N/A.name": {
+      "EN": "Not available"
+    },
+    "creatureAbility.N/A.description": {
+      "EN": "Not available"
     }
   }
 }

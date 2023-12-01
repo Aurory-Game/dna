@@ -276,17 +276,17 @@
           "fixed_attributes": {
             "name": "Nefty_Cybertooth",
             "family": "Cybertooth",
-            "mp": 0,
+            "mp": 3,
             "passiveSkill": "N/A",
             "ultimateSkill": "N/A"
           },
           "encoded_attributes": {
-            "hp": [0, 0],
-            "initiative": [0, 0],
-            "atk": [0, 0],
-            "def": [0, 0],
-            "eatk": [0, 0],
-            "edef": [0, 0],
+            "hp": [50, 100],
+            "initiative": [50, 100],
+            "atk": [50, 100],
+            "def": [50, 100],
+            "eatk": [50, 100],
+            "edef": [50, 100],
             "skill_a": ["N/A"],
             "skill_b": ["N/A"],
             "skill_c": ["N/A"]
@@ -296,17 +296,17 @@
           "fixed_attributes": {
             "name": "Nefty_Wassie",
             "family": "Wassie",
-            "mp": 0,
+            "mp": 3,
             "passiveSkill": "N/A",
             "ultimateSkill": "N/A"
           },
           "encoded_attributes": {
-            "hp": [0, 0],
-            "initiative": [0, 0],
-            "atk": [0, 0],
-            "def": [0, 0],
-            "eatk": [0, 0],
-            "edef": [0, 0],
+            "hp": [50, 100],
+            "initiative": [50, 100],
+            "atk": [50, 100],
+            "def": [50, 100],
+            "eatk": [50, 100],
+            "edef": [50, 100],
             "skill_a": ["N/A"],
             "skill_b": ["N/A"],
             "skill_c": ["N/A"]
