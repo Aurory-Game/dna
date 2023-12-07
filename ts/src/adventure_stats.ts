@@ -177,7 +177,7 @@ export function getAdventuresStats(dnaSchemaReader: DNASchemaReader, adventuresS
   const fixedStats = convertStats(tacticsStats as ParseDataRangeCompleteness);
 
   const neftieName = TACTICS_ADV_NAMES_MAP[dnaSchemaReader.archetype.fixed_attributes.name];
-  const advStatsRanges = adventuresStats.nefties[`id_${neftieName}`];
+  const advStatsRanges = adventuresStats.nefties[neftieName];
 
   Object.keys(fixedStats).forEach((key) => {
     const min = Number(advStatsRanges[`${key}Min` as keyof AdvStatsJSONValue]);
