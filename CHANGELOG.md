@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.7.0] - 12/6/2023
+- Introduce Cybertooth and Wassie
+- Add Fen and Moss eggs
+- Update configuration format for adventure stats
+
 ## [v0.6.0] - 09/18/2023
 - Introduce grade for DNA generation
 - Add standard egg support in EggFactory

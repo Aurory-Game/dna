@@ -18,6 +18,8 @@ const displayNamesProd = [
   'Number 9',
   'Unika',
   'Chocomint',
+  'Cybertooth',
+  'Wassie',
 ];
 
 const neftyCodeNamesProd = new Set([
@@ -31,6 +33,8 @@ const neftyCodeNamesProd = new Set([
   'Nefty_Number9',
   'Nefty_Unika',
   'Nefty_Chocomint',
+  'Nefty_Cybertooth',
+  'Nefty_Wassie',
 ]);
 
 const neftyFamiliesProd = new Set([
@@ -44,6 +48,8 @@ const neftyFamiliesProd = new Set([
   'Number9',
   'Unika',
   'Chocomint',
+  'Cybertooth',
+  'Wassie',
 ]);
 
 const passivesProd = new Set([
@@ -57,6 +63,7 @@ const passivesProd = new Set([
   'tailekinesis',
   'Inspiring',
   'TastyMint',
+  'N/A',
 ]);
 
 const ultimatesProd = new Set([
@@ -70,6 +77,7 @@ const ultimatesProd = new Set([
   'bubbleOut',
   'Encore',
   'MightyMint',
+  'N/A',
 ]);
 
 const abilitiesProd = new Set([
@@ -103,6 +111,7 @@ const abilitiesProd = new Set([
   'FreshCherry',
   'FrostyMood',
   'RottenCherry',
+  'N/A',
 ]);
 
 const allSchemaVersions = readdirSync('./src/deps/schemas')
@@ -156,10 +165,10 @@ describe('Basic', () => {
           assert.ok(data.data.skill_c_info);
           assert.ok(data.data.skill_c_info.name.EN);
           assert.ok(data.data.skill_c_info.description.EN);
+
           assert.ok(data.dataAdv);
           assert.ok(Number.isInteger(data.dataAdv.hp));
           assert.ok(Number.isInteger(data.dataAdv.hpComputed));
-
           assert.ok(Number.isInteger(data.dataAdv.atk));
           assert.ok(Number.isInteger(data.dataAdv.atkComputed));
           assert.ok(Number.isInteger(data.dataAdv.def));

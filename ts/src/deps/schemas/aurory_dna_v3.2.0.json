@@ -271,6 +271,46 @@
             "skill_b": ["RottenCherry"],
             "skill_c": ["FrostyMood"]
           }
+        },
+        "10": {
+          "fixed_attributes": {
+            "name": "Nefty_Cybertooth",
+            "family": "Cybertooth",
+            "mp": 3,
+            "passiveSkill": "N/A",
+            "ultimateSkill": "N/A"
+          },
+          "encoded_attributes": {
+            "hp": [50, 100],
+            "initiative": [50, 100],
+            "atk": [50, 100],
+            "def": [50, 100],
+            "eatk": [50, 100],
+            "edef": [50, 100],
+            "skill_a": ["N/A"],
+            "skill_b": ["N/A"],
+            "skill_c": ["N/A"]
+          }
+        },
+        "11": {
+          "fixed_attributes": {
+            "name": "Nefty_Wassie",
+            "family": "Wassie",
+            "mp": 3,
+            "passiveSkill": "N/A",
+            "ultimateSkill": "N/A"
+          },
+          "encoded_attributes": {
+            "hp": [50, 100],
+            "initiative": [50, 100],
+            "atk": [50, 100],
+            "def": [50, 100],
+            "eatk": [50, 100],
+            "edef": [50, 100],
+            "skill_a": ["N/A"],
+            "skill_b": ["N/A"],
+            "skill_c": ["N/A"]
+          }
         }
       }
     }

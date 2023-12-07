@@ -132,6 +132,8 @@ export interface ParseDataComputed {
   speedComputed: number;
 }
 
+export type AdvStat = 'hp' | 'atk' | 'def' | 'speed';
+
 export interface AdvStatsJSON {
   nefties: AdvStatsJSONRecord;
 }
@@ -139,10 +141,14 @@ export interface AdvStatsJSON {
 export type AdvStatsJSONRecord = Record<string, AdvStatsJSONValue>;
 
 export interface AdvStatsJSONValue {
-  hp: { min: number; max: number };
-  atk: { min: number; max: number };
-  def: { min: number; max: number };
-  speed: { min: number; max: number };
+  hpMin: string;
+  hpMax: string;
+  atkMin: string;
+  atkMax: string;
+  defMin: string;
+  defMax: string;
+  speedMin: string;
+  speedMax: string;
 }
 
 export interface Parse {
