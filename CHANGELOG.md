@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.7.3] - 01/16/2024
+- Wassie added to Quantum eggs
+
 ## [v0.7.0] - 12/6/2023
 - Introduce Cybertooth and Wassie
 - Add Fen and Moss eggs
