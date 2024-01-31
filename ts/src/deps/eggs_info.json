@@ -1,4 +1,14 @@
 {
+  "DraconicMintAddress": {
+    "name": "Draconic Egg",
+    "description": "With a shell as sharp as a razor blade, the Draconic Egg sends a warning to novice Seekers, cautioning them about the power concealed within.",
+    "archetypes": ["Nefty_Dracurve"]
+  },
+  "8nLBJaFaXcMSS2RK4YCGcHLxQuikK3aAPN1EZ3UorDW5": {
+    "name": "Everglade Egg",
+    "description": "Found deep in the murky swamps, the Everglade Eggs have mutated to camouflage themselves amongst the creeping moss and fungus.",
+    "archetypes": ["Nefty_Bitebit", "Nefty_Dipking", "Nefty_Dinobit", "Nefty_Number9", "Nefty_Axobubble"]
+  },
   "8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK": {
     "name": "Genesis Egg",
     "description": "So much power in such a tiny egg. Should go well with some bacon.",
@@ -10,11 +20,6 @@
       "Nefty_Zzoo",
       "Nefty_Blockchoy"
     ]
-  },
-  "8nLBJaFaXcMSS2RK4YCGcHLxQuikK3aAPN1EZ3UorDW5": {
-    "name": "Everglade Egg",
-    "description": "Found deep in the murky swamps, the Everglade Eggs have mutated to camouflage themselves amongst the creeping moss and fungus.",
-    "archetypes": ["Nefty_Bitebit", "Nefty_Dipking", "Nefty_Dinobit", "Nefty_Number9", "Nefty_Axobubble"]
   },
   "CRMoQEu2B23vDYhiNPWBpCtf1dPxjsp7X9BcYxgbFmee": {
     "name": "Prairie Egg",

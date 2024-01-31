@@ -16,4 +16,5 @@ export const TACTICS_ADV_NAMES_MAP: Record<string, string> = {
   Nefty_Chocomint: 'id_chocomint',
   Nefty_Cybertooth: 'id_cybertooth',
   Nefty_Wassie: 'id_wassie',
+  Nefty_Dracurve: 'id_dracurve',
 };
