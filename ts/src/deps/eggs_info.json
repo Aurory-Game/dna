@@ -53,7 +53,7 @@
   },
   "cliff_egg_mint": {
     "name": "Cliff Egg",
-    "description": "An egg of the cliff",
+    "description": "These eggs are tough to crack, but from within, emerge only the strongest Nefties!",
     "archetypes": ["Nefty_Raccoin", "Nefty_Shibark", "Nefty_Unikirin"]
   }
 }
