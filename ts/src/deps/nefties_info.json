@@ -12,7 +12,10 @@
     "Nefty_Chocomint": "Chocomint",
     "Nefty_Cybertooth": "Cybertooth",
     "Nefty_Wassie": "Wassie",
-    "Nefty_Dracurve": "Dracurve"
+    "Nefty_Dracurve": "Dracurve",
+    "Nefty_Raccoin": "Raccoin",
+    "Nefty_Shibark": "Shibark",
+    "Nefty_Unikirin": "Unikirin"
   },
   "family_to_description": {
     "Bitebit": "Bitebit may look cuddly, but don't be fooled by its charm - those aren't paper hands... they're DIAMOND CLAWS!",
@@ -27,6 +30,9 @@
     "Chocomint": "Chocomints are born with a remnant of their shells on their heads. To pass into adulthood, a joust between two young Chocomints takes place. The victor is the one who cracks its shell to unveil its cherry.",
     "Cybertooth": "Cybertooth uses its thick hide to fortify its defenses, skillfully weakening foes with its abilities to gain an advantage and deal significant damage.",
     "Wassie": "Wassie is a nimble Neftie known for harnessing its abilities to enhance its speed and inflict substantial damage.",
-    "Dracurve": "Dracurve dictates the course of battle with shifts in stats and status effects. Exercise caution, for a few strategic choices can swiftly pave the way to devastation."
+    "Dracurve": "Dracurve dictates the course of battle with shifts in stats and status effects. Exercise caution, for a few strategic choices can swiftly pave the way to devastation.",
+    "Raccoin": "Raccoin's a sly, laid-back Neftie, known for its nimbleness and love for naps.",
+    "Shibark": "Shibark is known to roam vast landscapes, unearthing treasures and marking its territory with resounding howls.",
+    "Unikirin": "Each step Unikirin takes resonates with the crackle of electric energy, a testament to its wild and untamed spirit."
   }
 }

@@ -428,6 +428,105 @@
           "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_08"
         }
       ]
+    },
+    "id_shibark": {
+      "id": "id_shibark",
+      "type": "Shibark",
+      "element": "Ground",
+      "hpMin": 95,
+      "hpMax": 114,
+      "atkMin": 36,
+      "atkMax": 43,
+      "defMin": 51,
+      "defMax": 61,
+      "speedMin": 60,
+      "speedMax": 72,
+      "hypeMin": 0,
+      "hypeMax": 999,
+      "passive": "-1",
+      "abilitiesArray": [
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_02"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_16"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_EARTH_10"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_PLANT_09"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_EARTH_11"
+        }
+      ]
+    },
+    "id_raccoin": {
+      "id": "id_raccoin",
+      "type": "Raccoin",
+      "element": "Wind",
+      "hpMin": 100,
+      "hpMax": 120,
+      "atkMin": 33,
+      "atkMax": 40,
+      "defMin": 60,
+      "defMax": 72,
+      "speedMin": 54,
+      "speedMax": 65,
+      "hypeMin": 0,
+      "hypeMax": 999,
+      "passive": "-1",
+      "abilitiesArray": [
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_20"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_21"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_WIND_11"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_19"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_WIND_12"
+        }
+      ]
+    },
+    "id_unikirin": {
+      "id": "id_unikirin",
+      "type": "Unikirin",
+      "element": "Thunder",
+      "hpMin": 80,
+      "hpMax": 96,
+      "atkMin": 32,
+      "atkMax": 38,
+      "defMin": 60,
+      "defMax": 72,
+      "speedMin": 69,
+      "speedMax": 83,
+      "hypeMin": 0,
+      "hypeMax": 999,
+      "passive": "-1",
+      "abilitiesArray": [
+        {
+          "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_12"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_01"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_FIRE_10"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_02"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_13"
+        }
+      ]
     }
   }
 }

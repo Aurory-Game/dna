@@ -30,5 +30,30 @@
     "name": "Quantum Egg",
     "description": "The Quantum Egg stands as an enigmatic marvel, its shiny shell mirroring the colours of far-off and incredible places, teasing at the everchanging mysterious creature tucked inside...",
     "archetypes": ["Nefty_Chocomint", "Nefty_Cybertooth", "Nefty_Wassie"]
+  },
+  "beach_egg": {
+    "name": "Beach Egg",
+    "description": "Stick your ear to its shell and you can hear the waves of the ocean, feel the hit of summer, and find yourself craving a sweet and refreshing snack.",
+    "archetypes": ["Nefty_Chocomint", "Nefty_Dipking", "Nefty_ShibaIgnite"]
+  },
+  "companion_egg": {
+    "name": "Companion Egg",
+    "description": "It's a good omen when building a new home to find a companion egg nearby, as the Neftie that comes out of it will protect the house and its habitants.",
+    "archetypes": ["Nefty_Bitebit", "Nefty_Unika", "Nefty_Zzoo"]
+  },
+  "renegade_egg": {
+    "name": "Renegade Egg",
+    "description": "The inner red glow can be seen pulsating if you blast a heavy metal tune.",
+    "archetypes": ["Nefty_Cybertooth", "Nefty_Dinobit", "Nefty_Wassie"]
+  },
+  "zen_egg": {
+    "name": "Zen Egg",
+    "description": "If you calm your breathing and quiet your mind, you can hear the Neftie growing within.",
+    "archetypes": ["Nefty_Axobubble", "Nefty_Blockchoy", "Nefty_Number9"]
+  },
+  "cliff_egg": {
+    "name": "Cliff Egg",
+    "description": "An egg of the cliff",
+    "archetypes": ["Nefty_Raccoin", "Nefty_Shibark", "Nefty_Unikirin"]
   }
 }
