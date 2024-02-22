@@ -537,7 +537,6 @@ export class DNAFactory {
   }
 
   private _addNeftyImageData(data: ParseData, grade: Grade): void {
-    console.log(data);
     data.defaultImage = this.getNeftyImageName(data.displayName, data.rarity, grade);
     data.imageByGame = {
       tactics: {
