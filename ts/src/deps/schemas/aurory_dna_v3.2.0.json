@@ -391,6 +391,66 @@
             "skill_b": ["N/A"],
             "skill_c": ["N/A"]
           }
+        },
+        "16": {
+          "fixed_attributes": {
+            "name": "Nefty_Beeblock",
+            "family": "Beeblock",
+            "mp": 3,
+            "passiveSkill": "N/A",
+            "ultimateSkill": "N/A"
+          },
+          "encoded_attributes": {
+            "hp": [50, 100],
+            "initiative": [50, 100],
+            "atk": [50, 100],
+            "def": [50, 100],
+            "eatk": [50, 100],
+            "edef": [50, 100],
+            "skill_a": ["N/A"],
+            "skill_b": ["N/A"],
+            "skill_c": ["N/A"]
+          }
+        }
+      },
+      "17": {
+        "fixed_attributes": {
+          "name": "Nefty_Chocorex",
+          "family": "Chocorex",
+          "mp": 3,
+          "passiveSkill": "N/A",
+          "ultimateSkill": "N/A"
+        },
+        "encoded_attributes": {
+          "hp": [50, 100],
+          "initiative": [50, 100],
+          "atk": [50, 100],
+          "def": [50, 100],
+          "eatk": [50, 100],
+          "edef": [50, 100],
+          "skill_a": ["N/A"],
+          "skill_b": ["N/A"],
+          "skill_c": ["N/A"]
+        }
+      },
+      "18": {
+        "fixed_attributes": {
+          "name": "Nefty_Keybab",
+          "family": "Keybab",
+          "mp": 3,
+          "passiveSkill": "N/A",
+          "ultimateSkill": "N/A"
+        },
+        "encoded_attributes": {
+          "hp": [50, 100],
+          "initiative": [50, 100],
+          "atk": [50, 100],
+          "def": [50, 100],
+          "eatk": [50, 100],
+          "edef": [50, 100],
+          "skill_a": ["N/A"],
+          "skill_b": ["N/A"],
+          "skill_c": ["N/A"]
         }
       }
     }

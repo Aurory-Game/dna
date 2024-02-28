@@ -15,7 +15,10 @@
     "Nefty_Dracurve": "Dracurve",
     "Nefty_Raccoin": "Raccoin",
     "Nefty_Shibark": "Shibark",
-    "Nefty_Unikirin": "Unikirin"
+    "Nefty_Unikirin": "Unikirin",
+    "Nefty_Beeblock": "Beeblock",
+    "Nefty_Chocorex": "Chocorex",
+    "Nefty_Keybab": "Keybab"
   },
   "family_to_description": {
     "Bitebit": "Bitebit may look cuddly, but don't be fooled by its charm - those aren't paper hands... they're DIAMOND CLAWS!",
@@ -33,6 +36,9 @@
     "Dracurve": "Dracurve dictates the course of battle with shifts in stats and status effects. Exercise caution, for a few strategic choices can swiftly pave the way to devastation.",
     "Raccoin": "Raccoin's a sly, laid-back Neftie, known for its nimbleness and love for naps.",
     "Shibark": "Shibark is known to roam vast landscapes, unearthing treasures and marking its territory with resounding howls.",
-    "Unikirin": "Each step Unikirin takes resonates with the crackle of electric energy, a testament to its wild and untamed spirit."
+    "Unikirin": "Each step Unikirin takes resonates with the crackle of electric energy, a testament to its wild and untamed spirit.",
+    "Beeblock": "Beeblocks, generally calm creatures, are domesticated for their production of a super sweet jelly called Nury. When threatened, they deploy their stingers to inflict intense pain on their attackers.",
+    "Chocorex": "Chocorexes are good and loyal companions, commonly used as mounts in Tokane. However, due to their limited intelligence, they require skilled riders.",
+    "Keybab": "Keybab possesses a self-defense mechanism, causing it to change color to a boiling red. It then releases a spicy vapor into the air, making anyone who inhales it shed tears."
   }
 }
