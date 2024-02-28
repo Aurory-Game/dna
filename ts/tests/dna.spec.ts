@@ -21,6 +21,9 @@ const displayNamesProd = [
   'Cybertooth',
   'Wassie',
   'Dracurve',
+  'Raccoin',
+  'Shibark',
+  'Unikirin',
 ];
 
 const neftyCodeNamesProd = new Set([
@@ -37,6 +40,9 @@ const neftyCodeNamesProd = new Set([
   'Nefty_Cybertooth',
   'Nefty_Wassie',
   'Nefty_Dracurve',
+  'Nefty_Raccoin',
+  'Nefty_Shibark',
+  'Nefty_Unikirin',
 ]);
 
 const neftyFamiliesProd = new Set([
@@ -53,6 +59,9 @@ const neftyFamiliesProd = new Set([
   'Cybertooth',
   'Wassie',
   'Dracurve',
+  'Raccoin',
+  'Shibark',
+  'Unikirin',
 ]);
 
 const passivesProd = new Set([
@@ -379,9 +388,11 @@ describe('standard eggs', () => {
       }
     });
   });
+});
 
-  it('can get droppable nefties', () => {
-    const df = new DNAFactory();
+describe('droppable nefties', () => {
+  const df = new DNAFactory();
+  it('all standard eggs archetypes are droppable', () => {
     const standardEggs = EggsFactory.getAllStandardEggs();
     Object.keys(standardEggs).forEach((eggName) => {
       const ef = new EggsFactory(eggName, df);
@@ -389,6 +400,16 @@ describe('standard eggs', () => {
 
       assert(droppableStandardNefties);
       assert.equal(droppableStandardNefties.length, standardEggs[eggName].archetypes.length);
+    });
+  });
+  it('all prime eggs neftie archetypes are droppable', () => {
+    const primeEggs = EggsFactory.getAllEggs();
+    Object.keys(primeEggs).forEach((eggName) => {
+      const ef = new EggsFactory(eggName, df);
+      const droppableNefties = ef.getDroppableNefties();
+
+      assert(droppableNefties);
+      assert.equal(droppableNefties.length, primeEggs[eggName].archetypes.length);
     });
   });
 });

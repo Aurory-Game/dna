@@ -30,5 +30,10 @@
     "name": "Quantum Egg",
     "description": "The Quantum Egg stands as an enigmatic marvel, its shiny shell mirroring the colours of far-off and incredible places, teasing at the everchanging mysterious creature tucked inside...",
     "archetypes": ["Nefty_Chocomint", "Nefty_Cybertooth", "Nefty_Wassie"]
+  },
+  "cliff_egg": {
+    "name": "Cliff Egg",
+    "description": "These eggs are tough to crack, but from within, emerge only the strongest Nefties!",
+    "archetypes": ["Nefty_Raccoin", "Nefty_Shibark", "Nefty_Unikirin"]
   }
 }
