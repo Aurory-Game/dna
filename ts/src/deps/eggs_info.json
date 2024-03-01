@@ -38,7 +38,7 @@
   },
   "festive_egg": {
     "name": "Festive Egg",
-    "description": "The festive egg is festive",
+    "description": "Crack open the Festive egg to enjoy a cheerful melody guaranteed to put a smile on everyone's face.",
     "archetypes": ["Nefty_Beeblock", "Nefty_Chocorex", "Nefty_Keybab"]
   }
 }
