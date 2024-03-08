@@ -527,6 +527,105 @@
           "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_13"
         }
       ]
+    },
+    "id_keybab": {
+      "id": "id_keybab",
+      "type": "Keybab",
+      "element": "Fire",
+      "hpMin": 85,
+      "hpMax": 102,
+      "atkMin": 36,
+      "atkMax": 43,
+      "defMin": 51,
+      "defMax": 61,
+      "speedMin": 66,
+      "speedMax": 79,
+      "hypeMin": 0,
+      "hypeMax": 999,
+      "passive": "-1",
+      "abilitiesArray": [
+        {
+          "id": "ID_FULLBLITZ_ABILITY_FIRE_12"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_05"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_PLANT_12"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_FIRE_11"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_FIRE_02"
+        }
+      ]
+    },
+    "id_chocorex": {
+      "id": "id_chocorex",
+      "type": "ChocoRex",
+      "element": "Water",
+      "hpMin": 90,
+      "hpMax": 108,
+      "atkMin": 30,
+      "atkMax": 36,
+      "defMin": 57,
+      "defMax": 68,
+      "speedMin": 69,
+      "speedMax": 83,
+      "hypeMin": 0,
+      "hypeMax": 999,
+      "passive": "-1",
+      "abilitiesArray": [
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_03"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_22"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_WATER_14"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_WATER_13"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_23"
+        }
+      ]
+    },
+    "id_beeblock": {
+      "id": "id_beeblock",
+      "type": "Beeblock",
+      "element": "Plant",
+      "hpMin": 115,
+      "hpMax": 138,
+      "atkMin": 26,
+      "atkMax": 31,
+      "defMin": 51,
+      "defMax": 61,
+      "speedMin": 69,
+      "speedMax": 83,
+      "hypeMin": 0,
+      "hypeMax": 999,
+      "passive": "-1",
+      "abilitiesArray": [
+        {
+          "id": "ID_FULLBLITZ_ABILITY_PLANT_13"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_06"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_PLANT_09"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_PLANT_14"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_WIND_05"
+        }
+      ]
     }
   }
 }

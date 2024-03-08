@@ -24,6 +24,9 @@ const displayNamesProd = [
   'Raccoin',
   'Shibark',
   'Unikirin',
+  'Beeblock',
+  'Chocorex',
+  'Keybab',
 ];
 
 const neftyCodeNamesProd = new Set([
@@ -43,6 +46,9 @@ const neftyCodeNamesProd = new Set([
   'Nefty_Raccoin',
   'Nefty_Shibark',
   'Nefty_Unikirin',
+  'Nefty_Beeblock',
+  'Nefty_Chocorex',
+  'Nefty_Keybab',
 ]);
 
 const neftyFamiliesProd = new Set([
@@ -62,6 +68,9 @@ const neftyFamiliesProd = new Set([
   'Raccoin',
   'Shibark',
   'Unikirin',
+  'Beeblock',
+  'Chocorex',
+  'Keybab',
 ]);
 
 const passivesProd = new Set([
@@ -318,19 +327,6 @@ describe('Rarity', () => {
     });
   });
 });
-
-const adventuresStatsNames = [
-  'bitebit',
-  'dipking',
-  'dinobit',
-  'shiba ignite',
-  'zzoo',
-  'block choy',
-  'number 9',
-  'axobubble',
-  'unika',
-  'chocomint',
-];
 
 describe('Adventures', () => {
   it('All archetypes have adventure stats', () => {

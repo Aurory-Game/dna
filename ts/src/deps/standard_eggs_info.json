@@ -35,5 +35,10 @@
     "name": "Cliff Egg",
     "description": "These eggs are tough to crack, but from within, emerge only the strongest Nefties!",
     "archetypes": ["Nefty_Raccoin", "Nefty_Shibark", "Nefty_Unikirin"]
+  },
+  "festive_egg": {
+    "name": "Festive Egg",
+    "description": "Crack open the Festive egg to enjoy a cheerful melody guaranteed to put a smile on everyone's face.",
+    "archetypes": ["Nefty_Beeblock", "Nefty_Chocorex", "Nefty_Keybab"]
   }
 }
