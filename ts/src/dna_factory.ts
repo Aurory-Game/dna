@@ -343,7 +343,7 @@ export class DNAFactory {
       throw new Error(
         `Archetype index not found. archetypeIndex ${archetypeIndex} schemaVersion ${schemaVersion} categoryKey ${categoryKey}`
       );
-    const rarity = 'Common';
+    const rarity = 'Uncommon';
     const rarityIndex = Object.entries(dnaSchema.rarities).find(([_, rarityName]) => rarityName === rarity)?.[0];
     if (!rarityIndex) throw new Error('Rarity not found');
 
@@ -370,7 +370,7 @@ export class DNAFactory {
       this.dnaBytes - versionGeneInfo.base - categoryGeneInfo.base - archetypeGeneInfo.base - rarityGeneInfo.base;
 
     const randomDNA = this._generateDNA(randomDNAlen, this.encodingBase) as string;
-    const starterEggStat = Math.floor(255 / 10);
+    const starterEggStat = Math.floor(255 * 0.3);
     const stats = Array(6).fill(starterEggStat);
     const dnaTacticsStats = stats.map((stat) => this._toPaddedBase(stat.toString(), 1)).join('');
     const dna =

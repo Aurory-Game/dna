@@ -353,7 +353,7 @@ describe('starter eggs', () => {
     const dna = df.generateStarterNeftyDNA(ef.hatchStandard().archetypeKey);
     assert(dna);
     const data = df.parse(dna);
-    const expectedRawStatValue = Math.floor(255 * 0.1);
+    const expectedRawStatValue = Math.floor(255 * 0.3);
     assert.equal(['Dipking', 'Block Choy', 'Number 9'].includes(data.data.displayName), true);
     assert.equal(data.raw.hp, expectedRawStatValue);
     assert.equal(data.raw.atk, expectedRawStatValue);
