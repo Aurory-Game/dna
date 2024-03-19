@@ -40,5 +40,10 @@
     "name": "Festive Egg",
     "description": "Crack open the Festive egg to enjoy a cheerful melody guaranteed to put a smile on everyone's face.",
     "archetypes": ["Nefty_Beeblock", "Nefty_Chocorex", "Nefty_Keybab"]
+  },
+  "bloomer_egg": {
+    "name": "Bloomer Egg",
+    "description": "This egg emanates a sweet fragrance, enchanting all who catch a whiff, but where did it come from? No one knows, yet it captivates all who see it!",
+    "archetypes": ["Nefty_Bloomtail"]
   }
 }
