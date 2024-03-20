@@ -27,6 +27,7 @@ const displayNamesProd = [
   'Beeblock',
   'Chocorex',
   'Keybab',
+  'Bloomtail',
 ];
 
 const neftyCodeNamesProd = new Set([
@@ -49,6 +50,7 @@ const neftyCodeNamesProd = new Set([
   'Nefty_Beeblock',
   'Nefty_Chocorex',
   'Nefty_Keybab',
+  'Nefty_Bloomtail',
 ]);
 
 const neftyFamiliesProd = new Set([
@@ -71,6 +73,7 @@ const neftyFamiliesProd = new Set([
   'Beeblock',
   'Chocorex',
   'Keybab',
+  'Bloomtail',
 ]);
 
 const passivesProd = new Set([
