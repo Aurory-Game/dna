@@ -626,6 +626,39 @@
           "id": "ID_FULLBLITZ_ABILITY_WIND_05"
         }
       ]
+    },
+    "id_bloomtail": {
+      "id": "id_bloomtail",
+      "type": "Bloomtail",
+      "element": "Plant",
+      "hpMin": 80,
+      "hpMax": 96,
+      "atkMin": 33,
+      "atkMax": 40,
+      "defMin": 60,
+      "defMax": 72,
+      "speedMin": 66,
+      "speedMax": 79,
+      "hypeMin": 0,
+      "hypeMax": 999,
+      "passive": "-1",
+      "abilitiesArray": [
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_02"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_PLANT_10"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_PLANT_15"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_WIND_09"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_PLANT_11"
+        }
+      ]
     }
   }
 }

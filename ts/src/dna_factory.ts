@@ -74,7 +74,7 @@ const abilitiesDictionaries: Record<version, AbilityDictionary> = {
 export class DNAFactory {
   dnaSchemas: Record<version, DNASchema>;
   abilitiesDictionary: Record<version, AbilityDictionary>;
-  nefiesInfo: NeftiesInfo;
+  neftiesInfo: NeftiesInfo;
   latestSchemaVersion: string;
   latestAbilitiesVersion: string;
   dnaBytes: number;
@@ -93,7 +93,7 @@ export class DNAFactory {
     this.latestAbilitiesVersion = LATEST_ABILTIIES_VERSION;
     this.dnaSchemas = dnaSchemas;
     this.abilitiesDictionary = abilitiesDictionaries;
-    this.nefiesInfo = neftiesInfo;
+    this.neftiesInfo = neftiesInfo;
     this.latestSchemasSubversions = {};
     this.latestDictionariesSubversions = {};
     this.rarities = rarities;
@@ -402,11 +402,11 @@ export class DNAFactory {
   }
 
   getDisplayNameFromCodeName(neftyNameCode: string) {
-    return this.nefiesInfo.code_to_displayName[neftyNameCode];
+    return this.neftiesInfo.code_to_displayName[neftyNameCode];
   }
 
   getFamilyDescription(family: string) {
-    return this.nefiesInfo.family_to_description[family];
+    return this.neftiesInfo.family_to_description[family];
   }
 
   /**
