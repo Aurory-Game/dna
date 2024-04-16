@@ -1,7 +1,7 @@
 import { DNAFactory, EggsFactory, Rarity, utils } from '../src';
 import nefties_info from '../src/deps/nefties_info.json';
 import assert from 'assert';
-import rarities from '../src/deps/rarities.json';
+import raritiesGeneration from '../src/deps/rarities_generation.json';
 import { readdirSync, readFileSync } from 'fs';
 import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from '../src/deps/schemas/latest';
 import { DNASchema } from '../src/interfaces/types';
@@ -290,7 +290,7 @@ describe('Rarity', () => {
     const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
-    Object.entries(rarities.prime).forEach(([rarity, rarityInfo]) => {
+    Object.entries(raritiesGeneration.prime).forEach(([rarity, rarityInfo]) => {
       // for (let i = 0; i < 1e3; i++) {
       const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', '2.0.0', rarity as Rarity);
       const parsed = df.parse(dna);
@@ -312,7 +312,7 @@ describe('Rarity', () => {
     const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
-    Object.entries(rarities.prime).forEach(([rarity, rarityInfo]) => {
+    Object.entries(raritiesGeneration.prime).forEach(([rarity, rarityInfo]) => {
       // for (let i = 0; i < 1e3; i++) {
       const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', undefined, rarity as Rarity);
       const parsed = df.parse(dna);

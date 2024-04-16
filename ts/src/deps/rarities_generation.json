@@ -1,45 +1,45 @@
 {
   "prime": {
     "Common": {
-      "average_stats_range": [0, 20],
+      "average_stats_range": [10, 20],
       "probability": 50.4
     },
     "Uncommon": {
-      "average_stats_range": [20, 40],
+      "average_stats_range": [21, 40],
       "probability": 30
     },
     "Rare": {
-      "average_stats_range": [40, 60],
+      "average_stats_range": [41, 60],
       "probability": 15
     },
     "Epic": {
-      "average_stats_range": [60, 80],
+      "average_stats_range": [61, 80],
       "probability": 4
     },
     "Legendary": {
-      "average_stats_range": [80, 100],
+      "average_stats_range": [81, 100],
       "probability": 0.6
     }
   },
   "standard": {
     "Common": {
-      "average_stats_range": [0, 20],
+      "average_stats_range": [1, 2],
       "probability": 57.7
     },
     "Uncommon": {
-      "average_stats_range": [20, 40],
+      "average_stats_range": [20, 21],
       "probability": 30
     },
     "Rare": {
-      "average_stats_range": [40, 60],
+      "average_stats_range": [40, 41],
       "probability": 10
     },
     "Epic": {
-      "average_stats_range": [60, 80],
+      "average_stats_range": [60, 61],
       "probability": 2
     },
     "Legendary": {
-      "average_stats_range": [80, 100],
+      "average_stats_range": [80, 81],
       "probability": 0.3
     }
   }
