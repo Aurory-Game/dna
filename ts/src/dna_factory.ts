@@ -154,12 +154,16 @@ export class DNAFactory {
     // adding up to 5 will still result in the same mean as we are rounding down
     const totalPoints = mean * nStats;
 
+    // As 100 is the upper limit, this value is over represented in the distribution
+    // This makes the max random stat randomly set to a value between mean + 1 and 100
+    const maxStatValue = randomInt(Math.min(mean + 1, 100), 100, false);
+
     const distributePoints = () => {
       while (pointsLeft) {
         const statIndex = randomInt(0, stats.length, true);
         const statValue = stats[statIndex];
 
-        const maxPoints = Math.min(pointsLeft, 100 - statValue);
+        const maxPoints = Math.min(pointsLeft, maxStatValue - statValue);
         if (!maxPoints) continue;
         if (pointsLeft < 0) throw new Error('pointsLeft < 0');
         const points = randomNormal(1, Math.ceil(maxPoints / stats.length), -100, 200);
