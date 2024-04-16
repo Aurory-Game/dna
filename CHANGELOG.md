@@ -4,22 +4,33 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.8.1] - 01/16/2024
+
+- Set fixed average stat per rarity for standard nefties
+- Set higher minimum average for prime nefties
+- Reduce the over representation of 100 as an individual stats
+
 ## [v0.7.3] - 01/16/2024
+
 - Wassie added to Quantum eggs
 
 ## [v0.7.0] - 12/6/2023
+
 - Introduce Cybertooth and Wassie
 - Add Fen and Moss eggs
 - Update configuration format for adventure stats
 
 ## [v0.6.0] - 09/18/2023
+
 - Introduce grade for DNA generation
 - Add standard egg support in EggFactory
 
 ## [v0.5.4] - 19/09/2023
+
 - Sync dictionary with ability names and descriptions from unity team
 
 ## [v0.5.1] - 10/08/2023
+
 - Adjust Chocomint stats
 
 ## [v0.5.0] - 03/08/2023
