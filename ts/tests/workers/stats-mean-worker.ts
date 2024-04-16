@@ -3,7 +3,7 @@ import { DNAFactory } from '../../src/dna_factory';
 import { EggsFactory } from '../../src/eggs_factory';
 import { Rarity } from '../../src/interfaces/types';
 import { utils } from '../../src';
-import rarities from '../../src/deps/rarities.json';
+import raritiesGeneration from '../../src/deps/rarities_generation.json';
 
 export interface StatsMeanWorker {
   statMeans: Record<string, number>;
@@ -15,7 +15,7 @@ async function run(loopCount: number): Promise<StatsMeanWorker> {
   const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
   const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
   const statMeans = {} as any;
-  Object.entries(rarities.prime).forEach(([rarity]) => {
+  Object.entries(raritiesGeneration.prime).forEach(([rarity]) => {
     for (let i = 0; i < loopCount; i++) {
       const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', undefined, rarity as Rarity);
       const parsed = df.parse(dna);
@@ -29,7 +29,7 @@ async function run(loopCount: number): Promise<StatsMeanWorker> {
     }
   });
   const standardStatMeans = {} as any;
-  Object.entries(rarities.standard).forEach(([rarity]) => {
+  Object.entries(raritiesGeneration.standard).forEach(([rarity]) => {
     for (let i = 0; i < loopCount; i++) {
       const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', undefined, rarity as Rarity);
       const parsed = df.parse(dna);

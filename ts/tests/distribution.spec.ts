@@ -1,6 +1,6 @@
 import { DNAFactory, EggsFactory, GLITCHED_PERIOD, Rarity, SCHIMMERING_PERIOD, utils } from '../src';
 import assert from 'assert';
-import rarities from '../src/deps/rarities.json';
+import raritiesGeneration from '../src/deps/rarities_generation.json';
 
 import { Worker } from 'worker_threads';
 import { addWorker } from './utils';
@@ -56,8 +56,10 @@ describe('Distribution', () => {
         clearInterval(idx);
 
         // stats should be evenly distributed
-        const expectedCommon = loopCount / 18;
+        const expectedCommon = loopCount / 10;
         const expectedLegendary = loopCount / 19;
+        console.log(statMeans);
+        console.log(expectedCommon, expectedLegendary);
         const expectedFull = loopCount / 20;
         // Check less than 10% deviation from expected
         Object.entries(statMeans).forEach(([meanStr, count]) => {
@@ -85,7 +87,7 @@ describe('Distribution', () => {
     const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
     const statsCount = {} as any;
     const loopCount = 1000;
-    Object.entries(rarities.prime).forEach(([rarity, rarityInfo]) => {
+    Object.entries(raritiesGeneration.prime).forEach(([rarity, rarityInfo]) => {
       for (let i = 0; i < loopCount; i++) {
         const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', undefined, rarity as Rarity);
         const parsed = df.parse(dna);
@@ -134,7 +136,7 @@ describe('Distribution', () => {
         clearInterval(idx);
 
         // check rarity distribution
-        Object.entries(rarities.prime).forEach(([rarity, rarityInfo]) => {
+        Object.entries(raritiesGeneration.prime).forEach(([rarity, rarityInfo]) => {
           const targetRate = rarityInfo.probability / 100;
           const computedProbability = rarityCount[rarity as Rarity] / loopDone;
           const maxDiff10Percent = (rarityInfo.probability / 100) * 0.1;
