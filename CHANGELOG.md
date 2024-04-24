@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v0.7.9] - 04/24/2024
+- Add new eggs and nefties for the Citrine version of Seekers of Tokane
+
 ## [v0.7.3] - 01/16/2024
 - Wassie added to Quantum eggs
 
