@@ -659,6 +659,204 @@
           "id": "ID_FULLBLITZ_ABILITY_PLANT_11"
         }
       ]
+    },
+    "id_walpuff": {
+      "id": "id_walpuff",
+      "type": "Walpuff",
+      "element": "Water",
+      "hpMin": 100,
+      "hpMax": 120,
+      "atkMin": 27,
+      "atkMax": 32,
+      "defMin": 72,
+      "defMax": 86,
+      "speedMin": 54,
+      "speedMax": 65,
+      "hypeMin": 0,
+      "hypeMax": 999,
+      "passive": -1,
+      "abilitiesArray": [
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_13"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_27"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_28"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_WATER_15"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_WATER_16"
+        }
+      ]
+    },
+    "id_ghouliath": {
+      "id": "id_ghouliath",
+      "type": "Ghouliath",
+      "element": "Fire",
+      "hpMin": 100,
+      "hpMax": 120,
+      "atkMin": 36,
+      "atkMax": 43,
+      "defMin": 60,
+      "defMax": 72,
+      "speedMin": 48,
+      "speedMax": 58,
+      "hypeMin": 0,
+      "hypeMax": 999,
+      "passive": -1,
+      "abilitiesArray": [
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_04"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_WIND_01"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_FIRE_13"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_29"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_EARTH_15"
+        }
+      ]
+    },
+    "id_dinotusk": {
+      "id": "id_dinotusk",
+      "type": "Dinotusk",
+      "element": "Thunder",
+      "hpMin": 120,
+      "hpMax": 144,
+      "atkMin": 29,
+      "atkMax": 34,
+      "defMin": 63,
+      "defMax": 76,
+      "speedMin": 48,
+      "speedMax": 58,
+      "hypeMin": 0,
+      "hypeMax": 999,
+      "passive": -1,
+      "abilitiesArray": [
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_07"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_31"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_32"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_33"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_03"
+        }
+      ]
+    },
+    "id_tokoma": {
+      "id": "id_tokoma",
+      "type": "Tokoma",
+      "element": "Wind",
+      "hpMin": 110,
+      "hpMax": 132,
+      "atkMin": 33,
+      "atkMax": 40,
+      "defMin": 54,
+      "defMax": 65,
+      "speedMin": 54,
+      "speedMax": 65,
+      "hypeMin": 0,
+      "hypeMax": 999,
+      "passive": -1,
+      "abilitiesArray": [
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_02"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_WIND_08"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_WIND_14"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_EARTH_12"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_15"
+        }
+      ]
+    },
+    "id_whiskube": {
+      "id": "id_whiskube",
+      "type": "Whiskube",
+      "element": "Ground",
+      "hpMin": 120,
+      "hpMax": 144,
+      "atkMin": 24,
+      "atkMax": 29,
+      "defMin": 69,
+      "defMax": 83,
+      "speedMin": 51,
+      "speedMax": 61,
+      "hypeMin": 0,
+      "hypeMax": 999,
+      "passive": -1,
+      "abilitiesArray": [
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_07"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_10"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_WATER_15"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_EARTH_13"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_30"
+        }
+      ]
+    },
+    "id_znix": {
+      "id": "id_znix",
+      "type": "Znix",
+      "element": "Fire",
+      "hpMin": 85,
+      "hpMax": 102,
+      "atkMin": 36,
+      "atkMax": 43,
+      "defMin": 48,
+      "defMax": 58,
+      "speedMin": 69,
+      "speedMax": 83,
+      "hypeMin": 0,
+      "hypeMax": 999,
+      "passive": -1,
+      "abilitiesArray": [
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_13"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_FIRE_08"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_FIRE_09"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_WIND_06"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_FIRE_07"
+        }
+      ]
     }
   }
 }

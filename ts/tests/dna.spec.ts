@@ -28,6 +28,11 @@ const displayNamesProd = [
   'Chocorex',
   'Keybab',
   'Bloomtail',
+  'Tokoma',
+  'Ghouliath',
+  'Whiskube',
+  'Walpuff',
+  'Dinotusk',
 ];
 
 const neftyCodeNamesProd = new Set([
@@ -51,6 +56,11 @@ const neftyCodeNamesProd = new Set([
   'Nefty_Chocorex',
   'Nefty_Keybab',
   'Nefty_Bloomtail',
+  'Nefty_Tokoma',
+  'Nefty_Ghouliath',
+  'Nefty_Whiskube',
+  'Nefty_Walpuff',
+  'Nefty_Dinotusk',
 ]);
 
 const neftyFamiliesProd = new Set([
@@ -74,6 +84,11 @@ const neftyFamiliesProd = new Set([
   'Chocorex',
   'Keybab',
   'Bloomtail',
+  'Tokoma',
+  'Ghouliath',
+  'Whiskube',
+  'Walpuff',
+  'Dinotusk',
 ]);
 
 const passivesProd = new Set([

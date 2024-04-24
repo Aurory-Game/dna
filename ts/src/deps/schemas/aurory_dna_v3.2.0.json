@@ -471,6 +471,106 @@
             "skill_b": ["N/A"],
             "skill_c": ["N/A"]
           }
+        },
+        "20": {
+          "fixed_attributes": {
+            "name": "Nefty_Tokoma",
+            "family": "Tokoma",
+            "mp": 3,
+            "passiveSkill": "N/A",
+            "ultimateSkill": "N/A"
+          },
+          "encoded_attributes": {
+            "hp": [50, 100],
+            "initiative": [50, 100],
+            "atk": [50, 100],
+            "def": [50, 100],
+            "eatk": [50, 100],
+            "edef": [50, 100],
+            "skill_a": ["N/A"],
+            "skill_b": ["N/A"],
+            "skill_c": ["N/A"]
+          }
+        },
+        "21": {
+          "fixed_attributes": {
+            "name": "Nefty_Ghouliath",
+            "family": "Ghouliath",
+            "mp": 3,
+            "passiveSkill": "N/A",
+            "ultimateSkill": "N/A"
+          },
+          "encoded_attributes": {
+            "hp": [50, 100],
+            "initiative": [50, 100],
+            "atk": [50, 100],
+            "def": [50, 100],
+            "eatk": [50, 100],
+            "edef": [50, 100],
+            "skill_a": ["N/A"],
+            "skill_b": ["N/A"],
+            "skill_c": ["N/A"]
+          }
+        },
+        "22": {
+          "fixed_attributes": {
+            "name": "Nefty_Whiskube",
+            "family": "Whiskube",
+            "mp": 3,
+            "passiveSkill": "N/A",
+            "ultimateSkill": "N/A"
+          },
+          "encoded_attributes": {
+            "hp": [50, 100],
+            "initiative": [50, 100],
+            "atk": [50, 100],
+            "def": [50, 100],
+            "eatk": [50, 100],
+            "edef": [50, 100],
+            "skill_a": ["N/A"],
+            "skill_b": ["N/A"],
+            "skill_c": ["N/A"]
+          }
+        },
+        "23": {
+          "fixed_attributes": {
+            "name": "Nefty_Walpuff",
+            "family": "Walpuff",
+            "mp": 3,
+            "passiveSkill": "N/A",
+            "ultimateSkill": "N/A"
+          },
+          "encoded_attributes": {
+            "hp": [50, 100],
+            "initiative": [50, 100],
+            "atk": [50, 100],
+            "def": [50, 100],
+            "eatk": [50, 100],
+            "edef": [50, 100],
+            "skill_a": ["N/A"],
+            "skill_b": ["N/A"],
+            "skill_c": ["N/A"]
+          }
+        },
+        "24": {
+          "fixed_attributes": {
+            "name": "Nefty_Dinotusk",
+            "family": "Dinotusk",
+            "mp": 3,
+            "passiveSkill": "N/A",
+            "ultimateSkill": "N/A"
+          },
+          "encoded_attributes": {
+            "hp": [50, 100],
+            "initiative": [50, 100],
+            "atk": [50, 100],
+            "def": [50, 100],
+            "eatk": [50, 100],
+            "edef": [50, 100],
+            "skill_a": ["N/A"],
+            "skill_b": ["N/A"],
+            "skill_c": ["N/A"]
+          }
         }
       }
     }

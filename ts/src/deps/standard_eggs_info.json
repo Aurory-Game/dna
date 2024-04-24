@@ -2,7 +2,7 @@
   "starter_egg": {
     "name": "Starter Egg",
     "description": "Contained within this egg are all the essentials an adventurer requires to initiate their journey within the realm of Tokane. While it might not be the finest available, it undoubtedly promises to be of great assistance!",
-    "archetypes": ["Nefty_Dipking", "Nefty_Blockchoy", "Nefty_Number9"]
+    "archetypes": ["Nefty_Blockchoy", "Nefty_Dipking", "Nefty_ShibaIgnite"]
   },
   "genesis_egg": {
     "name": "Genesis Egg",
@@ -40,5 +40,45 @@
     "name": "Festive Egg",
     "description": "Crack open the Festive egg to enjoy a cheerful melody guaranteed to put a smile on everyone's face.",
     "archetypes": ["Nefty_Beeblock", "Nefty_Chocorex", "Nefty_Keybab"]
+  },
+  "leaf_egg": {
+    "name": "Leaf Egg",
+    "description": "Layers of lush green leaves intricately weave together to encase this egg, creating mesmerizing patterns across its surface.",
+    "archetypes": ["Nefty_Blockchoy", "Nefty_Dipking", "Nefty_ShibaIgnite"]
+  },
+  "clover_egg": {
+    "name": "Clover Egg",
+    "description": "The Clover egg is a symbol of good fortune. It promises luck to those who find one, making it highly coveted among Seekers.",
+    "archetypes": ["Nefty_Bitebit", "Nefty_Tokoma", "Nefty_Unika"]
+  },
+  "marsh_egg": {
+    "name": "Marsh Egg",
+    "description": "The marsh egg, formed from swamp vegetation, appears delicate yet sturdy, giving way slightly to pressure while retaining its shape.",
+    "archetypes": ["Nefty_Axobubble", "Nefty_Bloomtail", "Nefty_Number9"]
+  },
+  "moss_egg": {
+    "name": "Moss Egg",
+    "description": "This egg is made entirely of bright green moss. When touched, its surface feels velvety, releasing a subtle earthy scent that attracts those nearby.",
+    "archetypes": ["Nefty_Dinobit", "Nefty_Raccoin", "Nefty_Wassie"]
+  },
+  "aurora_egg": {
+    "name": "Aurora Egg",
+    "description": "The Aurora egg intrigues with its almost otherworldly appearance. A gentle chill hints at what it holds within, beckoning those brave enough to touch it.",
+    "archetypes": ["Nefty_Chocomint", "Nefty_Ghouliath", "Nefty_Walpuff"]
+  },
+  "frost_egg": {
+    "name": "Frost Egg",
+    "description": "The swirling frost patterns beneath the egg's translucent surface refract light in a hypnotizing display of colors.",
+    "archetypes": ["Nefty_Cybertooth", "Nefty_Dinotusk", "Nefty_Whiskube"]
+  },
+  "dune_egg": {
+    "name": "Dune Egg",
+    "description": "The Dune egg may look as if your hand could pass through it with the lightest touch, yet too much pressure dislodges particles and inhaling these causes hallucinations.",
+    "archetypes": ["Nefty_Beeblock", "Nefty_Chocorex", "Nefty_Keybab"]
+  },
+  "mirage_egg": {
+    "name": "Mirage Egg",
+    "description": "This precious egg presents a challenge to find as its illusory nature causes some to perceive it as a gem nestled within the landscape, while others mistake it for a mere rock formation.",
+    "archetypes": ["Nefty_Shibark", "Nefty_Unikirin", "Nefty_Zzoo"]
   }
 }
