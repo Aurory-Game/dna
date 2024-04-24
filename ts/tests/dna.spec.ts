@@ -1,7 +1,7 @@
 import { DNAFactory, EggsFactory, Rarity, utils } from '../src';
 import nefties_info from '../src/deps/nefties_info.json';
 import assert from 'assert';
-import raritiesGeneration from '../src/deps/rarities_generation.json';
+import rarities from '../src/deps/rarities.json';
 import { readdirSync, readFileSync } from 'fs';
 import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from '../src/deps/schemas/latest';
 import { DNASchema } from '../src/interfaces/types';
@@ -28,6 +28,11 @@ const displayNamesProd = [
   'Chocorex',
   'Keybab',
   'Bloomtail',
+  'Tokoma',
+  'Ghouliath',
+  'Whiskube',
+  'Walpuff',
+  'Dinotusk',
 ];
 
 const neftyCodeNamesProd = new Set([
@@ -51,6 +56,11 @@ const neftyCodeNamesProd = new Set([
   'Nefty_Chocorex',
   'Nefty_Keybab',
   'Nefty_Bloomtail',
+  'Nefty_Tokoma',
+  'Nefty_Ghouliath',
+  'Nefty_Whiskube',
+  'Nefty_Walpuff',
+  'Nefty_Dinotusk',
 ]);
 
 const neftyFamiliesProd = new Set([
@@ -74,6 +84,11 @@ const neftyFamiliesProd = new Set([
   'Chocorex',
   'Keybab',
   'Bloomtail',
+  'Tokoma',
+  'Ghouliath',
+  'Whiskube',
+  'Walpuff',
+  'Dinotusk',
 ]);
 
 const passivesProd = new Set([
@@ -290,7 +305,7 @@ describe('Rarity', () => {
     const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
-    Object.entries(raritiesGeneration.prime).forEach(([rarity, rarityInfo]) => {
+    Object.entries(rarities.prime).forEach(([rarity, rarityInfo]) => {
       // for (let i = 0; i < 1e3; i++) {
       const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', '2.0.0', rarity as Rarity);
       const parsed = df.parse(dna);
@@ -312,7 +327,7 @@ describe('Rarity', () => {
     const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
-    Object.entries(raritiesGeneration.prime).forEach(([rarity, rarityInfo]) => {
+    Object.entries(rarities.prime).forEach(([rarity, rarityInfo]) => {
       // for (let i = 0; i < 1e3; i++) {
       const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', undefined, rarity as Rarity);
       const parsed = df.parse(dna);
