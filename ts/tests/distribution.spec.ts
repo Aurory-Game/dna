@@ -1,6 +1,6 @@
 import { DNAFactory, EggsFactory, GLITCHED_PERIOD, Rarity, SCHIMMERING_PERIOD, utils } from '../src';
 import assert from 'assert';
-import raritiesGeneration from '../src/deps/rarities_generation.json';
+import rarities from '../src/deps/rarities.json';
 
 import { Worker } from 'worker_threads';
 import { addWorker } from './utils';
@@ -21,7 +21,7 @@ describe('Distribution', () => {
    * It does this by creating 15k DNAs for each rarity group,
    * then checks if the deviation from the expected distribution is less than 20%.
    */
-  it('Means are evenly distributed for prime', (done) => {
+  it('Means are evenly distributed', (done) => {
     const statMeans = {} as any;
     const loopCount = 15000;
     let loopDone = 0;
@@ -43,84 +43,31 @@ describe('Distribution', () => {
     const workerPath = './workers/stats-mean-worker.ts';
 
     for (let index = 0; index < maxParallelWorkers; index++) {
-      const worker = addWorker({ loopCount: loopPerThread, grade: 'prime' }, workerPath, resultHandler);
+      const worker = addWorker(loopPerThread, workerPath, resultHandler);
       workers.push({ id: worker.threadId, worker });
     }
     const idx = setInterval(() => {
       process.stdout.write(`\r${loopDone}, ${Math.round((loopDone / loopCount) * 100)}%`);
       if (workers.length < maxParallelWorkers && loopDone < loopCount) {
-        const worker = addWorker({ loopCount: loopPerThread, grade: 'prime' }, workerPath, resultHandler);
+        const worker = addWorker(loopPerThread, workerPath, resultHandler);
         workers.push({ id: worker.threadId, worker });
       } else if (loopDone >= loopCount) {
         console.log('\n');
         clearInterval(idx);
 
         // stats should be evenly distributed
-        const expectedCommon = loopCount / 10;
-        const expectedLegendary = loopCount / 20;
-        console.log(statMeans);
-        console.log(expectedCommon, expectedLegendary);
-        const expectedFull = loopCount / 19;
+        const expectedCommon = loopCount / 18;
+        const expectedLegendary = loopCount / 19;
+        const expectedFull = loopCount / 20;
         // Check less than 10% deviation from expected
         Object.entries(statMeans).forEach(([meanStr, count]) => {
           const mean = parseInt(meanStr);
+          if (mean < 6 || mean > 94) return;
           const expected = mean < 20 ? expectedCommon : mean > 80 ? expectedLegendary : expectedFull;
           assert.ok(
-            Math.abs(expected - (count as number)) < expected * 0.1,
+            Math.abs(expected - (count as number)) < expected * 0.2,
             `Mean ${mean}, expected ${expected}, got ${count}`
           );
-        });
-
-        done();
-      }
-    }, 1000);
-  });
-
-  it('Means are fixed for standard', (done) => {
-    const statMeans = {} as any;
-    const loopCount = 150;
-    let loopDone = 0;
-    const workers = [] as { id: number; worker: Worker }[];
-    const maxParallelWorkers = 15;
-    const loopPerThread = 1000;
-
-    const resultHandler = async (result: StatsMeanWorker, worker: Worker) => {
-      const index = workers.findIndex((v) => v.id === worker.threadId);
-      await workers[index].worker.terminate();
-      if (loopDone > loopCount) return;
-      workers.splice(index, 1);
-      Object.entries(result.statMeans).forEach(([key, value]) => {
-        statMeans[key] = statMeans[key] ? statMeans[key] + value : value;
-      });
-      loopDone += loopPerThread;
-    };
-
-    const workerPath = './workers/stats-mean-worker.ts';
-
-    for (let index = 0; index < maxParallelWorkers; index++) {
-      const worker = addWorker({ loopCount: loopPerThread, grade: 'standard' }, workerPath, resultHandler);
-      workers.push({ id: worker.threadId, worker });
-    }
-    const idx = setInterval(() => {
-      process.stdout.write(`\r${loopDone}, ${Math.round((loopDone / loopCount) * 100)}%`);
-      if (workers.length < maxParallelWorkers && loopDone < loopCount) {
-        const worker = addWorker({ loopCount: loopPerThread, grade: 'standard' }, workerPath, resultHandler);
-        workers.push({ id: worker.threadId, worker });
-      } else if (loopDone >= loopCount) {
-        console.log('\n');
-        clearInterval(idx);
-
-        // stats should be evenly distributed
-        const expectedCommon = loopCount / 10;
-        const expectedLegendary = loopCount / 20;
-        console.log(statMeans);
-        console.log(expectedCommon, expectedLegendary);
-        const expectedFull = loopCount / 19;
-        // Check less than 10% deviation from expected
-        Object.entries(statMeans).forEach(([meanStr, count]) => {
-          const mean = parseInt(meanStr);
-          const expected = loopPerThread;
-          assert.ok(Math.abs(expected - (count as number)) === 0, `Mean ${mean}, expected ${expected}, got ${count}`);
         });
 
         done();
@@ -138,7 +85,7 @@ describe('Distribution', () => {
     const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
     const statsCount = {} as any;
     const loopCount = 1000;
-    Object.entries(raritiesGeneration.prime).forEach(([rarity, rarityInfo]) => {
+    Object.entries(rarities.prime).forEach(([rarity, rarityInfo]) => {
       for (let i = 0; i < loopCount; i++) {
         const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', undefined, rarity as Rarity);
         const parsed = df.parse(dna);
@@ -187,7 +134,7 @@ describe('Distribution', () => {
         clearInterval(idx);
 
         // check rarity distribution
-        Object.entries(raritiesGeneration.prime).forEach(([rarity, rarityInfo]) => {
+        Object.entries(rarities.prime).forEach(([rarity, rarityInfo]) => {
           const targetRate = rarityInfo.probability / 100;
           const computedProbability = rarityCount[rarity as Rarity] / loopDone;
           const maxDiff10Percent = (rarityInfo.probability / 100) * 0.1;

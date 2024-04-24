@@ -38,8 +38,7 @@ import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from './deps/schemas/latest';
 import { LATEST_VERSION as LATEST_ABILTIIES_VERSION } from './deps/dictionaries/latest';
 import abiltiesDictionaryV4 from './deps/dictionaries/abilities_dictionary_v0.4.0.json';
 import neftiesInfo from './deps/nefties_info.json';
-import raritiesGeneration from './deps/rarities_generation.json';
-import raritiesRead from './deps/rarities_read.json';
+import rarities from './deps/rarities.json';
 import { DNA } from './dna';
 import {
   getAverageFromRaw,
@@ -83,8 +82,7 @@ export class DNAFactory {
   baseSize: number;
   latestSchemasSubversions: Record<version, version>;
   latestDictionariesSubversions: Record<version, version>;
-  raritiesGeneration: Record<string, Record<Rarity, RarityInfo>>;
-  raritiesRead: Record<Rarity, Omit<RarityInfo, 'probability'>>;
+  rarities: Record<string, Record<Rarity, RarityInfo>>;
   adventuresStats: Record<string, AdvStatsJSON>;
 
   constructor(dnaBytes?: number, encodingBase?: number) {
@@ -98,8 +96,7 @@ export class DNAFactory {
     this.neftiesInfo = neftiesInfo;
     this.latestSchemasSubversions = {};
     this.latestDictionariesSubversions = {};
-    this.raritiesGeneration = raritiesGeneration;
-    this.raritiesRead = raritiesRead;
+    this.rarities = rarities;
     this.adventuresStats = adventuresStats;
   }
 
@@ -123,7 +120,7 @@ export class DNAFactory {
   }
 
   private _getRandomRarity(grade: Grade): Rarity {
-    const rarities = this.raritiesGeneration[grade];
+    const rarities = this.rarities[grade];
     if (!rarities) {
       throw new Error(`No rarity found for input ${grade}`);
     }
@@ -147,23 +144,19 @@ export class DNAFactory {
   private _generateStatsForRarity(grade: Grade, rarity: Rarity, genes: Gene[]): number[] {
     const filteredGenes = genes.filter((gene) => gene.type === 'range_completeness');
     const nStats = filteredGenes.length;
-    const [minStatAvg, maxStatAvg] = this.raritiesGeneration[grade][rarity].average_stats_range;
+    const [minStatAvg, maxStatAvg] = this.rarities[grade][rarity].average_stats_range;
     const stats = Array.from(Array(nStats).keys()).map(() => 0);
 
     const mean = randomInt(minStatAvg, maxStatAvg, true);
     // adding up to 5 will still result in the same mean as we are rounding down
     const totalPoints = mean * nStats;
 
-    // As 100 is the upper limit, this value is over represented in the distribution
-    // This makes the max random stat randomly set to a value between mean + 1 and 100
-    const maxStatValue = randomInt(Math.min(mean + 1, 100), 100, false);
-
     const distributePoints = () => {
       while (pointsLeft) {
         const statIndex = randomInt(0, stats.length, true);
         const statValue = stats[statIndex];
 
-        const maxPoints = Math.min(pointsLeft, maxStatValue - statValue);
+        const maxPoints = Math.min(pointsLeft, 100 - statValue);
         if (!maxPoints) continue;
         if (pointsLeft < 0) throw new Error('pointsLeft < 0');
         const points = randomNormal(1, Math.ceil(maxPoints / stats.length), -100, 200);
@@ -421,7 +414,7 @@ export class DNAFactory {
    * @param statsAverage average of all stats, from 0 to 100;
    */
   getRarityFromStatsAvg(statsAverage: number, raiseErrorOnNotFound = true, grade: Grade = 'prime'): Rarity | null {
-    const rarity = Object.entries(this.raritiesRead).find(([rarity, rarityInfo]) => {
+    const rarity = Object.entries(this.rarities[grade]).find(([rarity, rarityInfo]) => {
       return (
         statsAverage >= rarityInfo.average_stats_range[0] &&
         ((statsAverage === 100 && statsAverage === rarityInfo.average_stats_range[1]) ||
