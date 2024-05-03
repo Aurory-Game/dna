@@ -186,6 +186,7 @@ describe('Basic', () => {
           assert.ok(data.data.imageByGame.tactics);
           assert.ok(data.data.imageByGame.tactics.medium);
           assert.ok(data.data.imageByGame.tactics.small);
+          assert.ok(data.data.element);
           assert.ok(Number.isInteger(data.data.hp));
           assert.ok(Number.isInteger(data.data.initiative));
           assert.ok(Number.isInteger(data.data.atk));
@@ -372,13 +373,14 @@ describe('starter eggs', () => {
     assert(dna);
     const data = df.parse(dna);
     const expectedRawStatValue = Math.floor(255 * 0.3);
-    assert.equal(['Dipking', 'Block Choy', 'Number 9'].includes(data.data.displayName), true);
+    assert.equal(['Shiba Ignite', 'Block Choy', 'Number 9'].includes(data.data.displayName), true);
     assert.equal(data.raw.hp, expectedRawStatValue);
     assert.equal(data.raw.atk, expectedRawStatValue);
     assert.equal(data.raw.def, expectedRawStatValue);
     assert.equal(data.raw.eatk, expectedRawStatValue);
     assert.equal(data.raw.edef, expectedRawStatValue);
     assert.equal(data.raw.initiative, expectedRawStatValue);
+    assert(data.data.element);
   });
 });
 

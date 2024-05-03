@@ -78,7 +78,8 @@
             "family": "Bitebit",
             "mp": 4,
             "passiveSkill": "bitebitPassive",
-            "ultimateSkill": "bouncingClaws"
+            "ultimateSkill": "bouncingClaws",
+            "element": "Thunder"
           },
           "encoded_attributes": {
             "hp": [468, 572],
@@ -98,7 +99,8 @@
             "family": "Dipking",
             "mp": 3,
             "passiveSkill": "SlipperySkin",
-            "ultimateSkill": "ComboBreaker"
+            "ultimateSkill": "ComboBreaker",
+            "element": "Water"
           },
           "encoded_attributes": {
             "hp": [410, 502],
@@ -118,7 +120,8 @@
             "family": "Dinobit",
             "mp": 2,
             "passiveSkill": "dinobitPassive",
-            "ultimateSkill": "dinobit_bulldozer"
+            "ultimateSkill": "dinobit_bulldozer",
+            "element": "Ground"
           },
           "encoded_attributes": {
             "hp": [608, 743],
@@ -158,7 +161,8 @@
             "family": "Zzoo",
             "mp": 5,
             "passiveSkill": "PainfulShriek",
-            "ultimateSkill": "FlyingDrop"
+            "ultimateSkill": "FlyingDrop",
+            "element": "Wind"
           },
           "encoded_attributes": {
             "hp": [360, 440],
@@ -178,7 +182,8 @@
             "family": "Blockchoy",
             "mp": 3,
             "passiveSkill": "FreshGreens",
-            "ultimateSkill": "Vitamins"
+            "ultimateSkill": "Vitamins",
+            "element": "Plant"
           },
           "encoded_attributes": {
             "hp": [468, 572],
@@ -198,7 +203,8 @@
             "family": "Number9",
             "mp": 5,
             "passiveSkill": "number9Passive",
-            "ultimateSkill": "JumpScare"
+            "ultimateSkill": "JumpScare",
+            "element": "Fire"
           },
           "encoded_attributes": {
             "hp": [410, 502],
@@ -218,7 +224,8 @@
             "family": "Axobubble",
             "mp": 3,
             "passiveSkill": "tailekinesis",
-            "ultimateSkill": "bubbleOut"
+            "ultimateSkill": "bubbleOut",
+            "element": "Water"
           },
           "encoded_attributes": {
             "hp": [468, 572],
@@ -238,7 +245,8 @@
             "family": "Unika",
             "mp": 4,
             "passiveSkill": "Inspiring",
-            "ultimateSkill": "Encore"
+            "ultimateSkill": "Encore",
+            "element": "Ground"
           },
           "encoded_attributes": {
             "hp": [468, 572],
@@ -258,7 +266,8 @@
             "family": "Chocomint",
             "mp": 5,
             "passiveSkill": "TastyMint",
-            "ultimateSkill": "MightyMint"
+            "ultimateSkill": "MightyMint",
+            "element": "Plant"
           },
           "encoded_attributes": {
             "hp": [410, 502],
@@ -278,7 +287,8 @@
             "family": "Cybertooth",
             "mp": 3,
             "passiveSkill": "N/A",
-            "ultimateSkill": "N/A"
+            "ultimateSkill": "N/A",
+            "element": "Wind"
           },
           "encoded_attributes": {
             "hp": [50, 100],
@@ -298,7 +308,8 @@
             "family": "Wassie",
             "mp": 3,
             "passiveSkill": "N/A",
-            "ultimateSkill": "N/A"
+            "ultimateSkill": "N/A",
+            "element": "Thunder"
           },
           "encoded_attributes": {
             "hp": [50, 100],
@@ -318,7 +329,8 @@
             "family": "Dracurve",
             "mp": 3,
             "passiveSkill": "N/A",
-            "ultimateSkill": "N/A"
+            "ultimateSkill": "N/A",
+            "element": "Thunder"
           },
           "encoded_attributes": {
             "hp": [50, 100],
@@ -338,7 +350,8 @@
             "family": "Raccoin",
             "mp": 3,
             "passiveSkill": "N/A",
-            "ultimateSkill": "N/A"
+            "ultimateSkill": "N/A",
+            "element": "Wind"
           },
           "encoded_attributes": {
             "hp": [50, 100],
@@ -358,7 +371,8 @@
             "family": "Shibark",
             "mp": 3,
             "passiveSkill": "N/A",
-            "ultimateSkill": "N/A"
+            "ultimateSkill": "N/A",
+            "element": "Ground"
           },
           "encoded_attributes": {
             "hp": [50, 100],
@@ -378,7 +392,8 @@
             "family": "Unikirin",
             "mp": 3,
             "passiveSkill": "N/A",
-            "ultimateSkill": "N/A"
+            "ultimateSkill": "N/A",
+            "element": "Thunder"
           },
           "encoded_attributes": {
             "hp": [50, 100],
@@ -398,7 +413,8 @@
             "family": "Beeblock",
             "mp": 3,
             "passiveSkill": "N/A",
-            "ultimateSkill": "N/A"
+            "ultimateSkill": "N/A",
+            "element": "Plant"
           },
           "encoded_attributes": {
             "hp": [50, 100],
@@ -418,7 +434,8 @@
             "family": "Chocorex",
             "mp": 3,
             "passiveSkill": "N/A",
-            "ultimateSkill": "N/A"
+            "ultimateSkill": "N/A",
+            "element": "Water"
           },
           "encoded_attributes": {
             "hp": [50, 100],
@@ -438,7 +455,8 @@
             "family": "Keybab",
             "mp": 3,
             "passiveSkill": "N/A",
-            "ultimateSkill": "N/A"
+            "ultimateSkill": "N/A",
+            "element": "Fire"
           },
           "encoded_attributes": {
             "hp": [50, 100],
@@ -458,7 +476,8 @@
             "family": "Bloomtail",
             "mp": 3,
             "passiveSkill": "N/A",
-            "ultimateSkill": "N/A"
+            "ultimateSkill": "N/A",
+            "element": "Plant"
           },
           "encoded_attributes": {
             "hp": [50, 100],
@@ -478,7 +497,8 @@
             "family": "Tokoma",
             "mp": 3,
             "passiveSkill": "N/A",
-            "ultimateSkill": "N/A"
+            "ultimateSkill": "N/A",
+            "element": "Wind"
           },
           "encoded_attributes": {
             "hp": [50, 100],
@@ -498,7 +518,8 @@
             "family": "Ghouliath",
             "mp": 3,
             "passiveSkill": "N/A",
-            "ultimateSkill": "N/A"
+            "ultimateSkill": "N/A",
+            "element": "Fire"
           },
           "encoded_attributes": {
             "hp": [50, 100],
@@ -518,7 +539,8 @@
             "family": "Whiskube",
             "mp": 3,
             "passiveSkill": "N/A",
-            "ultimateSkill": "N/A"
+            "ultimateSkill": "N/A",
+            "element": "Ground"
           },
           "encoded_attributes": {
             "hp": [50, 100],
@@ -538,7 +560,8 @@
             "family": "Walpuff",
             "mp": 3,
             "passiveSkill": "N/A",
-            "ultimateSkill": "N/A"
+            "ultimateSkill": "N/A",
+            "element": "Water"
           },
           "encoded_attributes": {
             "hp": [50, 100],
@@ -558,7 +581,8 @@
             "family": "Dinotusk",
             "mp": 3,
             "passiveSkill": "N/A",
-            "ultimateSkill": "N/A"
+            "ultimateSkill": "N/A",
+            "element": "Thunder"
           },
           "encoded_attributes": {
             "hp": [50, 100],

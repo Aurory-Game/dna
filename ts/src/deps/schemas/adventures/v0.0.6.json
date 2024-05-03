@@ -4,14 +4,14 @@
       "id": "id_bitebit",
       "type": "Bitebit",
       "element": "Thunder",
-      "hpMin": 95,
-      "hpMax": 114,
-      "atkMin": 33,
-      "atkMax": 40,
-      "defMin": 51,
-      "defMax": 61,
-      "speedMin": 66,
-      "speedMax": 79,
+      "hpMin": 120,
+      "hpMax": 144,
+      "atkMin": 70,
+      "atkMax": 84,
+      "defMin": 50,
+      "defMax": 60,
+      "speedMin": 65,
+      "speedMax": 78,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
@@ -37,14 +37,14 @@
       "id": "id_dipking",
       "type": "Dipking",
       "element": "Water",
-      "hpMin": 80,
-      "hpMax": 96,
-      "atkMin": 36,
-      "atkMax": 43,
-      "defMin": 57,
-      "defMax": 68,
-      "speedMin": 63,
-      "speedMax": 76,
+      "hpMin": 105,
+      "hpMax": 126,
+      "atkMin": 80,
+      "atkMax": 96,
+      "defMin": 55,
+      "defMax": 66,
+      "speedMin": 65,
+      "speedMax": 78,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
@@ -53,10 +53,10 @@
           "id": "ID_FULLBLITZ_ABILITY_NORMAL_03"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_WATER_08"
+          "id": "ID_FULLBLITZ_ABILITY_WATER_10"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_WATER_03"
+          "id": "ID_FULLBLITZ_ABILITY_WATER_08"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_WATER_02"
@@ -70,14 +70,14 @@
       "id": "id_shiba ignite",
       "type": "Shiba Ignite",
       "element": "Fire",
-      "hpMin": 120,
-      "hpMax": 144,
-      "atkMin": 27,
-      "atkMax": 32,
+      "hpMin": 145,
+      "hpMax": 174,
+      "atkMin": 50,
+      "atkMax": 60,
       "defMin": 60,
       "defMax": 72,
-      "speedMin": 54,
-      "speedMax": 65,
+      "speedMin": 50,
+      "speedMax": 60,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
@@ -86,10 +86,10 @@
           "id": "ID_FULLBLITZ_ABILITY_NORMAL_04"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_FIRE_05"
+          "id": "ID_FULLBLITZ_ABILITY_FIRE_03"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_FIRE_03"
+          "id": "ID_FULLBLITZ_ABILITY_FIRE_05"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_FIRE_02"
@@ -103,14 +103,14 @@
       "id": "id_dinobit",
       "type": "Dinobit",
       "element": "Ground",
-      "hpMin": 120,
-      "hpMax": 144,
-      "atkMin": 24,
-      "atkMax": 29,
-      "defMin": 72,
-      "defMax": 86,
-      "speedMin": 48,
-      "speedMax": 58,
+      "hpMin": 155,
+      "hpMax": 186,
+      "atkMin": 45,
+      "atkMax": 54,
+      "defMin": 70,
+      "defMax": 84,
+      "speedMin": 35,
+      "speedMax": 42,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
@@ -136,32 +136,32 @@
       "id": "id_zzoo",
       "type": "Zzoo",
       "element": "Wind",
-      "hpMin": 80,
-      "hpMax": 96,
-      "atkMin": 36,
-      "atkMax": 43,
-      "defMin": 48,
-      "defMax": 58,
-      "speedMin": 72,
-      "speedMax": 86,
+      "hpMin": 105,
+      "hpMax": 126,
+      "atkMin": 75,
+      "atkMax": 90,
+      "defMin": 50,
+      "defMax": 60,
+      "speedMin": 75,
+      "speedMax": 90,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
       "abilitiesArray": [
         {
-          "id": "ID_FULLBLITZ_ABILITY_NORMAL_10"
+          "id": "ID_FULLBLITZ_ABILITY_WIND_17"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_WIND_01"
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_36"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_FIRE_05"
+          "id": "ID_FULLBLITZ_ABILITY_EARTH_16"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_PLANT_06"
+          "id": "ID_FULLBLITZ_ABILITY_WIND_18"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_WIND_05"
+          "id": "ID_FULLBLITZ_ABILITY_WIND_10"
         }
       ]
     },
@@ -169,14 +169,14 @@
       "id": "id_block choy",
       "type": "Block Choy",
       "element": "Plant",
-      "hpMin": 110,
-      "hpMax": 132,
-      "atkMin": 30,
-      "atkMax": 36,
-      "defMin": 66,
-      "defMax": 79,
-      "speedMin": 48,
-      "speedMax": 58,
+      "hpMin": 145,
+      "hpMax": 174,
+      "atkMin": 55,
+      "atkMax": 66,
+      "defMin": 65,
+      "defMax": 78,
+      "speedMin": 40,
+      "speedMax": 48,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
@@ -202,14 +202,14 @@
       "id": "id_unika",
       "type": "Unika",
       "element": "Ground",
-      "hpMin": 110,
-      "hpMax": 132,
-      "atkMin": 24,
-      "atkMax": 29,
-      "defMin": 72,
-      "defMax": 86,
-      "speedMin": 54,
-      "speedMax": 65,
+      "hpMin": 145,
+      "hpMax": 174,
+      "atkMin": 40,
+      "atkMax": 48,
+      "defMin": 70,
+      "defMax": 84,
+      "speedMin": 50,
+      "speedMax": 60,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
@@ -218,10 +218,10 @@
           "id": "ID_FULLBLITZ_ABILITY_NORMAL_03"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_PLANT_01"
+          "id": "ID_FULLBLITZ_ABILITY_EARTH_04"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_EARTH_04"
+          "id": "ID_FULLBLITZ_ABILITY_PLANT_01"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_EARTH_08"
@@ -235,14 +235,14 @@
       "id": "id_axobubble",
       "type": "Axobubble",
       "element": "Water",
-      "hpMin": 100,
-      "hpMax": 120,
-      "atkMin": 30,
-      "atkMax": 36,
-      "defMin": 72,
-      "defMax": 86,
-      "speedMin": 48,
-      "speedMax": 58,
+      "hpMin": 130,
+      "hpMax": 156,
+      "atkMin": 60,
+      "atkMax": 72,
+      "defMin": 65,
+      "defMax": 78,
+      "speedMin": 50,
+      "speedMax": 60,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
@@ -257,7 +257,7 @@
           "id": "ID_FULLBLITZ_ABILITY_WATER_03"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_WATER_01"
+          "id": "ID_FULLBLITZ_ABILITY_WATER_13"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_03"
@@ -268,14 +268,14 @@
       "id": "id_number 9",
       "type": "Number 9",
       "element": "Fire",
-      "hpMin": 100,
-      "hpMax": 120,
-      "atkMin": 36,
-      "atkMax": 43,
-      "defMin": 54,
-      "defMax": 65,
-      "speedMin": 54,
-      "speedMax": 65,
+      "hpMin": 125,
+      "hpMax": 150,
+      "atkMin": 70,
+      "atkMax": 84,
+      "defMin": 70,
+      "defMax": 84,
+      "speedMin": 40,
+      "speedMax": 48,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
@@ -301,14 +301,14 @@
       "id": "id_chocomint",
       "type": "Chocomint",
       "element": "Plant",
-      "hpMin": 95,
-      "hpMax": 114,
-      "atkMin": 30,
-      "atkMax": 36,
-      "defMin": 51,
-      "defMax": 61,
-      "speedMin": 72,
-      "speedMax": 86,
+      "hpMin": 120,
+      "hpMax": 144,
+      "atkMin": 60,
+      "atkMax": 72,
+      "defMin": 50,
+      "defMax": 60,
+      "speedMin": 75,
+      "speedMax": 90,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
@@ -317,10 +317,10 @@
           "id": "ID_FULLBLITZ_ABILITY_NORMAL_03"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_01"
+          "id": "ID_FULLBLITZ_ABILITY_WATER_18"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_PLANT_09"
+          "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_01"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_WIND_03"
@@ -334,14 +334,14 @@
       "id": "id_cybertooth",
       "type": "Cybertooth",
       "element": "Wind",
-      "hpMin": 105,
-      "hpMax": 126,
-      "atkMin": 30,
-      "atkMax": 36,
-      "defMin": 69,
-      "defMax": 83,
-      "speedMin": 48,
-      "speedMax": 58,
+      "hpMin": 135,
+      "hpMax": 162,
+      "atkMin": 60,
+      "atkMax": 72,
+      "defMin": 70,
+      "defMax": 84,
+      "speedMin": 40,
+      "speedMax": 48,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
@@ -356,10 +356,10 @@
           "id": "ID_FULLBLITZ_ABILITY_WIND_08"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_WIND_07"
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_12"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_NORMAL_12"
+          "id": "ID_FULLBLITZ_ABILITY_WIND_07"
         }
       ]
     },
@@ -367,14 +367,14 @@
       "id": "id_wassie",
       "type": "Wassie",
       "element": "Thunder",
-      "hpMin": 90,
-      "hpMax": 108,
-      "atkMin": 30,
-      "atkMax": 36,
-      "defMin": 54,
-      "defMax": 65,
-      "speedMin": 72,
-      "speedMax": 86,
+      "hpMin": 115,
+      "hpMax": 138,
+      "atkMin": 60,
+      "atkMax": 72,
+      "defMin": 50,
+      "defMax": 60,
+      "speedMin": 80,
+      "speedMax": 96,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
@@ -383,7 +383,7 @@
           "id": "ID_FULLBLITZ_ABILITY_NORMAL_07"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_NORMAL_01"
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_26"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_WIND_02"
@@ -396,66 +396,33 @@
         }
       ]
     },
-    "id_dracurve": {
-      "id": "id_dracurve",
-      "type": "Dracurve",
-      "element": "Thunder",
-      "hpMin": 105,
-      "hpMax": 126,
-      "atkMin": 35,
-      "atkMax": 41,
-      "defMin": 60,
-      "defMax": 72,
-      "speedMin": 48,
-      "speedMax": 58,
+    "id_shibark": {
+      "id": "id_shibark",
+      "type": "Shibark",
+      "element": "Ground",
+      "hpMin": 120,
+      "hpMax": 144,
+      "atkMin": 60,
+      "atkMax": 72,
+      "defMin": 70,
+      "defMax": 84,
+      "speedMin": 55,
+      "speedMax": 66,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
       "abilitiesArray": [
         {
-          "id": "ID_FULLBLITZ_ABILITY_NORMAL_17"
-        },
-        {
-          "id": "ID_FULLBLITZ_ABILITY_WIND_01"
-        },
-        {
-          "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_10"
-        },
-        {
-          "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_09"
-        },
-        {
-          "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_08"
-        }
-      ]
-    },
-    "id_shibark": {
-      "id": "id_shibark",
-      "type": "Shibark",
-      "element": "Ground",
-      "hpMin": 95,
-      "hpMax": 114,
-      "atkMin": 36,
-      "atkMax": 43,
-      "defMin": 51,
-      "defMax": 61,
-      "speedMin": 60,
-      "speedMax": 72,
-      "hypeMin": 0,
-      "hypeMax": 999,
-      "passive": "-1",
-      "abilitiesArray": [
-        {
-          "id": "ID_FULLBLITZ_ABILITY_NORMAL_02"
-        },
-        {
           "id": "ID_FULLBLITZ_ABILITY_NORMAL_16"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_EARTH_10"
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_13"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_PLANT_09"
+          "id": "ID_FULLBLITZ_ABILITY_FIRE_01"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_EARTH_10"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_EARTH_11"
@@ -466,29 +433,29 @@
       "id": "id_raccoin",
       "type": "Raccoin",
       "element": "Wind",
-      "hpMin": 100,
-      "hpMax": 120,
-      "atkMin": 33,
-      "atkMax": 40,
+      "hpMin": 125,
+      "hpMax": 150,
+      "atkMin": 65,
+      "atkMax": 78,
       "defMin": 60,
       "defMax": 72,
-      "speedMin": 54,
-      "speedMax": 65,
+      "speedMin": 55,
+      "speedMax": 66,
       "hypeMin": 0,
       "hypeMax": 999,
-      "passive": "-1",
+      "passive": -1,
       "abilitiesArray": [
         {
           "id": "ID_FULLBLITZ_ABILITY_NORMAL_20"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_19"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_NORMAL_21"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_WIND_11"
-        },
-        {
-          "id": "ID_FULLBLITZ_ABILITY_NORMAL_19"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_WIND_12"
@@ -499,17 +466,17 @@
       "id": "id_unikirin",
       "type": "Unikirin",
       "element": "Thunder",
-      "hpMin": 80,
-      "hpMax": 96,
-      "atkMin": 32,
-      "atkMax": 38,
-      "defMin": 60,
-      "defMax": 72,
-      "speedMin": 69,
-      "speedMax": 83,
+      "hpMin": 105,
+      "hpMax": 126,
+      "atkMin": 65,
+      "atkMax": 78,
+      "defMin": 65,
+      "defMax": 78,
+      "speedMin": 70,
+      "speedMax": 84,
       "hypeMin": 0,
       "hypeMax": 999,
-      "passive": "-1",
+      "passive": -1,
       "abilitiesArray": [
         {
           "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_12"
@@ -518,10 +485,10 @@
           "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_01"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_FIRE_10"
+          "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_02"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_02"
+          "id": "ID_FULLBLITZ_ABILITY_FIRE_10"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_13"
@@ -532,23 +499,23 @@
       "id": "id_keybab",
       "type": "Keybab",
       "element": "Fire",
-      "hpMin": 85,
-      "hpMax": 102,
-      "atkMin": 36,
-      "atkMax": 43,
-      "defMin": 51,
-      "defMax": 61,
-      "speedMin": 66,
-      "speedMax": 79,
+      "hpMin": 130,
+      "hpMax": 156,
+      "atkMin": 65,
+      "atkMax": 78,
+      "defMin": 50,
+      "defMax": 60,
+      "speedMin": 60,
+      "speedMax": 72,
       "hypeMin": 0,
       "hypeMax": 999,
-      "passive": "-1",
+      "passive": -1,
       "abilitiesArray": [
         {
           "id": "ID_FULLBLITZ_ABILITY_FIRE_12"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_NORMAL_05"
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_24"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_PLANT_12"
@@ -563,28 +530,28 @@
     },
     "id_chocorex": {
       "id": "id_chocorex",
-      "type": "ChocoRex",
+      "type": "Chocorex",
       "element": "Water",
-      "hpMin": 90,
-      "hpMax": 108,
-      "atkMin": 30,
-      "atkMax": 36,
-      "defMin": 57,
-      "defMax": 68,
-      "speedMin": 69,
-      "speedMax": 83,
+      "hpMin": 115,
+      "hpMax": 138,
+      "atkMin": 60,
+      "atkMax": 72,
+      "defMin": 55,
+      "defMax": 66,
+      "speedMin": 75,
+      "speedMax": 90,
       "hypeMin": 0,
       "hypeMax": 999,
-      "passive": "-1",
+      "passive": -1,
       "abilitiesArray": [
         {
           "id": "ID_FULLBLITZ_ABILITY_NORMAL_03"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_NORMAL_22"
+          "id": "ID_FULLBLITZ_ABILITY_WATER_14"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_WATER_14"
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_22"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_WATER_13"
@@ -598,23 +565,23 @@
       "id": "id_beeblock",
       "type": "Beeblock",
       "element": "Plant",
-      "hpMin": 115,
-      "hpMax": 138,
-      "atkMin": 26,
-      "atkMax": 31,
-      "defMin": 51,
-      "defMax": 61,
-      "speedMin": 69,
-      "speedMax": 83,
+      "hpMin": 145,
+      "hpMax": 174,
+      "atkMin": 50,
+      "atkMax": 60,
+      "defMin": 45,
+      "defMax": 54,
+      "speedMin": 65,
+      "speedMax": 78,
       "hypeMin": 0,
       "hypeMax": 999,
-      "passive": "-1",
+      "passive": -1,
       "abilitiesArray": [
         {
           "id": "ID_FULLBLITZ_ABILITY_PLANT_13"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_NORMAL_06"
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_25"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_PLANT_09"
@@ -631,29 +598,29 @@
       "id": "id_bloomtail",
       "type": "Bloomtail",
       "element": "Plant",
-      "hpMin": 80,
-      "hpMax": 96,
-      "atkMin": 33,
-      "atkMax": 40,
-      "defMin": 60,
-      "defMax": 72,
-      "speedMin": 66,
-      "speedMax": 79,
+      "hpMin": 105,
+      "hpMax": 126,
+      "atkMin": 65,
+      "atkMax": 78,
+      "defMin": 70,
+      "defMax": 84,
+      "speedMin": 65,
+      "speedMax": 78,
       "hypeMin": 0,
       "hypeMax": 999,
-      "passive": "-1",
+      "passive": -1,
       "abilitiesArray": [
         {
-          "id": "ID_FULLBLITZ_ABILITY_NORMAL_02"
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_26"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_PLANT_10"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_PLANT_15"
+          "id": "ID_FULLBLITZ_ABILITY_WIND_09"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_WIND_09"
+          "id": "ID_FULLBLITZ_ABILITY_PLANT_15"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_PLANT_11"
@@ -664,14 +631,14 @@
       "id": "id_walpuff",
       "type": "Walpuff",
       "element": "Water",
-      "hpMin": 100,
-      "hpMax": 120,
-      "atkMin": 27,
-      "atkMax": 32,
-      "defMin": 72,
-      "defMax": 86,
-      "speedMin": 54,
-      "speedMax": 65,
+      "hpMin": 115,
+      "hpMax": 138,
+      "atkMin": 65,
+      "atkMax": 78,
+      "defMin": 80,
+      "defMax": 96,
+      "speedMin": 45,
+      "speedMax": 54,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
@@ -697,14 +664,14 @@
       "id": "id_ghouliath",
       "type": "Ghouliath",
       "element": "Fire",
-      "hpMin": 100,
-      "hpMax": 120,
-      "atkMin": 36,
-      "atkMax": 43,
+      "hpMin": 130,
+      "hpMax": 156,
+      "atkMin": 70,
+      "atkMax": 84,
       "defMin": 60,
       "defMax": 72,
-      "speedMin": 48,
-      "speedMax": 58,
+      "speedMin": 45,
+      "speedMax": 54,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
@@ -730,14 +697,14 @@
       "id": "id_dinotusk",
       "type": "Dinotusk",
       "element": "Thunder",
-      "hpMin": 120,
-      "hpMax": 144,
-      "atkMin": 29,
-      "atkMax": 34,
-      "defMin": 63,
-      "defMax": 76,
-      "speedMin": 48,
-      "speedMax": 58,
+      "hpMin": 160,
+      "hpMax": 192,
+      "atkMin": 35,
+      "atkMax": 42,
+      "defMin": 75,
+      "defMax": 90,
+      "speedMin": 35,
+      "speedMax": 42,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
@@ -763,14 +730,14 @@
       "id": "id_tokoma",
       "type": "Tokoma",
       "element": "Wind",
-      "hpMin": 110,
-      "hpMax": 132,
-      "atkMin": 33,
-      "atkMax": 40,
-      "defMin": 54,
-      "defMax": 65,
-      "speedMin": 54,
-      "speedMax": 65,
+      "hpMin": 140,
+      "hpMax": 168,
+      "atkMin": 55,
+      "atkMax": 66,
+      "defMin": 55,
+      "defMax": 66,
+      "speedMin": 55,
+      "speedMax": 66,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
@@ -779,7 +746,7 @@
           "id": "ID_FULLBLITZ_ABILITY_NORMAL_02"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_WIND_08"
+          "id": "ID_FULLBLITZ_ABILITY_WIND_19"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_WIND_14"
@@ -796,23 +763,23 @@
       "id": "id_whiskube",
       "type": "Whiskube",
       "element": "Ground",
-      "hpMin": 120,
-      "hpMax": 144,
-      "atkMin": 24,
-      "atkMax": 29,
-      "defMin": 69,
-      "defMax": 83,
-      "speedMin": 51,
-      "speedMax": 61,
+      "hpMin": 150,
+      "hpMax": 180,
+      "atkMin": 45,
+      "atkMax": 54,
+      "defMin": 75,
+      "defMax": 90,
+      "speedMin": 35,
+      "speedMax": 42,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
       "abilitiesArray": [
         {
-          "id": "ID_FULLBLITZ_ABILITY_NORMAL_07"
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_10"
         },
         {
-          "id": "ID_FULLBLITZ_ABILITY_NORMAL_10"
+          "id": "ID_FULLBLITZ_ABILITY_PLANT_01"
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_WATER_15"
@@ -829,14 +796,14 @@
       "id": "id_znix",
       "type": "Znix",
       "element": "Fire",
-      "hpMin": 85,
-      "hpMax": 102,
-      "atkMin": 36,
-      "atkMax": 43,
-      "defMin": 48,
-      "defMax": 58,
-      "speedMin": 69,
-      "speedMax": 83,
+      "hpMin": 125,
+      "hpMax": 150,
+      "atkMin": 70,
+      "atkMax": 84,
+      "defMin": 45,
+      "defMax": 54,
+      "speedMin": 65,
+      "speedMax": 78,
       "hypeMin": 0,
       "hypeMax": 999,
       "passive": -1,
@@ -855,6 +822,39 @@
         },
         {
           "id": "ID_FULLBLITZ_ABILITY_FIRE_07"
+        }
+      ]
+    },
+    "id_dracurve": {
+      "id": "id_dracurve",
+      "type": "Dracurve",
+      "element": "Thunder",
+      "hpMin": 130,
+      "hpMax": 156,
+      "atkMin": 65,
+      "atkMax": 78,
+      "defMin": 65,
+      "defMax": 78,
+      "speedMin": 45,
+      "speedMax": 54,
+      "hypeMin": 0,
+      "hypeMax": 999,
+      "passive": -1,
+      "abilitiesArray": [
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_17"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_WIND_01"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_10"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_FIRE_04"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_08"
         }
       ]
     }

@@ -93,6 +93,7 @@ export interface ParseDataNefty {
   grade: Grade;
   defaultImage: string;
   imageByGame: { tactics: ImageNeftyByGame };
+  element: string;
 }
 
 export interface ParseDataIndex {
