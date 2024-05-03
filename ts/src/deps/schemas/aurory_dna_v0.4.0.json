@@ -74,7 +74,8 @@
             "family": "Bitebit",
             "mp": 4,
             "passiveSkill": "bitebitPassive",
-            "ultimateSkill": "bouncingClaws"
+            "ultimateSkill": "bouncingClaws",
+            "element": "Thunder"
           },
           "encoded_attributes": {
             "hp": [468, 572],
@@ -94,7 +95,8 @@
             "family": "Dipking",
             "mp": 3,
             "passiveSkill": "SlipperySkin",
-            "ultimateSkill": "ComboBreaker"
+            "ultimateSkill": "ComboBreaker",
+            "element": "Water"
           },
           "encoded_attributes": {
             "hp": [410, 502],
@@ -114,7 +116,8 @@
             "family": "Dinobit",
             "mp": 2,
             "passiveSkill": "dinobitPassive",
-            "ultimateSkill": "dinobit_bulldozer"
+            "ultimateSkill": "dinobit_bulldozer",
+            "element": "Ground"
           },
           "encoded_attributes": {
             "hp": [608, 743],
@@ -134,7 +137,8 @@
             "family": "Shiba",
             "mp": 2,
             "passiveSkill": "shibaPassive",
-            "ultimateSkill": "bigBark"
+            "ultimateSkill": "bigBark",
+            "element": "Fire"
           },
           "encoded_attributes": {
             "hp": [533, 652],
@@ -154,7 +158,8 @@
             "family": "Zzoo",
             "mp": 5,
             "passiveSkill": "PainfulShriek",
-            "ultimateSkill": "FlyingDrop"
+            "ultimateSkill": "FlyingDrop",
+            "element": "Wind"
           },
           "encoded_attributes": {
             "hp": [360, 440],
@@ -174,7 +179,8 @@
             "family": "Blockchoy",
             "mp": 3,
             "passiveSkill": "FreshGreens",
-            "ultimateSkill": "Vitamins"
+            "ultimateSkill": "Vitamins",
+            "element": "Plant"
           },
           "encoded_attributes": {
             "hp": [468, 572],
@@ -194,7 +200,8 @@
             "family": "Number9",
             "mp": 5,
             "passiveSkill": "number9Passive",
-            "ultimateSkill": "JumpScare"
+            "ultimateSkill": "JumpScare",
+            "element": "Fire"
           },
           "encoded_attributes": {
             "hp": [410, 502],
@@ -214,7 +221,8 @@
             "family": "Axobubble",
             "mp": 3,
             "passiveSkill": "tailekinesis",
-            "ultimateSkill": "bubbleOut"
+            "ultimateSkill": "bubbleOut",
+            "element": "Water"
           },
           "encoded_attributes": {
             "hp": [468, 572],
@@ -234,7 +242,8 @@
             "family": "Unika",
             "mp": 4,
             "passiveSkill": "Inspiring",
-            "ultimateSkill": "Encore"
+            "ultimateSkill": "Encore",
+            "element": "Ground"
           },
           "encoded_attributes": {
             "hp": [468, 572],
