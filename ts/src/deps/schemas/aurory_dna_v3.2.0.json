@@ -141,7 +141,8 @@
             "family": "Shiba",
             "mp": 2,
             "passiveSkill": "shibaPassive",
-            "ultimateSkill": "bigBark"
+            "ultimateSkill": "bigBark",
+            "element": "Fire"
           },
           "encoded_attributes": {
             "hp": [533, 652],
