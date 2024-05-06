@@ -74,7 +74,8 @@
             "family": "Bitebit",
             "mp": 4,
             "passiveSkill": "bitebitPassive",
-            "ultimateSkill": "bouncingClaws"
+            "ultimateSkill": "bouncingClaws",
+            "element": "Thunder"
           },
           "encoded_attributes": {
             "hp": [400, 600],
@@ -94,7 +95,8 @@
             "family": "Dipking",
             "mp": 2,
             "passiveSkill": "SlipperySkin",
-            "ultimateSkill": "ComboBreaker"
+            "ultimateSkill": "ComboBreaker",
+            "element": "Water"
           },
           "encoded_attributes": {
             "hp": [280, 420],
@@ -114,7 +116,8 @@
             "family": "Dinobit",
             "mp": 2,
             "passiveSkill": "dinobitPassive",
-            "ultimateSkill": "dinobit_bulldozer"
+            "ultimateSkill": "dinobit_bulldozer",
+            "element": "Ground"
           },
           "encoded_attributes": {
             "hp": [640, 960],
@@ -134,7 +137,8 @@
             "family": "Shiba",
             "mp": 2,
             "passiveSkill": "shibaPassive",
-            "ultimateSkill": "bigBark"
+            "ultimateSkill": "bigBark",
+            "element": "Fire"
           },
           "encoded_attributes": {
             "hp": [560, 840],
@@ -154,7 +158,8 @@
             "family": "Zzoo",
             "mp": 5,
             "passiveSkill": "zzooPassive",
-            "ultimateSkill": "FlyingDrop"
+            "ultimateSkill": "FlyingDrop",
+            "element": "Wind"
           },
           "encoded_attributes": {
             "hp": [280, 420],
@@ -174,7 +179,8 @@
             "family": "Blockchoy",
             "mp": 3,
             "passiveSkill": "FreshGreens",
-            "ultimateSkill": "Vitamins"
+            "ultimateSkill": "Vitamins",
+            "element": "Plant"
           },
           "encoded_attributes": {
             "hp": [320, 480],
@@ -194,7 +200,8 @@
             "family": "Number9",
             "mp": 4,
             "passiveSkill": "number9Passive",
-            "ultimateSkill": "JumpScare"
+            "ultimateSkill": "JumpScare",
+            "element": "Fire"
           },
           "encoded_attributes": {
             "hp": [320, 480],

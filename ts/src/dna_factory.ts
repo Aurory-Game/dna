@@ -460,6 +460,7 @@ export class DNAFactory {
     data['description'] = this.getFamilyDescription(archetype.fixed_attributes.family as string);
     data['passiveSkill_info'] = this.getAbilityInfo(data['passiveSkill']);
     data['ultimateSkill_info'] = this.getAbilityInfo(data['ultimateSkill']);
+    data.element = archetype.fixed_attributes.element as string;
     this._setStats(data, dnaSchemaReader);
     this._setSkills(data, dnaSchemaReader);
     this._addNeftyImageData(data, 'prime');
