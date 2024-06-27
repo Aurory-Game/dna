@@ -144,31 +144,6 @@ function convertStats(tacticsStats: ParseDataRangeCompleteness): ParseDataPerc {
   return advArrToObj(adventuresStats);
 }
 
-function fixGlitchedSchimmering(
-  tacticsStatsObj: ParseDataRangeCompleteness,
-  adventuresStatsObj: ParseDataPerc
-): ParseDataPerc {
-  const tacticsStats = tacticsStatsObjToArr(tacticsStatsObj);
-  const floorAvgGame1 = floorAverage(tacticsStats);
-  const adventuresStats = Object.values(adventuresStatsObj);
-  const isGlitched1 = tacticsStats.every((stat) => stat <= 5);
-  const isSchimmering1 = tacticsStats.every((stat) => stat >= 95);
-  const isGlitched2 = adventuresStats.every((stat) => stat <= 5);
-  const isSchimmering2 = adventuresStats.every((stat) => stat >= 95);
-
-  let adventuresStatsCorrected;
-  if (isGlitched1 === isGlitched2 && isSchimmering1 === isSchimmering2) {
-    return adventuresStatsObj;
-  } else if (isGlitched1 !== isGlitched2) {
-    if (isGlitched1) {
-      adventuresStatsCorrected = makeGlitched(floorAvgGame1, adventuresStats);
-    }
-    adventuresStatsCorrected = removeGlitched(floorAvgGame1, adventuresStats);
-  } else if (isSchimmering1) adventuresStatsCorrected = makeSchimmering(floorAvgGame1, adventuresStats);
-  else adventuresStatsCorrected = removeSchimmering(floorAvgGame1, adventuresStats);
-  return advArrToObj(adventuresStatsCorrected);
-}
-
 export function getAdventuresStats(dnaSchemaReader: DNASchemaReader, adventuresStats: AdvStatsJSON): ParseDataAdv {
   const tacticsStats: Partial<ParseDataRangeCompleteness> = {};
   dnaSchemaReader.getCompletenessGenes().forEach((gene: GeneWithValues) => {
