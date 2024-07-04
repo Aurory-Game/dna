@@ -4,18 +4,18 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [v0.7.9] - 04/24/2024
+## [v0.7.9] - 24/04/2024
 - Add new eggs and nefties for the Citrine version of Seekers of Tokane
 
-## [v0.7.3] - 01/16/2024
+## [v0.7.3] - 16/01/2024
 - Wassie added to Quantum eggs
 
-## [v0.7.0] - 12/6/2023
+## [v0.7.0] - 06/12/2023
 - Introduce Cybertooth and Wassie
 - Add Fen and Moss eggs
 - Update configuration format for adventure stats
 
-## [v0.6.0] - 09/18/2023
+## [v0.6.0] - 18/09/2023
 - Introduce grade for DNA generation
 - Add standard egg support in EggFactory
 
