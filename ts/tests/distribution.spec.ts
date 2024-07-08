@@ -1,4 +1,4 @@
-import { DNAFactory, EggsFactory, GLITCHED_PERIOD, Rarity, SCHIMMERING_PERIOD, utils } from '../src';
+import { DNAFactoryV1 as DNAFactory, EggsFactoryV1 as EggsFactory, Rarity } from '../src';
 import assert from 'assert';
 import rarities from '../src/deps/rarities.json';
 

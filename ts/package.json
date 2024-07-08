@@ -12,6 +12,7 @@
     "sp": "ts-node $1",
     "test": "ts-mocha -p ./tsconfig.json -t 2500000 --exit tests/**/*.spec.ts",
     "test:dna": "ts-mocha -p ./tsconfig.json -t 2500000 --exit tests/dna.spec.ts",
+    "test:dna2": "ts-mocha -p ./tsconfig.json -t 2500000 --exit tests/dna.v2.spec.ts",
     "test:distribution": "ts-mocha -p ./tsconfig.json -t 2500000 --exit tests/distribution.spec.ts",
     "build": "tsc -p tsconfig.build.json && cp -r src/deps lib/",
     "prepare": "cd .. && husky install && cd ts && yarn build",
@@ -41,6 +42,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.1",
     "mocha": "^10.0.0",
+    "nanoid": "^5.0.7",
     "prettier": "^2.6.2",
     "ts-mocha": "^10.0.0",
     "ts-node": "^10.2.1",
@@ -53,6 +55,7 @@
   "dependencies": {
     "@types/randombytes": "^2.0.0",
     "camel-case": "^4.1.2",
+    "compress-json": "^3.1.0",
     "dotenv": "^16.3.1",
     "google-spreadsheet": "^3.3.0",
     "randombytes": "^2.1.0",

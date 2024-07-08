@@ -34,7 +34,6 @@ import dnaSchemaV3_1 from './deps/schemas/aurory_dna_v3.1.0.json';
 import dnaSchemaV3_2 from './deps/schemas/aurory_dna_v3.2.0.json';
 import adventuresStatsV0_0_6 from './deps/schemas/adventures/v0.0.6.json';
 import { LATEST_VERSION as LATEST_ADVENTURES_STATS_VERSION } from './deps/schemas/adventures/latest';
-import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from './deps/schemas/latest';
 import { LATEST_VERSION as LATEST_ABILTIIES_VERSION } from './deps/dictionaries/latest';
 import abiltiesDictionaryV4 from './deps/dictionaries/abilities_dictionary_v0.4.0.json';
 import neftiesInfo from './deps/nefties_info.json';
@@ -50,6 +49,7 @@ import {
 } from './utils';
 import { DNASchemaReader } from './dna_schema_reader';
 import { getAdventuresStats } from './adventure_stats';
+import { LAST_SUPPORTED_VERSION_BY_V1 } from './constants';
 
 const dnaSchemas: Record<version, DNASchema> = {
   '0.2.0': dnaSchemaV0_2 as DNASchema,
@@ -71,7 +71,7 @@ const abilitiesDictionaries: Record<version, AbilityDictionary> = {
   '0.4.0': abiltiesDictionaryV4 as AbilityDictionary,
 };
 
-export class DNAFactory {
+export class DNAFactoryV1 {
   dnaSchemas: Record<version, DNASchema>;
   abilitiesDictionary: Record<version, AbilityDictionary>;
   neftiesInfo: NeftiesInfo;
@@ -89,7 +89,7 @@ export class DNAFactory {
     this.dnaBytes = dnaBytes ?? 64;
     this.encodingBase = encodingBase ?? 16;
     this.baseSize = this.encodingBase / 8;
-    this.latestSchemaVersion = LATEST_SCHEMA_VERSION;
+    this.latestSchemaVersion = LAST_SUPPORTED_VERSION_BY_V1;
     this.latestAbilitiesVersion = LATEST_ABILTIIES_VERSION;
     this.dnaSchemas = dnaSchemas;
     this.abilitiesDictionary = abilitiesDictionaries;

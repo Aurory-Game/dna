@@ -1,7 +1,7 @@
 import { parentPort, workerData } from 'worker_threads';
-import { DNAFactory } from '../../src/dna_factory';
-import { EggsFactory } from '../../src/eggs_factory';
-import { Rarity } from '../../src/interfaces/types';
+import { DNAFactoryV1 as DNAFactory } from '../../src/index';
+import { EggsFactoryV1 as EggsFactory } from '../../src/index';
+import { Grade, Rarity } from '../../src/interfaces/types';
 import { utils } from '../../src';
 import rarities from '../../src/deps/rarities.json';
 
