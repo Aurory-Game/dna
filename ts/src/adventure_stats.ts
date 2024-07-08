@@ -7,6 +7,8 @@ import {
   AdvStatsJSON,
   ParseDataPerc,
   AdvStatsJSONValue,
+  NeftyCodeNameId,
+  NeftyCodeName,
 } from './interfaces/types';
 
 /**
@@ -150,7 +152,7 @@ export function getAdventuresStats(dnaSchemaReader: DNASchemaReader, adventuresS
     tacticsStats[gene.name as keyof ParseDataRangeCompleteness] = Math.round((gene.completeness as number) * 100);
   });
   const fixedStats = convertStats(tacticsStats as ParseDataRangeCompleteness);
-  const neftieName = TACTICS_ADV_NAMES_MAP[dnaSchemaReader.archetype.fixed_attributes.name];
+  const neftieName = TACTICS_ADV_NAMES_MAP[dnaSchemaReader.archetype.fixed_attributes.name as NeftyCodeName];
   const advStatsRanges = adventuresStats.nefties[neftieName];
   Object.keys(fixedStats).forEach((key) => {
     const min = advStatsRanges[`${key}Min` as keyof AdvStatsJSONValue];

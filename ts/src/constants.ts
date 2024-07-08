@@ -3,7 +3,7 @@ export const GLITCHED_PERIOD = 1500;
 export const GLITCHED_RANGE_START = 5;
 export const SCHIMMERING_RANGE_START = 95;
 
-export const TACTICS_ADV_NAMES_MAP: Record<string, string> = {
+export const TACTICS_ADV_NAMES_MAP = {
   Nefty_Bitebit: 'id_bitebit',
   Nefty_Dipking: 'id_dipking',
   Nefty_Dinobit: 'id_dinobit',
@@ -24,4 +24,10 @@ export const TACTICS_ADV_NAMES_MAP: Record<string, string> = {
   Nefty_Chocorex: 'id_chocorex',
   Nefty_Keybab: 'id_keybab',
   Nefty_Bloomtail: 'id_bloomtail',
-};
+} as const;
+
+export const VERSION_LENGTH = 4;
+export const LAST_SUPPORTED_VERSION_BY_V1 = '3.2.0';
+
+// hp, atk, def, speed
+export const N_STATS_SOT = 4;
