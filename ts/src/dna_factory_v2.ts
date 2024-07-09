@@ -163,7 +163,6 @@ export class DNAFactoryV2 {
     const computed = {} as ParseDataComputed;
     const sotStatsCurrent = adventuresStats[LATEST_ADVENTURES_STATS_VERSION].nefties[neftyCodenameId];
     if (!sotStatsCurrent) {
-      debugger;
       throw new Error(`No SOT stats found for ${neftyCodenameId}`);
     }
     Object.entries(dataAdv).forEach(([statName, percentage]) => {
@@ -222,9 +221,9 @@ export class DNAFactoryV2 {
   }
 
   private createDataAdvFromV1(stats: ParseDataPerc): ParseDataPerc {
-    const { hp: hpP, atk: atkP, def: defP, speed: speedP } = stats;
+    const { hp, atk, def, speed } = stats;
     const dataAdv = {} as ParseDataPerc;
-    Object.assign(dataAdv, { hpP, atkP, defP, speedP });
+    Object.assign(dataAdv, { hp, atk, def, speed });
     return dataAdv;
   }
 
@@ -258,7 +257,6 @@ export class DNAFactoryV2 {
   parse(dnaString: string): ParseV2 {
     // const majorVersion = toUnPaddedHexa(dnaString.slice(0, VERSION_LENGTH));
     const dataRaw = this.deserializeDna(dnaString.slice(VERSION_LENGTH));
-    debugger;
     const dataAdv = Object.assign(
       {},
       dataRaw.dataAdv,
