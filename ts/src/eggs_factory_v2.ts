@@ -32,7 +32,7 @@ export class EggsFactoryV2 {
   }
 
   getDroppableStandardNefties(): DroppableNeftyInfoV2[] {
-    return this.eggInfo.archetypes.map((neftyCodeName) => {
+    return this.standardEggInfo.archetypes.map((neftyCodeName) => {
       const r = {} as DroppableNeftyInfoV2;
       r.neftyCodeName = neftyCodeName;
       r.displayName = neftiesInfo.code_to_displayName[neftyCodeName] as string;
@@ -43,14 +43,14 @@ export class EggsFactoryV2 {
   hatch(): { archetypeKey: string; neftyCodeName: NeftyCodeName } {
     const droppableArchetypes = this.eggInfo.archetypes;
     const neftyCodeName = droppableArchetypes[Math.floor(Math.random() * droppableArchetypes.length)];
-    const archetypeKey = neftyCodeName;
+    const archetypeKey = this.df.getArchetypeKeyByNeftyCodeName(neftyCodeName);
     return { archetypeKey, neftyCodeName };
   }
 
   hatchStandard(): { archetypeKey: string; neftyCodeName: NeftyCodeName } {
     const droppableArchetypes = this.standardEggInfo.archetypes;
     const neftyCodeName = droppableArchetypes[Math.floor(Math.random() * droppableArchetypes.length)];
-    const archetypeKey = neftyCodeName;
+    const archetypeKey = this.df.getArchetypeKeyByNeftyCodeName(neftyCodeName);
     return { archetypeKey, neftyCodeName };
   }
 }

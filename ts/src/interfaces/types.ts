@@ -214,7 +214,7 @@ export interface DroppableNeftyInfo {
 }
 
 export interface DroppableNeftyInfoV2 {
-  neftyCodeName: string;
+  neftyCodeName: NeftyCodeName;
   displayName: string;
 }
 
@@ -233,6 +233,10 @@ export interface DnaDataData {
   neftyCodeName: NeftyCodeName;
 }
 
+export interface DnaDataDataParsed extends DnaDataData {
+  displayName: string;
+}
+
 export interface DnaDataV2 {
   version: string;
   data: DnaDataData;
@@ -241,6 +245,7 @@ export interface DnaDataV2 {
 
 export interface ParseV2 {
   version: string;
-  data: DnaDataData;
+  dataRaw: DnaDataV2;
+  data: DnaDataDataParsed;
   dataAdv: ParseDataAdv;
 }
