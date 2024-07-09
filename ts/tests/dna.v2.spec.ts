@@ -1,4 +1,4 @@
-import { DNAFactory, EggsFactory, Rarity, utils } from '../src';
+import { DNAFactory, DNAFactoryV1, EggsFactory, Rarity, utils } from '../src';
 import nefties_info from '../src/deps/nefties_info.json';
 import assert from 'assert';
 import raritiesGeneration from '../src/deps/rarities_generation.json';
@@ -184,5 +184,29 @@ describe('droppable nefties', () => {
       assert(droppableNefties);
       assert.equal(droppableNefties.length, primeEggs[eggName].archetypes.length);
     });
+  });
+});
+
+describe('From V1 DNA', () => {
+  const df = new DNAFactory();
+  const dfV1 = new DNAFactoryV1();
+  const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
+  it('From V1 DNA', () => {
+    const advStatKeys: (keyof ParseDataPerc)[] = ['hp', 'atk', 'def', 'speed'];
+    const dnaV1 = dfV1.generateNeftyDNA(ef.hatch().archetypeKey, 'prime');
+    const parsedV1 = dfV1.parse(dnaV1);
+    const newStats = {} as Record<keyof ParseDataPerc, number>;
+    advStatKeys.forEach((key) => {
+      newStats[key] = Math.min(parsedV1.dataAdv[key] + 1, 100);
+    });
+    const newDna = df.generateNeftyDNAFromV1Dna(dfV1, dnaV1, newStats);
+    const newParsed = df.parse(newDna);
+    assert.deepEqual(newParsed.dataAdv.hp, newStats.hp);
+    assert.deepEqual(newParsed.dataAdv.atk, newStats.atk);
+    assert.deepEqual(newParsed.dataAdv.def, newStats.def);
+    assert.deepEqual(newParsed.dataAdv.speed, newStats.speed);
+    assert.deepEqual(newParsed.data.rarity, parsedV1.data.rarity);
+    assert.deepEqual(newParsed.data.displayName, parsedV1.data.displayName);
+    assert.deepEqual(newParsed.data.neftyCodeName, parsedV1.archetype.fixed_attributes.name);
   });
 });
