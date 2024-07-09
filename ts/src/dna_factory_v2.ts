@@ -11,11 +11,12 @@ import {
   ParseDataComputed,
   AdvStatsJSON,
   AdvStatsJSONValue,
+  Parse,
 } from './interfaces/types';
 import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from './deps/schemas/latest';
 import { LATEST_VERSION as LATEST_ADVENTURES_STATS_VERSION } from './deps/schemas/adventures/latest';
 import dnaSchemaV4_0 from './deps/schemas/aurory_dna_v4.0.0.json';
-import { getAverageFromRaw, getLatestSubversion, randomInt, randomNormal, toPaddedHexa, toUnPaddedHexa } from './utils';
+import { getAverageFromRaw, getLatestSubversion, randomInt, randomNormal, toPaddedHexa } from './utils';
 import raritiesGeneration from './deps/rarities_generation.json';
 import { N_STATS_SOT, TACTICS_ADV_NAMES_MAP, VERSION_LENGTH } from './constants';
 import { DNAFactoryV1 } from './dna_factory_v1';
@@ -37,7 +38,7 @@ export class DNAFactoryV2 {
   private codeNameToKey: Record<NeftyCodeName, string>;
   constructor() {
     this.latestSchemasSubversions = {};
-    this.codeNameToKey = {} as any;
+    this.codeNameToKey = {} as Record<NeftyCodeName, string>;
     Object.entries(this.getDNASchema(LATEST_SCHEMA_VERSION).archetypes).forEach(([key, codename]) => {
       this.codeNameToKey[codename as NeftyCodeName] = key;
     });
@@ -139,12 +140,12 @@ export class DNAFactoryV2 {
 
     while (pointsLeft) {
       distributePoints();
-      raw = stats.map((stat, index) => Math.round((stat / 100) * maxValuePerStat));
+      raw = stats.map((stat) => Math.round((stat / 100) * maxValuePerStat));
 
       average = Math.floor(
         getAverageFromRaw(
           raw,
-          stats.map((_, index) => maxValuePerStat)
+          stats.map(() => maxValuePerStat)
         ) * 100
       );
 
@@ -153,7 +154,7 @@ export class DNAFactoryV2 {
     }
 
     // if average = 1 for a non glitched or 95 for a schimmering, we may end up not enterring in the previous loop
-    if (!raw.length) raw = stats.map((stat, index) => Math.round((stat / 100) * maxValuePerStat));
+    if (!raw.length) raw = stats.map((stat) => Math.round((stat / 100) * maxValuePerStat));
     return raw;
   }
 
@@ -189,7 +190,12 @@ export class DNAFactoryV2 {
     return dnaData;
   }
 
-  private createDataData(dnaSchema: any, archetypeIndex: string, grade: Grade, rarityPreset?: Rarity): DnaDataData {
+  private createDataData(
+    dnaSchema: DNASchemaV4,
+    archetypeIndex: string,
+    grade: Grade,
+    rarityPreset?: Rarity
+  ): DnaDataData {
     const dataData = {} as DnaDataData;
     dataData.grade = grade;
     dataData.rarity = rarityPreset ?? this._getRandomRarity(grade);
@@ -200,7 +206,7 @@ export class DNAFactoryV2 {
     return dataData;
   }
 
-  private createDataDataFromV1(dataV1: any): DnaDataData {
+  private createDataDataFromV1(dataV1: Parse): DnaDataData {
     const dataData = {} as DnaDataData;
     dataData.grade = dataV1.data.grade;
     dataData.rarity = dataV1.data.rarity;
@@ -234,8 +240,8 @@ export class DNAFactoryV2 {
    * Returns rarity from stats average
    * @param statsAverage average of all stats, from 0 to 100;
    */
-  getRarityFromStatsAvg(statsAverage: number, raiseErrorOnNotFound = true, grade: Grade = 'prime'): Rarity | null {
-    const rarity = Object.entries(raritiesRead).find(([rarity, rarityInfo]) => {
+  getRarityFromStatsAvg(statsAverage: number, raiseErrorOnNotFound = true): Rarity | null {
+    const rarity = Object.entries(raritiesRead).find(([, rarityInfo]) => {
       return (
         statsAverage >= rarityInfo.average_stats_range[0] &&
         ((statsAverage === 100 && statsAverage === rarityInfo.average_stats_range[1]) ||
@@ -250,7 +256,7 @@ export class DNAFactoryV2 {
   }
 
   parse(dnaString: string): ParseV2 {
-    const majorVersion = toUnPaddedHexa(dnaString.slice(0, VERSION_LENGTH));
+    // const majorVersion = toUnPaddedHexa(dnaString.slice(0, VERSION_LENGTH));
     const dataRaw = this.deserializeDna(dnaString.slice(VERSION_LENGTH));
     debugger;
     const dataAdv = Object.assign(

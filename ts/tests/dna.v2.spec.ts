@@ -2,10 +2,9 @@ import { DNAFactory, EggsFactory, Rarity, utils } from '../src';
 import nefties_info from '../src/deps/nefties_info.json';
 import assert from 'assert';
 import raritiesGeneration from '../src/deps/rarities_generation.json';
-import { readdirSync, readFileSync } from 'fs';
-import { DNASchema, DNASchemaV4, NeftyCodeName, ParseDataPerc } from '../src/interfaces/types';
-import { LAST_SUPPORTED_VERSION_BY_V1, TACTICS_ADV_NAMES_MAP } from '../src/constants';
-import { LATEST_VERSION } from '../src/deps/schemas/latest';
+import { readdirSync } from 'fs';
+import { ParseDataPerc } from '../src/interfaces/types';
+import { TACTICS_ADV_NAMES_MAP } from '../src/constants';
 
 const displayNamesProd = [
   'Axobubble',
@@ -41,11 +40,9 @@ const allSchemaVersions = readdirSync('./src/deps/schemas')
 describe('Basic', () => {
   it('DNA should parse', () => {
     const df = new DNAFactory();
-    Object.entries(EggsFactory.getAllEggs()).forEach(([eggPk, eggInfo]) => {
+    Object.entries(EggsFactory.getAllEggs()).forEach(([eggPk]) => {
       const ef = new EggsFactory(eggPk, df);
       const droppableNefties = ef.getDroppableNefties();
-      const schema = df.getDNASchema(LATEST_VERSION);
-      const archetypes = Object.entries(schema.archetypes);
       droppableNefties.forEach(({ neftyCodeName, displayName }) => {
         assert.ok(displayName);
         assert.ok(neftyCodeName);
@@ -54,6 +51,7 @@ describe('Basic', () => {
         assert.ok(archetypeKey);
         assert.ok(nefties_info.code_to_displayName[neftyCodeName]);
         assert.ok(
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           (nefties_info.family_to_description as any)[
             nefties_info.code_to_displayName[neftyCodeName].replace(/\s+/g, '')
           ],
@@ -113,7 +111,7 @@ describe('Rarity', () => {
       const statsAvg =
         utils.getAverageFromRaw(
           rarityStats.map((v) => parsed.dataAdv[v]),
-          rarityStats.map((v) => 100)
+          rarityStats.map(() => 100)
         ) * 100;
       assert.deepEqual(df.getRarityFromStatsAvg(statsAvg), rarity);
       assert.ok(statsAvg >= rarityInfo.average_stats_range[0]);
