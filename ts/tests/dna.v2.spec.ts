@@ -1,10 +1,11 @@
 import { DNAFactory, DNAFactoryV1, EggsFactory, Rarity, utils } from '../src';
 import nefties_info from '../src/deps/nefties_info.json';
 import assert from 'assert';
-import raritiesGeneration from '../src/deps/rarities_generation.json';
 import { readdirSync } from 'fs';
 import { ParseDataPerc } from '../src/interfaces/types';
 import { TACTICS_ADV_NAMES_MAP } from '../src/constants';
+import raritiesJson from '../src/deps/rarities.json';
+import standard_eggs_info from '../src/deps/standard_eggs_info.json';
 
 const displayNamesProd = [
   'Axobubble',
@@ -27,6 +28,11 @@ const displayNamesProd = [
   'Chocorex',
   'Keybab',
   'Bloomtail',
+  'Tokoma',
+  'Ghouliath',
+  'Whiskube',
+  'Walpuff',
+  'Dinotusk',
 ];
 
 const allSchemaVersions = readdirSync('./src/deps/schemas')
@@ -103,7 +109,7 @@ describe('Rarity', () => {
     const df = new DNAFactory();
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     const rarityStats: (keyof ParseDataPerc)[] = ['hp', 'atk', 'def', 'speed'];
-    Object.entries(raritiesGeneration.prime).forEach(([rarity, rarityInfo]) => {
+    Object.entries(raritiesJson.prime).forEach(([rarity, rarityInfo]) => {
       // for (let i = 0; i < 1e3; i++) {
       const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', undefined, rarity as Rarity);
       const parsed = df.parse(dna);
@@ -113,7 +119,7 @@ describe('Rarity', () => {
           rarityStats.map((v) => parsed.dataAdv[v]),
           rarityStats.map(() => 100)
         ) * 100;
-      assert.deepEqual(df.getRarityFromStatsAvg(statsAvg), rarity);
+      assert.deepEqual(df.getRarityFromStatsAvg(statsAvg, true, 'prime'), rarity);
       assert.ok(statsAvg >= rarityInfo.average_stats_range[0]);
       if (statsAvg === 100) assert.ok(statsAvg === rarityInfo.average_stats_range[1]);
       else assert.ok(statsAvg < rarityInfo.average_stats_range[1]);
@@ -132,7 +138,7 @@ describe('starter eggs', () => {
       assert(dna);
       const data = df.parse(dna);
       const expectedRawStatValue = 30;
-      assert.equal(['Dipking', 'Block Choy', 'Number 9'].includes(data.data.displayName), true);
+      assert.equal(standard_eggs_info.starter_egg.archetypes.includes(data.data.neftyCodeName), true);
       assert.equal(data.dataAdv.hp, expectedRawStatValue);
       assert.equal(data.dataAdv.atk, expectedRawStatValue);
       assert.equal(data.dataAdv.def, expectedRawStatValue);

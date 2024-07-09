@@ -17,13 +17,12 @@ import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from './deps/schemas/latest';
 import { LATEST_VERSION as LATEST_ADVENTURES_STATS_VERSION } from './deps/schemas/adventures/latest';
 import dnaSchemaV4_0 from './deps/schemas/aurory_dna_v4.0.0.json';
 import { getAverageFromRaw, getLatestSubversion, randomInt, randomNormal, toPaddedHexa } from './utils';
-import raritiesGeneration from './deps/rarities_generation.json';
 import { N_STATS_SOT, TACTICS_ADV_NAMES_MAP, VERSION_LENGTH } from './constants';
 import { DNAFactoryV1 } from './dna_factory_v1';
 import adventuresStatsV0_0_6 from './deps/schemas/adventures/v0.0.6.json';
 import { compressToBase64, decompressFromBase64 } from 'lz-string';
-import raritiesRead from './deps/rarities_read.json';
 import neftiesInfo from './deps/nefties_info.json';
+import raritiesJson from './deps/rarities.json';
 
 const dnaSchemas: Record<version, DNASchemaV4> = {
   '4.0.0': dnaSchemaV4_0 as DNASchemaV4,
@@ -56,7 +55,7 @@ export class DNAFactoryV2 {
   }
 
   private _getRandomRarity(grade: Grade): Rarity {
-    const rarities = raritiesGeneration[grade];
+    const rarities = raritiesJson[grade];
     if (!rarities) {
       throw new Error(`No rarity found for input ${grade}`);
     }
@@ -108,7 +107,7 @@ export class DNAFactoryV2 {
    * @param statsCount Number of stats to generate
    */
   private _generateStatsForRarity(nStats: number, grade: Grade, rarity: Rarity): number[] {
-    const [minStatAvg, maxStatAvg] = raritiesGeneration[grade][rarity].average_stats_range;
+    const [minStatAvg, maxStatAvg] = raritiesJson[grade][rarity].average_stats_range;
     const stats = Array.from(Array(nStats).keys()).map(() => 0);
 
     const mean = randomInt(minStatAvg, maxStatAvg, true);
@@ -239,8 +238,8 @@ export class DNAFactoryV2 {
    * Returns rarity from stats average
    * @param statsAverage average of all stats, from 0 to 100;
    */
-  getRarityFromStatsAvg(statsAverage: number, raiseErrorOnNotFound = true): Rarity | null {
-    const rarity = Object.entries(raritiesRead).find(([, rarityInfo]) => {
+  getRarityFromStatsAvg(statsAverage: number, raiseErrorOnNotFound = true, grade: Grade): Rarity | null {
+    const rarity = Object.entries(raritiesJson[grade]).find(([, rarityInfo]) => {
       return (
         statsAverage >= rarityInfo.average_stats_range[0] &&
         ((statsAverage === 100 && statsAverage === rarityInfo.average_stats_range[1]) ||
