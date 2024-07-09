@@ -36,8 +36,8 @@ import adventuresStatsV0_0_6 from './deps/schemas/adventures/v0.0.6.json';
 import { LATEST_VERSION as LATEST_ADVENTURES_STATS_VERSION } from './deps/schemas/adventures/latest';
 import { LATEST_VERSION as LATEST_ABILTIIES_VERSION } from './deps/dictionaries/latest';
 import abiltiesDictionaryV4 from './deps/dictionaries/abilities_dictionary_v0.4.0.json';
-import neftiesInfo from './deps/nefties_info.json';
 import rarities from './deps/rarities.json';
+import neftiesInfo from './deps/nefties_info_deprecated.json';
 import { DNA } from './dna';
 import {
   getAverageFromRaw,
@@ -275,7 +275,7 @@ export class DNAFactoryV1 {
     rarityPreset?: Rarity
   ) {
     const rarity = rarityPreset ?? this._getRandomRarity(grade);
-    const rarityIndex = Object.entries(dnaSchema.rarities).find(([_, rarityName]) => rarityName === rarity)?.[0];
+    const rarityIndex = Object.entries(dnaSchema.rarities).find(([, rarityName]) => rarityName === rarity)?.[0];
     if (!rarityIndex) throw new Error('Rarity not found');
 
     const categoryKey = getCategoryKeyFromName('nefties', dnaSchema.categories);
@@ -344,7 +344,7 @@ export class DNAFactoryV1 {
         `Archetype index not found. archetypeIndex ${archetypeIndex} schemaVersion ${schemaVersion} categoryKey ${categoryKey}`
       );
     const rarity = 'Uncommon';
-    const rarityIndex = Object.entries(dnaSchema.rarities).find(([_, rarityName]) => rarityName === rarity)?.[0];
+    const rarityIndex = Object.entries(dnaSchema.rarities).find(([, rarityName]) => rarityName === rarity)?.[0];
     if (!rarityIndex) throw new Error('Rarity not found');
 
     const versionGeneInfo = dnaSchema.global_genes_header.find((gene_header) => gene_header.name === 'version');
@@ -393,7 +393,7 @@ export class DNAFactoryV1 {
     const abilityKeywords = this.getAbilitiesDictionary(version ?? this.latestAbilitiesVersion).keywords;
     const info = {} as AbilityInfo;
     for (const keyword in abilityKeywords) {
-      const [_, abilityName, infoType] = keyword.split('.');
+      const [, abilityName, infoType] = keyword.split('.');
       if (abilityName !== ability) continue;
       info[infoType as keyof AbilityInfo] = abilityKeywords[keyword as KeywordsKey];
       if (info.name && info.description) return info;
@@ -414,7 +414,7 @@ export class DNAFactoryV1 {
    * @param statsAverage average of all stats, from 0 to 100;
    */
   getRarityFromStatsAvg(statsAverage: number, raiseErrorOnNotFound = true, grade: Grade = 'prime'): Rarity | null {
-    const rarity = Object.entries(this.rarities[grade]).find(([rarity, rarityInfo]) => {
+    const rarity = Object.entries(this.rarities[grade]).find(([, rarityInfo]) => {
       return (
         statsAverage >= rarityInfo.average_stats_range[0] &&
         ((statsAverage === 100 && statsAverage === rarityInfo.average_stats_range[1]) ||
@@ -454,7 +454,7 @@ export class DNAFactoryV1 {
     const genes = dnaSchema.categories[dnaSchemaReader.categoryKey].genes;
     const data: ParseData = Object.assign({} as ParseData, archetype.fixed_attributes);
     this._setRarity(data, dnaSchemaReader, dnaSchema);
-    this._setGrade(data, dnaSchemaReader, dnaSchema);
+    this._setGrade(data, dnaSchemaReader);
     const neftyNameCode = archetype.fixed_attributes.name as string;
     data['displayName'] = this.getDisplayNameFromCodeName(neftyNameCode);
     data['description'] = this.getFamilyDescription(archetype.fixed_attributes.family as string);
@@ -506,7 +506,7 @@ export class DNAFactoryV1 {
     }
   }
 
-  private _setGrade(data: ParseData, dnaSchemaReader: DNASchemaReader, dnaSchema: DNASchema) {
+  private _setGrade(data: ParseData, dnaSchemaReader: DNASchemaReader) {
     if (dnaSchemaReader.categoryGenesHeader.grade) {
       // grade needs to be added to the dna generation process to support this
       // data.grade = (dnaSchema as DNASchemaV3).grades[dnaSchemaReader.categoryGenesHeader.grade];

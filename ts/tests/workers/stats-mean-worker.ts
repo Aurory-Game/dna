@@ -1,9 +1,9 @@
 import { parentPort, workerData } from 'worker_threads';
-import { DNAFactoryV1 as DNAFactory } from '../../src/index';
-import { EggsFactoryV1 as EggsFactory } from '../../src/index';
+import { DNAFactoryV1 as DNAFactory } from '../../src/dna_factory_v1';
+import { EggsFactoryV1 as EggsFactory } from '../../src/eggs_factory_v1';
 import { Grade, Rarity } from '../../src/interfaces/types';
-import { utils } from '../../src';
 import rarities from '../../src/deps/rarities.json';
+import { utils } from '../../src/';
 
 export interface StatsMeanWorker {
   statMeans: Record<string, number>;
@@ -14,7 +14,7 @@ async function run(loopCount: number): Promise<StatsMeanWorker> {
   const df = new DNAFactory(undefined, undefined);
   const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
   const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
-  const statMeans = {} as any;
+  const statMeans = {} as Record<string, number>;
   Object.entries(rarities.prime).forEach(([rarity]) => {
     for (let i = 0; i < loopCount; i++) {
       const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', undefined, rarity as Rarity);
@@ -22,13 +22,13 @@ async function run(loopCount: number): Promise<StatsMeanWorker> {
       const statsMean = Math.floor(
         utils.getAverageFromRaw(
           rarityStats.map((v) => parsed.raw[v]),
-          rarityStats.map((v) => 255)
+          rarityStats.map(() => 255)
         ) * 100
       );
       statMeans[statsMean.toString()] = statMeans[statsMean.toString()] ? statMeans[statsMean.toString()] + 1 : 1;
     }
   });
-  const standardStatMeans = {} as any;
+  const standardStatMeans = {} as Record<string, number>;
   Object.entries(rarities.standard).forEach(([rarity]) => {
     for (let i = 0; i < loopCount; i++) {
       const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', undefined, rarity as Rarity);
@@ -36,7 +36,7 @@ async function run(loopCount: number): Promise<StatsMeanWorker> {
       const statsMean = Math.floor(
         utils.getAverageFromRaw(
           rarityStats.map((v) => parsed.raw[v]),
-          rarityStats.map((v) => 255)
+          rarityStats.map(() => 255)
         ) * 100
       );
       standardStatMeans[statsMean.toString()] = standardStatMeans[statsMean.toString()]

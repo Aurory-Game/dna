@@ -1,6 +1,6 @@
 import { parentPort, workerData } from 'worker_threads';
-import { DNAFactoryV1 as DNAFactory } from '../../src/index';
-import { EggsFactoryV1 as EggsFactory } from '../../src/index';
+import { DNAFactoryV1 as DNAFactory } from '../../src/dna_factory_v1';
+import { EggsFactoryV1 as EggsFactory } from '../../src/eggs_factory_v1';
 import { Rarity } from '../../src/interfaces/types';
 import { utils } from '../../src';
 
@@ -16,14 +16,14 @@ async function run(loopCount: number) {
   const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
   let glitchedCount = 0;
   let schimmeringCount = 0;
-  const rarityCount: Record<Rarity, number> = {} as any;
+  const rarityCount = {} as Record<Rarity, number>;
   for (let i = 0; i < loopCount; i++) {
     const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime');
     const parsed = df.parse(dna);
     const statsAvg =
       utils.getAverageFromRaw(
         rarityStats.map((v) => parsed.raw[v]),
-        rarityStats.map((v) => 255)
+        rarityStats.map(() => 255)
       ) * 100;
     if (statsAvg < 6) {
       const stats = rarityStats.map((v) => Math.round((parsed.raw[v] / 255) * 100));
@@ -36,7 +36,9 @@ async function run(loopCount: number) {
         schimmeringCount += 1;
       }
     }
-    const rarity = df.getRarityFromStatsAvg(statsAvg, true, 'prime')!;
+    const rarity = df.getRarityFromStatsAvg(statsAvg, true);
+    if (!rarity) throw new Error('Rarity not found');
+
     if (rarityCount[rarity]) rarityCount[rarity] += 1;
     else rarityCount[rarity] = 1;
   }
