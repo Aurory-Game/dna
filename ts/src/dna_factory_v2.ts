@@ -15,18 +15,8 @@ import {
 import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from './deps/schemas/latest';
 import { LATEST_VERSION as LATEST_ADVENTURES_STATS_VERSION } from './deps/schemas/adventures/latest';
 import dnaSchemaV4_0 from './deps/schemas/aurory_dna_v4.0.0.json';
-import {
-  getAverageFromRaw,
-  getCategoryKeyFromName,
-  getLatestSubversion,
-  randomInt,
-  randomNormal,
-  toPaddedHexa,
-  toUnPaddedHexa,
-  unpad,
-} from './utils';
+import { getAverageFromRaw, getLatestSubversion, randomInt, randomNormal, toPaddedHexa, toUnPaddedHexa } from './utils';
 import raritiesGeneration from './deps/rarities_generation.json';
-import zlib from 'zlib';
 import { N_STATS_SOT, TACTICS_ADV_NAMES_MAP, VERSION_LENGTH } from './constants';
 import { DNAFactoryV1 } from './dna_factory_v1';
 import adventuresStatsV0_0_6 from './deps/schemas/adventures/v0.0.6.json';
@@ -258,86 +248,6 @@ export class DNAFactoryV2 {
     }
     return rarity[0] as Rarity;
   }
-
-  // generateNeftyDNA(archetypeIndex: string, grade: Grade, version?: string, rarityPreset?: Rarity) {
-  //   if (!Number.isInteger(parseInt(archetypeIndex))) {
-  //     throw new Error(`Invalid archetype index: ${archetypeIndex}`);
-  //   }
-  //   const dnaSchema = this.getDNASchema(version ?? LATEST_SCHEMA_VERSION);
-  //   const dnaData = {} as DnaDataV2;
-  //   dnaData.version = dnaSchema.version;
-
-  //   const dataData = {} as DnaDataData;
-  //   dataData.grade = grade;
-  //   dataData.rarity = rarityPreset ?? this._getRandomRarity(grade);
-  //   dataData.neftyCodeName = dnaSchema.archetypes[archetypeIndex] as NeftyCodeName;
-  //   if (!dataData.neftyCodeName) {
-  //     throw new Error(`No archetype found for index ${archetypeIndex}`);
-  //   }
-  //   dnaData.data = dataData;
-
-  //   const dataAdv = {} as ParseDataPerc;
-  //   const [hp, atk, def, speed] = this._generateStatsForRarity(N_STATS_SOT, grade, dataData.rarity);
-  //   Object.assign(dataAdv, { hp, atk, def, speed });
-  //   dnaData.dataAdv = dataAdv;
-
-  //   const dna = this.getDna(dnaSchema.version, dnaData);
-  //   return dna;
-  // }
-
-  // generateStarterNeftyDNA(archetypeIndex: string, version?: string) {
-  //   if (!Number.isInteger(parseInt(archetypeIndex))) {
-  //     throw new Error(`Invalid archetype index: ${archetypeIndex}`);
-  //   }
-  //   const dnaSchema = this.getDNASchema(version ?? LATEST_SCHEMA_VERSION);
-  //   const dnaData = {} as DnaDataV2;
-  //   dnaData.version = dnaSchema.version;
-
-  //   const dataData = {} as DnaDataData;
-  //   dataData.grade = 'standard';
-  //   dataData.rarity = 'Uncommon';
-  //   dataData.neftyCodeName = dnaSchema.archetypes[archetypeIndex] as NeftyCodeName;
-  //   if (!dataData.neftyCodeName) {
-  //     throw new Error(`No archetype found for index ${archetypeIndex}`);
-  //   }
-  //   dnaData.data = dataData;
-
-  //   const dataAdv = {} as ParseDataPerc;
-  //   const [hp, atk, def, speed] = Array(N_STATS_SOT).fill(30);
-  //   Object.assign(dataAdv, { hp, atk, def, speed });
-  //   dnaData.dataAdv = dataAdv;
-
-  //   const dna = this.getDna(dnaSchema.version, dnaData);
-  //   return dna;
-  // }
-
-  // generateNeftyDNAFromV1Dna(
-  //   dnaFactoryV1: DNAFactoryV1,
-  //   v1Dna: string,
-  //   newSotStats?: ParseDataPerc,
-  //   newVersion?: version
-  // ) {
-  //   const dataV1 = dnaFactoryV1.parse(v1Dna);
-  //   const dnaSchema = this.getDNASchema(newVersion ?? LATEST_SCHEMA_VERSION);
-  //   const dnaData = {} as DnaDataV2;
-  //   const dataAdv = {} as ParseDataPerc;
-  //   if (newSotStats) {
-  //     const { hp: hpP, atk: atkP, def: defP, speed: speedP } = newSotStats;
-  //     Object.assign(dataAdv, { hpP, atkP, defP, speedP });
-  //   } else {
-  //     const { hp: hpP, atk: atkP, def: defP, speed: speedP } = dataV1.dataAdv;
-  //     Object.assign(dataAdv, { hpP, atkP, defP, speedP });
-  //   }
-  //   dnaData.dataAdv = dataAdv;
-  //   const dataData = {} as DnaDataData;
-  //   dataData.grade = dataV1.data.grade;
-  //   dataData.rarity = dataV1.data.rarity;
-  //   dataData.neftyCodeName = dataV1.archetype.fixed_attributes.name as NeftyCodeName;
-  //   dnaData.data = dataData;
-  //   dnaData.version = dnaSchema.version;
-  //   const dna = this.getDna(dnaSchema.version, dnaData);
-  //   return dna;
-  // }
 
   parse(dnaString: string): ParseV2 {
     const majorVersion = toUnPaddedHexa(dnaString.slice(0, VERSION_LENGTH));
