@@ -250,3 +250,30 @@ export interface ParseV2 {
   data: DnaDataDataParsed;
   dataAdv: ParseDataAdv;
 }
+
+export interface NeftieInfo {
+  code_to_displayName: CodeToDisplayName;
+  family_to_description: FamilyToDescription;
+}
+
+export interface CodeToDisplayName {
+  [key: string]: string;
+}
+
+export interface FamilyToDescription {
+  [key: string]: string;
+}
+
+export type RarityDistribution = {
+  prime: RarityDistributionByGrade;
+  standard: RarityDistributionByGrade;
+};
+
+export type RarityDistributionByGrade = {
+  [key in Rarity]: RarityRange;
+};
+
+export type RarityRange = {
+  average_stats_range: number[];
+  probability: number;
+};

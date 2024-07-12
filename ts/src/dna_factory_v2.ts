@@ -12,6 +12,8 @@ import {
   AdvStatsJSON,
   AdvStatsJSONValue,
   Parse,
+  RarityDistribution,
+  NeftieInfo,
 } from './interfaces/types';
 import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from './deps/schemas/latest';
 import { LATEST_VERSION as LATEST_ADVENTURES_STATS_VERSION } from './deps/schemas/adventures/latest';
@@ -226,12 +228,24 @@ export class DNAFactoryV2 {
     return dataAdv;
   }
 
+  getAdventureStatsSchema(version: string = LATEST_ADVENTURES_STATS_VERSION): AdvStatsJSON {
+    return adventuresStats[version];
+  }
+
   getArchetypeKeyByNeftyCodeName(neftyCodeName: NeftyCodeName): string {
     const archetypeKey = this.codeNameToKey[neftyCodeName];
     if (!archetypeKey) {
       throw new Error(`No archetype found for ${neftyCodeName}`);
     }
     return archetypeKey;
+  }
+
+  getNeftiesInfo(): NeftieInfo {
+    return neftiesInfo;
+  }
+
+  getRarityDistribution(): RarityDistribution {
+    return raritiesJson;
   }
 
   /**
