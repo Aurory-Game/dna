@@ -4,25 +4,37 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v1.0.1] - 18/07/2024
+
+- Upgrade to schema version v4.0.0
+- DNA is now a serialized object
+- DNA is not unique anymore
+
 ## [v0.7.9] - 24/04/2024
+
 - Add new eggs and nefties for the Citrine version of Seekers of Tokane
 
 ## [v0.7.3] - 16/01/2024
+
 - Wassie added to Quantum eggs
 
 ## [v0.7.0] - 06/12/2023
+
 - Introduce Cybertooth and Wassie
 - Add Fen and Moss eggs
 - Update configuration format for adventure stats
 
 ## [v0.6.0] - 18/09/2023
+
 - Introduce grade for DNA generation
 - Add standard egg support in EggFactory
 
 ## [v0.5.4] - 19/09/2023
+
 - Sync dictionary with ability names and descriptions from unity team
 
 ## [v0.5.1] - 10/08/2023
+
 - Adjust Chocomint stats
 
 ## [v0.5.0] - 03/08/2023
