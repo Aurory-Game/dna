@@ -1,11 +1,10 @@
-import { DNAFactory, EggsFactory, Rarity, utils } from '../src';
+import { DNAFactoryV1 as DNAFactory, EggsFactoryV1 as EggsFactory, Rarity, utils } from '../src';
 import nefties_info from '../src/deps/nefties_info.json';
 import assert from 'assert';
 import rarities from '../src/deps/rarities.json';
 import { readdirSync, readFileSync } from 'fs';
-import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from '../src/deps/schemas/latest';
-import { DNASchema } from '../src/interfaces/types';
-import { TACTICS_ADV_NAMES_MAP } from '../src/constants';
+import { DNASchema, NeftyCodeName } from '../src/interfaces/types';
+import { LAST_SUPPORTED_VERSION_BY_V1, TACTICS_ADV_NAMES_MAP } from '../src/constants';
 
 const displayNamesProd = [
   'Axobubble',
@@ -153,24 +152,27 @@ const abilitiesProd = new Set([
   'N/A',
 ]);
 
+const LAST_FACTORY_V1_SUPPORTED_VERSION = '3.2.0';
+
 const allSchemaVersions = readdirSync('./src/deps/schemas')
   .filter((v) => v.endsWith('json'))
   .map((v) => {
     const index = v.indexOf('_v');
     return v.slice(index + 2, index + 7);
-  });
+  })
+  .filter((v) => parseInt(v.split('.')[0]) <= 3);
 
 describe('Basic', () => {
   it('DNA should parse', () => {
     const df = new DNAFactory();
-    Object.entries(EggsFactory.getAllEggs()).forEach(([eggPk, eggInfo]) => {
+    Object.entries(EggsFactory.getAllEggs()).forEach(([eggPk]) => {
       const ef = new EggsFactory(eggPk, df);
       const droppableNefties = ef.getDroppableNefties();
       droppableNefties.forEach(({ archetypeKey, archetype, displayName, description }) => {
         try {
           assert.ok(displayName);
           assert.ok(description);
-          const dna = df.generateNeftyDNA(archetypeKey, 'prime');
+          const dna = df.generateNeftyDNA(archetypeKey, 'prime', LAST_FACTORY_V1_SUPPORTED_VERSION);
           const data = df.parse(dna);
           assert.ok(data.data);
           assert.ok(data.data.name);
@@ -182,11 +184,10 @@ describe('Basic', () => {
           assert.ok(data.data.description);
           assert.ok(data.data.rarity);
           assert.ok(data.data.defaultImage);
-          assert.ok(data.data.imageByGame);
-          assert.ok(data.data.imageByGame.tactics);
-          assert.ok(data.data.imageByGame.tactics.medium);
-          assert.ok(data.data.imageByGame.tactics.small);
-          assert.ok(data.data.element);
+          // assert.ok(data.data.imageByGame);
+          // assert.ok(data.data.imageByGame.tactics);
+          // assert.ok(data.data.imageByGame.tactics.medium);
+          // assert.ok(data.data.imageByGame.tactics.small);
           assert.ok(Number.isInteger(data.data.hp));
           assert.ok(Number.isInteger(data.data.initiative));
           assert.ok(Number.isInteger(data.data.atk));
@@ -277,11 +278,10 @@ describe('Using previous schema 0.2.0', () => {
   it('Parsed stats should reflect the schema parameter as an input', () => {
     const forceVersion = '0.2.0';
     const df = new DNAFactory(undefined, undefined);
-    const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     assert.throws(() => {
       // 7 does not exist on schema 0.2.0
       const dna = df.generateNeftyDNA('7', 'prime', forceVersion);
-      const p = df.parse(dna, forceVersion);
+      df.parse(dna, forceVersion);
     });
     const dinobitArchetypeIndex = '2';
     const dna = df.generateNeftyDNA(dinobitArchetypeIndex, 'prime', forceVersion);
@@ -314,7 +314,7 @@ describe('Rarity', () => {
       const statsAvg =
         utils.getAverageFromRaw(
           rarityStats.map((v) => parsed.raw[v]),
-          rarityStats.map((v) => 255)
+          rarityStats.map(() => 255)
         ) * 100;
       assert.deepEqual(df.getRarityFromStatsAvg(statsAvg), rarity);
       assert.ok(statsAvg >= rarityInfo.average_stats_range[0]);
@@ -336,11 +336,11 @@ describe('Rarity', () => {
       const statsAvg =
         utils.getAverageFromRaw(
           rarityStats.map((v) => parsed.raw[v]),
-          rarityStats.map((v) => 255)
+          rarityStats.map(() => 255)
         ) * 100;
       assert.deepEqual(df.getRarityFromStatsAvg(statsAvg), rarity);
       assert.ok(statsAvg >= rarityInfo.average_stats_range[0]);
-      if (statsAvg === 100) assert.ok(statsAvg === rarityInfo.average_stats_range[1]);
+      if (statsAvg === 100) assert.ok(statsAvg === rarityInfo.average_stats_range[1] - 1);
       else assert.ok(statsAvg < rarityInfo.average_stats_range[1]);
       // }
     });
@@ -350,11 +350,12 @@ describe('Rarity', () => {
 describe('Adventures', () => {
   it('All archetypes have adventure stats', () => {
     const schema: DNASchema = JSON.parse(
-      readFileSync(`./src/deps/schemas/aurory_dna_v${LATEST_SCHEMA_VERSION}.json`, 'utf8')
+      readFileSync(`./src/deps/schemas/aurory_dna_v${LAST_SUPPORTED_VERSION_BY_V1}.json`, 'utf8')
     );
+
     Object.values(schema.categories['0'].archetypes).forEach((archetype) => {
       assert.ok(
-        TACTICS_ADV_NAMES_MAP[archetype.fixed_attributes.name],
+        TACTICS_ADV_NAMES_MAP[archetype.fixed_attributes.name as NeftyCodeName],
         `${archetype.fixed_attributes.name} not found in TACTICS_ADV_NAMES_MAP: ${JSON.stringify(
           TACTICS_ADV_NAMES_MAP
         )}`

@@ -1,4 +1,4 @@
-import { AbilityDictionary, Category, DNASchema } from './interfaces/types';
+import { AbilityDictionary, Category, DNASchema, DNASchemaV4 } from './interfaces/types';
 
 // you should multiply by 100 to get in %
 export function getAverageFromRaw(numbers: number[], maxValuePerStat: number[]): number {
@@ -23,7 +23,7 @@ export function getCategoryKeyFromName(name: string, categories: Record<string, 
 }
 
 export function getLatestSubversion(
-  completeVersionsDict: Record<string, DNASchema | AbilityDictionary>,
+  completeVersionsDict: Record<string, DNASchema | AbilityDictionary | DNASchemaV4>,
   schemaVersionInput?: string
 ): string {
   const schemaVersion = schemaVersionInput
@@ -86,4 +86,22 @@ export function randomNormal(min: number, max: number, leftLimit: number, rightL
 
 export function unpad(v: string, encodingBase: number | undefined): string {
   return parseInt(v, encodingBase).toString();
+}
+
+export function toPadded(n: string, maxLength: number, radix?: number): string {
+  return parseInt(n).toString(radix).padStart(maxLength, '0');
+}
+
+/**
+ * Converts a string representation of a number to a hexadecimal string
+ * and pads it with leading zeros to ensure it has the specified length.
+ * @example
+ * _toPaddedHexa('255', 4); / Returns '00ff'
+ */
+export function toPaddedHexa(n: string, maxLength: number): string {
+  return toPadded(n, maxLength, 16);
+}
+
+export function toUnPaddedHexa(n: string): string {
+  return unpad(n, 16);
 }

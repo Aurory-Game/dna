@@ -24,7 +24,7 @@ const parsed = df.parse(dna);
 console.log(parsed);
 ```
 
-> See `Parse` interface for more details on [df.parse](./ts/src/interfaces/types.ts)'s output.
+> See `ParseV2` interface for more details on [df.parse](./ts/src/interfaces/types.ts)'s output.
 
 ### Get all eggs
 

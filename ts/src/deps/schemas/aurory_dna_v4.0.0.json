@@ -1,0 +1,44 @@
+{
+  "version": "4.0.0",
+  "version_date": "05/07/2024",
+  "global_genes_header": [
+    {
+      "name": "version",
+      "base": 2
+    }
+  ],
+  "archetypes": {
+    "1": "Nefty_Bitebit",
+    "2": "Nefty_Dipking",
+    "3": "Nefty_Dinobit",
+    "4": "Nefty_ShibaIgnite",
+    "5": "Nefty_Zzoo",
+    "6": "Nefty_Blockchoy",
+    "7": "Nefty_Number9",
+    "8": "Nefty_Axobubble",
+    "9": "Nefty_Unika",
+    "10": "Nefty_Chocomint",
+    "11": "Nefty_Cybertooth",
+    "12": "Nefty_Wassie",
+    "13": "Nefty_Dracurve",
+    "14": "Nefty_Raccoin",
+    "15": "Nefty_Shibark",
+    "16": "Nefty_Unikirin",
+    "17": "Nefty_Beeblock",
+    "18": "Nefty_Chocorex",
+    "19": "Nefty_Keybab",
+    "20": "Nefty_Bloomtail",
+    "21": "Nefty_Tokoma",
+    "22": "Nefty_Ghouliath",
+    "23": "Nefty_Whiskube",
+    "24": "Nefty_Walpuff",
+    "25": "Nefty_Dinotusk"
+  },
+  "rarities": {
+    "0": "Common",
+    "1": "Uncommon",
+    "2": "Rare",
+    "3": "Epic",
+    "4": "Legendary"
+  }
+}

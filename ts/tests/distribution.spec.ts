@@ -1,4 +1,4 @@
-import { DNAFactory, EggsFactory, GLITCHED_PERIOD, Rarity, SCHIMMERING_PERIOD, utils } from '../src';
+import { DNAFactoryV1 as DNAFactory, EggsFactoryV1 as EggsFactory, Rarity } from '../src';
 import assert from 'assert';
 import rarities from '../src/deps/rarities.json';
 
@@ -22,7 +22,7 @@ describe('Distribution', () => {
    * then checks if the deviation from the expected distribution is less than 20%.
    */
   it('Means are evenly distributed', (done) => {
-    const statMeans = {} as any;
+    const statMeans = {} as Record<string, number>;
     const loopCount = 15000;
     let loopDone = 0;
     const workers = [] as { id: number; worker: Worker }[];
@@ -83,9 +83,9 @@ describe('Distribution', () => {
     const df = new DNAFactory(undefined, undefined);
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
     const rarityStats = ['hp', 'initiative', 'atk', 'def', 'eatk', 'edef'];
-    const statsCount = {} as any;
+    const statsCount = {} as Record<string, number>;
     const loopCount = 1000;
-    Object.entries(rarities.prime).forEach(([rarity, rarityInfo]) => {
+    Object.entries(rarities.prime).forEach(([rarity]) => {
       for (let i = 0; i < loopCount; i++) {
         const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', undefined, rarity as Rarity);
         const parsed = df.parse(dna);
@@ -103,7 +103,7 @@ describe('Distribution', () => {
 
   // this may fail sometimes as we only do 300k iterations
   it('Rarity & Glitched & Schimmering distribution rates are within a specific range of the targets', (done) => {
-    const rarityCount: Record<Rarity, number> = {} as any;
+    const rarityCount = {} as Record<Rarity, number>;
     const loopCount = 300000;
     let loopDone = 0;
     const workers = [] as { id: number; worker: Worker }[];
