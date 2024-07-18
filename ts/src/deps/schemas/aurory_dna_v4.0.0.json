@@ -5,10 +5,6 @@
     {
       "name": "version",
       "base": 2
-    },
-    {
-      "name": "data_end",
-      "base": 2
     }
   ],
   "archetypes": {

@@ -7,7 +7,7 @@ import {
   ParseDataPerc,
   NeftyCodeName,
   ParseV2,
-  DnaDataData,
+  DnaData,
   ParseDataComputed,
   AdvStatsJSON,
   AdvStatsJSONValue,
@@ -96,6 +96,7 @@ export class DNAFactoryV2 {
 
   private getDna(version: version, data: DnaDataV2): string {
     const versionDNAFormat = toPaddedHexa(version, 4);
+
     const serializedData = this.serializeDna(data);
     const dna = versionDNAFormat + serializedData;
     return dna;
@@ -111,7 +112,6 @@ export class DNAFactoryV2 {
     const stats = Array.from(Array(nStats).keys()).map(() => 0);
 
     const mean = randomInt(minStatAvg, maxStatAvg, true);
-    // adding up to 5 will still result in the same mean as we are rounding down
     const totalPoints = mean * nStats;
     const maxValuePerStat = 100;
 
@@ -149,6 +149,7 @@ export class DNAFactoryV2 {
       );
 
       // the average is done on raw stats but points are distributed on the % stats. It may happen the means are not the same.
+      // adding up to "number of stats of used to compute the average" will still result in the same mean as we are rounding down
       if (Math.floor(average) !== mean) pointsLeft += 1;
     }
 
@@ -182,19 +183,8 @@ export class DNAFactoryV2 {
     }
   }
 
-  private initializeDnaData(version: string): DnaDataV2 {
-    const dnaData = {} as DnaDataV2;
-    dnaData.version = version;
-    return dnaData;
-  }
-
-  private createDataData(
-    dnaSchema: DNASchemaV4,
-    archetypeIndex: string,
-    grade: Grade,
-    rarityPreset?: Rarity
-  ): DnaDataData {
-    const dataData = {} as DnaDataData;
+  private createDataData(dnaSchema: DNASchemaV4, archetypeIndex: string, grade: Grade, rarityPreset?: Rarity): DnaData {
+    const dataData = {} as DnaData;
     dataData.grade = grade;
     dataData.rarity = rarityPreset ?? this._getRandomRarity(grade);
     dataData.neftyCodeName = dnaSchema.archetypes[archetypeIndex] as NeftyCodeName;
@@ -204,8 +194,8 @@ export class DNAFactoryV2 {
     return dataData;
   }
 
-  private createDataDataFromV1(dataV1: Parse): DnaDataData {
-    const dataData = {} as DnaDataData;
+  private createDnaDataFromV1(dataV1: Parse): DnaData {
+    const dataData = {} as DnaData;
     dataData.grade = dataV1.data.grade;
     dataData.rarity = dataV1.data.rarity;
     dataData.neftyCodeName = dataV1.archetype.fixed_attributes.name as NeftyCodeName;
@@ -254,7 +244,6 @@ export class DNAFactoryV2 {
   }
 
   parse(dnaString: string): ParseV2 {
-    // const majorVersion = toUnPaddedHexa(dnaString.slice(0, VERSION_LENGTH));
     const dataRaw = this.deserializeDna(dnaString.slice(VERSION_LENGTH));
     const dataAdv = Object.assign(
       {},
@@ -267,28 +256,30 @@ export class DNAFactoryV2 {
     return parsed;
   }
 
-  generateNeftyDNA(archetypeIndex: string, grade: Grade, version?: string, rarityPreset?: Rarity) {
+  generateNeftyDNA(archetypeIndex: string, grade: Grade, forcedVersion?: string, rarityPreset?: Rarity) {
     this.validateArchetypeIndex(archetypeIndex);
-    const dnaSchema = this.getDNASchema(version ?? LATEST_SCHEMA_VERSION);
+    const dnaSchema = this.getDNASchema(forcedVersion ?? LATEST_SCHEMA_VERSION);
 
-    const dnaData = this.initializeDnaData(dnaSchema.version);
-    dnaData.data = this.createDataData(dnaSchema, archetypeIndex, grade, rarityPreset);
+    const version = dnaSchema.version;
+    const data = Object.assign({}, this.createDataData(dnaSchema, archetypeIndex, grade, rarityPreset));
 
-    const stats = this._generateStatsForRarity(N_STATS_SOT, grade, dnaData.data.rarity);
-    dnaData.dataAdv = this.createDataAdv(stats);
+    const stats = this._generateStatsForRarity(N_STATS_SOT, grade, data.rarity);
+    const dataAdv = this.createDataAdv(stats);
+    const dnaData = Object.assign({}, { version, data, dataAdv });
 
     return this.getDna(dnaSchema.version, dnaData);
   }
 
-  generateStarterNeftyDNA(archetypeIndex: string, version?: string) {
+  generateStarterNeftyDNA(archetypeIndex: string, forcedVersion?: string) {
     this.validateArchetypeIndex(archetypeIndex);
-    const dnaSchema = this.getDNASchema(version ?? LATEST_SCHEMA_VERSION);
+    const dnaSchema = this.getDNASchema(forcedVersion ?? LATEST_SCHEMA_VERSION);
+    const version = dnaSchema.version;
 
-    const dnaData = this.initializeDnaData(dnaSchema.version);
-    dnaData.data = this.createDataData(dnaSchema, archetypeIndex, 'standard', 'Uncommon');
+    const data = this.createDataData(dnaSchema, archetypeIndex, 'standard', 'Uncommon');
 
     const stats = Array(N_STATS_SOT).fill(30);
-    dnaData.dataAdv = this.createDataAdv(stats);
+    const dataAdv = this.createDataAdv(stats);
+    const dnaData = Object.assign({}, { version, data, dataAdv });
 
     return this.getDna(dnaSchema.version, dnaData);
   }
@@ -301,12 +292,13 @@ export class DNAFactoryV2 {
   ) {
     const dataV1 = dnaFactoryV1.parse(v1Dna);
     const dnaSchema = this.getDNASchema(newVersion ?? LATEST_SCHEMA_VERSION);
+    const version = dnaSchema.version;
 
-    const dnaData = this.initializeDnaData(dnaSchema.version);
-    dnaData.data = this.createDataDataFromV1(dataV1);
+    const data = this.createDnaDataFromV1(dataV1);
 
     const stats = newSotStats ?? dataV1.dataAdv;
-    dnaData.dataAdv = this.createDataAdvFromV1(stats);
+    const dataAdv = this.createDataAdvFromV1(stats);
+    const dnaData = Object.assign({}, { version, data, dataAdv });
 
     return this.getDna(dnaSchema.version, dnaData);
   }

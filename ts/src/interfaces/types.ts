@@ -202,7 +202,7 @@ export interface NeftiesInfo {
 }
 
 export interface EggInfo {
-  name: string;
+  name: NeftyCodeName;
   description: string;
   archetypes: NeftyCodeName[];
 }
@@ -228,25 +228,25 @@ export type GeneWithValues = Gene & {
   skill_info?: AbilityInfo;
 };
 
-export interface DnaDataData {
+export interface DnaData {
   grade: Grade;
   rarity: Rarity;
   neftyCodeName: NeftyCodeName;
 }
 
-export interface DnaDataDataParsed extends DnaDataData {
+export interface DnaDataParsed extends DnaData {
   displayName: string;
 }
 
 export interface DnaDataV2 {
   version: string;
-  data: DnaDataData;
+  data: DnaData;
   dataAdv: ParseDataPerc;
 }
 
 export interface ParseV2 {
   version: string;
   dataRaw: DnaDataV2;
-  data: DnaDataDataParsed;
+  data: DnaDataParsed;
   dataAdv: ParseDataAdv;
 }
