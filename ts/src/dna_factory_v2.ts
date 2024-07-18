@@ -183,15 +183,16 @@ export class DNAFactoryV2 {
     }
   }
 
-  private createDataData(dnaSchema: DNASchemaV4, archetypeIndex: string, grade: Grade, rarityPreset?: Rarity): DnaData {
-    const dataData = {} as DnaData;
-    dataData.grade = grade;
-    dataData.rarity = rarityPreset ?? this._getRandomRarity(grade);
-    dataData.neftyCodeName = dnaSchema.archetypes[archetypeIndex] as NeftyCodeName;
-    if (!dataData.neftyCodeName) {
+  private createDnaData(dnaSchema: DNASchemaV4, archetypeIndex: string, grade: Grade, rarityPreset?: Rarity): DnaData {
+    const dnaData = {
+      grade,
+      rarity: rarityPreset ?? this._getRandomRarity(grade),
+      neftyCodeName: dnaSchema.archetypes[archetypeIndex] as NeftyCodeName,
+    };
+    if (!dnaData.neftyCodeName) {
       throw new Error(`No archetype found for index ${archetypeIndex}`);
     }
-    return dataData;
+    return dnaData;
   }
 
   private createDnaDataFromV1(dataV1: Parse): DnaData {
@@ -204,16 +205,22 @@ export class DNAFactoryV2 {
 
   private createDataAdv(stats: number[]): ParseDataPerc {
     const [hp, atk, def, speed] = stats;
-    const dataAdv = {} as ParseDataPerc;
-    Object.assign(dataAdv, { hp, atk, def, speed });
-    return dataAdv;
+    return {
+      hp,
+      atk,
+      def,
+      speed,
+    };
   }
 
   private createDataAdvFromV1(stats: ParseDataPerc): ParseDataPerc {
     const { hp, atk, def, speed } = stats;
-    const dataAdv = {} as ParseDataPerc;
-    Object.assign(dataAdv, { hp, atk, def, speed });
-    return dataAdv;
+    return {
+      hp,
+      atk,
+      def,
+      speed,
+    };
   }
 
   getArchetypeKeyByNeftyCodeName(neftyCodeName: NeftyCodeName): string {
@@ -261,7 +268,7 @@ export class DNAFactoryV2 {
     const dnaSchema = this.getDNASchema(forcedVersion ?? LATEST_SCHEMA_VERSION);
 
     const version = dnaSchema.version;
-    const data = Object.assign({}, this.createDataData(dnaSchema, archetypeIndex, grade, rarityPreset));
+    const data = Object.assign({}, this.createDnaData(dnaSchema, archetypeIndex, grade, rarityPreset));
 
     const stats = this._generateStatsForRarity(N_STATS_SOT, grade, data.rarity);
     const dataAdv = this.createDataAdv(stats);
@@ -275,7 +282,7 @@ export class DNAFactoryV2 {
     const dnaSchema = this.getDNASchema(forcedVersion ?? LATEST_SCHEMA_VERSION);
     const version = dnaSchema.version;
 
-    const data = this.createDataData(dnaSchema, archetypeIndex, 'standard', 'Uncommon');
+    const data = this.createDnaData(dnaSchema, archetypeIndex, 'standard', 'Uncommon');
 
     const stats = Array(N_STATS_SOT).fill(30);
     const dataAdv = this.createDataAdv(stats);
