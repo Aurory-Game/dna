@@ -1,4 +1,5 @@
 import abiltiesDictionaryV4 from '../deps/dictionaries/abilities_dictionary_v0.4.0.json';
+import { TACTICS_ADV_NAMES_MAP } from '../constants';
 
 export type GeneType = 'index' | 'range_completeness';
 
@@ -56,6 +57,19 @@ export interface DNASchemaV2 {
 
 export type DNASchemaV3 = DNASchemaV2;
 
+// eg: Nefty_Bitebit
+export type NeftyCodeName = keyof typeof TACTICS_ADV_NAMES_MAP;
+// eg: id_bitebit
+export type NeftyCodeNameId = typeof TACTICS_ADV_NAMES_MAP[keyof typeof TACTICS_ADV_NAMES_MAP];
+
+export interface DNASchemaV4 {
+  version: string;
+  version_date: string;
+  global_genes_header: Gene[];
+  archetypes: Record<string, NeftyCodeName>;
+  rarities: Record<string, Rarity>;
+}
+
 export type DNASchema = DNASchemaV0 | DNASchemaV2 | DNASchemaV3;
 
 export type Rarity = 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
@@ -83,7 +97,7 @@ export interface ImageNeftyByGame {
 export type NeftyImageFormat = keyof ImageNeftyByGame;
 
 export interface ParseDataNefty {
-  name: string;
+  name: NeftyCodeName;
   displayName: string;
   family: string;
   passiveSkill: string;
@@ -161,7 +175,6 @@ export interface Parse {
   metadata: { version: string };
   genes: Gene[];
 }
-
 export interface AbilityLocalizedValue {
   EN: string;
   FR: string;
@@ -188,11 +201,8 @@ export interface NeftiesInfo {
   family_to_description: Record<string, string>;
 }
 
-// eg: Nefty_Bitebit
-type NeftyCodeName = string;
-
 export interface EggInfo {
-  name: string;
+  name: NeftyCodeName;
   description: string;
   archetypes: NeftyCodeName[];
 }
@@ -204,6 +214,11 @@ export interface DroppableNeftyInfo {
   description: string;
 }
 
+export interface DroppableNeftyInfoV2 {
+  neftyCodeName: NeftyCodeName;
+  displayName: string;
+}
+
 export type version = string;
 
 export type GeneWithValues = Gene & {
@@ -212,3 +227,26 @@ export type GeneWithValues = Gene & {
   completeness?: number;
   skill_info?: AbilityInfo;
 };
+
+export interface DnaData {
+  grade: Grade;
+  rarity: Rarity;
+  neftyCodeName: NeftyCodeName;
+}
+
+export interface DnaDataParsed extends DnaData {
+  displayName: string;
+}
+
+export interface DnaDataV2 {
+  version: string;
+  data: DnaData;
+  dataAdv: ParseDataPerc;
+}
+
+export interface ParseV2 {
+  version: string;
+  dataRaw: DnaDataV2;
+  data: DnaDataParsed;
+  dataAdv: ParseDataAdv;
+}
