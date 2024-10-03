@@ -857,6 +857,39 @@
           "id": "ID_FULLBLITZ_ABILITY_LIGHTNING_08"
         }
       ]
+    },
+    "id_hollowoo": {
+      "id": "id_hollowoo",
+      "type": "Hollowoo",
+      "element": "Plant",
+      "hpMin": 108,
+      "hpMax": 130,
+      "atkMin": 54,
+      "atkMax": 65,
+      "defMin": 50,
+      "defMax": 60,
+      "speedMin": 42,
+      "speedMax": 50,
+      "hypeMin": 0,
+      "hypeMax": 999,
+      "passive": -1,
+      "abilitiesArray": [
+        {
+          "id": "ID_FULLBLITZ_ABILITY_FIRE_15"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_PLANT_22"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_PLANT_23"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_PLANT_24"
+        },
+        {
+          "id": "ID_FULLBLITZ_ABILITY_NORMAL_41"
+        }
+      ]
     }
   }
 }

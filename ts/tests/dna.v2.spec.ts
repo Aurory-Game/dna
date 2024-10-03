@@ -33,6 +33,7 @@ const displayNamesProd = [
   'Whiskube',
   'Walpuff',
   'Dinotusk',
+  'Hollowoo',
 ];
 
 const allSchemaVersions = readdirSync('./src/deps/schemas')
