@@ -85,5 +85,10 @@
     "name": "Mirage Egg",
     "description": "This precious egg presents a challenge to find as its illusory nature causes some to perceive it as a gem nestled within the landscape, while others mistake it for a mere rock formation.",
     "archetypes": ["Nefty_Shibark", "Nefty_Unikirin", "Nefty_Zzoo"]
+  },
+  "5kfcDFq7dmh6CwKzXrRKh1Vesr7tvyJEwNGy7BKSjafK": {
+    "name": "Pumpkin Egg",
+    "description": "Resembling a pumpkin in texture, the egg’s shell is used to bake pies in honor of the Harvest Moon celebration. Earned during the Halloween 2024 Event.",
+    "archetypes": ["Nefty_Hollowoo"]
   }
 }
