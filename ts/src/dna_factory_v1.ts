@@ -465,9 +465,7 @@ export class DNAFactoryV1 {
     this._setSkills(data, dnaSchemaReader);
     this._addNeftyImageData(data, 'prime');
 
-    const advStatsJSON = forcedAdvStatsVersion
-      ? this.adventuresStats[forcedAdvStatsVersion]
-      : this.adventuresStats[LATEST_ADVENTURES_STATS_VERSION];
+    const advStatsJSON = this.adventuresStats['0.0.6'];
 
     const dataAdv = getAdventuresStats(dnaSchemaReader, advStatsJSON);
 
