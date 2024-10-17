@@ -1,5 +1,5 @@
 import { EggInfo, Archetype, DroppableNeftyInfo } from './interfaces/types';
-import eggsInfo from './deps/eggs_info.json';
+import eggsInfo from './deps/eggs_info_deprecated.json';
 import standardEggsInfo from './deps/standard_eggs_info.json';
 import { DNAFactoryV1 as DNAFactory } from './dna_factory_v1';
 import { LAST_SUPPORTED_VERSION_BY_V1 } from './constants';

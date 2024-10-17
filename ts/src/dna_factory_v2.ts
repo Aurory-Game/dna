@@ -19,7 +19,7 @@ import dnaSchemaV4_0 from './deps/schemas/aurory_dna_v4.0.0.json';
 import { getAverageFromRaw, getLatestSubversion, randomInt, randomNormal, toPaddedHexa } from './utils';
 import { N_STATS_SOT, TACTICS_ADV_NAMES_MAP, VERSION_LENGTH } from './constants';
 import { DNAFactoryV1 } from './dna_factory_v1';
-import adventuresStatsV0_0_6 from './deps/schemas/adventures/v0.0.6.json';
+import adventuresStatsV0_0_7 from './deps/schemas/adventures/v0.0.7.json';
 import { compressToBase64, decompressFromBase64 } from 'lz-string';
 import neftiesInfo from './deps/nefties_info.json';
 import raritiesJson from './deps/rarities.json';
@@ -29,7 +29,7 @@ const dnaSchemas: Record<version, DNASchemaV4> = {
 };
 
 const adventuresStats: Record<version, AdvStatsJSON> = {
-  '0.0.6': adventuresStatsV0_0_6,
+  '0.0.7': adventuresStatsV0_0_7,
 };
 
 export class DNAFactoryV2 {

@@ -33,7 +33,6 @@ import dnaSchemaV3_0 from './deps/schemas/aurory_dna_v3.0.0.json';
 import dnaSchemaV3_1 from './deps/schemas/aurory_dna_v3.1.0.json';
 import dnaSchemaV3_2 from './deps/schemas/aurory_dna_v3.2.0.json';
 import adventuresStatsV0_0_6 from './deps/schemas/adventures/v0.0.6.json';
-import { LATEST_VERSION as LATEST_ADVENTURES_STATS_VERSION } from './deps/schemas/adventures/latest';
 import { LATEST_VERSION as LATEST_ABILTIIES_VERSION } from './deps/dictionaries/latest';
 import abiltiesDictionaryV4 from './deps/dictionaries/abilities_dictionary_v0.4.0.json';
 import rarities from './deps/rarities.json';
@@ -440,7 +439,7 @@ export class DNAFactoryV1 {
     return { dnaSchema, majorVersionInt };
   }
 
-  parse(dnaString: string, forcedVersion?: version, forcedAdvStatsVersion?: version): Parse {
+  parse(dnaString: string, forcedVersion?: version): Parse {
     const dna = new DNA(dnaString, this.encodingBase);
     const { dnaSchema } = this.getDNASchemaFromDNA(dna.clone(), forcedVersion);
     const dnaSchemaReader = new DNASchemaReader(dnaSchema, dna);
@@ -465,9 +464,7 @@ export class DNAFactoryV1 {
     this._setSkills(data, dnaSchemaReader);
     this._addNeftyImageData(data, 'prime');
 
-    const advStatsJSON = forcedAdvStatsVersion
-      ? this.adventuresStats[forcedAdvStatsVersion]
-      : this.adventuresStats[LATEST_ADVENTURES_STATS_VERSION];
+    const advStatsJSON = this.adventuresStats['0.0.6'];
 
     const dataAdv = getAdventuresStats(dnaSchemaReader, advStatsJSON);
 
