@@ -26,7 +26,7 @@ export const TACTICS_ADV_NAMES_MAP = {
   Nefty_Bloomtail: 'id_bloomtail',
   Nefty_Tokoma: 'id_tokoma',
   Nefty_Ghouliath: 'id_ghouliath',
-  Nefty_Whiskube: 'id_whiskube',
+  Nefty_Oogrock: 'id_whiskube',
   Nefty_Walpuff: 'id_walpuff',
   Nefty_Dinotusk: 'id_dinotusk',
   Nefty_Hollowoo: 'id_hollowoo',

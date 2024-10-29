@@ -69,7 +69,7 @@
   "frost_egg": {
     "name": "Frost Egg",
     "description": "The swirling frost patterns beneath the egg's translucent surface refract light in a hypnotizing display of colors.",
-    "archetypes": ["Nefty_Cybertooth", "Nefty_Dinotusk", "Nefty_Whiskube"]
+    "archetypes": ["Nefty_Cybertooth", "Nefty_Dinotusk", "Nefty_Oogrock"]
   },
   "dune_egg": {
     "name": "Dune Egg",
