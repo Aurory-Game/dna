@@ -1,5 +1,5 @@
 import { DNAFactoryV1 as DNAFactory, EggsFactoryV1 as EggsFactory, Rarity, utils } from '../src';
-import nefties_info from '../src/deps/nefties_info.json';
+import nefties_info from '../src/deps/nefties_info_deprecated.json';
 import assert from 'assert';
 import rarities from '../src/deps/rarities.json';
 import { readdirSync, readFileSync } from 'fs';

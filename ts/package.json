@@ -1,6 +1,6 @@
 {
   "name": "@aurory/dnajs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Aurory-Game/dna.git"
@@ -11,7 +11,8 @@
   "scripts": {
     "sp": "ts-node $1",
     "test": "ts-mocha -p ./tsconfig.json -t 2500000 --exit tests/**/*.spec.ts",
-    "test:dna": "ts-mocha -p ./tsconfig.json -t 2500000 --exit tests/dna.spec.ts",
+    "test:dna": "yarn test:dna1 && yarn test:dna2",
+    "test:dna1": "ts-mocha -p ./tsconfig.json -t 2500000 --exit tests/dna.spec.ts",
     "test:dna2": "ts-mocha -p ./tsconfig.json -t 2500000 --exit tests/dna.v2.spec.ts",
     "test:distribution": "ts-mocha -p ./tsconfig.json -t 2500000 --exit tests/distribution.spec.ts",
     "build": "tsc -p tsconfig.build.json && cp -r src/deps lib/",
