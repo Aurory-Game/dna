@@ -30,7 +30,7 @@ const displayNamesProd = [
   'Bloomtail',
   'Tokoma',
   'Ghouliath',
-  'Whiskube',
+  'Oogrock',
   'Walpuff',
   'Dinotusk',
   'Hollowoo',

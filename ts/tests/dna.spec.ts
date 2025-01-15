@@ -29,7 +29,7 @@ const displayNamesProd = [
   'Bloomtail',
   'Tokoma',
   'Ghouliath',
-  'Whiskube',
+  'Oogrock',
   'Walpuff',
   'Dinotusk',
 ];
@@ -57,7 +57,7 @@ const neftyCodeNamesProd = new Set([
   'Nefty_Bloomtail',
   'Nefty_Tokoma',
   'Nefty_Ghouliath',
-  'Nefty_Whiskube',
+  'Nefty_Oogrock',
   'Nefty_Walpuff',
   'Nefty_Dinotusk',
 ]);
@@ -85,7 +85,7 @@ const neftyFamiliesProd = new Set([
   'Bloomtail',
   'Tokoma',
   'Ghouliath',
-  'Whiskube',
+  'Oogrock',
   'Walpuff',
   'Dinotusk',
 ]);
