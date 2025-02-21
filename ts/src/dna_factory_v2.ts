@@ -15,21 +15,25 @@ import {
 } from './interfaces/types';
 import { LATEST_VERSION as LATEST_SCHEMA_VERSION } from './deps/schemas/latest';
 import { LATEST_VERSION as LATEST_ADVENTURES_STATS_VERSION } from './deps/schemas/adventures/latest';
-import dnaSchemaV4_0 from './deps/schemas/aurory_dna_v4.0.0.json';
+import dnaSchemaV4_0_0 from './deps/schemas/aurory_dna_v4.0.0.json';
+import dnaSchemaV4_0_1 from './deps/schemas/aurory_dna_v4.0.1.json';
 import { getAverageFromRaw, getLatestSubversion, randomInt, randomNormal, toPaddedHexa } from './utils';
 import { N_STATS_SOT, TACTICS_ADV_NAMES_MAP, VERSION_LENGTH } from './constants';
 import { DNAFactoryV1 } from './dna_factory_v1';
 import adventuresStatsV0_0_7 from './deps/schemas/adventures/v0.0.7.json';
+import adventuresStatsV1_4_5 from './deps/schemas/adventures/v1.4.5.json';
 import { compressToBase64, decompressFromBase64 } from 'lz-string';
 import neftiesInfo from './deps/nefties_info.json';
 import raritiesJson from './deps/rarities.json';
 
 const dnaSchemas: Record<version, DNASchemaV4> = {
-  '4.0.0': dnaSchemaV4_0 as DNASchemaV4,
+  '4.0.0': dnaSchemaV4_0_0 as DNASchemaV4,
+  '4.0.1': dnaSchemaV4_0_1 as DNASchemaV4,
 };
 
 const adventuresStats: Record<version, AdvStatsJSON> = {
   '0.0.7': adventuresStatsV0_0_7,
+  '1.4.5': adventuresStatsV1_4_5,
 };
 
 export class DNAFactoryV2 {
@@ -107,11 +111,11 @@ export class DNAFactoryV2 {
    * @param rarity Rarity
    * @param statsCount Number of stats to generate
    */
-  private _generateStatsForRarity(nStats: number, grade: Grade, rarity: Rarity): number[] {
+  private _generateStatsForRarity(nStats: number, grade: Grade, rarity: Rarity, meanPreset?: number): number[] {
     const [minStatAvg, maxStatAvg] = raritiesJson[grade][rarity].average_stats_range;
     const stats = Array.from(Array(nStats).keys()).map(() => 0);
 
-    const mean = randomInt(minStatAvg, maxStatAvg, true);
+    const mean = meanPreset ?? randomInt(minStatAvg, maxStatAvg, true);
     const totalPoints = mean * nStats;
     const maxValuePerStat = 100;
 
@@ -204,21 +208,37 @@ export class DNAFactoryV2 {
   }
 
   private createDataAdv(stats: number[]): ParseDataPerc {
-    const [hp, atk, def, speed] = stats;
+    const [hp, atk, eatk, def, edef, speed] = stats;
     return {
       hp,
       atk,
+      eatk,
       def,
+      edef,
       speed,
     };
   }
 
-  private createDataAdvFromV1(stats: ParseDataPerc): ParseDataPerc {
-    const { hp, atk, def, speed } = stats;
+  private createDataAdvFromExisting(dnaData: DnaData, stats: ParseDataPerc): ParseDataPerc {
+    const { grade, rarity } = dnaData;
+    const { hp, atk, eatk, def, edef, speed } = stats;
+
+    let eatkFinal = eatk;
+    let edefFinal = edef;
+
+    if (eatk === undefined || edef === undefined) {
+      const statsArr = Object.values(stats);
+      const meanPreset = Math.floor(statsArr.reduce((acc, stat) => acc + stat, 0) / statsArr.length);
+
+      [eatkFinal, edefFinal] = this._generateStatsForRarity(2, grade, rarity, meanPreset);
+    }
+
     return {
       hp,
       atk,
+      eatk: eatkFinal,
       def,
+      edef: edefFinal,
       speed,
     };
   }
@@ -304,8 +324,23 @@ export class DNAFactoryV2 {
     const data = this.createDnaDataFromV1(dataV1);
 
     const stats = newSotStats ?? dataV1.dataAdv;
-    const dataAdv = this.createDataAdvFromV1(stats);
+    const dataAdv = this.createDataAdvFromExisting(data, stats);
     const dnaData = Object.assign({}, { version, data, dataAdv });
+
+    return this.getDna(dnaSchema.version, dnaData);
+  }
+
+  generateNeftyDNAFromExistingV2Dna(dna: string, newSotStats?: ParseDataPerc, newVersion?: string): string {
+    const parse = this.parse(dna);
+    const dnaSchema = this.getDNASchema(newVersion ?? LATEST_SCHEMA_VERSION);
+    const version = dnaSchema.version;
+    const {
+      dataRaw: { data: existingDnaData, dataAdv: existingStats },
+    } = parse;
+
+    const stats = newSotStats ?? existingStats;
+    const dataAdv = this.createDataAdvFromExisting(existingDnaData, stats);
+    const dnaData = Object.assign({}, { version, data: existingDnaData, dataAdv });
 
     return this.getDna(dnaSchema.version, dnaData);
   }

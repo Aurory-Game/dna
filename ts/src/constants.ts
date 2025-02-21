@@ -26,8 +26,8 @@ export const TACTICS_ADV_NAMES_MAP = {
   Nefty_Bloomtail: 'id_bloomtail',
   Nefty_Tokoma: 'id_tokoma',
   Nefty_Ghouliath: 'id_ghouliath',
-  Nefty_Whiskube: 'id_whiskube',
-  Nefty_Oogrock: 'id_whiskube',
+  Nefty_Whiskube: 'id_oogrock',
+  Nefty_Oogrock: 'id_oogrock',
   Nefty_Walpuff: 'id_walpuff',
   Nefty_Dinotusk: 'id_dinotusk',
   Nefty_Hollowoo: 'id_hollowoo',
@@ -36,5 +36,5 @@ export const TACTICS_ADV_NAMES_MAP = {
 export const VERSION_LENGTH = 4;
 export const LAST_SUPPORTED_VERSION_BY_V1 = '3.2.0';
 
-// hp, atk, def, speed
-export const N_STATS_SOT = 4;
+// hp, atk, eatk, def, edef, speed
+export const N_STATS_SOT = 6;

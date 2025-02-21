@@ -72,11 +72,15 @@ describe('Basic', () => {
         assert.ok(data.data.rarity);
         assert.ok(data.dataAdv);
         assert.ok(Number.isInteger(data.dataAdv.atk));
+        assert.ok(Number.isInteger(data.dataAdv.eatk));
         assert.ok(Number.isInteger(data.dataAdv.def));
+        assert.ok(Number.isInteger(data.dataAdv.edef));
         assert.ok(Number.isInteger(data.dataAdv.hp));
         assert.ok(Number.isInteger(data.dataAdv.speed));
         assert.ok(Number.isInteger(data.dataAdv.atkComputed));
+        assert.ok(Number.isInteger(data.dataAdv.eatkComputed));
         assert.ok(Number.isInteger(data.dataAdv.defComputed));
+        assert.ok(Number.isInteger(data.dataAdv.edefComputed));
         assert.ok(Number.isInteger(data.dataAdv.hpComputed));
         assert.ok(Number.isInteger(data.dataAdv.speedComputed));
         assert.ok(data.version);
@@ -109,7 +113,7 @@ describe('Rarity', () => {
   it('Rarity matches the average stats for latest version', () => {
     const df = new DNAFactory();
     const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
-    const rarityStats: (keyof ParseDataPerc)[] = ['hp', 'atk', 'def', 'speed'];
+    const rarityStats: (keyof ParseDataPerc)[] = ['hp', 'atk', 'eatk', 'def', 'edef', 'speed'];
     Object.entries(raritiesJson.prime).forEach(([rarity, rarityInfo]) => {
       // for (let i = 0; i < 1e3; i++) {
       const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime', undefined, rarity as Rarity);
@@ -215,5 +219,67 @@ describe('From V1 DNA', () => {
     assert.deepEqual(newParsed.data.rarity, parsedV1.data.rarity);
     assert.deepEqual(newParsed.data.displayName, parsedV1.data.displayName);
     assert.deepEqual(newParsed.data.neftyCodeName, parsedV1.archetype.fixed_attributes.name);
+  });
+});
+
+describe('From V2 DNA', () => {
+  const df = new DNAFactory();
+  const ef = new EggsFactory('8XaR7cPaMZoMXWBWgeRcyjWRpKYpvGsPF6dMwxnV4nzK', df);
+  it('can generate new stats when they are not supplied', () => {
+    for (let index = 0; index < 1_000; index++) {
+      const advStatKeys: (keyof ParseDataPerc)[] = ['hp', 'atk', 'def', 'speed'];
+      const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime');
+      const parsed = df.parse(dna);
+      const newStats = {} as Record<keyof ParseDataPerc, number>;
+      advStatKeys.forEach((key) => {
+        newStats[key] = parsed.dataAdv[key];
+      });
+      const newDna = df.generateNeftyDNAFromExistingV2Dna(dna, newStats);
+      const newParsed = df.parse(newDna);
+      const statsArr = Object.values(newStats);
+      const newStatsArr = Object.values(newParsed.dataRaw.dataAdv);
+      const statsAvg = Math.floor(statsArr.reduce((acc, stat) => acc + stat, 0) / statsArr.length);
+      const newStatsAvg = Math.floor(newStatsArr.reduce((acc, stat) => acc + stat, 0) / newStatsArr.length);
+
+      assert.deepEqual(newParsed.dataAdv.hp, newStats.hp);
+      assert.deepEqual(newParsed.dataAdv.atk, newStats.atk);
+      assert.ok(Number.isInteger(newParsed.dataAdv.eatk));
+      assert.deepEqual(newParsed.dataAdv.def, newStats.def);
+      assert.ok(Number.isInteger(newParsed.dataAdv.edef));
+      assert.deepEqual(newParsed.dataAdv.speed, newStats.speed);
+      assert.deepEqual(statsAvg, newStatsAvg);
+      assert.deepEqual(newParsed.data.rarity, parsed.data.rarity);
+      assert.deepEqual(newParsed.data.displayName, parsed.data.displayName);
+      assert.deepEqual(newParsed.data.neftyCodeName, parsed.data.neftyCodeName);
+    }
+  });
+
+  it('can set new stats when they are supplied', () => {
+    for (let index = 0; index < 1_000; index++) {
+      const advStatKeys: (keyof ParseDataPerc)[] = ['hp', 'atk', 'eatk', 'def', 'edef', 'speed'];
+      const dna = df.generateNeftyDNA(ef.hatch().archetypeKey, 'prime');
+      const parsed = df.parse(dna);
+      const newStats = {} as Record<keyof ParseDataPerc, number>;
+      advStatKeys.forEach((key) => {
+        newStats[key] = parsed.dataAdv[key];
+      });
+      const newDna = df.generateNeftyDNAFromExistingV2Dna(dna, newStats);
+      const newParsed = df.parse(newDna);
+      const statsArr = Object.values(newStats);
+      const newStatsArr = Object.values(newParsed.dataRaw.dataAdv);
+      const statsAvg = Math.floor(statsArr.reduce((acc, stat) => acc + stat, 0) / statsArr.length);
+      const newStatsAvg = Math.floor(newStatsArr.reduce((acc, stat) => acc + stat, 0) / newStatsArr.length);
+
+      assert.deepEqual(newParsed.dataAdv.hp, newStats.hp);
+      assert.deepEqual(newParsed.dataAdv.atk, newStats.atk);
+      assert.deepEqual(newParsed.dataAdv.eatk, newStats.eatk);
+      assert.deepEqual(newParsed.dataAdv.def, newStats.def);
+      assert.deepEqual(newParsed.dataAdv.edef, newStats.edef);
+      assert.deepEqual(newParsed.dataAdv.speed, newStats.speed);
+      assert.deepEqual(statsAvg, newStatsAvg);
+      assert.deepEqual(newParsed.data.rarity, parsed.data.rarity);
+      assert.deepEqual(newParsed.data.displayName, parsed.data.displayName);
+      assert.deepEqual(newParsed.data.neftyCodeName, parsed.data.neftyCodeName);
+    }
   });
 });
