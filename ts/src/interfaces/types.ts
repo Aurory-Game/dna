@@ -136,18 +136,22 @@ export type ParseDataAdv = ParseDataPerc & ParseDataComputed;
 export interface ParseDataPerc {
   hp: number;
   atk: number;
+  eatk: number;
   def: number;
+  edef: number;
   speed: number;
 }
 
 export interface ParseDataComputed {
   hpComputed: number;
   atkComputed: number;
+  eatkComputed: number;
   defComputed: number;
+  edefComputed: number;
   speedComputed: number;
 }
 
-export type AdvStat = 'hp' | 'atk' | 'def' | 'speed';
+export type AdvStat = 'hp' | 'atk' | 'eatk' | 'def' | 'edef' | 'speed';
 
 export interface AdvStatsJSON {
   nefties: AdvStatsJSONRecord;
@@ -160,8 +164,12 @@ export interface AdvStatsJSONValue {
   hpMax: number;
   atkMin: number;
   atkMax: number;
+  eatkMin: number;
+  eatkMax: number;
   defMin: number;
   defMax: number;
+  edefMin: number;
+  edefMax: number;
   speedMin: number;
   speedMax: number;
 }
@@ -170,7 +178,6 @@ export interface Parse {
   data: ParseData;
   dataAdv: ParseDataAdv;
   raw: Record<string, number>;
-  // percentages: Record<string, number>;
   archetype: Archetype;
   metadata: { version: string };
   genes: Gene[];

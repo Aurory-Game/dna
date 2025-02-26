@@ -29,7 +29,9 @@ function advArrToObj(advArr: number[]): ParseDataPerc {
   return {
     hp: advArr[0],
     atk: advArr[1],
+    eatk: advArr[1],
     def: advArr[2],
+    edef: advArr[2],
     speed: advArr[3],
   };
 }
