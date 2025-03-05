@@ -34,6 +34,7 @@ const displayNamesProd = [
   'Walpuff',
   'Dinotusk',
   'Hollowoo',
+  'Dodorex',
 ];
 
 const allSchemaVersions = readdirSync('./src/deps/schemas')

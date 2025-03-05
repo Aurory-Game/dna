@@ -90,5 +90,10 @@
     "name": "Pumpkin Egg",
     "description": "Resembling a pumpkin in texture, the egg's shell is used to bake pies in honor of the Harvest Moon celebration. Earned during the Halloween 2024 Event.",
     "archetypes": ["Nefty_Hollowoo"]
+  },
+  "GqtS6KLq2nJvoUyeZt2yKwKYTCq12XdTU99St1c1aY1G": {
+    "name": "Coco Egg",
+    "description": "The markings on the egg resemble painted designs that seem to have been added after the egg was formed. How strange!",
+    "archetypes": ["Nefty_Dodorex"]
   }
 }

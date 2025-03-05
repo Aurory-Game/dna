@@ -31,6 +31,7 @@ export const TACTICS_ADV_NAMES_MAP = {
   Nefty_Walpuff: 'id_walpuff',
   Nefty_Dinotusk: 'id_dinotusk',
   Nefty_Hollowoo: 'id_hollowoo',
+  Nefty_Dodorex: 'id_dodorex',
 } as const;
 
 export const VERSION_LENGTH = 4;

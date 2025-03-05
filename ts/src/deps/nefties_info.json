@@ -26,7 +26,8 @@
     "Nefty_Oogrock": "Oogrock",
     "Nefty_Walpuff": "Walpuff",
     "Nefty_Dinotusk": "Dinotusk",
-    "Nefty_Hollowoo": "Hollowoo"
+    "Nefty_Hollowoo": "Hollowoo",
+    "Nefty_Dodorex": "Dodorex"
   },
   "family_to_description": {
     "Bitebit": "Bitebit may look cuddly, but don't be fooled by its charm - those aren't paper hands... they're DIAMOND CLAWS!",
@@ -54,6 +55,7 @@
     "Oogrock": "Oogrocks love to rest on ice, but their reflective bodies cause them to melt it while sleeping. This leads to a sudden plunge into cold water, giving them quite the wake-up call!",
     "Walpuff": "Walpuffs are known for their soft heads but sturdy bodies. That's why they wear protective headgear adorned with razor-sharp tusks, providing formidable armor!",
     "Dinotusk": "Dinotusks use their unique tails to ground themselves to Tokane, generating energy and enabling survival in harsh environments.",
-    "Hollowoo": "This pumpkin-like Neftie is a farmer's best tool for scaring away sparrows. Its calm demeanor allows it to remain motionless for hours, keeping pests at bay."
+    "Hollowoo": "This pumpkin-like Neftie is a farmer's best tool for scaring away sparrows. Its calm demeanor allows it to remain motionless for hours, keeping pests at bay.",
+    "Dodorex": "Dodorex is every bit as loyal as Chocorex, but with a tendency to act before thinking. Its unshakable spirit is evident in the arrows on its head, each a mark of past misadventures."
   }
 }
