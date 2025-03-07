@@ -22,6 +22,7 @@ import { N_STATS_SOT, TACTICS_ADV_NAMES_MAP, VERSION_LENGTH } from './constants'
 import { DNAFactoryV1 } from './dna_factory_v1';
 import adventuresStatsV0_0_7 from './deps/schemas/adventures/v0.0.7.json';
 import adventuresStatsV1_4_5 from './deps/schemas/adventures/v1.4.5.json';
+import adventuresStatsV1_6_1 from './deps/schemas/adventures/v1.6.1.json';
 import { compressToBase64, decompressFromBase64 } from 'lz-string';
 import neftiesInfo from './deps/nefties_info.json';
 import raritiesJson from './deps/rarities.json';
@@ -34,6 +35,7 @@ const dnaSchemas: Record<version, DNASchemaV4> = {
 const adventuresStats: Record<version, AdvStatsJSON> = {
   '0.0.7': adventuresStatsV0_0_7,
   '1.4.5': adventuresStatsV1_4_5,
+  '1.6.1': adventuresStatsV1_6_1,
 };
 
 export class DNAFactoryV2 {
