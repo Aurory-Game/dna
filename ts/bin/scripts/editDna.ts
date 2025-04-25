@@ -55,6 +55,23 @@ function buildDnaFromParts(
 }
 
 function overrideDna() {
+  // Check if DNA version is supported (should be at least version 4)
+  const dnaVersionStr = INPUT_DNA.substring(0, 4);
+  // Try to parse as int, fallback to string if not a number (e.g. '0004' -> 4)
+  let dnaVersion = Number.NaN;
+  if (/^\d+$/.test(dnaVersionStr)) {
+    dnaVersion = parseInt(dnaVersionStr, 10);
+  } else {
+    // fallback: try to parse as hex or string
+    dnaVersion = Number(dnaVersionStr);
+  }
+  if (isNaN(dnaVersion) || dnaVersion < 4) {
+    console.error(
+      paint(`\nERROR: DNA version ${dnaVersionStr} is not supported. Only version 4+ is supported.`, 'red')
+    );
+    process.exit(1);
+  }
+
   const factory = new DNAFactory();
 
   // Parse original DNA
