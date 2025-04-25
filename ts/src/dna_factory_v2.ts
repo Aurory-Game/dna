@@ -221,7 +221,7 @@ export class DNAFactoryV2 {
     };
   }
 
-  private createDataAdvFromExisting(dnaData: DnaData, stats: ParseDataPerc): ParseDataPerc {
+  public createDataAdvFromExisting(dnaData: DnaData, stats: ParseDataPerc): ParseDataPerc {
     const { grade, rarity } = dnaData;
     const { hp, atk, eatk, def, edef, speed } = stats;
 

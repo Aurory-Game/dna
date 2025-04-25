@@ -20,7 +20,8 @@
     "prepublishOnly": "yarn test",
     "lint:fix": "eslint --fix --ext .ts,.json . && tsc --pretty",
     "lint": "eslint . --ext .ts,.tsx,.json && tsc --pretty",
-    "i18n:sync": "ts-node bin/scripts/sync.ts"
+    "i18n:sync": "ts-node bin/scripts/sync.ts",
+    "edit:dna": "ts-node bin/scripts/editDna.ts"
   },
   "author": "Aurory",
   "license": "MIT",
